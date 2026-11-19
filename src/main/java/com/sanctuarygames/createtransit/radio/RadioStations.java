@@ -5,7 +5,10 @@ public final class RadioStations extends SavedData {
  public record Station(String id,String name,String url){}
  private final LinkedHashMap<String,RadioSettings> groups=new LinkedHashMap<>();
  public RadioSettings group(String name,RadioSettings seed){if(name.isBlank())return seed;if(name.length()>32||name.chars().anyMatch(Character::isISOControl))throw new IllegalArgumentException("Group name must be 1–32 printable characters");var found=groups.get(name);if(found!=null)return found;if(groups.size()>=64)throw new IllegalArgumentException("Maximum 64 radio groups");var copy=new RadioSettings();copy.load(seed.save());copy.volume=1;groups.put(name,copy);setDirty();return copy;}
- public RadioSettings effective(String name,RadioSettings local){var shared=group(name,local);var value=new RadioSettings();value.load(local.save());if(!name.isBlank()){value.enabled=shared.enabled;value.station=shared.station;value.mode=shared.mode;value.volume=Math.min(3,value.volume*shared.volume);}return value;}
+ /** Read-only lookup: the saved group, or an unsaved preview seeded exactly as group() would seed it.
+  * Never creates, never throws, so status queries and menu snapshots cannot hit the group limit. */
+ public RadioSettings peek(String name,RadioSettings seed){if(name.isBlank())return seed;var found=groups.get(name);if(found!=null)return found;var copy=new RadioSettings();copy.load(seed.save());copy.volume=1;return copy;}
+ public RadioSettings effective(String name,RadioSettings local){var shared=peek(name,local);var value=new RadioSettings();value.load(local.save());if(!name.isBlank()){value.enabled=shared.enabled;value.station=shared.station;value.mode=shared.mode;value.volume=Math.min(3,value.volume*shared.volume);}return value;}
  private final LinkedHashMap<String,Station> stations=new LinkedHashMap<>();
  public static RadioStations get(ServerLevel l){return l.getServer().overworld().getDataStorage().computeIfAbsent(new Factory<>(RadioStations::new,RadioStations::load,null),"createtransit_radio");}
  public static String validate(String name,String url){

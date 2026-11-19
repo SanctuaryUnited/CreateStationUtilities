@@ -16,7 +16,11 @@ public final class ElevatorNetwork {
    double distance=base.distSqr(button);if(distance<best-.001){best=distance;found=new AutoCall(d,f);tie=false;}else if(Math.abs(distance-best)<.001&&found!=null&&(found.drive()!=d||found.floor().y()!=f.y()))tie=true;
   }}return tie?null:found;
  }
- private static final Map<Level,Set<BlockPos>> DRIVES=new WeakHashMap<>(),CALLS=new WeakHashMap<>(),LANDINGS=new WeakHashMap<>(),MARKERS=new WeakHashMap<>();
+ /** Client and integrated-server levels register from different threads, and WeakHashMap mutates
+  * itself even on reads, so the outer maps are synchronized. Each per-level set is only ever
+  * touched by that level's own thread. */
+ private static final Map<Level,Set<BlockPos>> DRIVES=levelMap(),CALLS=levelMap(),LANDINGS=levelMap(),MARKERS=levelMap();
+ private static Map<Level,Set<BlockPos>> levelMap(){return Collections.synchronizedMap(new WeakHashMap<>());}
  private static Set<BlockPos> set(Map<Level,Set<BlockPos>> map,Level l){return map.computeIfAbsent(l,k->new HashSet<>());}
  public static void register(Level l,BlockPos p,BlockState s){if(!(s.getBlock() instanceof ElevatorPartBlock b))return;if(b.kind==ElevatorPartBlock.Kind.DRIVE)set(DRIVES,l).add(p.immutable());if(b.kind==ElevatorPartBlock.Kind.CALL&&!(b instanceof ElevatorCallBlock call&&call.destinationSelector()))set(CALLS,l).add(p.immutable());if(b.kind==ElevatorPartBlock.Kind.MARKER)set(MARKERS,l).add(p.immutable());if(b instanceof ElevatorDoorBlock&&!b.cabin()&&s.getValue(ElevatorDoorBlock.ROW)==0)set(LANDINGS,l).add(p.immutable());}
  public static void unregister(Level l,BlockPos p){for(var m:List.of(DRIVES,CALLS,LANDINGS,MARKERS))set(m,l).remove(p);}

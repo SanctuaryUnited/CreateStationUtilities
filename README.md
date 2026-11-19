@@ -10,7 +10,7 @@ Previous release records follow.
 
 # Create: Station Utilities — V14.1 (`0.2.0-dev14.1`)
 
-Minecraft 1.21.1 · NeoForge 21.1.248 · Create 6.0.10 · Java 21. Mod ID: `createtransit`.
+Minecraft 1.21.1 · NeoForge 21.1.248+ (built and tested on 21.1.267) · Create 6.0.10 · Java 21. Mod ID: `createtransit`.
 
 See the [current elevator building guide](docs/ELEVATORS3_SIMPLE_WORKFLOW.md), [V14 cabin and door assets](docs/V14_ELEVATORS3_GUIDE.md), and [current implementation and validation report](docs/ELEVATORS3_IMPLEMENTATION.md).
 
@@ -32,7 +32,7 @@ Start with the [new building guide](docs/ELEVATORS3_BUILDING_GUIDE.md). Read the
 
 # Create Transit
 
-Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21.
+Minecraft 1.21.1 / NeoForge 21.1.248+ (tested on 21.1.267) / Create 6.0.10 / Java 21.
 
 ## Alpha16.4 — Incline workload and visible dye updates
 

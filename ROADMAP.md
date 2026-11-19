@@ -12,8 +12,8 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - [x] Server config `radio.stationEditors`, default `OPERATORS` (op level 2 or single-player owner). *Breaking: builders could previously edit stations.*
   - [ ] Optional: skip warm-up connections to out-of-range sources (trades instant start for fewer connections). *PATCH*
   - Known limit: the client checks DNS before connecting, but `HttpURLConnection` resolves again, so a DNS-rebinding host could still slip through. The operators-only default and the allow-list reduce this risk.
-- [ ] **2. Client/server thread race on `ElevatorNetwork` maps** (`ElevatorPartEntity.onLoad`/`setRemoved`). Gate on `!level.isClientSide`, and do the same for `StationSpeakerEntity.setRemoved`. *PATCH*
-- [ ] **3. Radio group overflow can kick a player** (`RadioStations.effective` → `group()` throws at 64). Fall back to local settings and never create groups from a read path. *PATCH*
+- [x] **2. Client/server thread race on `ElevatorNetwork` maps** (`ElevatorPartEntity.onLoad`/`setRemoved`). The outer per-level maps are now synchronized. They were not gated on `!level.isClientSide`, because shared code such as `ModelLandingItem.useOn` uses these lookups on the client to predict a click's result. `StationSpeakerEntity.setRemoved` is now server-only, matching `onLoad`. *PATCH*
+- [x] **3. Radio group overflow can kick a player** (`RadioStations.effective` → `group()` throws at 64). Added a read-only `peek()`; `effective()` and the speaker snapshot use it, so reads never create a group or throw. Only joining a group or editing one creates it. *PATCH*
 
 ## Phase 2 — Data growth / leaks
 
@@ -33,7 +33,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 
 - [ ] **12. Gametests don't compile**: `EscalatorGameTests`, `EscalatorSoundGameTests`, `SmartEscalatorGameTests` call the removed `EscalatorNetwork.reverse`. Switch them to `EscalatorNetwork.configure`. *No release*
 - [ ] **13. Client tests don't compile**: `RadioAcousticsCheck`, `RadioAudioCheck` use old `RadioAcoustics.Profile`/`fade` and `RadioGainStream` signatures. *No release*
-- [ ] **14. Bump the dev NeoForge from 21.1.248 to 21.1.267** in `build.gradle`. Keep `neoforge.mods.toml` at `[21.1.248,)`; raising the floor would be MAJOR. *No release*
+- [x] **14. Bump the dev NeoForge from 21.1.248 to 21.1.267** in `build.gradle`. Keep `neoforge.mods.toml` at `[21.1.248,)`; raising the floor would be MAJOR. *No release*
 - [ ] **15. Verify the client mixins on 21.1.267** with one `runClient` launch, then check the log for injection failures.
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
