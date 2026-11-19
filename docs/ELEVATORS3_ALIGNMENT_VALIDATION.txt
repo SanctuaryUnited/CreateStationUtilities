@@ -1,0 +1,22 @@
+Create Transit 0.2.0-dev7 — fine alignment
+2026-11-04
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21
+
+PASS: 204 style/layout/size configurations; persistence; exact two-block / half-block bounds; sideways-only panel travel.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[20:30:32] [Server thread/INFO] [minecraft/GameTestServer]: All 162 required tests passed :)
+PASS: Wave 1 CLIENT production emitter: 4608 configurations / 9179136 vertices; ten native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.
+PASS: GUI scale 4: 72 native widget placements reachable at 1920x1080, 1280x960 and 2560x1440 through the production scrolling layout; no graphics window.
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 51s
+
+New native fixtures cover exact 1/16-block X/Z offsets across all four orientations, unchanged landing grid cells, NBT persistence, adjusted entity spawn, active-state locking, quarter-block bounds, invalid input rejection, reset, and successful vertical travel/leveling retaining horizontal offsets.
+All 3428 existing resources match dev6 source byte-for-byte.
+No graphical Minecraft/ghost/shader, hardware FPS or connected multiplayer check. Steam n Rails remains excluded by the existing withoutRailways runtime option. Native checks use the private headless asset-index override.

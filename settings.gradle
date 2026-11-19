@@ -1,0 +1,7 @@
+pluginManagement {
+    repositories { maven { url = "https://maven.neoforged.net/releases" }; gradlePluginPortal() }
+}
+
+// Java 21 is installed locally; no toolchain resolver download is required.
+
+rootProject.name = 'Create-Transit'

@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:cutout_mipped",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "createtransit:block/cable_steel",
+    "cable_steel": "createtransit:block/cable_steel",
+    "cable_grip_metal": "createtransit:block/cable_grip_metal",
+    "cable_grip_rubber": "createtransit:block/cable_grip_rubber"
+  },
+  "elements": []
+}

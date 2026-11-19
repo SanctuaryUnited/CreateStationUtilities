@@ -1,0 +1,82 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:translucent",
+  "ambientocclusion": false,
+  "textures": {
+    "frame": "createtransit:block/frame",
+    "accent": "createtransit:block/accent",
+    "glass": "createtransit:block/glass",
+    "led_accent": "createtransit:block/led_accent",
+    "led_white": "createtransit:block/led_white",
+    "led_green": "createtransit:block/led_green",
+    "led_amber": "createtransit:block/led_amber",
+    "led_off": "createtransit:block/led_off",
+    "particle": "createtransit:block/frame"
+  },
+  "elements": [
+    {
+      "from": [
+        14.4,
+        0,
+        3
+      ],
+      "to": [
+        15,
+        12,
+        7.6
+      ],
+      "faces": {
+        "east": {
+          "texture": "#glass",
+          "uv": [
+            14.4,
+            4,
+            15,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#glass",
+          "uv": [
+            14.4,
+            4,
+            15,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        14.4,
+        0,
+        8.4
+      ],
+      "to": [
+        15,
+        12,
+        14.5
+      ],
+      "faces": {
+        "east": {
+          "texture": "#glass",
+          "uv": [
+            14.4,
+            4,
+            15,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#glass",
+          "uv": [
+            14.4,
+            4,
+            15,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

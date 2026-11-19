@@ -1,0 +1,8 @@
+Compilation passed. Native Minecraft GameTests: all 147 passed. The new height/link persistence test and updated raised-button travel/obstruction/indicator and shared-bank tests passed. All connected-dye tests also passed.
+
+Only ElevatorCallBlock, ElevatorNetwork and version metadata differ in the JAR from alpha.5. Existing models and other code are unchanged. Graphical placement appearance and live multiplayer interaction have not been manually tested. Tests used the existing optional Steam ’n’ Rails exclusion and private headless environment workarounds; these workarounds are not shipped.
+
+[16:52:40] [Server thread/INFO] [minecraft/GameTestServer]: ========= 147 GAME TESTS COMPLETE IN 28.86 s ======================
+[16:52:40] [Server thread/INFO] [minecraft/GameTestServer]: All 147 required tests passed :)
+BUILD SUCCESSFUL in 1m 43s
+JAR SHA256: 986ec1f0da346fb560ffd9d1d5b042f9c0eb4da7e3bfefea7e20b516dd78de07

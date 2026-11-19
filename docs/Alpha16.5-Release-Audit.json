@@ -1,0 +1,27 @@
+{
+  "version": "0.5.0-alpha.16-escalators.5",
+  "jar": "create-transit-0.5.0-alpha.16-escalators.5.jar",
+  "bytes": 1520202,
+  "sha256": "33b9b4c5f39b2caa7cc5cd4b5cb801d5e533e3c985cc466c11cbf13e7f4c0e76",
+  "crc_and_unique_entries": true,
+  "compiled_main_classes_match_jar": true,
+  "test_classes_excluded": true,
+  "metadata_version_correct": true,
+  "unrelated_asset_entries_preserved": 1276,
+  "alpha16_4_collision_classes_byte_identical": true,
+  "smart_block_ids": [
+    "escalator_glass",
+    "escalator_solid",
+    "escalator_glass_redstone",
+    "escalator_solid_redstone"
+  ],
+  "normal_power_behavior": "runs without signal; signal stops",
+  "powered_behavior": "runs while signal is present; stops without signal",
+  "native_required_gametests_passed": 116,
+  "native_client_dye_combinations": 3072,
+  "native_vehicle_items": 69,
+  "native_station_items": 40,
+  "shader_or_actual_fps_measurement": false,
+  "native_suite_seconds": 12.25,
+  "powered_rider_start_stop_resume_and_upper_landing_checked": true
+}

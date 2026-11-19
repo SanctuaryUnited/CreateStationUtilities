@@ -1,0 +1,1 @@
+Python geometry and item-resource validation: 6,336 landing/travelator deck phases cover each block exactly once; no moving surface beneath a fixed plate; all 12 three-layer flat item icons passed. Native CLIENT checks separately verify rendered end-plate boundaries, item dye handlers and adjacent tab order. See the native validation logs.

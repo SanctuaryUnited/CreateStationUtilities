@@ -1,0 +1,766 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processResources
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+> Task :build
+> Task :compileClienttestJava
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+
+> Task :escalatorInclineCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 320 additional exact incline volumes and 3840 native selection ray casts.
+Completed incline benchmark: 1 sections north independent=false
+Completed incline benchmark: 1 sections east independent=false
+Completed incline benchmark: 12 sections north independent=false
+Completed incline benchmark: 12 sections north independent=true
+Completed incline benchmark: 12 sections east independent=false
+Completed incline benchmark: 12 sections east independent=true
+PASS: incline collision and look-at CPU/allocation benchmark written to /workspace/scratch/c2db0e76e1e6/project/create-transit/build/escalator-performance/incline-benchmark.json
+
+> Task :escalatorPerformanceCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 576 exact collision unions; 2304 visible-surface/instance/fallback configurations; vertices 953856 -> 200960.
+{
+  "scope": "Alpha16.2 versus Alpha16.3, native CPU/allocation microbenchmark. Fallback rendering includes frame preparation and native vertex emission to a consuming sink, excluding GPU, atlas lookups, actual draw calls and FPS. Both collision implementations cache repeated requests within each tick. Five alternating samples after warmup. Instanced path uploads shared unit quads once and updates surface transforms; its GPU cost is not measured here.",
+  "render_scenarios": {
+    "1_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 4.107452,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 5.373605,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 6.158145,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.410497,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.463457,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.59714,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 2.024212,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.579644,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.378241,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.320454,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "1_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 4.548275,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.253422,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.287694,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.586953,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.217323,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.369338,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.600806,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.693745,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.609859,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.33772,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "12_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 37.105171,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 37.791121,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 37.063138,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 34.32992,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 36.32599,
+          "allocatedBytes": 78193120
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 16.047926,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 15.251469,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 15.968708,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 15.720564,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 15.743308,
+          "allocatedBytes": 13696
+        }
+      ]
+    },
+    "12_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 50.205988,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 49.582501,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 47.205689,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 50.497681,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 48.020879,
+          "allocatedBytes": 156748000
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 17.76054,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.053758,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.352447,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.560549,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 19.072933,
+          "allocatedBytes": 13696
+        }
+      ]
+    }
+  },
+  "java": "21.0.2",
+  "render_frames_per_sample": 600,
+  "collision_ticks_per_sample": 20,
+  "alpha16_2_render": [
+    {
+      "milliseconds": 58.905892,
+      "allocatedBytes": 78397264
+    },
+    {
+      "milliseconds": 42.242551,
+      "allocatedBytes": 78308360
+    },
+    {
+      "milliseconds": 40.303126,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 36.667087,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 38.80173,
+      "allocatedBytes": 78193160
+    }
+  ],
+  "alpha16_3_fallback_render": [
+    {
+      "milliseconds": 18.702897,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 21.248236,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 17.229252,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 16.501718,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 16.21062,
+      "allocatedBytes": 13736
+    }
+  ],
+  "alpha16_2_collision": [
+    {
+      "milliseconds": 108.866571,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 118.754286,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 105.841746,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 107.539448,
+      "allocatedBytes": 99628704
+    },
+    {
+      "milliseconds": 103.661869,
+      "allocatedBytes": 99626176
+    }
+  ],
+  "alpha16_3_collision": [
+    {
+      "milliseconds": 0.848425,
+      "allocatedBytes": 257904
+    },
+    {
+      "milliseconds": 0.808676,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 1.198886,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.608244,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.797098,
+      "allocatedBytes": 256544
+    }
+  ]
+}
+PASS: CPU/allocation benchmark completed. Visible surfaces and exact collision retained; this is not a graphical FPS test.
+
+> Task :compileGametestJava UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+> Task :writeGameTestServerLegacyClasspath UP-TO-DATE
+> Task :prepareGameTestServerRun UP-TO-DATE
+> Task :removeOptionalGameTests UP-TO-DATE
+
+> Task :runGameTestServer
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[06:00:51] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeserverdev, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430]
+[06:00:51] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[06:00:51] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.44
+[06:00:52] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgeserverdev
+[06:00:52] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/inventory-toolchain/gradle-user/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%2394!/ Service=ModLauncher Env=SERVER
+[06:00:52] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 5 dependencies adding them to mods collection
+[06:00:52] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create Transit 0.5.0-alpha.16-performance.4 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[06:00:53] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[06:00:53] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeserverdev' with arguments [--gameDir, .]
+[06:00:53] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[06:00:53] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[06:00:53] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[06:00:59] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:00:59] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:00:59] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:00:59] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:00:59] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:00:59] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[06:00:59] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[06:01:20] [main/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[06:01:20] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/c2db0e76e1e6/project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23125!/assets/.mcassetsroot' uses unexpected schema
+[06:01:20] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/c2db0e76e1e6/project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23125!/data/.mcassetsroot' uses unexpected schema
+[06:01:20] [NeoForge Version Check/INFO] [ne.ne.fm.VersionChecker/]: [create] Starting version check at https://api.modrinth.com/updates/create/forge_updates.json?neoforge=only
+[06:01:20] [Yggdrasil Key Fetcher/ERROR] [mojang/YggdrasilServicesKeyInfo]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://api.minecraftservices.com/publickeys due to api.minecraftservices.com
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:108) ~[authlib-6.0.54.jar%2377!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:57) ~[authlib-6.0.54.jar%2377!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:114) ~[authlib-6.0.54.jar%2377!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo$1.run(YggdrasilServicesKeyInfo.java:89) ~[authlib-6.0.54.jar%2377!/:?] {}
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?] {}
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?] {}
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+Caused by: java.net.UnknownHostException: api.minecraftservices.com
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567) ~[?:?] {}
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.base/java.net.Socket.connect(Socket.java:751) ~[?:?] {}
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:377) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1282) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1123) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1675) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1599) ~[?:?] {}
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.54.jar%2377!/:?] {}
+	... 9 more
+[06:01:20] [main/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[06:01:20] [main/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[06:01:20] [main/INFO] [ne.ne.ne.ga.GameTestHooks/]: Enabled Gametest Namespaces: [createtransit]
+[06:01:20] [NeoForge Version Check/WARN] [ne.ne.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.openUrlString(VersionChecker.java:129) ~[loader-4.0.43.jar%23102!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.process(VersionChecker.java:162) ~[loader-4.0.43.jar%23102!/:4.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) [?:?] {re:mixin}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.run(VersionChecker.java:105) [loader-4.0.43.jar%23102!/:4.0] {}
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137) ~[?:?] {}
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?] {}
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+[06:01:21] [main/INFO] [minecraft/RecipeManager]: Loaded 2928 recipes
+[06:01:21] [main/INFO] [minecraft/AdvancementTree]: Loaded 2507 advancements
+[06:01:27] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[06:01:27] [worldgen/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 2%
+[06:01:27] [Server thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 209 ms
+[06:01:27] [Server thread/INFO] [minecraft/GameTestServer]: Started game test server
+[06:01:27] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[06:01:27] [Server thread/INFO] [minecraft/GameTestServer]: 108 tests are now running at position 86915, -59, 42444!
+[06:01:27] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'elevator_markers:0' (3 tests)...
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [                                                                                                            ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [                                                                                                            ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:28] [Server thread/INFO] [minecraft/GameTestServer]: [_++                                                                                                         ]
+[06:01:30] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'defaultBatch:0' (50 tests)...
+[06:01:30] [Server thread/INFO] [minecraft/GameTestServer]: [+++                                                                                                         ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++_+_++++++++++++_++_+++_++_+++++__+_+++__++++__+                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_++_++++++_+++++__+++++__+++++_+                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_++_++++++_++++++_+++++__+++++_+                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_++_++++++_++++++_+++++__+++++_+                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_++_++++++_++++++++++++__+++++_+                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++_++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:31] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++_++++++++++++_++++++++                                                       ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_+++++++++++++++++++_++++++++                                                       ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++_++++++++++++++++++++++++++++                                                       ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'defaultBatch:1' (24 tests)...
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++                                                       ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ++++++_ +                                          ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+++++                                       ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_++++                               ]
+[06:01:32] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_++++                               ]
+[06:01:33] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'escalator_sounds:0' (5 tests)...
+[06:01:33] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                               ]
+[06:01:33] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                               ]
+[06:01:33] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__                            ]
+[06:01:33] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_                          ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'elevators:0' (10 tests)...
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                          ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                          ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                         ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                         ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__                      ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++____                    ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++________                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+__+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+__+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+__                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_+                ]
+[06:01:34] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'lrtCircuit:0' (2 tests)...
+[06:01:34] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++                ]
+[06:01:36] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:36] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:36] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:36] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:36] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:37] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:38] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:39] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:40] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:40] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_              ]
+[06:01:40] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'escalators:0' (11 tests)...
+[06:01:40] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++              ]
+[06:01:40] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++____          ]
+[06:01:40] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++____          ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+____     ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+______   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+______   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+______   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+______   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__+_+______   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_____   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++_____   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++__   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestRunner]: Running test batch 'lrt-expansion:0' (3 tests)...
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   ]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++]
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: ========= 108 GAME TESTS COMPLETE IN 13.95 s ======================
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: All 108 required tests passed :)
+[06:01:41] [Server thread/INFO] [minecraft/GameTestServer]: ====================================================
+[06:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[06:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[06:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[06:01:41] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (world): All chunks are saved
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[06:01:45] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+[06:01:45] [Server thread/INFO] [minecraft/GameTestServer]: Game test server shutting down
+
+> Task :writeInventoryDataLegacyClasspath
+> Task :prepareInventoryDataRun
+
+> Task :runInventoryData
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[06:01:47] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatadev, --assetIndex, headless, --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --mod, createtransit, --all, --output, /workspace/scratch/c2db0e76e1e6/project/create-transit/build/inventory-validation, --existing, /workspace/scratch/c2db0e76e1e6/project/create-transit/src/main/resources]
+[06:01:47] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[06:01:47] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.44
+[06:01:47] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatadev
+[06:01:47] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/inventory-toolchain/gradle-user/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[06:01:48] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 5 dependencies adding them to mods collection
+[06:01:48] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create Transit 0.5.0-alpha.16-performance.4 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[06:01:48] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[06:01:48] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatadev' with arguments [--gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --assetIndex, headless, --mod, createtransit, --all, --output, /workspace/scratch/c2db0e76e1e6/project/create-transit/build/inventory-validation, --existing, /workspace/scratch/c2db0e76e1e6/project/create-transit/src/main/resources]
+[06:01:49] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[06:01:49] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[06:01:49] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[06:01:49] [main/INFO] [ne.ne.ne.da.lo.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[06:01:55] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[06:01:55] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[06:02:19] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/c2db0e76e1e6/project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[06:02:19] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/c2db0e76e1e6/project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[06:02:19] [main/INFO] [minecraft/DataGenerator]: Starting provider: Create Transit inventory client validation
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: 2048 received frame/LED dye combinations through native client tint registration.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+[06:02:19] [main/INFO] [minecraft/DataGenerator]: Create Transit inventory client validation finished after 130 ms
+[06:02:19] [main/INFO] [minecraft/DataGenerator]: All providers took: 133 ms
+[06:02:19] [main/INFO] [minecraft/HashCache]: Caching: total files: 1, old count: 0, new count: 2, removed stale: 0, written: 1
+
+[Incubating] Problems report is available at: file:///workspace/scratch/c2db0e76e1e6/project/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2m 9s
+21 actionable tasks: 12 executed, 9 up-to-date

@@ -1,0 +1,43 @@
+Create Transit Alpha16.3 — Escalator renderer patch
+
+Build version: 0.5.0-alpha.16-performance.3
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Flywheel 1.0.6 / Java 21.0.2.
+
+PASS: build, Java compilation and retained timing/network checks.
+PASS: all 104 required native Minecraft GameTests, fresh generated world, 18.31 s suite.
+  Rider travel uphill/downhill, multiple tread phases, widened belts, obstruction,
+  redstone stop/resume, reversal, dyes, shared-clock/collision caches, bounds,
+  sound lifecycle and retained station/vehicle behavior.
+PASS: 576 exact physical collision unions vs original algorithm.
+PASS: 2,304 native visible-surface/fallback/instance transform configurations,
+  positions, UVs, colors, overlays, packed light, scaled/rotated normals.
+  Moving vertices: 953,856 -> 200,960 (78.93% fewer).
+PASS: 80 independent Python preview/native reduced-mesh frames.
+PASS: 50 escalator models / 21,944 baked quads across four rotations.
+PASS: 12-section glass and solid escalator / 30-section travelator NBT parsing.
+PASS: native client distribution loads creative inventory mixins and links the
+  production Flywheel registration body plus six dedicated unit partial models.
+  NeoForge datagen skips normal gameplay setup; registration is invoked directly
+  by this test. No graphical window or GPU/FPS certification.
+PASS: sound event registration, resources and range.
+PASS: retained LRT 516 models / 35,160 baked quads; 318 moving faces,
+  24 glass faces; all three retained QuickBuild NBT layouts.
+PASS: retained elevator 64 models / 5,784 baked quads, 32 moving boxes / 768
+  native vertices, dye/render layers and 23 recipes.
+PASS: release CRC, version metadata, unique paths, reachable-model packaging,
+  1383 source resource byte comparisons and six unit partials present.
+PASS: all 3260 existing Alpha16.2 source resources unchanged.
+PASS: retained inventory has 69 vehicle / 42 station utility items; no new items.
+PASS: release excludes test-only classes and old EMU/HSR assets.
+
+Benchmark is Alpha16.2 versus Alpha16.3, warmed CPU/allocation work, five
+alternating samples. Includes synchronized and independent clocks, one-section
+and 12-section cases. Both versions cache collision queries within each tick.
+These results are not measured FPS. Shader passes, GPU draw calls and real audio
+output are excluded; live Complementary Reimagined appearance/performance must
+be checked in-game. Optional Steam n Rails was excluded from native runtime
+checks; the existing optional cable integration API remains packaged.
+
+JAR: create-transit-0.5.0-alpha.16-performance.3.jar
+Bytes: 1491234
+SHA256: e84734312ca8383626994883745ea24259c51b710422c13cacbfc98e62840b1d

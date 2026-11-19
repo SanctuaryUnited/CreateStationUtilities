@@ -1,0 +1,116 @@
+{
+  "wave": 1,
+  "styles": [
+    "SOLID",
+    "GLASS",
+    "WOOD_TRIM",
+    "SLIM_WINDOW",
+    "DIVIDED_GLASS",
+    "INDUSTRIAL"
+  ],
+  "provenance": "Original deterministic pixel artwork authored for Create: Transit from the approved visual directions; no vanilla or concept image pixels copied.",
+  "glass_layout": "Divided Glass: exactly two panes per leaf, one central horizontal divider.",
+  "sampling": "Sprite-local UVs. Continuous full-leaf crops across metal window cutouts. Flat normal and LabPBR specular/emission companions follow the existing kit convention; live shader appearance is unverified.",
+  "textures": [
+    {
+      "name": "brushed_steel",
+      "width": 32,
+      "height": 32,
+      "sha256": "9fd61818f8a0622ff79ba333292d6b72ae2ef0eddfee72309f952da2b8b4bf4a",
+      "companions": {
+        "_n": "4c4fee1daafb9bbfdaa877ad26650cf5e338096f05891b7d0fd7c0c71a196266",
+        "_s": "dfdf86f50e0a101196883de81088ba29310e6e617bf516cba919d2573a9604a4"
+      }
+    },
+    {
+      "name": "charcoal_steel",
+      "width": 32,
+      "height": 32,
+      "sha256": "b04309e5cbd4fec70e5d635d60969dafa43c19d0d25af3ea41e17c22210c1e3a",
+      "companions": {
+        "_n": "4c4fee1daafb9bbfdaa877ad26650cf5e338096f05891b7d0fd7c0c71a196266",
+        "_s": "1e36bcf5ce659e8d2c7791b8467243124343c7c69aeb93209cdade4d184b60fe"
+      }
+    },
+    {
+      "name": "clear_glass",
+      "width": 32,
+      "height": 64,
+      "sha256": "b67550d931f90f449aa01e276b1f04922fc192a0063306be69d68c8e51d1b096",
+      "companions": {
+        "_n": "05566cf58cbf4009325ac2e1ae95983bbb5f5fda1bf8518f171d4145ce9a2b20",
+        "_s": "85d5436a44be7290748dc3aac30f6791d90ff3c7e792f5dbdb9be7b90648f9c5"
+      }
+    },
+    {
+      "name": "dark_trim",
+      "width": 32,
+      "height": 32,
+      "sha256": "26a860d8d933a1d5f63e7b0fd33b5d38195f0e76618e51f59f9ccabe29151290",
+      "companions": {
+        "_n": "4c4fee1daafb9bbfdaa877ad26650cf5e338096f05891b7d0fd7c0c71a196266",
+        "_s": "1e36bcf5ce659e8d2c7791b8467243124343c7c69aeb93209cdade4d184b60fe"
+      }
+    },
+    {
+      "name": "edge_steel",
+      "width": 32,
+      "height": 32,
+      "sha256": "b7f069d6ef06ceed624108413ded6f24a5eca8161485ef6f50383106a5b6902c",
+      "companions": {
+        "_n": "4c4fee1daafb9bbfdaa877ad26650cf5e338096f05891b7d0fd7c0c71a196266",
+        "_s": "cee725f7dd0006865524099bdb02f3e75e267475b00fcce1f970bf943cf8fd1e"
+      }
+    },
+    {
+      "name": "led",
+      "width": 8,
+      "height": 32,
+      "sha256": "7eabe3269f2e60272463266335ff69c3fcac3f27a2950eba4440205380f4c92f",
+      "companions": {
+        "_n": "c593f7ab9e296b9006a07f3bfec562eb8bb3910a0f6dc86e0c669750119233f7",
+        "_s": "6424160d95d2baf5203b38abcab78b4cffa866236394ddbb4bd055a75e17af50"
+      }
+    },
+    {
+      "name": "ribbed_steel",
+      "width": 32,
+      "height": 64,
+      "sha256": "0555ab23ffc3c72c6fa21da059b2266049646281163c1316101fc5a255007bd8",
+      "companions": {
+        "_n": "05566cf58cbf4009325ac2e1ae95983bbb5f5fda1bf8518f171d4145ce9a2b20",
+        "_s": "cc5348ef8f0be984b2b6fe7983ec960f3e7cf9d56dfec6d1643825227fcee07d"
+      }
+    },
+    {
+      "name": "safety_edge",
+      "width": 8,
+      "height": 8,
+      "sha256": "4ad935d46562a488c6d5ac3f5b6c4579c3eeebcd0fd34ce58a101f529a4d9ae5",
+      "companions": {
+        "_n": "b38e316361e2f8999226c66d1541468e56bc3f60d8d8f259abb6eb2a78500be2",
+        "_s": "a890ad74de1ec4f95f6df9b3070f04a50b7c6a316d11a54fcbf1e5080ab24604"
+      }
+    },
+    {
+      "name": "safety_stripe",
+      "width": 16,
+      "height": 32,
+      "sha256": "c1734a9bb7fd9c14e7481ce8210e1862e4286d206771686c3845ecb6e5d7c057",
+      "companions": {
+        "_n": "ca09720c5e7e99458b988ab070f2c39cdc209445176851a98375c1d25090d82d",
+        "_s": "c43473c0f925692640bd3caa4c36a42ec73adec22a1395a18bbb7ca3e20a2681"
+      }
+    },
+    {
+      "name": "solid_leaf",
+      "width": 32,
+      "height": 64,
+      "sha256": "baae11e1bece7ad457c6bf4d724b46a35905efb3124d94bcce61c3d166fd8895",
+      "companions": {
+        "_n": "05566cf58cbf4009325ac2e1ae95983bbb5f5fda1bf8518f171d4145ce9a2b20",
+        "_s": "cc5348ef8f0be984b2b6fe7983ec960f3e7cf9d56dfec6d1643825227fcee07d"
+      }
+    }
+  ]
+}

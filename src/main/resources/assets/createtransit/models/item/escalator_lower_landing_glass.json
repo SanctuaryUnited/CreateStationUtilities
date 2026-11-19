@@ -1,0 +1,1 @@
+{"parent":"minecraft:item/generated","textures":{"layer0":"createtransit:item/escalator_lower_landing_glass_frame","layer1":"createtransit:item/escalator_lower_landing_glass_trim","layer2":"createtransit:item/escalator_lower_landing_glass_detail"},"gui_light":"front"}

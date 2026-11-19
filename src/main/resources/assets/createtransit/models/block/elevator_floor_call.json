@@ -1,0 +1,72 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "frame": "createtransit:block/elevator3/high/modern_dark/frame",
+    "screen": "createtransit:block/elevator3/touch/both_idle",
+    "particle": "createtransit:block/elevator3/high/modern_dark/frame"
+  },
+  "elements": [
+    {
+      "from": [
+        5,
+        4,
+        15
+      ],
+      "to": [
+        11,
+        13,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#frame",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#frame",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#frame",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#frame",
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#frame",
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#frame",
+          "tintindex": 0
+        }
+      }
+    },
+    {
+      "from": [
+        5.125,
+        4.125,
+        14.975
+      ],
+      "to": [
+        10.875,
+        12.875,
+        14.99
+      ],
+      "faces": {
+        "north": {
+          "texture": "#screen",
+          "tintindex": 1,
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    }
+  ]
+}

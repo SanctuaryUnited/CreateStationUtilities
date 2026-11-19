@@ -1,0 +1,18 @@
+{
+  "version": "0.5.0-alpha.16-performance.4",
+  "jar_bytes": 1496556,
+  "sha256": "dc18a85bd1e0ec50d7fa2446f7f8a6f29f6938b0556d170318a7943fca104b80",
+  "packaged_main_classes_verified": 186,
+  "packaged_asset_data_files_verified": 1389,
+  "baseline_source_resources": 3266,
+  "changed_source_resources": [
+    "src/main/resources/META-INF/neoforge.mods.toml"
+  ],
+  "required_game_tests_passed": 108,
+  "client_paint_accent_combinations": 2048,
+  "exact_collision_configurations": 896,
+  "visible_frame_configurations": 2304,
+  "additional_ray_casts": 3840,
+  "gpu_fps_measured": false,
+  "optional_railways_runtime_tested": false
+}

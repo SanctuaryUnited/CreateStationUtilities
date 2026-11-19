@@ -1,0 +1,51 @@
+Create: Station Utilities — V10 / 0.2.0-dev10
+Target: Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21.
+Internal mod ID remains createtransit. Optional Steam 'n' Rails excluded from tests.
+
+SERVER / CORE
+Command: ./gradlew --max-workers=2 --continue -PwithoutRailways -PinventoryValidation build runGameTestServer runInventoryData
+Automation uses headless AWT and four reported CPU cores. Fresh GameTest world.
+PASS: Gradle build and checks.
+PASS: all 169 required native Minecraft GameTests.
+PASS: marker-to-marker minimal rail trip to top stop and back; no roof extension.
+PASS: legacy glass/solid real Create contraptions travel with rails ending at the highest marker.
+PASS: generated compact starter, rotation/confirmation, first marker, no extra rail, activation.
+PASS: all four compact baseline directions, reset and persistent offsets.
+PASS: half-block positioning, collision-aware landing alignment, legacy pixel-offset loading.
+PASS: mirrored displays, shared mechanisms, telescoping flags and landing NBT.
+PASS: new three-row entrance, two-block opening, legacy entrance compatibility.
+PASS: empty station defaults, HTTP(S)-only validation and saved speaker settings.
+PASS: existing escalator, travelator, inventory, linking, movement and door tests.
+PASS: 144 pure cabin configurations / 9 chimes and existing motion/interlock checks.
+PASS: 204 existing door style/layout/size cases plus 24 new frame/mechanism/speed cases.
+
+CLIENT WITHOUT GRAPHICS
+PASS: 4608 production Wave 1 render configurations / 9621504 emitted vertices.
+PASS: actual resources/atlas entries, transparent glass, emissive LEDs and shaded metal.
+PASS: GUI scales 1–4: 1088 native widgets across 64 viewport/resolution cases.
+PASS: local HTTP MP3 and Ogg stereo fixtures decode to 44.1 kHz, mono, 16-bit PCM.
+PASS: bounded/nonblocking radio buffers and stream closure; no remote station bundled.
+PASS: actual NeoForge client renderer/menu registration and creative-tab mixins/order.
+PASS: native block and item dye tint regression checks.
+
+GRAPHICAL VALIDATION
+Production Screen, widget, dropdown, slider and mesh code is rendered in Minecraft
+under a software OpenGL display. Captures use deterministic demonstration state,
+not a connected live elevator. Requested scales 1–4 at 1280x960.
+The capture-only resource profile skips unrelated Transit world-block model baking
+to fit the workspace memory budget; GUI textures and the production cabin/landing
+mesh/atlas are unchanged. This profile is never used for the final JAR.
+PASS: 52 real Minecraft screenshots: seven tabs, floor list/edit, speaker,
+scrolled cabin/door previews and expanded dropdown, each at GUI scales 1–4.
+Final screenshots inspected; preview/heading overlap corrected.
+Capture completion: GUI capture run 9, BUILD SUCCESSFUL.
+
+NOT CERTIFIED BY THESE CHECKS
+Connected multiplayer user clicks/latency, external public radio endpoints,
+audible listening/reverb, Sound Physics integration, Complementary shaders,
+full gameplay client performance, or arbitrary modpack combinations.
+Radio: direct MP3/Ogg only; no AAC/HLS/playlist parsing/authenticated streams or
+Now Playing metadata. Up to four client streams and 16 custom world stations.
+Old two-high entrances persist. The 3x3 entrance needs size >=3 and matching
+manually installed/replaced three-high landings. Physical cabin/roof clearance
+and loaded chunks are still required even though rail extensions are not.

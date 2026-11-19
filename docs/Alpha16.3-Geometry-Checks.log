@@ -1,0 +1,316 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+Note: /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorRenderer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processResources UP-TO-DATE
+> Task :classes
+
+> Task :compileClienttestJava
+Note: /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorModelCheck.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+
+> Task :escalatorPerformanceCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 576 exact collision unions; 2304 visible-surface/instance/fallback configurations; vertices 953856 -> 200960.
+{
+  "scope": "Alpha16.2 versus Alpha16.3, native CPU/allocation microbenchmark. Fallback rendering includes frame preparation and native vertex emission to a consuming sink, excluding GPU, atlas lookups, actual draw calls and FPS. Both collision implementations cache repeated requests within each tick. Five alternating samples after warmup. Instanced path uploads shared unit quads once and updates surface transforms; its GPU cost is not measured here.",
+  "render_scenarios": {
+    "1_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 3.982155,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.189597,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.236397,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.913082,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 6.149864,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.534185,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.412984,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.468036,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.415888,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.369038,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "1_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 3.777638,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.002866,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.843838,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 4.170558,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.857097,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.367586,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.322488,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.480305,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.37032,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.32399,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "12_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 47.384439,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 40.687624,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 42.019792,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 42.462848,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 46.223805,
+          "allocatedBytes": 78193120
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 19.124965,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 17.601235,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 18.739946,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.047683,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 18.36286,
+          "allocatedBytes": 13696
+        }
+      ]
+    },
+    "12_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 51.777283,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 50.585466,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 44.68999,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 49.07438,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 49.697521,
+          "allocatedBytes": 156748000
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 21.204661,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 21.540296,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 16.604997,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.061173,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.034253,
+          "allocatedBytes": 13696
+        }
+      ]
+    }
+  },
+  "java": "21.0.2",
+  "render_frames_per_sample": 600,
+  "collision_ticks_per_sample": 20,
+  "alpha16_2_render": [
+    {
+      "milliseconds": 53.39904,
+      "allocatedBytes": 78400568
+    },
+    {
+      "milliseconds": 40.393793,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 40.650148,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 37.24495,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 43.776517,
+      "allocatedBytes": 78193160
+    }
+  ],
+  "alpha16_3_fallback_render": [
+    {
+      "milliseconds": 20.076786,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 17.271389,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 18.222699,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 16.434321,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 16.669494,
+      "allocatedBytes": 13736
+    }
+  ],
+  "alpha16_2_collision": [
+    {
+      "milliseconds": 103.990852,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 102.746261,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 106.808807,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 109.63547,
+      "allocatedBytes": 99628512
+    },
+    {
+      "milliseconds": 109.819712,
+      "allocatedBytes": 99626176
+    }
+  ],
+  "alpha16_3_collision": [
+    {
+      "milliseconds": 59.106573,
+      "allocatedBytes": 41701952
+    },
+    {
+      "milliseconds": 60.006622,
+      "allocatedBytes": 41701952
+    },
+    {
+      "milliseconds": 54.824192,
+      "allocatedBytes": 41701952
+    },
+    {
+      "milliseconds": 54.877753,
+      "allocatedBytes": 41701952
+    },
+    {
+      "milliseconds": 60.53443,
+      "allocatedBytes": 41701952
+    }
+  ]
+}
+PASS: CPU/allocation benchmark completed. Visible surfaces and exact collision retained; this is not a graphical FPS test.
+
+> Task :escalatorModelCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 80 moving configurations match preview geometry / 29440 native vertices in four orientations.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Glass: 12 dedicated belt sections.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Solid: 12 dedicated belt sections.
+PASS: Minecraft parsed Travelator-QuickBuild-3-Wide: 30 dedicated belt sections.
+PASS: 50 escalator models / 21944 native baked quads; four orientations, independent materials, glass layers, normalized UV; 400 moving tread configurations match collision.
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 23s
+8 actionable tasks: 4 executed, 4 up-to-date

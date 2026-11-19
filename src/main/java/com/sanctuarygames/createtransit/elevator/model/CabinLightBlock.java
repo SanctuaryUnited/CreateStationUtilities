@@ -1,0 +1,14 @@
+package com.sanctuarygames.createtransit.elevator.model;
+import com.sanctuarygames.createtransit.elevator.ElevatorRegistry;
+import net.minecraft.core.BlockPos;import net.minecraft.server.level.ServerLevel;import net.minecraft.util.RandomSource;import net.minecraft.world.level.Level;import net.minecraft.world.level.block.*;import net.minecraft.world.level.block.state.BlockState;import net.minecraft.world.phys.AABB;
+/** Invisible, non-solid level-15 illumination. Scheduled expiry also cleans up after reloads. */
+public final class CabinLightBlock extends Block {
+ public static final net.minecraft.world.level.block.state.properties.IntegerProperty BRIGHTNESS=net.minecraft.world.level.block.state.properties.IntegerProperty.create("brightness",0,15);
+ public CabinLightBlock(Properties p){super(p);registerDefaultState(defaultBlockState().setValue(BRIGHTNESS,15));}
+ @Override protected void createBlockStateDefinition(net.minecraft.world.level.block.state.StateDefinition.Builder<Block,BlockState> b){b.add(BRIGHTNESS);}
+ @Override protected net.minecraft.world.phys.shapes.VoxelShape getShape(BlockState s,net.minecraft.world.level.BlockGetter l,BlockPos p,net.minecraft.world.phys.shapes.CollisionContext c){return net.minecraft.world.phys.shapes.Shapes.empty();}
+ @Override protected RenderShape getRenderShape(BlockState s){return RenderShape.INVISIBLE;}
+ @Override protected void onPlace(BlockState s,Level l,BlockPos p,BlockState old,boolean moving){if(!l.isClientSide)l.scheduleTick(p,this,10);}
+ @Override protected void tick(BlockState s,ServerLevel l,BlockPos p,RandomSource r){boolean occupied=l.getEntitiesOfClass(ModelCabinEntity.class,new AABB(p).inflate(1)).stream().anyMatch(c->c.configuration().mainLights()&&c.hasInside(net.minecraft.world.phys.Vec3.atCenterOf(p)));if(occupied){int brightness=l.getEntitiesOfClass(ModelCabinEntity.class,new AABB(p).inflate(1)).stream().filter(c->c.hasInside(net.minecraft.world.phys.Vec3.atCenterOf(p))).mapToInt(c->c.configuration().brightness()).max().orElse(0);if(s.getValue(BRIGHTNESS)!=brightness)l.setBlock(p,s.setValue(BRIGHTNESS,brightness),Block.UPDATE_CLIENTS);l.scheduleTick(p,this,10);}else l.removeBlock(p,false);}
+ public static void illuminate(ModelCabinEntity c){if(!c.configuration().mainLights()||c.level().isClientSide||c.tickCount%5!=0)return;var b=c.getBoundingBox();for(var p:BlockPos.betweenClosed(BlockPos.containing(b.minX+.2,b.minY+.4,b.minZ+.2),BlockPos.containing(b.maxX-.2,Math.min(b.maxY-.2,b.minY+1.8),b.maxZ-.2))){if(c.hasInside(net.minecraft.world.phys.Vec3.atCenterOf(p))){var state=c.level().getBlockState(p);int brightness=c.configuration().brightness();if(state.isAir()||state.is(ElevatorRegistry.CABIN_LIGHT.get())&&state.getValue(BRIGHTNESS)!=brightness)c.level().setBlock(p,ElevatorRegistry.CABIN_LIGHT.get().defaultBlockState().setValue(BRIGHTNESS,brightness),Block.UPDATE_CLIENTS);}}}
+}

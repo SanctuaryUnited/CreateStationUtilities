@@ -1,0 +1,29 @@
+Create: Transit 0.2.0-dev5 — Wave 1 validation
+2026-11-04 UTC
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21
+
+Final invocation: Gradle --continue -PwithoutRailways -PinventoryValidation build runGameTestServer runInventoryData
+The build environment substitutes an empty asset index for headless launches. This is not a graphical client test.
+Native GameTests ran in a freshly generated test world.
+
+PASS: 204 style/layout/size configurations; persistence; exact two-block / half-block bounds; sideways-only panel travel.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[19:45:33] [Server thread/INFO] [minecraft/GameTestServer]: All 157 required tests passed :)
+PASS: Wave 1 CLIENT production emitter: 4608 configurations / 9179136 vertices; ten native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 45s
+
+Additional asset checks:
+PASS: 10 original base PNGs + 20 companion PNGs decode, match manifest hashes and have matching dimensions.
+PASS: Divided Glass has two real glass boxes per leaf, four total; geometry suite checks every size/layout.
+PASS: Production exports and software preview use shipped UV bounds, sprite mapping and PNGs.
+PASS: All prior source files were retained; unrelated vehicle, escalator, travelator, station resources and audio remain byte-identical.
+
+Not tested: graphical atlas upload, live Minecraft/Complementary appearance, connected client/server multiplayer, real audio output, hardware FPS, optional Steam 'n' Rails runtime.

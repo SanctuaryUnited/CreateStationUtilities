@@ -1,0 +1,6 @@
+JLayer 1.0.1 — JavaZoom / JavaLayer contributors
+Unmodified library embedded as a separate NeoForge jar-in-jar dependency.
+License: GNU Lesser General Public License 2.1 or later (included).
+Source and artifact: https://repo.maven.apache.org/maven2/javazoom/jlayer/1.0.1/
+Project: https://www.javazoom.net/javalayer/javalayer.html
+No radio station, manufacturer recording, or music is distributed.

@@ -1,0 +1,21 @@
+package com.sanctuarygames.createtransit.radio;
+import java.util.*;import com.sanctuarygames.createtransit.elevator.*;import net.minecraft.core.BlockPos;import net.minecraft.nbt.*;import net.minecraft.network.RegistryFriendlyByteBuf;import net.minecraft.network.codec.StreamCodec;import net.minecraft.network.protocol.common.custom.CustomPacketPayload;import net.minecraft.server.level.*;import net.minecraft.world.level.Level;import net.neoforged.neoforge.network.PacketDistributor;import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+/** Bounded, nearby-only emitter discovery. Never opens remote URLs on a dedicated server. */
+public final class RadioNetwork {
+ private static final Map<Level,Set<BlockPos>> speakers=new WeakHashMap<>();private static final Map<ServerPlayer,Long> queried=new WeakHashMap<>();
+ public static void add(StationSpeakerEntity e){speakers.computeIfAbsent(e.getLevel(),l->new HashSet<>()).add(e.getBlockPos());}
+ public static void remove(StationSpeakerEntity e){var set=speakers.get(e.getLevel());if(set!=null)set.remove(e.getBlockPos());}
+ public record Query() implements CustomPacketPayload {public static final Type<Query> TYPE=new Type<>(ElevatorRegistry.id("radio_query"));public static final StreamCodec<RegistryFriendlyByteBuf,Query> CODEC=StreamCodec.unit(new Query());public Type<Query> type(){return TYPE;}}
+ public record Sources(CompoundTag tag) implements CustomPacketPayload {public static final Type<Sources> TYPE=new Type<>(ElevatorRegistry.id("radio_sources"));public static final StreamCodec<RegistryFriendlyByteBuf,Sources> CODEC=new StreamCodec<>(){public Sources decode(RegistryFriendlyByteBuf b){var t=b.readNbt();return new Sources(t==null?new CompoundTag():t);}public void encode(RegistryFriendlyByteBuf b,Sources s){b.writeNbt(s.tag());}};public Type<Sources> type(){return TYPE;}}
+ public static void register(RegisterPayloadHandlersEvent e){var r=e.registrar("radio1");r.playToServer(Query.TYPE,Query.CODEC,(q,c)->{if(c.player() instanceof ServerPlayer p)send(p);});r.playToClient(Sources.TYPE,Sources.CODEC,(s,c)->com.sanctuarygames.createtransit.radio.client.RadioClient.receive(s.tag()));}
+ private static void source(ListTag list,ServerPlayer p,RadioSettings r,RadioStations data,String id,double x,double y,double z,int entity,boolean powered,boolean inside){
+  var station=data.station(r.station);if(!r.enabled||station==null||r.volume<=0||list.size()>=256||p.distanceToSqr(x,y,z)>(r.coverage()+32.0)*(r.coverage()+32.0)||r.mode.equals("POWERED")&&!powered||r.mode.equals("UNPOWERED")&&powered)return;
+  var t=r.save();t.putString("Id",id);t.putString("Name",station.name());t.putString("Url",station.url());t.putDouble("X",x);t.putDouble("Y",y);t.putDouble("Z",z);t.putBoolean("Audible",!r.mode.equals("INSIDE")||inside);t.putInt("Entity",entity);list.add(t);
+ }
+ private static void send(ServerPlayer p){long tick=p.level().getGameTime();Long last=queried.put(p,tick);if(last!=null&&tick-last<20)return;var tag=snapshot(p);PacketDistributor.sendToPlayer(p,new Sources(tag));}
+ public static CompoundTag snapshot(ServerPlayer p){var l=p.serverLevel();var data=RadioStations.get(l);var list=new ListTag();
+  for(var d:ElevatorNetwork.controllers(l)){var m=d.model();if(m==null||m.entity()==null)continue;var c=m.entity();var center=c.world(c.configuration().size()/2.0,2,c.configuration().size()/2.0);source(list,p,m.radio,data,c.getUUID().toString(),center.x,center.y,center.z,c.getId(),l.hasNeighborSignal(d.getBlockPos()),c.hasInside(p.position()));}
+  for(var pos:speakers.getOrDefault(l,Set.of()))if(l.hasChunkAt(pos)&&l.getBlockEntity(pos) instanceof StationSpeakerEntity s)source(list,p,s.effective(),data,l.dimension().location()+":"+pos.asLong(),pos.getX()+.5,pos.getY()+.5,pos.getZ()+.5,-1,l.hasNeighborSignal(pos),false);
+  var sorted=new ArrayList<CompoundTag>();for(int i=0;i<list.size();i++)sorted.add(list.getCompound(i));sorted.sort(Comparator.comparingDouble(t->p.distanceToSqr(t.getDouble("X"),t.getDouble("Y"),t.getDouble("Z"))));var bounded=new ListTag();sorted.stream().limit(32).forEach(bounded::add);var tag=new CompoundTag();tag.put("Sources",bounded);return tag;
+ }
+}

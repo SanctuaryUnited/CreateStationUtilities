@@ -1,0 +1,13 @@
+{
+  "runtime": "com.sanctuarygames.createtransit.elevator.model.DoorGeometry",
+  "duration_ticks": 40,
+  "interpolation": "p*p*(3-2*p)",
+  "default": "standard_center_slide",
+  "optional": [],
+  "snapshots": [
+    0,
+    0.5,
+    1
+  ],
+  "note": "Two center sliding leaves; clipped inside frame pockets, no external scale. Runtime Java mesh is authoritative."
+}

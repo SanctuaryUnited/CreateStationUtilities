@@ -1,0 +1,186 @@
+{
+  "ticks_per_sample": 8,
+  "scenarios": {
+    "1_sections_north_shared_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 9.669022,
+          "allocatedBytes": 602208
+        },
+        {
+          "milliseconds": 8.824162,
+          "allocatedBytes": 602208
+        },
+        {
+          "milliseconds": 8.340435,
+          "allocatedBytes": 602208
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 52.41397,
+          "allocatedBytes": 4312640
+        },
+        {
+          "milliseconds": 38.182476,
+          "allocatedBytes": 4307304
+        },
+        {
+          "milliseconds": 37.55244,
+          "allocatedBytes": 4307304
+        }
+      ]
+    },
+    "1_sections_east_shared_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 8.41671,
+          "allocatedBytes": 622672
+        },
+        {
+          "milliseconds": 7.682036,
+          "allocatedBytes": 622672
+        },
+        {
+          "milliseconds": 9.696623,
+          "allocatedBytes": 622672
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 258.892317,
+          "allocatedBytes": 401250248
+        },
+        {
+          "milliseconds": 223.676084,
+          "allocatedBytes": 401250248
+        },
+        {
+          "milliseconds": 227.824999,
+          "allocatedBytes": 401250248
+        }
+      ]
+    },
+    "12_sections_north_shared_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 16.398722,
+          "allocatedBytes": 2656384
+        },
+        {
+          "milliseconds": 25.843166,
+          "allocatedBytes": 2656384
+        },
+        {
+          "milliseconds": 13.221211,
+          "allocatedBytes": 2656384
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 380.573167,
+          "allocatedBytes": 26643760
+        },
+        {
+          "milliseconds": 414.00971,
+          "allocatedBytes": 26643760
+        },
+        {
+          "milliseconds": 356.359907,
+          "allocatedBytes": 26643760
+        }
+      ]
+    },
+    "12_sections_north_independent_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 75.951772,
+          "allocatedBytes": 5234312
+        },
+        {
+          "milliseconds": 73.925997,
+          "allocatedBytes": 5230856
+        },
+        {
+          "milliseconds": 75.559953,
+          "allocatedBytes": 5230856
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 313.777021,
+          "allocatedBytes": 27624152
+        },
+        {
+          "milliseconds": 354.936041,
+          "allocatedBytes": 27621752
+        },
+        {
+          "milliseconds": 349.073771,
+          "allocatedBytes": 27621752
+        }
+      ]
+    },
+    "12_sections_east_shared_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 12.945524,
+          "allocatedBytes": 2705520
+        },
+        {
+          "milliseconds": 12.567656,
+          "allocatedBytes": 2705520
+        },
+        {
+          "milliseconds": 13.385737,
+          "allocatedBytes": 2705520
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 1072.250138,
+          "allocatedBytes": 1765022032
+        },
+        {
+          "milliseconds": 999.029293,
+          "allocatedBytes": 1765022032
+        },
+        {
+          "milliseconds": 1051.26154,
+          "allocatedBytes": 1765022032
+        }
+      ]
+    },
+    "12_sections_east_independent_collision_and_selection": {
+      "alpha16_4": [
+        {
+          "milliseconds": 76.518429,
+          "allocatedBytes": 5390584
+        },
+        {
+          "milliseconds": 85.716608,
+          "allocatedBytes": 5390584
+        },
+        {
+          "milliseconds": 70.388362,
+          "allocatedBytes": 5390584
+        }
+      ],
+      "alpha16_3": [
+        {
+          "milliseconds": 1041.736906,
+          "allocatedBytes": 1878837920
+        },
+        {
+          "milliseconds": 1161.70652,
+          "allocatedBytes": 1878837920
+        },
+        {
+          "milliseconds": 1028.077949,
+          "allocatedBytes": 1878837920
+        }
+      ]
+    }
+  },
+  "scope": "Alpha16.3 versus Alpha16.4 native CPU/allocation work. Exact collision generation, optional clip ray and selection-edge enumeration at 80 FPS/20 TPS; no GPU, shader, draw call or actual FPS measurement. Three alternating samples after warmup."
+}

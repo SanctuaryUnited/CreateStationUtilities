@@ -1,0 +1,1164 @@
+{
+  "source_hashes": {
+    "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg": "6db664677cadd4bc5868c56781e4a12b0269f111f3f171830ab30f39eb3c96cb",
+    "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg": "94af0ea6c76fa22fd774f17a89f561c9d9b44d1d07ec4cf8599797d6457e89fc",
+    "52363FC0-4822-4F7E-8806-E52B6887D19B.png": "753e8413d5cabeda03a8a2ed6fd02da485618e3f53e3644e02045989c7cc97a1",
+    "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg": "2fd19062a0433f78ddb17310f11f90cb4cbb57be9ee0ff6bd81847945a288f0a",
+    "D621E230-0E88-43A5-AA19-1CD3705C6D0F.jpeg": "57348bce835574837b8c21f86abe071971eb7d9b0ef32a45949fbbedbcceb254"
+  },
+  "note": "Supplied JPEG sheets are flattened reference boards, not lossless source 16px tiles. Original boards and lossless full-resolution crops retained. Runtime 16px tiles sample supplied pixels without new artwork.",
+  "tiles": [
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/panel.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/frame.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/ceiling.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/floor.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        414,
+        269,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "374c9e0d3a0965bdb521e4893ac31ff963be68a9d4d1d205270707ae879a8166"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/edge.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/brushed_steel/base_trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        532,
+        600,
+        773,
+        607
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "9b0029d6eecc7977da4e7a7d27bfd0412d6308c4b13efbee96bf508db626e79f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/panel.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/frame.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/ceiling.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        308,
+        305,
+        426,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e62515a7d3b5daa3eee4c673a3838b8b3c87829bbe2916b507b66e5d5a4653fc"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/floor.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        168,
+        305,
+        286,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "fa2dcd7036760650d306c6dbea99cb3debb1113699a926ee9c98c1fe3b3e70e4"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/edge.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/off/modern_dark/base_trim.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/panel.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/frame.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/ceiling.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/floor.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        414,
+        269,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "374c9e0d3a0965bdb521e4893ac31ff963be68a9d4d1d205270707ae879a8166"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/edge.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/brushed_steel/base_trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        532,
+        600,
+        773,
+        607
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "9b0029d6eecc7977da4e7a7d27bfd0412d6308c4b13efbee96bf508db626e79f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/panel.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/frame.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/ceiling.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        308,
+        305,
+        426,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e62515a7d3b5daa3eee4c673a3838b8b3c87829bbe2916b507b66e5d5a4653fc"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/floor.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        168,
+        305,
+        286,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "fa2dcd7036760650d306c6dbea99cb3debb1113699a926ee9c98c1fe3b3e70e4"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/edge.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/low/modern_dark/base_trim.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/panel.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/frame.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/ceiling.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/floor.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        414,
+        269,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "374c9e0d3a0965bdb521e4893ac31ff963be68a9d4d1d205270707ae879a8166"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/edge.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/brushed_steel/base_trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        532,
+        600,
+        773,
+        607
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "9b0029d6eecc7977da4e7a7d27bfd0412d6308c4b13efbee96bf508db626e79f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/panel.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/frame.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/ceiling.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        308,
+        305,
+        426,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e62515a7d3b5daa3eee4c673a3838b8b3c87829bbe2916b507b66e5d5a4653fc"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/floor.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        168,
+        305,
+        286,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "fa2dcd7036760650d306c6dbea99cb3debb1113699a926ee9c98c1fe3b3e70e4"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/edge.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/medium/modern_dark/base_trim.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/panel.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/frame.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        108,
+        269,
+        364
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "f2278c4a824d2862dd471b2b9f755a6e4e85c7e1d351a1ebddf00959c64f53ac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/ceiling.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/floor.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        17,
+        414,
+        269,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "374c9e0d3a0965bdb521e4893ac31ff963be68a9d4d1d205270707ae879a8166"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/edge.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/brushed_steel/base_trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        532,
+        600,
+        773,
+        607
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "9b0029d6eecc7977da4e7a7d27bfd0412d6308c4b13efbee96bf508db626e79f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/silver.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/trim.png",
+      "source": "75EA056E-75C5-4AB1-AA27-CDDF2DD10B7B.jpeg",
+      "crop": [
+        279,
+        414,
+        522,
+        663
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "db6a074eb3faf1ee6cb5e9b8e7338b2d3af187f4ec4bb11b1a2e65d021afd72c"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/dark.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        400,
+        143,
+        414
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e243637677e569355a426162aca7c893c0e4157eaa457f412766862652d2037f"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/led.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/white.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        451,
+        309,
+        559,
+        428
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "c248f6d1fcb2341e043c374ca488e24e8f14e163e881ca826840253a75c76aac"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/glass.png",
+      "source": "76894C2E-3731-4C67-9AAE-85E0F9F95AD3.jpeg",
+      "crop": [
+        290,
+        860,
+        357,
+        934
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e0b926125fe3a8a93458a607e59683c543824f6776ca614b7b639b10c7455a67"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/panel.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/frame.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        111,
+        144,
+        239
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "aae539c9f5629497ab85868ee9d1bbc7f0cfcc38a384e1ea6e1e0818834757e9"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/ceiling.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        308,
+        305,
+        426,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "e62515a7d3b5daa3eee4c673a3838b8b3c87829bbe2916b507b66e5d5a4653fc"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/floor.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        168,
+        305,
+        286,
+        431
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "fa2dcd7036760650d306c6dbea99cb3debb1113699a926ee9c98c1fe3b3e70e4"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/edge.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    },
+    {
+      "path": "src/main/resources/assets/createtransit/textures/block/elevator3/high/modern_dark/base_trim.png",
+      "source": "09AFEE78-1E04-4FB2-A84A-10518CB0BF98.jpeg",
+      "crop": [
+        24,
+        420,
+        143,
+        430
+      ],
+      "operation": "crop; nearest-neighbor sample to 16x16; no recoloring",
+      "sha256": "417712aede7bc3bfe9eb8f0db032e77fea13245a4f6f92729bc2cc476a301c54"
+    }
+  ]
+}

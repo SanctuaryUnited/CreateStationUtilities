@@ -1,0 +1,42 @@
+{
+  "textures": {
+    "glass": "createtransit:block/transit_glass",
+    "particle": "createtransit:block/transit_glass"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        7.5
+      ],
+      "to": [
+        15,
+        16,
+        8.5
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "texture": "#glass"
+        },
+        "south": {
+          "texture": "#glass"
+        },
+        "east": {
+          "texture": "#glass"
+        },
+        "west": {
+          "texture": "#glass"
+        },
+        "up": {
+          "texture": "#glass"
+        },
+        "down": {
+          "texture": "#glass"
+        }
+      }
+    }
+  ],
+  "render_type": "minecraft:translucent"
+}

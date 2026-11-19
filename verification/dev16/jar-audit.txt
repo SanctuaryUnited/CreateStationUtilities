@@ -1,0 +1,2 @@
+PASS: final JAR version, exact current textures, retired-skin exclusion, no test classes, final source compile timestamps
+SHA-256: d40bd2812b78e6ab1233c739ac564b2244097cdcd74c0cd00d042f047a44211f

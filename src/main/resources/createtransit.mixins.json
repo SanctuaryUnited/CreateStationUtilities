@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.sanctuarygames.createtransit.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "CableTrackRendererMixin",
+    "CableTrackVisualMixin",
+    "TrackVisualAccess",
+    "VisualAccess",
+    "RadioSoundPhysicsMixin",
+    "RadioChannelSourceAccess",
+    "RadioSoundEngineMixin",
+    "StationUiScaleMixin",
+    "TransitMultipartBakeMixin",
+    "MultipartSelectorCacheAccess"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

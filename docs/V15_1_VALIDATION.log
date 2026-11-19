@@ -1,0 +1,122 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+Note: /workspace/scratch/52ce15fa3a0d/work/create-transit/src/main/java/com/sanctuarygames/createtransit/elevator/client/ModelCabinRenderer.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processResources
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :compileDoorStyleCheck UP-TO-DATE
+
+> Task :doorStyleCheck
+PASS: 288 skin/model/size/mechanism/speed combinations, 2016 poses, 51 migrations; 320 ceiling combinations/on-off, finite geometry, slab envelopes, clear passages and arrival pulses.
+
+> Task :compileElevator3Core UP-TO-DATE
+
+> Task :elevator3CoreCheck
+PASS: 112 indicator/size/lighting combinations; light-pocket clearance; regular and optional telescoping doors; persisted styles.
+PASS: dynamic short/long trip peaks and exact alignment.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+
+> Task :compileRadioBufferCheck UP-TO-DATE
+
+> Task :radioBufferCheck
+PASS: radio PCM: four exact one-second startup reads + two-second reserve; no partial-chunk silence padding; bounded eight-second ring; wrap/order; underrun recovery; EOF and startup cancellation.
+
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+> Task :build
+
+> Task :compileClienttestJava
+/workspace/scratch/52ce15fa3a0d/work/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                  ^
+/workspace/scratch/52ce15fa3a0d/work/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                          ^
+2 warnings
+
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+> Task :compileGametestJava UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :writeInventoryDataLegacyClasspath UP-TO-DATE
+> Task :prepareInventoryDataRun UP-TO-DATE
+
+> Task :runInventoryData
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[08:10:11] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatadev, --assetIndex, 17, --assetsDir, /workspace/scratch/52ce15fa3a0d/gradle-home/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/work/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/work/create-transit/src/main/resources]
+[08:10:11] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Azul Systems, Inc. OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[08:10:11] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Azul Systems, Inc.; OS Linux arch amd64 version 6.18.57
+[08:10:11] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatadev
+[08:10:11] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/gradle-home/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[08:10:12] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[08:10:12] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create: Station Utilities 0.2.0-dev15.1 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[08:10:13] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[08:10:13] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatadev' with arguments [--gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/gradle-home/caches/neoformruntime/assets, --assetIndex, 17, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/work/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/work/create-transit/src/main/resources]
+[08:10:13] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[08:10:14] [main/WARN] [mixin/]: Error loading class: com/sonicether/soundphysics/SoundPhysics (java.lang.ClassNotFoundException: com.sonicether.soundphysics.SoundPhysics)
+[08:10:14] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[08:10:14] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[08:10:14] [main/INFO] [ne.ne.ne.da.lo.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[08:10:24] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[08:10:24] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[08:11:05] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/work/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[08:11:05] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/work/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[08:11:05] [main/INFO] [minecraft/DataGenerator]: Starting provider: Create Transit inventory client validation
+PASS: V15 36 independent style/NBT pairs, exact split door geometry, terminal/hover selection. Representative curved cabin tiled vertices 12544 -> 7456; CPU 1500 static frames baselineMs=95.955471 cachedMs=45.961659 checksum=4768800. No hardware FPS claim.
+PASS: V14 CLIENT production emitter: 9216 configurations / 25184256 vertices; 40 native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.
+PASS: multipart bake cache preserves native selector output for 143104 block states / 97 production models; custom getters, rotations, other namespaces and new reload instances bypass old cache.
+PASS: GUI scales 1–4: 1088 native widgets reachable across 64 viewport/resolution cases; Minecraft minimum logical size respected; no graphics window.
+PASS: radio PCM: four exact one-second startup reads + two-second reserve; no partial-chunk silence padding; bounded eight-second ring; wrap/order; underrun recovery; EOF and startup cancellation.
+PASS: twelve shared station readers, exact PCM, one HTTP connection, warm re-entry without reconnect.
+PASS: exhausted shared stream reconnects instead of reusing a dead decoder.
+PASS: live radio timeline advances without readers; late reader joins current history.
+PASS: 300 percent saved gain, amplified PCM and bounded saturation.
+PASS: real HTTP MP3/Ogg, four immediate one-second startup buffers, full PCM continuity across decoder chunks, byte-identical ICY metadata stripping, bursty-network paced playback with zero underruns, nonblocking reads and canceled warmup. No public-station listening test.
+PASS: native radio Sound attenuation distance 4–256, stream flag/location preserved; slider upper endpoint 256.
+PASS: independent direct/reverb gain envelopes and non-radio isolation.
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+[08:11:44] [main/INFO] [minecraft/DataGenerator]: Create Transit inventory client validation finished after 38541 ms
+[08:11:44] [main/INFO] [minecraft/DataGenerator]: All providers took: 38543 ms
+[08:11:44] [main/INFO] [minecraft/HashCache]: Caching: total files: 1, old count: 1, new count: 2, removed stale: 0, written: 0
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/work/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2m 8s
+21 actionable tasks: 10 executed, 11 up-to-date

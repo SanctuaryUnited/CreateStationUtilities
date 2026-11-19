@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "DR"
+  ],
+  "key": {
+    "D": {
+      "item": "createtransit:elevator_glass_door"
+    },
+    "R": {
+      "item": "createtransit:elevator_guide_rail"
+    }
+  },
+  "result": {
+    "id": "createtransit:elevator_glass_landing_door",
+    "count": 1
+  }
+}

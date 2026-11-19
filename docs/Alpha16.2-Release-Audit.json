@@ -1,0 +1,10 @@
+{
+  "release": "create-transit-0.5.0-alpha.16-performance.2.jar",
+  "sha256": "5afa7fed1ad9e9ba58a87543238a189d1f9601fdb0ab9cb00937500c9f19b2ae",
+  "bytes": 1481896,
+  "compiled_main_classes": 181,
+  "source_resources_unchanged": 3260,
+  "new_performance_classes_packaged": true,
+  "all_packaged_main_classes_match_current_compilation": true,
+  "no_tests_or_deleted_kits": true
+}

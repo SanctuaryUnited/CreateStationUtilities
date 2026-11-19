@@ -1,0 +1,20 @@
+{
+  "version": "0.5.0-alpha.16-performance.3",
+  "jar_filename": "create-transit-0.5.0-alpha.16-performance.3.jar",
+  "jar_bytes": 1491234,
+  "jar_sha256": "e84734312ca8383626994883745ea24259c51b710422c13cacbfc98e62840b1d",
+  "zip_integrity_passed": true,
+  "duplicate_archive_paths": false,
+  "source_resource_bytes_checked": 1383,
+  "all_existing_alpha16_2_source_resources_preserved": 3260,
+  "new_unit_surface_models": 6,
+  "production_class_files": 183,
+  "test_classes_in_release": [],
+  "inventory_items": [
+    69,
+    42
+  ],
+  "visualizer_registration_body_checked_in_client_distribution": true,
+  "graphical_fps_measured": false,
+  "compatibility": "Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21"
+}

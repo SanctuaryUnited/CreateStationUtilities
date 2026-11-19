@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "III",
+    "ICI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "C": {
+      "item": "createtransit:elevator_drive"
+    }
+  },
+  "result": {
+    "id": "createtransit:elevator_cabin_kit",
+    "count": 1
+  }
+}

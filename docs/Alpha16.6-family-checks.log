@@ -1,0 +1,67 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=45905 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=45905
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2 warnings
+
+> Task :processResources
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=45905 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=45905
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+
+> Task :compileClienttestJava
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                  ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                          ^
+Note: /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorModelCheck.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2 warnings
+
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+
+> Task :escalatorModelCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=45905 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=45905
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 80 moving configurations match preview geometry / 29440 native vertices in four orientations.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Glass: 12 dedicated belt sections.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Solid: 12 dedicated belt sections.
+PASS: Minecraft parsed Travelator-QuickBuild-3-Wide: 30 dedicated belt sections.
+PASS: 118 escalator models / 41320 native baked quads; four orientations, independent materials, glass layers, normalized UV; 400 moving tread configurations match collision.
+
+> Task :compileGametestJava
+Note: /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/gametest/java/com/sanctuarygames/createtransit/EscalatorSoundGameTests.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 16s
+11 actionable tasks: 7 executed, 4 up-to-date

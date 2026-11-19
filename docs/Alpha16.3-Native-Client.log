@@ -1,0 +1,103 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+2 warnings
+
+> Task :processResources UP-TO-DATE
+> Task :classes
+
+> Task :compileClienttestJava
+/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                  ^
+/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                          ^
+2 warnings
+
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+> Task :compileGametestJava UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+> Task :writeInventoryDataLegacyClasspath UP-TO-DATE
+> Task :prepareInventoryDataRun UP-TO-DATE
+
+> Task :runInventoryData
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[05:13:00] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatadev, --assetIndex, headless, --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/resources]
+[05:13:00] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[05:13:00] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.44
+[05:13:00] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatadev
+[05:13:00] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/inventory-toolchain/gradle-user/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[05:13:01] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 5 dependencies adding them to mods collection
+[05:13:01] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create Transit 0.5.0-alpha.16-performance.3 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[05:13:01] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[05:13:01] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatadev' with arguments [--gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --assetIndex, headless, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/resources]
+[05:13:01] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[05:13:02] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[05:13:02] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[05:13:02] [main/INFO] [ne.ne.ne.da.lo.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[05:13:07] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[05:13:07] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[05:13:29] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[05:13:29] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[05:13:29] [main/INFO] [minecraft/DataGenerator]: Starting provider: Create Transit inventory client validation
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+[05:13:30] [main/INFO] [minecraft/DataGenerator]: Create Transit inventory client validation finished after 110 ms
+[05:13:30] [main/INFO] [minecraft/DataGenerator]: All providers took: 114 ms
+[05:13:30] [main/INFO] [minecraft/HashCache]: Caching: total files: 1, old count: 1, new count: 2, removed stale: 0, written: 1
+
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+> Task :build
+
+> Task :escalatorSoundCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: Native client tick/logout and mod sound-reload event registration; sound definition/resource and 12-block range.
+
+> Task :lrtModelCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: actual custom model loader baked 516 models / 35160 quads in all four orientations; dye tints, atlas UVs, glass AO and flush EAST alignment verified.
+PASS: actual dynamic vertex emitter checked 318 faces / 24 glass faces; compact and legacy doors stay within the glass sprite.
+PASS: Minecraft parsed LRT-B-Single-Car: 319 blocks, 1 native glue groups, native bogeys/CRN boards and complete compact doors.
+PASS: Minecraft parsed LRT-Quick-1-Three-Cars: 726 blocks, 3 native glue groups, native bogeys/CRN boards and complete compact doors.
+PASS: Minecraft parsed LRT-Quick-2-Two-Cabs: 586 blocks, 2 native glue groups, native bogeys/CRN boards and complete compact doors.
+
+> Task :elevatorModelCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: elevator kit: 64 models / 5784 native baked quads; 32 moving boxes / 768 emitted vertices; all four orientations, dedicated textures, dye channels, glass AO, normalized UV and 23 distinct recipes.
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 51s
+18 actionable tasks: 9 executed, 9 up-to-date

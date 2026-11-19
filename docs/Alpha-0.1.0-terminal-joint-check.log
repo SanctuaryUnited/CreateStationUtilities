@@ -1,0 +1,1 @@
+PASS: 36 handrail joint edge sets match exactly; 2048 smart visual states select correct lit/unlit casing and continuous panes; unlit PBR emission is zero.

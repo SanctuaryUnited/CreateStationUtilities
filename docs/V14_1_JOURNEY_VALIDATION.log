@@ -1,0 +1,369 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :extractCreateLibraries UP-TO-DATE
+> Task :compileJava UP-TO-DATE
+> Task :processResources
+> Task :classes
+> Task :compileClienttestJava
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses
+> Task :compileGametestJava UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :writeClientLegacyClasspath UP-TO-DATE
+> Task :prepareClientRun UP-TO-DATE
+
+> Task :runClient
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[06:02:19] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.248, --assetIndex, 17, --assetsDir, /workspace/scratch/52ce15fa3a0d/gradle-home/caches/neoformruntime/assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --quickPlaySingleplayer, CabinJourneyValidation, --width, 1280, --height, 960]
+[06:02:19] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Azul Systems, Inc. OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[06:02:19] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Azul Systems, Inc.; OS Linux arch amd64 version 6.18.57
+[06:02:19] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[06:02:19] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[06:02:19] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[06:02:19] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/gradle-home/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[06:02:19] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: llvmpipe (LLVM 19.1.7, 256 bits) GL version 4.6 (Core Profile) Mesa 25.0.7-2+deb13u1, Mesa
+[06:02:19] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 6 dependencies adding them to mods collection
+[06:02:19] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create: Station Utilities 0.2.0-dev14.1 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+		Sound Physics Remastered 1.21.1-1.5.2 (sound_physics_remastered)
+[06:02:20] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[06:02:20] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.248, --gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/gradle-home/caches/neoformruntime/assets, --assetIndex, 17, --quickPlaySingleplayer, CabinJourneyValidation, --width, 1280, --height, 960]
+[06:02:20] [main/WARN] [mixin/]: Reference map 'sound_physics_remastered.refmap.json' for sound_physics_remastered.mixins.json could not be read. If this is a development environment you can ignore this message
+[06:02:20] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[06:02:20] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[06:02:20] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[06:02:22] [Datafixer Bootstrap/INFO] [mojang/DataFixerBuilder]: 229 Datafixer optimizations took 327 milliseconds
+[06:02:26] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:02:26] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:02:26] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:02:26] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[06:02:26] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[06:02:27] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/work/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[06:02:27] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/work/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[06:02:27] [Render thread/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[06:02:27] [Render thread/INFO] [minecraft/Minecraft]: Setting user: Dev
+[06:02:27] [Render thread/ERROR] [minecraft/Options]: Error parsing option value 2 for option Simulation Distance: Value 2 outside of range [5:33]
+[06:02:27] [Render thread/INFO] [minecraft/Minecraft]: Backend library: LWJGL version 3.3.3+5
+[06:02:27] [Yggdrasil Key Fetcher/ERROR] [mojang/YggdrasilServicesKeyInfo]: Failed to request yggdrasil public key
+com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://api.minecraftservices.com/publickeys due to api.minecraftservices.com
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:108) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:57) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo.fetch(YggdrasilServicesKeyInfo.java:114) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilServicesKeyInfo$1.run(YggdrasilServicesKeyInfo.java:89) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572) ~[?:?] {}
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?] {}
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+Caused by: java.net.UnknownHostException: api.minecraftservices.com
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567) ~[?:?] {}
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.base/java.net.Socket.connect(Socket.java:757) ~[?:?] {}
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:377) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1285) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1126) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1678) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1602) ~[?:?] {}
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.54.jar%23104!/:?] {}
+	... 9 more
+[06:02:27] [Download-1/WARN] [mojang/YggdrasilMinecraftSessionService]: Couldn't look up profile properties for 380df991-f603-344c-a090-369bad2a924a
+com.mojang.authlib.exceptions.MinecraftClientException: Failed to read from https://sessionserver.mojang.com/session/minecraft/profile/380df991f603344ca090369bad2a924a?unsigned=false due to sessionserver.mojang.com
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:108) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:57) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fetchProfileUncached(YggdrasilMinecraftSessionService.java:201) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.yggdrasil.YggdrasilMinecraftSessionService.fetchProfile(YggdrasilMinecraftSessionService.java:171) ~[authlib-6.0.54.jar%23104!/:?] {}
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$1(Minecraft.java:426) ~[neoforge-21.1.248.jar%23177!/:?] {re:mixin,pl:runtimedistcleaner:A,re:classloading,pl:mixin:A,pl:runtimedistcleaner:A}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?] {}
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?] {}
+	at java.base/java.lang.Thread.run(Thread.java:1583) [?:?] {}
+Caused by: java.net.UnknownHostException: sessionserver.mojang.com
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:567) ~[?:?] {}
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[?:?] {}
+	at java.base/java.net.Socket.connect(Socket.java:757) ~[?:?] {}
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304) ~[?:?] {}
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:531) ~[?:?] {}
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:636) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:264) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:377) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1285) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1126) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1678) ~[?:?] {}
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1602) ~[?:?] {}
+	at java.base/java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:531) ~[?:?] {}
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:307) ~[?:?] {}
+	at MC-BOOTSTRAP/authlib@6.0.54/com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:84) ~[authlib-6.0.54.jar%23104!/:?] {}
+	... 8 more
+[06:02:27] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[06:02:27] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[06:02:48] [Render thread/INFO] [ne.ne.ne.ga.GameTestHooks/]: Enabled Gametest Namespaces: []
+[06:02:48] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources, mod/flywheel, mod/sound_physics_remastered, mod/ponder, mod/create, mod/createtransit, mod/neoforge
+[06:02:48] [NeoForge Version Check/INFO] [ne.ne.fm.VersionChecker/]: [sound_physics_remastered] Starting version check at https://update.maxhenkel.de/neoforge/sound_physics_remastered
+[06:02:48] [NeoForge Version Check/WARN] [ne.ne.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.openUrlString(VersionChecker.java:129) ~[loader-4.0.43.jar%23134!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.process(VersionChecker.java:162) ~[loader-4.0.43.jar%23134!/:4.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) [?:?] {re:mixin}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.run(VersionChecker.java:105) [loader-4.0.43.jar%23134!/:4.0] {}
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137) ~[?:?] {}
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?] {}
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+[06:02:48] [NeoForge Version Check/INFO] [ne.ne.fm.VersionChecker/]: [create] Starting version check at https://api.modrinth.com/updates/create/forge_updates.json?neoforge=only
+[06:02:48] [NeoForge Version Check/WARN] [ne.ne.fm.VersionChecker/]: Failed to process update information
+java.net.ConnectException: null
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:951) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.openUrlString(VersionChecker.java:129) ~[loader-4.0.43.jar%23134!/:4.0] {}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.process(VersionChecker.java:162) ~[loader-4.0.43.jar%23134!/:4.0] {}
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) [?:?] {re:mixin}
+	at MC-BOOTSTRAP/fml_loader@4.0.43/net.neoforged.fml.VersionChecker$1.run(VersionChecker.java:105) [loader-4.0.43.jar%23134!/:4.0] {}
+Caused by: java.net.ConnectException
+	at java.net.http/jdk.internal.net.http.common.Utils.toConnectException(Utils.java:1028) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:227) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+Caused by: java.nio.channels.UnresolvedAddressException
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:137) ~[?:?] {}
+	at java.base/sun.nio.ch.Net.checkAddress(Net.java:145) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.checkRemote(SocketChannelImpl.java:842) ~[?:?] {}
+	at java.base/sun.nio.ch.SocketChannelImpl.connect(SocketChannelImpl.java:865) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.lambda$connectAsync$1(PlainHttpConnection.java:210) ~[java.net.http:?] {}
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.PlainHttpConnection.connectAsync(PlainHttpConnection.java:212) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.AsyncSSLConnection.connectAsync(AsyncSSLConnection.java:56) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2Connection.createAsync(Http2Connection.java:468) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Http2ClientImpl.getConnectionFor(Http2ClientImpl.java:134) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.ExchangeImpl.get(ExchangeImpl.java:94) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.establishExchange(Exchange.java:386) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl0(Exchange.java:570) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsyncImpl(Exchange.java:423) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.Exchange.responseAsync(Exchange.java:415) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:413) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:454) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:950) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2372) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsyncImpl(MultiExchange.java:444) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.MultiExchange.lambda$responseAsync0$2(MultiExchange.java:346) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture$UniCompose.tryFire(CompletableFuture.java:1150) ~[?:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {re:mixin}
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1773) ~[?:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl$DelegatingExecutor.execute(HttpClientImpl.java:177) ~[java.net.http:?] {}
+	at java.base/java.util.concurrent.CompletableFuture.completeAsync(CompletableFuture.java:2719) ~[?:?] {re:mixin}
+	at java.net.http/jdk.internal.net.http.MultiExchange.responseAsync(MultiExchange.java:299) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.sendAsync(HttpClientImpl.java:1047) ~[java.net.http:?] {}
+	at java.net.http/jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:930) ~[java.net.http:?] {}
+	... 5 more
+[06:02:48] [Worker-Main-1/ERROR] [minecraft/Util]: Invalid path in pack: createtransit:sounds/NOTICE.txt, ignoring
+[06:02:49] [Worker-Main-1/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.1.05.hex, loading
+[06:02:49] [Worker-Main-1/INFO] [minecraft/UnihexProvider]: Found unifont_jp_patch-15.1.05.hex, loading
+[06:03:09] [Worker-Main-1/WARN] [minecraft/SpriteLoader]: Texture createtransit:block/elevator_door/led with size 8x32 limits mip level from 4 to 3
+[06:03:10] [Worker-Main-1/INFO] [Sound Physics - General/]: Reloading reverb parameters
+[06:03:11] [Worker-Main-1/INFO] [PonderIndex/]: Registering Ponder Scenes took 63.84 ms
+[06:03:11] [Worker-Main-1/INFO] [PonderIndex/]: Registering Ponder Tags took 3.731 ms
+[06:03:11] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[06:03:11] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[06:03:11] [Render thread/INFO] [mojang/Library]: OpenAL initialized on device No Output
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Initializing Sound Physics
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: EFX Extension recognized
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Max auxiliary sends: 4
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Aux slot 1 created
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Aux slot 2 created
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Aux slot 3 created
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: Aux slot 4 created
+[06:03:11] [Render thread/INFO] [Sound Physics - General/]: EFX ready
+[06:03:11] [Render thread/INFO] [minecraft/SoundEngine]: Sound engine started
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x2048x4 minecraft:textures/atlas/blocks.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 2048x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[06:03:11] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[06:03:11] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[06:03:11] [Render thread/INFO] [flywheel/backend/shaders/]: Loaded 77 shader sources in 29.982 ms
+[06:03:11] [Render thread/INFO] [co.si.cr.Create/]: Loaded 58 train hat configurations.
+[06:03:11] [Render thread/INFO] [ne.ne.ne.cl.en.an.js.AnimationLoader/]: Loaded 0 entity animations
+[06:03:11] [Render thread/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[06:03:11] [Render thread/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[06:03:12] [Render thread/INFO] [minecraft/RecipeManager]: Loaded 2890 recipes
+[06:03:12] [Render thread/INFO] [minecraft/AdvancementTree]: Loaded 2507 advancements
+[06:03:17] [Server thread/INFO] [minecraft/IntegratedServer]: Starting integrated minecraft server version 1.21.1
+[06:03:17] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[06:03:18] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[06:03:18] [progressListener/INFO] [minecraft/LoggerChunkProgressListener]: Preparing spawn area: 0%
+[06:03:18] [Server thread/INFO] [ne.ne.ne.se.pe.PermissionAPI/]: Successfully initialized permission handler neoforge:default_handler
+[06:03:18] [progressListener/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 351 ms
+[06:03:18] [Server thread/INFO] [minecraft/IntegratedServer]: Changing view distance to 2, from 10
+[06:03:18] [Server thread/INFO] [minecraft/IntegratedServer]: Changing simulation distance to 12, from 0
+[06:03:18] [Render thread/WARN] [io.ne.ut.in.MacAddressUtil/]: Failed to find a usable hardware address from the network interfaces; using random bytes: 59:e1:0c:57:ef:47:59:e6
+[06:03:19] [Render thread/INFO] [co.si.cr.Create/]: Created 157 recipes which will be injected into the game
+[06:03:19] [Render thread/INFO] [co.si.cr.Create/]: Created 0 tags which will be injected into the game
+[06:03:19] [Server thread/INFO] [minecraft/PlayerList]: Dev[local:E:4dcba7e1] logged in with entity id 2 at (0.5, 129.0, -0.734375)
+[06:03:19] [Server thread/INFO] [minecraft/MinecraftServer]: Dev joined the game
+[06:03:19] [Render thread/INFO] [flywheel/]: Started 1 worker threads
+[06:03:19] [Render thread/WARN] [minecraft/ClientPacketListener]: Ignoring chat session from Dev due to missing Services public key
+[06:03:19] [Render thread/INFO] [minecraft/AdvancementTree]: Loaded 2 advancements
+CABIN_JOURNEY multipartBuilds=97 reuses=143007
+CABIN_JOURNEY fixture=7d525f93-4dce-4a30-81a2-fb30797aff36 floors=[ElevatorFloor[marker=BlockPos{x=0, y=129, z=0}, y=128, id=F1, name=Floor 1, enabled=true, reachable=true, warning=, rail=true], ElevatorFloor[marker=BlockPos{x=0, y=159, z=0}, y=158, id=F2, name=Floor 2, enabled=true, reachable=true, warning=, rail=true], ElevatorFloor[marker=BlockPos{x=0, y=189, z=0}, y=188, id=F3, name=Floor 3, enabled=true, reachable=true, warning=, rail=true]]
+CABIN_JOURNEY radioPlay=1
+CABIN_JOURNEY capture=V14-journey-cabin-interior.png
+CABIN_JOURNEY motorPlay=1
+CABIN_JOURNEY sample=20 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=128.56999999999968, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=129.30001759537942, layouts=[I@24434664] clientPlayer=(0.5, 129.43105708232142, -0.734375) clientCabin=(-0.90625, 129.30605708232142, -1.90625)
+CABIN_JOURNEY sample=40 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=132.36999999999736, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=132.320000441566, layouts=[I@5edc11d8] clientPlayer=(0.5, 132.840030578196, -0.734375) clientCabin=(-0.90625, 132.715030578196, -1.90625)
+CABIN_JOURNEY staleSnapshotLag=3.7070334062975974 resolvedToLiveEntity=true
+CABIN_JOURNEY sample=60 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=140.1699999999914, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=139.32001836786364, layouts=[I@1bb601fb] clientPlayer=(0.5, 140.40503420516163, -0.734375) clientCabin=(-0.90625, 140.28003420516163, -1.90625)
+CABIN_JOURNEY sample=80 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=152.16499999998652, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=149.56984766046148, layouts=[I@330b544f] clientPlayer=(0.5, 151.36643489708118, -0.734375) clientCabin=(-0.90625, 151.24143489708118, -1.90625)
+CABIN_JOURNEY sample=100 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=163.5649999999864, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=162.16634647259107, layouts=[I@7b050708] clientPlayer=(0.5, 163.36559843226271, -0.734375) clientCabin=(-0.90625, 163.24059843226271, -1.90625)
+CABIN_JOURNEY sample=120 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=175.09183770747896, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=173.97239573164293, layouts=[I@429aaf7e] clientPlayer=(0.5, 175.0369393355913, -0.734375) clientCabin=(-0.90625, 174.9119393355913, -1.90625)
+CABIN_JOURNEY sample=140 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=183.17765413004358, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=182.86288636616217, layouts=[I@5b97b7ed] clientPlayer=(0.5, 183.52434706551654, -0.734375) clientCabin=(-0.90625, 183.39934706551654, -1.90625)
+CABIN_JOURNEY sample=160 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=187.33295102099672, doorsClosed=true, frontOpen=false, direction=1, service=1, arrival=10546, riderInside=false, riderY=187.78473919336892, layouts=[I@771ba075] clientPlayer=(0.5, 188.06367097830284, -0.734375) clientCabin=(-0.90625, 187.93867097830284, -1.90625)
+CABIN_JOURNEY ascent samples=175 maxFeetError=0.0 maxRadioError=0.0 sourceJumps=0
+CABIN_JOURNEY capture=V14-journey-upper-floor.png
+CABIN_JOURNEY motorPlay=2
+CABIN_JOURNEY sample=180 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=187.98250000000004, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=188.99837239583334, layouts=[I@1424aa59] clientPlayer=(0.5, 188.99119285300927, -0.734375) clientCabin=(-0.90625, 188.86619285300927, -1.90625)
+CABIN_JOURNEY sample=200 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=186.55500000000072, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=188.08392159441675, layouts=[I@5da4c71f] clientPlayer=(0.5, 187.8244892416158, -0.734375) clientCabin=(-0.90625, 187.6994892416158, -1.90625)
+CABIN_JOURNEY sample=220 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=181.3550000000043, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=183.68498476998366, layouts=[I@5fc0f908] clientPlayer=(0.5, 183.02497804013163, -0.734375) clientCabin=(-0.90625, 182.89997804013163, -1.90625)
+CABIN_JOURNEY sample=240 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=172.15500000001154, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=175.28496672783226, layouts=[I@4af38bbe] clientPlayer=(0.5, 174.22498629743933, -0.734375) clientCabin=(-0.90625, 174.09998629743933, -1.90625)
+CABIN_JOURNEY sample=260 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=160.2350000000135, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=false, riderY=163.63483953728888, layouts=[I@1144838a] clientPlayer=(0.5, 162.4349558099756, -0.734375) clientCabin=(-0.90625, 162.3099558099756, -1.90625)
+CABIN_JOURNEY sample=280 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=148.23500000001363, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=false, riderY=151.63501087114906, layouts=[I@2547ec6a] clientPlayer=(0.5, 150.4350319583579, -0.734375) clientCabin=(-0.90625, 150.3100319583579, -1.90625)
+CABIN_JOURNEY sample=300 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=137.62860817184907, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=140.47285549226885, layouts=[I@375a0abb] clientPlayer=(0.5, 139.5457971024667, -0.734375) clientCabin=(-0.90625, 139.4207971024667, -1.90625)
+CABIN_JOURNEY sample=320 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=MOVING, y=130.92360412744708, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=132.97917063994308, layouts=[I@80c83e5] clientPlayer=(0.5, 132.44649880004414, -0.734375) clientCabin=(-0.90625, 132.32149880004414, -1.90625)
+CABIN_JOURNEY sample=340 state=ServerState[cabin=7d525f93-4dce-4a30-81a2-fb30797aff36, entity=50, phase=LEVELING, y=128.12356646147506, doorsClosed=true, frontOpen=false, direction=-1, service=-1, arrival=10808, riderInside=true, riderY=129.4062457550066, layouts=[I@7639acfc] clientPlayer=(0.5, 129.26025201958626, -0.734375) clientCabin=(-0.90625, 129.13525201958626, -1.90625)
+CABIN_JOURNEY radioPlay=2
+PASS: actual client rides 60-block ascent/descent with Inside live radio, unchanged radio source across both trips, moving motor, synchronized terminal panels, Streamer Mode mute and local resync. maxFootError=0.0 maxSourceError=0.0 maxServerTimelineError=3.5951523395250433 No listening or shader claim.
+[06:03:50] [Render thread/INFO] [minecraft/Minecraft]: Stopping!
+[06:03:50] [Server thread/INFO] [minecraft/ServerGamePacketListenerImpl]: Dev lost connection: Disconnected
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Dev left the game
+[06:03:50] [Server thread/INFO] [minecraft/ServerCommonPacketListenerImpl]: Stopping singleplayer server as player logged out
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Stopping server
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving players
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:overworld
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_nether
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: Saving chunks for level 'ServerLevel[Test Level]'/minecraft:the_end
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (CabinJourneyValidation): All chunks are saved
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM-1): All chunks are saved
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage (DIM1): All chunks are saved
+[06:03:50] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/work/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 42s
+11 actionable tasks: 3 executed, 8 up-to-date

@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:solid",
+  "ambientocclusion": false,
+  "textures": {
+    "frame": "createtransit:block/frame",
+    "accent": "createtransit:block/accent",
+    "glass": "createtransit:block/glass",
+    "led_accent": "createtransit:block/led_accent",
+    "led_white": "createtransit:block/led_white",
+    "led_green": "createtransit:block/led_green",
+    "led_red": "createtransit:block/led_red",
+    "station_dark": "createtransit:block/station_dark",
+    "fare_arrow": "createtransit:block/fare_arrow",
+    "fare_stop": "createtransit:block/fare_stop",
+    "kiosk_screen": "createtransit:block/kiosk_screen",
+    "kiosk_sign": "createtransit:block/kiosk_sign",
+    "kiosk_reader": "createtransit:block/kiosk_reader",
+    "ticket_paper": "createtransit:block/ticket_paper",
+    "particle": "createtransit:block/frame"
+  },
+  "elements": []
+}

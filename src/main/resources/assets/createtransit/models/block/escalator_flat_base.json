@@ -1,0 +1,288 @@
+{
+  "loader": "createtransit:escalator_mesh",
+  "ambientocclusion": true,
+  "render_type": "minecraft:solid",
+  "textures": {
+    "metal": "createtransit:block/escalator_metal",
+    "rail": "createtransit:block/escalator_rail",
+    "underbody": "createtransit:block/escalator_underbody",
+    "panel": "createtransit:block/escalator_panel",
+    "glass": "createtransit:block/escalator_glass",
+    "steps": "createtransit:block/escalator_steps",
+    "comb": "createtransit:block/escalator_comb",
+    "rubber": "createtransit:block/escalator_rubber",
+    "grip": "createtransit:block/escalator_grip",
+    "edge": "createtransit:block/escalator_edge",
+    "led": "createtransit:block/escalator_led",
+    "trim_off": "createtransit:block/escalator_trim_off",
+    "arrow": "createtransit:block/escalator_arrow",
+    "stop": "createtransit:block/escalator_stop",
+    "particle": "createtransit:block/escalator_metal"
+  },
+  "quads": [
+    {
+      "vertices": [
+        [
+          0,
+          -5,
+          0
+        ],
+        [
+          0,
+          1.85,
+          0
+        ],
+        [
+          16,
+          1.85,
+          0
+        ],
+        [
+          16,
+          -5,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          16,
+          -5,
+          16
+        ],
+        [
+          16,
+          1.85,
+          16
+        ],
+        [
+          0,
+          1.85,
+          16
+        ],
+        [
+          0,
+          -5,
+          16
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          -5,
+          16
+        ],
+        [
+          0,
+          1.85,
+          16
+        ],
+        [
+          0,
+          1.85,
+          0
+        ],
+        [
+          0,
+          -5,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          16,
+          -5,
+          0
+        ],
+        [
+          16,
+          1.85,
+          0
+        ],
+        [
+          16,
+          1.85,
+          16
+        ],
+        [
+          16,
+          -5,
+          16
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          1.85,
+          0
+        ],
+        [
+          0,
+          1.85,
+          16
+        ],
+        [
+          16,
+          1.85,
+          16
+        ],
+        [
+          16,
+          1.85,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          -5,
+          16
+        ],
+        [
+          0,
+          -5,
+          0
+        ],
+        [
+          16,
+          -5,
+          0
+        ],
+        [
+          16,
+          -5,
+          16
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#underbody",
+      "tint": -1
+    }
+  ]
+}

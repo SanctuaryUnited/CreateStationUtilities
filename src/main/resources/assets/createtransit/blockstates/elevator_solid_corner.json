@@ -1,0 +1,1 @@
+{"variants":{"facing=north":{"model":"createtransit:block/elevator_solid_corner","y":0,"uvlock":true},"facing=east":{"model":"createtransit:block/elevator_solid_corner","y":90,"uvlock":true},"facing=south":{"model":"createtransit:block/elevator_solid_corner","y":180,"uvlock":true},"facing=west":{"model":"createtransit:block/elevator_solid_corner","y":270,"uvlock":true}}}

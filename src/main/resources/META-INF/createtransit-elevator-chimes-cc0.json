@@ -1,0 +1,227 @@
+[
+  {
+    "key": "119448",
+    "name": "arrival_ding_lmbubec",
+    "title": "Elevator Ding.wav",
+    "author": "lmbubec",
+    "source_url": "https://freesound.org/people/lmbubec/sounds/119448/",
+    "download_url": "https://cdn.freesound.org/previews/119/119448_1990688-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "field recording",
+    "notes": "Arrival and doors opening, recorded outside the cabin.",
+    "download_type": "public HQ preview MP3; not the original lossless WAV",
+    "source_file": "source-audio/arrival_ding_lmbubec.mp3",
+    "mono_file": "mono-ogg/arrival_ding_lmbubec.ogg",
+    "source_sha256": "24fbef3d4f12c905fd60219adedc6d76642c90887c0f744492715a23d03eb558",
+    "mono_sha256": "16720a3a5e6a6a09f9159efa0903799ab834c20c1989c692a5aa6a1ffa37066d",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "48000",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "4.272000"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_arrival_ding",
+    "packaged_file": "assets/createtransit/sounds/elevator_arrival_ding.ogg"
+  },
+  {
+    "key": "556700",
+    "name": "elevator_bell_nachtmahrtv",
+    "title": "Elevator Bell",
+    "author": "NachtmahrTV",
+    "source_url": "https://freesound.org/people/NachtmahrTV/sounds/556700/",
+    "download_url": "https://cdn.freesound.org/previews/556/556700_5620304-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "unspecified",
+    "notes": "Elevator bell; recording versus synthesis is not specified by the uploader.",
+    "download_type": "public HQ preview MP3; not the original lossless WAV",
+    "source_file": "source-audio/elevator_bell_nachtmahrtv.mp3",
+    "mono_file": "mono-ogg/elevator_bell_nachtmahrtv.ogg",
+    "source_sha256": "080cf5019211e76d55d57f9a9aa9af873ac8340c5a7dd3d8918dfcba0876f612",
+    "mono_sha256": "fa4ab50e2ffe09343775f19d9d4ef88fd9f2f47bb1aa17e661bd15c670fd8eb7",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "3.343673"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_bell",
+    "packaged_file": "assets/createtransit/sounds/elevator_bell.ogg"
+  },
+  {
+    "key": "188011",
+    "name": "japan_arrival_gregconquest",
+    "title": "ElevatorChime.ThePrisoner(UK).mp3",
+    "author": "gregconquest",
+    "source_url": "https://freesound.org/people/gregconquest/sounds/188011/",
+    "download_url": "https://cdn.freesound.org/previews/188/188011_3488502-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "field recording",
+    "notes": "Arrival recorded in Japan. Manufacturer unverified; Mitsubishi is suggested only by a commenter. Uploader compares its sound to a television sound effect, but describes recording an actual elevator.",
+    "download_type": "public HQ preview MP3; not the original lossless WAV",
+    "source_file": "source-audio/japan_arrival_gregconquest.mp3",
+    "mono_file": "mono-ogg/japan_arrival_gregconquest.ogg",
+    "source_sha256": "7737e035b98769a2c92cc082e7b53d27ac1cb1e4ae2a4e6b39b9c7ca415bb526",
+    "mono_sha256": "3f45a03be9e2685cd3070442eb0d44e727a7756c76496dbedabe9bbc205d9da4",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "2.533878"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_japan_arrival",
+    "packaged_file": "assets/createtransit/sounds/elevator_japan_arrival.ogg"
+  },
+  {
+    "key": "18768",
+    "name": "older_bell_and_doors_cognito_perceptu",
+    "title": "elevator bell doors.wav",
+    "author": "cognito perceptu",
+    "source_url": "https://freesound.org/people/cognito%20perceptu/sounds/18768/",
+    "download_url": "https://cdn.freesound.org/previews/18/18768_57789-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "field recording",
+    "notes": "Older elevator bell and opening doors, with quiet office background.",
+    "download_type": "public HQ preview MP3; not the original lossless WAV",
+    "source_file": "source-audio/older_bell_and_doors_cognito_perceptu.mp3",
+    "mono_file": "mono-ogg/older_bell_and_doors_cognito_perceptu.ogg",
+    "source_sha256": "3d1b07497b93242bfde3a0e135a251c82572d9e248b6eee5f316bb9e444722af",
+    "mono_sha256": "0178d805fe63716d8fdb4e2a630ef2d078771690e92bdf3e0d10b098a582f5e6",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "5.328980"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_classic_bell_doors",
+    "packaged_file": "assets/createtransit/sounds/elevator_classic_bell_doors.ogg"
+  },
+  {
+    "key": "500357",
+    "name": "fm_elevator_bell_cosmicd",
+    "title": "FM Elevator bell",
+    "author": "CosmicD",
+    "source_url": "https://freesound.org/people/CosmicD/sounds/500357/",
+    "download_url": "https://cdn.freesound.org/previews/500/500357_231437-hq.mp3",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "electronic design",
+    "notes": "FM elevator bell, categorized as electronic/design by the uploader.",
+    "download_type": "public HQ preview MP3; not the original lossless WAV",
+    "source_file": "source-audio/fm_elevator_bell_cosmicd.mp3",
+    "mono_file": "mono-ogg/fm_elevator_bell_cosmicd.ogg",
+    "source_sha256": "a3bdd512db9b076192e6f41d552e86a40d1aec4c459cc7b63368d23a12d1ddde",
+    "mono_sha256": "803ff47a8fe75cc821bf298655eda965bd9ced5a5362c22993065a9f111a7657",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "44100",
+          "channels": 2,
+          "side_data_list": [
+            {}
+          ]
+        }
+      ],
+      "format": {
+        "duration": "2.951837"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_fm_bell",
+    "packaged_file": "assets/createtransit/sounds/elevator_fm_bell.ogg"
+  },
+  {
+    "key": "elevator-ding",
+    "name": "synth_ding_fvcalderan",
+    "title": "Elevator ding",
+    "author": "fvcalderan",
+    "source_url": "https://opengameart.org/content/elevator-ding",
+    "download_url": "https://opengameart.org/sites/default/files/elevatording.ogg",
+    "license": "CC0-1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked_utc": "2026-11-04",
+    "license_evidence": "Source page labels the asset Creative Commons 0 / CC0 and links the CC0 1.0 dedication.",
+    "origin": "synthesized",
+    "notes": "Original synthesized bell made in GarageBand, according to the author.",
+    "download_type": "original OGG attachment",
+    "source_file": "source-audio/synth_ding_fvcalderan.ogg",
+    "mono_file": "mono-ogg/synth_ding_fvcalderan.ogg",
+    "source_sha256": "04b9e67aa1e5a4e71d1b038bfefd2db4d64f223a17749f0a2faeaf193b48a7b6",
+    "mono_sha256": "68a6a1e8e78b8864fdd48377cf4ad1357c60dffe5c97ced5efea7e4d6bb57a92",
+    "audio": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vorbis",
+          "sample_rate": "44100",
+          "channels": 2
+        }
+      ],
+      "format": {
+        "duration": "0.882018"
+      }
+    },
+    "packaged_sound": "createtransit:elevator_synth_ding",
+    "packaged_file": "assets/createtransit/sounds/elevator_synth_ding.ogg"
+  }
+]

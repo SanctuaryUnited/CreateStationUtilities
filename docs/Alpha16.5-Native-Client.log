@@ -1,0 +1,56 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36661 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=36661
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+> Task :compileJava UP-TO-DATE
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileClienttestJava UP-TO-DATE
+> Task :processClienttestResources UP-TO-DATE
+> Task :clienttestClasses UP-TO-DATE
+> Task :compileGametestJava UP-TO-DATE
+> Task :processGametestResources UP-TO-DATE
+> Task :gametestClasses UP-TO-DATE
+> Task :writeInventoryDataLegacyClasspath
+> Task :prepareInventoryDataRun
+
+> Task :runInventoryData
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36661 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=36661
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[22:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatadev, --assetIndex, 17, --assetsDir, /workspace/scratch/52ce15fa3a0d/escalator-smart-toolchain/headless-assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/resources]
+[22:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[22:21:04] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.44
+[22:21:05] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatadev
+[22:21:05] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/escalator-smart-toolchain/gradle-home/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[22:21:05] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 5 dependencies adding them to mods collection
+[22:21:05] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create Transit 0.5.0-alpha.16-escalators.5 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[22:21:05] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[22:21:05] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatadev' with arguments [--gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/escalator-smart-toolchain/headless-assets, --assetIndex, 17, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/resources]
+[22:21:05] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[22:21:06] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[22:21:06] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[22:21:06] [main/INFO] [ne.ne.ne.da.lo.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[22:21:10] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[22:21:10] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[22:21:30] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[22:21:30] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[22:21:30] [main/INFO] [minecraft/DataGenerator]: Starting provider: Create Transit inventory client validation
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+[22:21:30] [main/INFO] [minecraft/DataGenerator]: Create Transit inventory client validation finished after 89 ms
+[22:21:30] [main/INFO] [minecraft/DataGenerator]: All providers took: 91 ms
+[22:21:30] [main/INFO] [minecraft/HashCache]: Caching: total files: 1, old count: 0, new count: 2, removed stale: 0, written: 1
+
+BUILD SUCCESSFUL in 33s
+11 actionable tasks: 3 executed, 8 up-to-date

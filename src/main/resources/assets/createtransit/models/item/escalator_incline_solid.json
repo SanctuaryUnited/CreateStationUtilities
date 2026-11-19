@@ -1,0 +1,1 @@
+{"parent":"minecraft:item/generated","textures":{"layer0":"createtransit:item/escalator_incline_solid_frame","layer1":"createtransit:item/escalator_incline_solid_trim","layer2":"createtransit:item/escalator_incline_solid_detail"},"gui_light":"front"}

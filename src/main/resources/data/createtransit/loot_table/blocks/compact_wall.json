@@ -1,0 +1,50 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "createtransit:compact_wall",
+          "properties": {
+            "column": "0",
+            "row": "0"
+          }
+        },
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "createtransit:compact_wall",
+          "functions": [
+            {
+              "function": "minecraft:copy_custom_data",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "paint",
+                  "target": "paint",
+                  "op": "replace"
+                },
+                {
+                  "source": "accent",
+                  "target": "accent",
+                  "op": "replace"
+                },
+                {
+                  "source": "panel",
+                  "target": "panel",
+                  "op": "replace"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

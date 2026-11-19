@@ -1,0 +1,30 @@
+package com.sanctuarygames.createtransit;
+
+import com.sanctuarygames.createtransit.elevator.*;
+import com.sanctuarygames.createtransit.elevator.model.*;
+import net.minecraft.core.*;
+import net.minecraft.gametest.framework.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
+import net.neoforged.neoforge.gametest.*;
+
+@GameTestHolder("createtransit") @PrefixGameTestTemplate(false)
+public final class CabinAlignmentGameTests {
+ private static void check(boolean b,String m){if(!b)throw new GameTestAssertException(m);}
+ private static ElevatorDriveEntity shaft(GameTestHelper h,BlockPos pos,Direction f){var l=h.getLevel();l.setBlock(pos,ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,f),3);var d=(ElevatorDriveEntity)l.getBlockEntity(pos);d.onLoad();for(int y=1;y<=9;y++)l.setBlock(pos.above(y),(y==1||y==9?ElevatorRegistry.FLOOR_MARKER_RAIL:ElevatorRegistry.GUIDE_RAIL).get().defaultBlockState().setValue(ElevatorPartBlock.FACING,f),3);d.rescan();check(d.configureModel("compact","true")&&d.configureModel("railMount","true"),"Compact rail mount configured");return d;}
+ @GameTest(template="elevator2_shaft",batch="cabin_alignment",timeoutTicks=100)
+ public static void auto_center_snaps_all_four_sizes_to_the_grid_without_losing_rail_clearance(GameTestHelper h){int index=0;for(var face:Direction.Plane.HORIZONTAL)for(int size=2;size<=5;size++){
+  var d=shaft(h,h.absolutePos(new BlockPos(5+(index%4)*9,2,5+(index++/4)*9)),face);check(d.configureModel("size",""+size)&&d.configureModel("autoCenter","true"),"Explicit centering succeeds");check(d.activateModel(),"Centered cabin activates");var e=d.model().entity();var center=e.getBoundingBox().getCenter();check(Math.abs(center.x-size/2d-Math.rint(center.x-size/2d))<1e-8&&Math.abs(center.z-size/2d-Math.rint(center.z-size/2d))<1e-8,"Nominal floor perimeter aligns with grid for even and odd widths");check(e.getBoundingBox().getXsize()<size&&e.getBoundingBox().getZsize()<size,"Rail clearance margin retained on both axes");check(d.deactivateModel(),"Cleanup centered cabin");
+ }h.succeed();}
+ @GameTest(template="elevator2_shaft",batch="cabin_alignment",timeoutTicks=60)
+ public static void rotation_preserves_center_rails_and_saved_orientation(GameTestHelper h){int index=0;for(var f:Direction.Plane.HORIZONTAL){var d=shaft(h,h.absolutePos(new BlockPos(5+index%2*12,2,5+index++/2*12)),f);var model=d.model();var driver=d.getBlockState();Vec3 center=null;Direction facing=null;for(int turn=0;turn<=4;turn++){
+   check(d.activateModel(),"Rotated cabin activates: "+model.warning());var e=model.entity();var c=e.world(1.5,0,1.5);if(center==null){center=c;facing=e.facing();}else{check(c.distanceTo(center)<1e-8,"Quarter-turns retain shaft center");facing=facing.getClockWise();check(e.facing()==facing,"Entrance turns exactly 90 degrees");}
+   var box=e.getBoundingBox();check(box.getXsize()<=3&&box.getZsize()<=3,"Rotated compact footprint stays within 3x3");check(!d.configureModel("rotate","clockwise"),"Live rotation refused");check(d.deactivateModel(),"Empty cabin deactivates");
+   var restored=new ModelCabinController(d);restored.load(model.save());check(restored.cabinFacing()==model.cabinFacing()&&restored.placementOrigin(d.getBlockPos().getY()).distanceTo(model.placementOrigin(d.getBlockPos().getY()))<1e-8,"Rotation and alignment persist");check(d.getBlockState()==driver&&h.getLevel().getBlockState(d.getBlockPos().above()).getValue(ElevatorPartBlock.FACING)==f,"Driver and guide orientation unchanged");if(turn<4)check(d.configureModel("rotate","clockwise"),"Inactive rotation accepted");
+  }check(model.cabinFacing()==f,"Four turns restore original facing");}h.succeed();}
+ @GameTest(template="elevator2_shaft",batch="cabin_alignment",timeoutTicks=400)
+ public static void static_shaft_blocks_allow_assembly_and_rotated_travel(GameTestHelper h){var l=h.getLevel();var d=shaft(h,h.absolutePos(new BlockPos(10,2,10)),Direction.NORTH);check(d.configureModel("rotate","clockwise"),"Rotate before assembly");var model=d.model();var point=model.placementOrigin(d.getBlockPos().getY());var probe=new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(),l);probe.configure(model.config());probe.bind(d);probe.setPos(point);var obstruction=BlockPos.containing(probe.world(1.5,1,1.5));l.setBlock(obstruction,Blocks.STONE.defaultBlockState(),3);check(d.activateModel(),"Static block does not reject cabin assembly: "+model.warning());var e=model.entity();
+  check(e.getBoundingBox().intersects(new net.minecraft.world.phys.AABB(obstruction)),"Fixture really overlaps the cabin bounding box");var player=FakePlayerFactory.getMinecraft(l);player.getAbilities().mayBuild=true;for(var floor:d.floorList())check(d.installModelLanding(player,floor.y()),"Rotated landing is installed and linked");var destination=d.floorList().getLast();check(model.request(destination.y()),"Rotated destination requested");h.onEachTick(()->{var state=model.state();check(state.state()!=CabinMotionController.State.FAULT,"Static shaft blocks cannot fault movement: "+state.fault());check(l.getBlockState(obstruction).is(Blocks.STONE),"Assembly and movement never delete shaft blocks");if(state.state()==CabinMotionController.State.DOORS_OPEN&&Math.abs(state.y()-destination.y())<1e-8){check(model.matchesLanding(model.landingPosition(destination.y(),false),e.facing(),3),"Rotated landing geometry matches cabin");h.succeed();}});
+ }
+}

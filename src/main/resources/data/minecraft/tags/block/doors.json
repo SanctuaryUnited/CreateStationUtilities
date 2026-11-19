@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "createtransit:gondola_door",
+    "createtransit:gondola_double_door"
+  ]
+}

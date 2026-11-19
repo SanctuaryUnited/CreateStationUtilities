@@ -1,0 +1,56 @@
+{
+  "loader": "createtransit:escalator_mesh",
+  "ambientocclusion": false,
+  "shade": false,
+  "render_type": "minecraft:solid",
+  "textures": {
+    "particle": "createtransit:block/escalator_stop",
+    "surface": "createtransit:block/escalator_stop"
+  },
+  "quads": [
+    {
+      "vertices": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          16,
+          0
+        ],
+        [
+          16,
+          16,
+          0
+        ],
+        [
+          16,
+          0,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#surface",
+      "tint": -1
+    }
+  ]
+}

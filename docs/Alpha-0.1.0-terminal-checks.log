@@ -1,0 +1,343 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries UP-TO-DATE
+
+> Task :compileJava
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+2 warnings
+
+> Task :processResources
+> Task :classes
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+
+> Task :compileClienttestJava
+Note: /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorModelCheck.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processClienttestResources
+> Task :clienttestClasses
+
+> Task :escalatorModelCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: All four flat end modes, stopped-phase cache reuse and clean internal-landing motion surfaces.
+PASS: 320 moving configurations match preview geometry / 117760 native vertices in four orientations.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Glass: 12 dedicated belt sections.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Solid: 12 dedicated belt sections.
+PASS: Minecraft parsed Travelator-QuickBuild-3-Wide: 30 dedicated belt sections.
+PASS: 148 escalator models / 57608 native baked quads; four orientations, independent materials, glass layers, normalized UV; 400 moving tread configurations match collision.
+
+> Task :escalatorPerformanceCheck
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 576 exact collision unions; 2304 visible-surface/instance/fallback configurations; vertices 953856 -> 200960.
+{
+  "scope": "Alpha16.2 versus Alpha16.3, native CPU/allocation microbenchmark. Fallback rendering includes frame preparation and native vertex emission to a consuming sink, excluding GPU, atlas lookups, actual draw calls and FPS. Both collision implementations cache repeated requests within each tick. Five alternating samples after warmup. Instanced path uploads shared unit quads once and updates surface transforms; its GPU cost is not measured here.",
+  "render_scenarios": {
+    "1_sections_shared_clock": {
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.554005,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.555927,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.633191,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.623147,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.305977,
+          "allocatedBytes": 6840
+        }
+      ],
+      "alpha16_2": [
+        {
+          "milliseconds": 5.080473,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 5.047845,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 5.601405,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 4.374185,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 3.483585,
+          "allocatedBytes": 13090056
+        }
+      ]
+    },
+    "1_sections_independent_clocks": {
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.320108,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.312546,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.303393,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.330873,
+          "allocatedBytes": 6840
+        },
+        {
+          "milliseconds": 1.357322,
+          "allocatedBytes": 6840
+        }
+      ],
+      "alpha16_2": [
+        {
+          "milliseconds": 3.508392,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 3.471157,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 3.526779,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 3.499939,
+          "allocatedBytes": 13090056
+        },
+        {
+          "milliseconds": 3.496274,
+          "allocatedBytes": 13090056
+        }
+      ]
+    },
+    "12_sections_shared_clock": {
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 15.153809,
+          "allocatedBytes": 16040
+        },
+        {
+          "milliseconds": 15.105486,
+          "allocatedBytes": 16040
+        },
+        {
+          "milliseconds": 14.998388,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 15.03357,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 14.855085,
+          "allocatedBytes": 16000
+        }
+      ],
+      "alpha16_2": [
+        {
+          "milliseconds": 33.443836,
+          "allocatedBytes": 78195464
+        },
+        {
+          "milliseconds": 35.799729,
+          "allocatedBytes": 78195464
+        },
+        {
+          "milliseconds": 33.956276,
+          "allocatedBytes": 78195424
+        },
+        {
+          "milliseconds": 35.933998,
+          "allocatedBytes": 78195424
+        },
+        {
+          "milliseconds": 33.115259,
+          "allocatedBytes": 78195424
+        }
+      ]
+    },
+    "12_sections_independent_clocks": {
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 15.885373,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 15.844702,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 15.456377,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 15.554713,
+          "allocatedBytes": 16000
+        },
+        {
+          "milliseconds": 15.726047,
+          "allocatedBytes": 16000
+        }
+      ],
+      "alpha16_2": [
+        {
+          "milliseconds": 43.814953,
+          "allocatedBytes": 156750304
+        },
+        {
+          "milliseconds": 43.228734,
+          "allocatedBytes": 156750304
+        },
+        {
+          "milliseconds": 44.00127,
+          "allocatedBytes": 156750304
+        },
+        {
+          "milliseconds": 43.454759,
+          "allocatedBytes": 156750304
+        },
+        {
+          "milliseconds": 100.7176,
+          "allocatedBytes": 156750304
+        }
+      ]
+    }
+  },
+  "java": "21.0.2",
+  "render_frames_per_sample": 600,
+  "collision_ticks_per_sample": 20,
+  "alpha16_2_render": [
+    {
+      "milliseconds": 57.856232,
+      "allocatedBytes": 78402944
+    },
+    {
+      "milliseconds": 37.077458,
+      "allocatedBytes": 78195464
+    },
+    {
+      "milliseconds": 35.904815,
+      "allocatedBytes": 78195464
+    },
+    {
+      "milliseconds": 36.37381,
+      "allocatedBytes": 78195464
+    },
+    {
+      "milliseconds": 36.196227,
+      "allocatedBytes": 78195464
+    }
+  ],
+  "alpha16_3_fallback_render": [
+    {
+      "milliseconds": 120.990529,
+      "allocatedBytes": 16040
+    },
+    {
+      "milliseconds": 15.835509,
+      "allocatedBytes": 16040
+    },
+    {
+      "milliseconds": 16.206559,
+      "allocatedBytes": 16040
+    },
+    {
+      "milliseconds": 16.650887,
+      "allocatedBytes": 16040
+    },
+    {
+      "milliseconds": 16.107272,
+      "allocatedBytes": 16040
+    }
+  ],
+  "alpha16_2_collision": [
+    {
+      "milliseconds": 94.431986,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 95.430843,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 97.344089,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 96.354231,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 109.831715,
+      "allocatedBytes": 99626176
+    }
+  ],
+  "alpha16_3_collision": [
+    {
+      "milliseconds": 0.697284,
+      "allocatedBytes": 257904
+    },
+    {
+      "milliseconds": 0.724985,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.726627,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.604907,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.983438,
+      "allocatedBytes": 256544
+    }
+  ]
+}
+PASS: CPU/allocation benchmark completed. Visible surfaces and exact collision retained; this is not a graphical FPS test.
+
+> Task :compileGametestJava
+Note: /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/gametest/java/com/sanctuarygames/createtransit/EscalatorSoundGameTests.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 19s
+12 actionable tasks: 9 executed, 3 up-to-date

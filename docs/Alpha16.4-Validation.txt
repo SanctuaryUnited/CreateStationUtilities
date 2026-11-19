@@ -1,0 +1,22 @@
+Create Transit Alpha16.4 — Incline collision/selection workload and dye refresh
+
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Flywheel 1.0.6 / Java 21.0.2.
+
+PASS: build, compilation, retained transit timing/network checks.
+PASS: all 108 required native Minecraft GameTests in a fresh test world (13.95 s suite).
+PASS: real frame and crouched LED dye clicks on all eight parts, all sixteen dye colors; survival consumption, creative preservation, offhand, pick block, packets and reload.
+PASS: exact-phase collision sharing across glass/solid skins, reverse flags and section identities.
+PASS: 576 original physical collision unions plus 320 additional incline comparisons.
+PASS: 3,840 native selection ray casts, outline positions/counts and repeated cached edges.
+PASS: 2,304 visible-surface/instance/fallback configurations and retained animation geometry.
+PASS: native CLIENT distribution loads inventory mixins and production Flywheel registration; 2,048 received paint/accent combinations pass through production native tint handlers.
+PASS: JAR CRC, unique entries, compiled-main-class byte comparisons, metadata version, test-class exclusion and resource audit.
+PASS: all baseline models, textures, sounds, blockstates, IDs and recipes remain byte-identical. Source mod metadata alone changes among baseline resources.
+
+The exact previous Alpha16.3 incline collision implementation is frozen in clienttest/Alpha163Shapes.java for comparison. The new benchmark has three alternating warmed samples, eight game ticks per sample, four selection ray/outline queries per section per tick, one or twelve sections, shared or independent phases, and north/east facings. The twelve-section selection workload deliberately outlines every section; this is a stress workload, not a measured camera/FPS trace. Shader/GPU rendering, draw calls and real audio output are excluded. Complementary/FPS and on-screen dye appearance still need a graphical game session. The client launch here is the CLIENT datagen distribution without a graphics window.
+
+An earlier full run hit the retained full-size rail-circuit station-binding failure. The final fresh-world run passed all 108 tests, including that unchanged rail test. Rail code/fixtures were not changed. Optional Steam n Rails runtime was excluded; its existing integration remains packaged.
+
+JAR: create-transit-0.5.0-alpha.16-performance.4.jar
+Bytes: 1496556
+SHA256: dc18a85bd1e0ec50d7fa2446f7f8a6f29f6938b0556d170318a7943fca104b80

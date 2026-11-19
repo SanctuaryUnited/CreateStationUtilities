@@ -1,0 +1,114 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "createtransit:lrt_mesh",
+  "render_type": "minecraft:translucent",
+  "ambientocclusion": false,
+  "textures": {
+    "lrt_body": "createtransit:block/lrt_body",
+    "lrt_accent": "createtransit:block/lrt_accent",
+    "lrt_glass": "createtransit:block/lrt_glass",
+    "lrt_floor": "createtransit:block/lrt_floor",
+    "lrt_seat": "createtransit:block/lrt_seat",
+    "lrt_metal": "createtransit:block/lrt_metal",
+    "lrt_seal": "createtransit:block/lrt_seal",
+    "lrt_ceiling": "createtransit:block/lrt_ceiling",
+    "lrt_vent": "createtransit:block/lrt_vent",
+    "lrt_bellows": "createtransit:block/lrt_bellows",
+    "lrt_bellows_dye": "createtransit:block/lrt_bellows_dye",
+    "lrt_led": "createtransit:block/lrt_led",
+    "lrt_glass_tinted": "createtransit:block/lrt_glass_tinted",
+    "lrt_glass_frosted": "createtransit:block/lrt_glass_frosted",
+    "gondola_led": "createtransit:block/gondola_led",
+    "particle": "createtransit:block/lrt_body"
+  },
+  "quads": [
+    {
+      "vertices": [
+        [
+          16,
+          0.65,
+          10.296655813512032
+        ],
+        [
+          0,
+          0.65,
+          10.296655813512032
+        ],
+        [
+          0,
+          15.35,
+          16.38559518039653
+        ],
+        [
+          16,
+          15.35,
+          16.38559518039653
+        ]
+      ],
+      "uv": [
+        [
+          16,
+          15.35
+        ],
+        [
+          0,
+          15.35
+        ],
+        [
+          0,
+          0.6500000000000004
+        ],
+        [
+          16,
+          0.6500000000000004
+        ]
+      ],
+      "texture": "#lrt_glass",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          0.65,
+          10.896655813512032
+        ],
+        [
+          16,
+          0.65,
+          10.896655813512032
+        ],
+        [
+          16,
+          15.35,
+          16.985595180396526
+        ],
+        [
+          0,
+          15.35,
+          16.985595180396526
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          15.35
+        ],
+        [
+          16,
+          15.35
+        ],
+        [
+          16,
+          0.6500000000000004
+        ],
+        [
+          0,
+          0.6500000000000004
+        ]
+      ],
+      "texture": "#lrt_glass",
+      "tint": -1
+    }
+  ]
+}

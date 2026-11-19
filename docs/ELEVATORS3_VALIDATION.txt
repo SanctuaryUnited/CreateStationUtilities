@@ -1,0 +1,62 @@
+Create: Transit Elevators 3.0 / 0.2.0-dev2
+2026-11-04 — final native validation
+Minecraft 1.21.1, NeoForge 21.1.248, Create 6.0.10, full JDK 21
+
+Final task group: build runGameTestServer runInventoryData
+Options: --offline --continue -PwithoutRailways -PinventoryValidation
+Exit code: 0. Fresh generated GameTest world.
+Private headless asset substitution was used; it is not part of this source.
+Optional Railways runtime tests were excluded; its compile API remains.
+
+Selected exact output:
+PASS: 144 cabin setting combinations; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Core only, no Minecraft entity integration.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+> Task :build
+[13:13:53] [Server thread/INFO] [minecraft/GameTestServer]: ========= 152 GAME TESTS COMPLETE IN 17.45 s ======================
+[13:13:53] [Server thread/INFO] [minecraft/GameTestServer]: All 152 required tests passed :)
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 35s
+
+Focused diagnostic re-run after the repair fixes:
+All 5 required tests passed. BUILD SUCCESSFUL.
+
+New native fixtures:
+- all_twenty_cabins_have_registered_entities_and_real_floor_collision
+- model_mounts_spawn_persistence_and_door_colliders_work_in_all_directions
+- moving_controller_nbt_reload_rebinds_the_existing_cabin_uuid
+- broken_model_guide_faults_without_teleport_and_repairs_resume_safely
+- model_trip_moves_riders_opens_only_selected_sides_and_persists_motion
+
+The core test's "Core only" output describes that isolated pure-Java test;
+the five native fixtures above separately test Minecraft integration.
+The final CLIENT run is NeoForge's client data environment, not a rendered
+Minecraft window. Fake server-player actors are not real connected clients.
+
+Resource comparison against recovered alpha.6 source:
+3377 existing resources byte-identical.
+Existing changes: English language JSON, sounds.json, collision mixin list.
+46 removals, all retired LRT recipes. No other resource deletions.
+
+Earlier development iterations failed new recovery checks; fixed before final
+validation. Retained LRT circuit intermittency occurred in earlier full and
+isolated legacy runs; the final fresh-world full run passed it. No claim that
+its underlying intermittency was fixed.
+
+Manual checks remaining: real graphical UI/rendering, shader glass and PBR,
+Sable/Colorwheel/Complementary, connected multiplayer and network latency,
+actual server restart/chunk lifecycle and hardware FPS. See implementation
+report for restrictions, compatibility and migration work.
+
+Final resource packaging audit:
+Regenerated release manifest: 897 reachable models, 1888 source-only models.
+Includes item/elevator_cabin_kit and block/elevator_model_landing.
+Resource-only Gradle build after manifest refresh: BUILD SUCCESSFUL.
+No production Java/geometry changes after the 152-test run.
+Three optimizer whitespace-only edits to existing rail resources restored to
+baseline bytes after verifying their JSON values were identical.

@@ -1,0 +1,46 @@
+Create: Transit — six additional elevator chime presets
+
+All six listed source assets are CC0-1.0.
+https://creativecommons.org/publicdomain/zero/1.0/
+
+These files retain their CC0 dedication independently of the mod license.
+Five use public Freesound HQ previews converted to mono Vorbis; the sixth
+is an original OpenGameArt OGG converted to mono Vorbis. No manufacturer
+endorsement is claimed. Some recordings include doors/background noise.
+
+createtransit:elevator_arrival_ding
+Elevator Ding.wav by lmbubec
+https://freesound.org/people/lmbubec/sounds/119448/
+License: CC0-1.0
+Arrival and doors opening, recorded outside the cabin.
+
+createtransit:elevator_bell
+Elevator Bell by NachtmahrTV
+https://freesound.org/people/NachtmahrTV/sounds/556700/
+License: CC0-1.0
+Elevator bell; recording versus synthesis is not specified by the uploader.
+
+createtransit:elevator_japan_arrival
+ElevatorChime.ThePrisoner(UK).mp3 by gregconquest
+https://freesound.org/people/gregconquest/sounds/188011/
+License: CC0-1.0
+Arrival recorded in Japan. Manufacturer unverified; Mitsubishi is suggested only by a commenter. Uploader compares its sound to a television sound effect, but describes recording an actual elevator.
+
+createtransit:elevator_classic_bell_doors
+elevator bell doors.wav by cognito perceptu
+https://freesound.org/people/cognito%20perceptu/sounds/18768/
+License: CC0-1.0
+Older elevator bell and opening doors, with quiet office background.
+
+createtransit:elevator_fm_bell
+FM Elevator bell by CosmicD
+https://freesound.org/people/CosmicD/sounds/500357/
+License: CC0-1.0
+FM elevator bell, categorized as electronic/design by the uploader.
+
+createtransit:elevator_synth_ding
+Elevator ding by fvcalderan
+https://opengameart.org/content/elevator-ding
+License: CC0-1.0
+Original synthesized bell made in GarageBand, according to the author.
+

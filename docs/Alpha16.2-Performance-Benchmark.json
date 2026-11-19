@@ -1,0 +1,94 @@
+{
+  "scope": "Native CPU/allocation microbenchmark, 12-section two-wide escalator. Rendering includes exact mesh preparation and native vertex emission to a consuming sink; excludes atlas lookups, GPU, draw calls and FPS. Collision is four requests per section per tick; first incline build retained, subsequent identical requests cached. Five samples after warmup; alternating order.",
+  "java": "21.0.2",
+  "render_frames_per_sample": 600,
+  "collision_ticks_per_sample": 20,
+  "legacy_render": [
+    {
+      "milliseconds": 112.209834,
+      "allocatedBytes": 137173240
+    },
+    {
+      "milliseconds": 144.921502,
+      "allocatedBytes": 136937008
+    },
+    {
+      "milliseconds": 115.3377,
+      "allocatedBytes": 136937008
+    },
+    {
+      "milliseconds": 135.206117,
+      "allocatedBytes": 136937008
+    },
+    {
+      "milliseconds": 114.78805,
+      "allocatedBytes": 136937008
+    }
+  ],
+  "optimized_render": [
+    {
+      "milliseconds": 111.668825,
+      "allocatedBytes": 78192016
+    },
+    {
+      "milliseconds": 91.739207,
+      "allocatedBytes": 78192016
+    },
+    {
+      "milliseconds": 85.703554,
+      "allocatedBytes": 78192016
+    },
+    {
+      "milliseconds": 95.361273,
+      "allocatedBytes": 78192016
+    },
+    {
+      "milliseconds": 100.393299,
+      "allocatedBytes": 78192016
+    }
+  ],
+  "legacy_collision": [
+    {
+      "milliseconds": 2600.398311,
+      "allocatedBytes": 1781044896
+    },
+    {
+      "milliseconds": 2449.672029,
+      "allocatedBytes": 1781044896
+    },
+    {
+      "milliseconds": 2587.425491,
+      "allocatedBytes": 1781044896
+    },
+    {
+      "milliseconds": 2684.160419,
+      "allocatedBytes": 1781044896
+    },
+    {
+      "milliseconds": 2727.99534,
+      "allocatedBytes": 1781044896
+    }
+  ],
+  "optimized_collision": [
+    {
+      "milliseconds": 151.757411,
+      "allocatedBytes": 99630208
+    },
+    {
+      "milliseconds": 132.907914,
+      "allocatedBytes": 99626176
+    },
+    {
+      "milliseconds": 121.555229,
+      "allocatedBytes": 99626176
+    },
+    {
+      "milliseconds": 119.502918,
+      "allocatedBytes": 99626176
+    },
+    {
+      "milliseconds": 148.348506,
+      "allocatedBytes": 99626176
+    }
+  ]
+}

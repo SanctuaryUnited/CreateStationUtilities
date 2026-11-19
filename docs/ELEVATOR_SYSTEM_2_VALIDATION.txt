@@ -1,0 +1,58 @@
+Create: Transit Elevator System 2.0 — final validation
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21
+
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+PASS: elevator kit: 67 models / 5976 native baked quads; 32 moving boxes / 768 emitted vertices; all four orientations, dedicated textures, dye channels, glass AO, normalized UV and 24 distinct recipes.
+[14:55:31] [Server thread/INFO] [minecraft/GameTestServer]: All 136 required tests passed :)
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 35s
+
+Release preservation/resource audit:
+{
+  "source_baseline_files": 3750,
+  "source_modified_files": 25,
+  "missing_existing_source_files": [],
+  "modified_existing_files": [
+    "VALIDATION.md",
+    "build.gradle",
+    "src/clienttest/java/com/sanctuarygames/createtransit/ElevatorModelCheck.java",
+    "src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java",
+    "src/gametest/java/com/sanctuarygames/createtransit/ElevatorGameTests.java",
+    "src/gametest/java/com/sanctuarygames/createtransit/InventoryReworkGameTests.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorCabinEntity.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorCallBlock.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorContraption.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorDoorBlock.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorDriveBlock.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorDriveEntity.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorLinking.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorMenu.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorNetwork.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorPartBlock.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorPartEntity.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorRegistry.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/ElevatorSetup.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/client/ElevatorRenderer.java",
+    "src/main/java/com/sanctuarygames/createtransit/elevator/client/ElevatorScreen.java",
+    "src/main/resources/assets/createtransit/blockstates/elevator_guide_rail.json",
+    "src/main/resources/assets/createtransit/lang/en_us.json",
+    "src/main/resources/data/minecraft/tags/block/mineable/pickaxe.json",
+    "tools/release-models.txt"
+  ],
+  "jar_entries": 1735,
+  "compiled_main_classes_verified": 196,
+  "packaged_models": 895,
+  "model_references_verified": 765,
+  "replaced_obsolete_anonymous_menu_helper": [
+    "com/sanctuarygames/createtransit/elevator/ElevatorMenu$1.class"
+  ],
+  "unrelated_main_classes_changed": [],
+  "unrelated_resources_changed": [],
+  "jar_sha256": "79b3ffb207a0d63e9dc61f063cc139c1741e50d01e1d2ce452161761fd2069c1",
+  "jar_bytes": 1747800
+}

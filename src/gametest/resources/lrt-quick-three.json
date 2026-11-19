@@ -1,0 +1,8548 @@
+{
+  "name": "LRT-Quick-1-Three-Cars",
+  "size": [
+    5,
+    6,
+    44
+  ],
+  "cars": [
+    {
+      "offset": 0,
+      "length": 16,
+      "bogeys": [
+        3,
+        12
+      ],
+      "glue": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          5,
+          15
+        ]
+      ]
+    },
+    {
+      "offset": 18,
+      "length": 8,
+      "bogeys": [
+        20,
+        23
+      ],
+      "glue": [
+        [
+          0,
+          0,
+          18
+        ],
+        [
+          4,
+          5,
+          25
+        ]
+      ]
+    },
+    {
+      "offset": 28,
+      "length": 16,
+      "bogeys": [
+        31,
+        40
+      ],
+      "glue": [
+        [
+          0,
+          0,
+          28
+        ],
+        [
+          4,
+          5,
+          43
+        ]
+      ]
+    }
+  ],
+  "cells": [
+    {
+      "pos": [
+        0,
+        0,
+        0
+      ],
+      "kind": "cab_skirt",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        0,
+        1
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        2
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        2
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        3
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        3
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        4
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        4
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        5
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        5
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        6
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        6
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        7
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        7
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        8
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        8
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        9
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        9
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        10
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        10
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        11
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        11
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        12
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        12
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        13
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        13
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        14
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        14
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        15
+      ],
+      "kind": "skirt_access",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        15
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        0
+      ],
+      "kind": "cab_skirt",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        0,
+        1
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        2
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        2
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        3
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        3
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        4
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        4
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        5
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        5
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        6
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        6
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        7
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        7
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        8
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        8
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        9
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        9
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        10
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        10
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        11
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        11
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        12
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        12
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        13
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        13
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        14
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        14
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        15
+      ],
+      "kind": "floor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        15
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        0
+      ],
+      "kind": "cab_skirt",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        0,
+        1
+      ],
+      "kind": "cab_console",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        2
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        2
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        3
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        3
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        4
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        4
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        5
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        5
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        6
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        6
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        7
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        7
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        8
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        8
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        9
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        9
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        10
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        10
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        11
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        11
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        12
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        12
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        13
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        13
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        14
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        14
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        15
+      ],
+      "kind": "articulation_anchor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        15
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        0
+      ],
+      "kind": "cab_skirt",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        0,
+        1
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        2
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        2
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        3
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        3
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        4
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        4
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        5
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        5
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        6
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        6
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        7
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        7
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        8
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        8
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        9
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        9
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        10
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        10
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        11
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        11
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        12
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        12
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        13
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        13
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        14
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        14
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        15
+      ],
+      "kind": "floor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        15
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        0
+      ],
+      "kind": "cab_skirt",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        0,
+        1
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        2
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        2
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        3
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        3
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        4
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        4
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        5
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        5
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        6
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        6
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        7
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        7
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        8
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        8
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        9
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        9
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        10
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        10
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        11
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        11
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        12
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        12
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        13
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        13
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        14
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        14
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        15
+      ],
+      "kind": "skirt_access",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        15
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        1,
+        2
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        2
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        2
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        3
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        3
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        3
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        4
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        4
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        4
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        5
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        5
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        6
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        6
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        7
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        7
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        7
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        8
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        8
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        8
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        9
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        9
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        9
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        10
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        10
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        11
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        11
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        12
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        12
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        12
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        13
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        13
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        13
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        14
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        14
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        14
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        15
+      ],
+      "kind": "corner",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        15
+      ],
+      "kind": "window_corner",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        15
+      ],
+      "kind": "window_corner",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        1
+      ],
+      "kind": "cab_side_lower",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        1
+      ],
+      "kind": "cab_side_windshield_lower",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        1
+      ],
+      "kind": "cab_side_upper",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        6
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        6
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        5
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        5
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        11
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        11
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        10
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        10
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        2
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        2
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        2
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        3
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        3
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        3
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        4
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        4
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        4
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        5
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        5
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        6
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        6
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        7
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        7
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        7
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        8
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        8
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        8
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        9
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        9
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        9
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        10
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        10
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        11
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        11
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        12
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        12
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        12
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        13
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        13
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        13
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        14
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        14
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        14
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        15
+      ],
+      "kind": "corner",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        15
+      ],
+      "kind": "window_corner",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        15
+      ],
+      "kind": "window_corner",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        1
+      ],
+      "kind": "cab_side_lower",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        1
+      ],
+      "kind": "cab_side_windshield_lower",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        1
+      ],
+      "kind": "cab_side_upper",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        5
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        5
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        6
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        6
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        10
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        10
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        11
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        11
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        0
+      ],
+      "kind": "cab_lower",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        0
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        4,
+        0
+      ],
+      "kind": "cab_roof",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        0
+      ],
+      "kind": "cab_upper",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        1,
+        0
+      ],
+      "kind": "cab_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        2,
+        0
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        4,
+        0
+      ],
+      "kind": "cab_roof",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        0
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "north",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        1
+      ],
+      "kind": "display_mount",
+      "facing": "north",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        1,
+        0
+      ],
+      "kind": "cab_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        2,
+        0
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        0
+      ],
+      "kind": "cab_roof",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        3,
+        0
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "north",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        2,
+        3,
+        1
+      ],
+      "kind": "display_mount",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        1,
+        0
+      ],
+      "kind": "cab_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        2,
+        0
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        4,
+        0
+      ],
+      "kind": "cab_roof",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        0
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "north",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        1
+      ],
+      "kind": "display_mount",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        0
+      ],
+      "kind": "cab_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        0
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        4,
+        0
+      ],
+      "kind": "cab_roof",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        0
+      ],
+      "kind": "cab_upper",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        2,
+        1,
+        2
+      ],
+      "kind": "seat",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        1,
+        1
+      ],
+      "kind": "create:controls",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        3
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        4
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        7
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        8
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        12
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        13
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        3
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        4
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        7
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        8
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        12
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        13
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        8
+      ],
+      "kind": "pantograph",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        2
+      ],
+      "kind": "horn",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        5,
+        4
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        4
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        5,
+        4
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        5,
+        11
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        11
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        5,
+        11
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        18
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        18
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        19
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        19
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        20
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        20
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        21
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        21
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        22
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        22
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        23
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        23
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        24
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        24
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        25
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        25
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        18
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        18
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        19
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        19
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        20
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        20
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        21
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        21
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        22
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        22
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        23
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        23
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        24
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        24
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        25
+      ],
+      "kind": "floor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        25
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        18
+      ],
+      "kind": "articulation_anchor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        18
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        19
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        19
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        20
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        20
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        21
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        21
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        22
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        22
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        23
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        23
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        24
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        24
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        25
+      ],
+      "kind": "articulation_anchor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        25
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        18
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        18
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        19
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        19
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        20
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        20
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        21
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        21
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        22
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        22
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        23
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        23
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        24
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        24
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        25
+      ],
+      "kind": "floor",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        25
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        18
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        18
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        19
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        19
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        20
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        20
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        21
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        21
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        22
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        22
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        23
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        23
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        24
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        24
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        25
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        25
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        1,
+        18
+      ],
+      "kind": "corner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        18
+      ],
+      "kind": "window_corner",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        18
+      ],
+      "kind": "window_corner",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        19
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        19
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        19
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        20
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        20
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        20
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        21
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        21
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        22
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        22
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        23
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        23
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        23
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        24
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        24
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        24
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        25
+      ],
+      "kind": "corner",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        25
+      ],
+      "kind": "window_corner",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        25
+      ],
+      "kind": "window_corner",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        22
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        22
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        21
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        21
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        18
+      ],
+      "kind": "corner",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        18
+      ],
+      "kind": "window_corner",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        18
+      ],
+      "kind": "window_corner",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        19
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        19
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        19
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        20
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        20
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        20
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        21
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        21
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        22
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        22
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        23
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        23
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        23
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        24
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        24
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        24
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        25
+      ],
+      "kind": "corner",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        25
+      ],
+      "kind": "window_corner",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        25
+      ],
+      "kind": "window_corner",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        21
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        21
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        22
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        22
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        1,
+        1,
+        19
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        20
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        23
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        24
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        19
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        20
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        23
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        24
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        28
+      ],
+      "kind": "skirt_access",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        28
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        29
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        29
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        30
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        30
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        31
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        31
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        32
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        32
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        33
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        33
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        34
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        34
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        35
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        35
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        36
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        36
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        37
+      ],
+      "kind": "body_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        37
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        38
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        38
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        39
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        39
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        40
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        40
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        41
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        4,
+        41
+      ],
+      "kind": "roof_edge",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        42
+      ],
+      "kind": "bogey_skirt",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        0,
+        43
+      ],
+      "kind": "cab_skirt",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        1,
+        0,
+        28
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        28
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        29
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        29
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        30
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        30
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        31
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        31
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        32
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        32
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        33
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        33
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        34
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        34
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        35
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        35
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        36
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        36
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        37
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        37
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        38
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        38
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        39
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        39
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        40
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        40
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        41
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        4,
+        41
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        42
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        0,
+        43
+      ],
+      "kind": "cab_skirt",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        0,
+        28
+      ],
+      "kind": "articulation_anchor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        28
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        29
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        29
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        30
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        30
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        31
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        31
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        32
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        32
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        33
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        33
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        34
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        34
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        35
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        35
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        36
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        36
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        37
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        37
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        38
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        38
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        39
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        39
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        40
+      ],
+      "kind": "create:small_bogey",
+      "facing": "north",
+      "props": {
+        "axis": "z"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        40
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        41
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        4,
+        41
+      ],
+      "kind": "ceiling_panel",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        42
+      ],
+      "kind": "cab_console",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        0,
+        43
+      ],
+      "kind": "cab_skirt",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        0,
+        28
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        28
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        29
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        29
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        30
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        30
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        31
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        31
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        32
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        32
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        33
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        33
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        34
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        34
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        35
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        35
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        36
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        36
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        37
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        37
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        38
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        38
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        39
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        39
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        40
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        40
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        41
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        4,
+        41
+      ],
+      "kind": "ceiling_double_strip",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        42
+      ],
+      "kind": "floor",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        0,
+        43
+      ],
+      "kind": "cab_skirt",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        0,
+        28
+      ],
+      "kind": "skirt_access",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        28
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        29
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        29
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        30
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        30
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        31
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        31
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        32
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        32
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        33
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        33
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        34
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        34
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        35
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        35
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        36
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        36
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        37
+      ],
+      "kind": "body_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        37
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        38
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        38
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        39
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        39
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        40
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        40
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        41
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        4,
+        41
+      ],
+      "kind": "roof_edge",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        42
+      ],
+      "kind": "bogey_skirt",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        0,
+        43
+      ],
+      "kind": "cab_skirt",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        28
+      ],
+      "kind": "corner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        28
+      ],
+      "kind": "window_corner",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        28
+      ],
+      "kind": "window_corner",
+      "facing": "north",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        29
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        29
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        29
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        30
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        30
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        30
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        31
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        31
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        31
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        32
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        32
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        32
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        33
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        33
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        34
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        34
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        35
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        35
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        35
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        36
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        36
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        36
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        37
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        37
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        37
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        38
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        38
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        39
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "west",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        39
+      ],
+      "kind": "side_display_mount",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        40
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        40
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        40
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        41
+      ],
+      "kind": "led_horizontal",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        0,
+        2,
+        41
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        41
+      ],
+      "kind": "window_panorama",
+      "facing": "west",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        42
+      ],
+      "kind": "cab_side_lower",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        42
+      ],
+      "kind": "cab_side_windshield_lower",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        42
+      ],
+      "kind": "cab_side_upper",
+      "facing": "west",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        34
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        34
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        33
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        33
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        39
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        39
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        38
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        38
+      ],
+      "kind": "door",
+      "facing": "west",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        28
+      ],
+      "kind": "corner",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        28
+      ],
+      "kind": "window_corner",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        28
+      ],
+      "kind": "window_corner",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        29
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        29
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        29
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        30
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        30
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        30
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        31
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        31
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        31
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        32
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        32
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        32
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        33
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        33
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        34
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        34
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        35
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        35
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        35
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        36
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        36
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        36
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        37
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        37
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        37
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        38
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        38
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        39
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "east",
+      "props": {
+        "z_alignment": "negative",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        39
+      ],
+      "kind": "side_display_mount",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        40
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        40
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        40
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        41
+      ],
+      "kind": "led_horizontal",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        4,
+        2,
+        41
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "true",
+        "top": "true",
+        "bottom": "false"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        41
+      ],
+      "kind": "window_panorama",
+      "facing": "east",
+      "props": {
+        "left": "true",
+        "right": "false",
+        "top": "false",
+        "bottom": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        42
+      ],
+      "kind": "cab_side_lower",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        42
+      ],
+      "kind": "cab_side_windshield_lower",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        42
+      ],
+      "kind": "cab_side_upper",
+      "facing": "east",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        33
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        33
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        34
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        34
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        38
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        38
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "0",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        39
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "0",
+        "half": "lower",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        39
+      ],
+      "kind": "door",
+      "facing": "east",
+      "props": {
+        "column": "1",
+        "row": "1",
+        "half": "upper",
+        "tall": "false",
+        "visible": "true",
+        "open": "false",
+        "powered": "false",
+        "hinge": "left"
+      }
+    },
+    {
+      "pos": [
+        0,
+        1,
+        43
+      ],
+      "kind": "cab_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        2,
+        43
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        4,
+        43
+      ],
+      "kind": "cab_roof",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        0,
+        3,
+        43
+      ],
+      "kind": "cab_upper",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        1,
+        1,
+        43
+      ],
+      "kind": "cab_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        2,
+        43
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        4,
+        43
+      ],
+      "kind": "cab_roof",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        43
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "south",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        1,
+        3,
+        42
+      ],
+      "kind": "display_mount",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "false"
+      }
+    },
+    {
+      "pos": [
+        2,
+        1,
+        43
+      ],
+      "kind": "cab_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        2,
+        43
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        4,
+        43
+      ],
+      "kind": "cab_roof",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        3,
+        43
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "south",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        2,
+        3,
+        42
+      ],
+      "kind": "display_mount",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        1,
+        43
+      ],
+      "kind": "cab_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        2,
+        43
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        4,
+        43
+      ],
+      "kind": "cab_roof",
+      "facing": "south",
+      "props": {
+        "left": "true",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        43
+      ],
+      "kind": "createrailwaysnavigator:advanced_display",
+      "facing": "south",
+      "props": {
+        "z_alignment": "positive",
+        "side": "front"
+      }
+    },
+    {
+      "pos": [
+        3,
+        3,
+        42
+      ],
+      "kind": "display_mount",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        1,
+        43
+      ],
+      "kind": "cab_lower",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        2,
+        43
+      ],
+      "kind": "cab_windshield_lower",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        4,
+        43
+      ],
+      "kind": "cab_roof",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        4,
+        3,
+        43
+      ],
+      "kind": "cab_upper",
+      "facing": "south",
+      "props": {
+        "left": "false",
+        "right": "true"
+      }
+    },
+    {
+      "pos": [
+        2,
+        1,
+        41
+      ],
+      "kind": "seat",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        1,
+        42
+      ],
+      "kind": "create:controls",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        31
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        32
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        35
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        36
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        40
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        1,
+        41
+      ],
+      "kind": "seat",
+      "facing": "east",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        31
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        32
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        35
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        36
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        40
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        1,
+        41
+      ],
+      "kind": "seat",
+      "facing": "west",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        36
+      ],
+      "kind": "pantograph",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        41
+      ],
+      "kind": "horn",
+      "facing": "south",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        5,
+        32
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        32
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        5,
+        32
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        1,
+        5,
+        39
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        2,
+        5,
+        39
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    },
+    {
+      "pos": [
+        3,
+        5,
+        39
+      ],
+      "kind": "air_conditioner",
+      "facing": "north",
+      "props": {}
+    }
+  ]
+}

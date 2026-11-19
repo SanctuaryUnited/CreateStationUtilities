@@ -1,0 +1,42 @@
+Create: Transit 0.2.0-dev3 — eight audible chimes plus Off
+2026-11-04
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / JDK 21
+
+Task group: build runGameTestServer runInventoryData
+Options: --offline --continue -PwithoutRailways -PinventoryValidation
+Result: exit 0. Fresh generated test world; optional Railways runtime excluded.
+Private proxy/truststore and headless assets were used, not packaged.
+
+Selected exact output:
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[13:49:15] [Server thread/INFO] [minecraft/GameTestServer]: ========= 153 GAME TESTS COMPLETE IN 19.23 s ======================
+[13:49:15] [Server thread/INFO] [minecraft/GameTestServer]: All 153 required tests passed :)
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 51s
+
+Separate audio/resource check:
+python tools/validate_elevator_chimes.py <dev2.jar>
+PASS: all six CC0 metadata entries match shipped SHA-256 values; all six
+mono 48 kHz Vorbis files decode completely; event resources/subtitles and
+nine translated selector labels exist; original Otis/Schindler OGG bytes
+are identical to dev2.
+
+New native fixture:
+eight_audible_chimes_and_off_preserve_legacy_cues_and_saved_selection
+- Server accepts all nine enum-name selections.
+- Controller NBT restores each selection.
+- Eight audible events are registered and distinct; Off maps to no event.
+- Original two presets retain their registered event identities.
+- Server-side playback entry point accepts each audible preset.
+
+Limits: This does not measure actual sound output or manually interact with
+the graphical settings screen. The headless CLIENT run validates native
+registration/inventory integration. Real client audio/GUI, connected
+multiplayer, shaders and hardware FPS remain manual checks.

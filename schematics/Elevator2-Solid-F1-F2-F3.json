@@ -1,0 +1,43 @@
+{
+  "size": [
+    9,
+    32,
+    10
+  ],
+  "cabin_size": [
+    3,
+    5,
+    3
+  ],
+  "drive": [
+    1,
+    2,
+    3
+  ],
+  "floors": [
+    {
+      "id": "F1",
+      "floor_y": 2,
+      "marker_y": 3,
+      "enabled": true
+    },
+    {
+      "id": "F2",
+      "floor_y": 14,
+      "marker_y": 15,
+      "enabled": true
+    },
+    {
+      "id": "F3",
+      "floor_y": 26,
+      "marker_y": 27,
+      "enabled": true
+    }
+  ],
+  "landing_sides": [
+    "front",
+    "rear",
+    "front"
+  ],
+  "note": "Dedicated guide rail markers. Right-click the drive to assemble/open the controller; passenger panel requests a destination."
+}

@@ -1,0 +1,14 @@
+Create Transit Alpha 15.3 — inside LED trim
+
+JAR: create-transit-0.5.0-alpha.15-escalators.3.jar
+SHA-256: 2e2de63a8394152ce2359b8cf01c95220afa20eca1342733e9acf689acb8b0ba
+
+PASS: 44 static models / 5480 nondegenerate faces.
+PASS: 16 side models each contain a continuous, accent-dyeable inner LED strip.
+PASS: raised inside LED clears every moving tread over 1,000 animation phases.
+PASS: 799 release models and all blockstate references resolve.
+PASS: all 162 compiled classes are byte-identical to Alpha 15.2; no gameplay or collision code changed.
+PASS: packaged resources match the new source; archive integrity, version and eight escalator block IDs checked.
+PASS: actual glass and solid close-up renders visually inspected.
+
+This is an asset-only JAR update, assembled from the tested Alpha 15.2 classes and regenerated resources. Java was not recompiled. The 93 native GameTest passes and 80 moving-geometry checks belong to Alpha 15.2 and were not rerun for this visual patch. No graphical client or Complementary shader playtest.

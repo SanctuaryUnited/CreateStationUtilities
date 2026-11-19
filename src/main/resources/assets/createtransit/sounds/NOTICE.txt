@@ -1,0 +1,15 @@
+# Piano sample provenance
+
+The platform closing chime, fare gate/kiosk chime and wide gondola door cues use two upright piano recordings from **VSCO 2 Community Edition**, by Sam Gossner and Simon Dalzell (sample cutting by Elan Hickler). VSCO 2 CE is released under **CC0 1.0 Universal**.
+
+- Project and license: https://github.com/sgossner/VSCO-2-CE
+- Publisher/license statement: https://versilian-studios.com/vsco-community/
+- Original sample `Keys/Upright Piano/Player_dyn1_rr1_028.wav` (MIDI 77, F5), stored as `tools/audio/piano_f5.wav`.
+- Original sample `Keys/Upright Piano/Player_dyn1_rr1_026.wav` (MIDI 73, C#5), stored as `tools/audio/piano_cs5.wav`.
+- Mapping: https://github.com/sgossner/VSCO-2-CE/blob/master/Keys/Upright%20Piano/MappingChart.txt
+
+The generator raises those samples by two and one semitones respectively to create G5 (783.99 Hz), followed by D5 (587.33 Hz). These are two semitones below the alpha.1 A5/E5 chime. It downmixes to mono, normalizes the two strikes, preserves their piano attacks, and fades their tails into a 1.35-second warning cue.
+
+The fare generator lowers each original sample by one semitone to form a short ascending C5/E5 welcome chime. The two strikes begin at 0 and 0.16 seconds, with faded tails in a 0.65-second mono cue. Both originals remain in `tools/audio` for reproducible generation.
+
+The wide gondola generator uses a single C5 piano strike for opening and descending E5/C5 strikes at 0 and 0.45 seconds for closing. Alpha 7 lengthens the interval between the closing strikes without changing pitch. It layers original, procedurally generated band-limited air noise with valve attack and release envelopes. The mono opening and closing files run for 1.65 and 2.05 seconds, matching 1.6-second opening and 2-second closing travel. No external air recording is used. `tools/generate_gondola_audio.py` regenerates both cues from these same source samples and seeded noise.

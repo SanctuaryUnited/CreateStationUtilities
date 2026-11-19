@@ -1,0 +1,90 @@
+{
+  "ambientocclusion": true,
+  "textures": {
+    "metal": "createtransit:block/elevator_metal",
+    "floor": "createtransit:block/elevator_floor",
+    "rubber": "createtransit:block/elevator_rubber",
+    "glass": "createtransit:block/elevator_glass",
+    "led": "createtransit:block/elevator_led",
+    "panel": "createtransit:block/elevator_panel",
+    "rail": "createtransit:block/elevator_rail",
+    "particle": "createtransit:block/elevator_metal",
+    "wall_metal": "createtransit:block/elevator_wall_metal"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        2,
+        16,
+        2
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#metal",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

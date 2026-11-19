@@ -1,0 +1,72 @@
+package com.sanctuarygames.createtransit.lrt;
+import com.sanctuarygames.createtransit.CreateTransit;
+import com.sanctuarygames.createtransit.block.TransitBlockItem;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.registries.*;
+import java.util.*;
+public final class LrtRegistry {
+ public static final DeferredRegister.Blocks BLOCKS=DeferredRegister.createBlocks(CreateTransit.MOD_ID);
+ public static final DeferredRegister.Items ITEMS=DeferredRegister.createItems(CreateTransit.MOD_ID);
+ public static final DeferredRegister<BlockEntityType<?>> TYPES=DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE,CreateTransit.MOD_ID);
+ private static BlockBehaviour.Properties metal(){return BlockBehaviour.Properties.of().strength(2.5f).sound(SoundType.METAL).noOcclusion();}
+ public static final DeferredBlock<LrtBlock> FLOOR=BLOCKS.registerBlock("lrt_floor",p->new LrtBlock(p,LrtBlock.Kind.FLOOR),metal());
+ public static final DeferredBlock<LrtBlock> WALL=BLOCKS.registerBlock("lrt_wall",p->new LrtBlock(p,LrtBlock.Kind.WALL),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW=BLOCKS.registerBlock("lrt_window",p->new LrtBlock(p,LrtBlock.Kind.WINDOW),metal());
+ public static final DeferredBlock<LrtBlock> CORNER=BLOCKS.registerBlock("lrt_corner",p->new LrtBlock(p,LrtBlock.Kind.CORNER),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_CORNER=BLOCKS.registerBlock("lrt_window_corner",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_CORNER),metal());
+ public static final DeferredBlock<LrtBlock> ROOF=BLOCKS.registerBlock("lrt_roof",p->new LrtBlock(p,LrtBlock.Kind.ROOF),metal().lightLevel(s->7));
+ public static final DeferredBlock<LrtBlock> ROOF_EDGE=BLOCKS.registerBlock("lrt_roof_edge",p->new LrtBlock(p,LrtBlock.Kind.ROOF_EDGE),metal());
+ public static final DeferredBlock<LrtBlock> LED_VERTICAL=BLOCKS.registerBlock("lrt_led_vertical",p->new LrtBlock(p,LrtBlock.Kind.LED_VERTICAL),metal().lightLevel(s->7));
+ public static final DeferredBlock<LrtBlock> LED_HORIZONTAL=BLOCKS.registerBlock("lrt_led_horizontal",p->new LrtBlock(p,LrtBlock.Kind.LED_HORIZONTAL),metal().lightLevel(s->7));
+ public static final DeferredBlock<LrtBlock> CAB_LOWER=BLOCKS.registerBlock("lrt_cab_lower",p->new LrtBlock(p,LrtBlock.Kind.CAB_LOWER),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> CAB_WINDSHIELD_LOWER=BLOCKS.registerBlock("lrt_cab_windshield_lower",p->new LrtBlock(p,LrtBlock.Kind.CAB_WINDSHIELD_LOWER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_WINDSHIELD_UPPER=BLOCKS.registerBlock("lrt_cab_windshield_upper",p->new LrtBlock(p,LrtBlock.Kind.CAB_WINDSHIELD_UPPER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_UPPER=BLOCKS.registerBlock("lrt_cab_upper",p->new LrtBlock(p,LrtBlock.Kind.CAB_UPPER),metal());
+ public static final DeferredBlock<LrtBlock> PANTOGRAPH=BLOCKS.registerBlock("lrt_pantograph",p->new LrtBlock(p,LrtBlock.Kind.PANTOGRAPH),metal());
+ public static final DeferredBlock<LrtBlock> AIR_CONDITIONER=BLOCKS.registerBlock("lrt_air_conditioner",p->new LrtBlock(p,LrtBlock.Kind.AIR_CONDITIONER),metal());
+ public static final DeferredBlock<LrtBlock> DISPLAY_MOUNT=BLOCKS.registerBlock("lrt_display_mount",p->new LrtBlock(p,LrtBlock.Kind.DISPLAY_MOUNT),metal());
+ public static final DeferredBlock<LrtBlock> UNDERBODY_SKIRT=BLOCKS.registerBlock("lrt_underbody_skirt",p->new LrtBlock(p,LrtBlock.Kind.UNDERBODY_SKIRT),metal());
+ public static final DeferredBlock<LrtSeatBlock> SEAT=BLOCKS.registerBlock("lrt_seat",LrtSeatBlock::new,metal());
+ public static final DeferredBlock<LrtDoorBlock> DOOR=BLOCKS.registerBlock("lrt_door",LrtDoorBlock::new,metal().lightLevel(s->6));
+ public static final DeferredBlock<LrtBlock> CAB_FLOOR=BLOCKS.registerBlock("lrt_cab_floor",p->new LrtBlock(p,LrtBlock.Kind.CAB_FLOOR),metal());
+ public static final DeferredBlock<LrtBlock> ROOF_CORNER=BLOCKS.registerBlock("lrt_roof_corner",p->new LrtBlock(p,LrtBlock.Kind.ROOF_CORNER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_ROOF=BLOCKS.registerBlock("lrt_cab_roof",p->new LrtBlock(p,LrtBlock.Kind.CAB_ROOF),metal());
+ public static final DeferredBlock<LrtBlock> CAB_SIDE_LOWER=BLOCKS.registerBlock("lrt_cab_side_lower",p->new LrtBlock(p,LrtBlock.Kind.CAB_SIDE_LOWER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_SIDE_WINDSHIELD_LOWER=BLOCKS.registerBlock("lrt_cab_side_windshield_lower",p->new LrtBlock(p,LrtBlock.Kind.CAB_SIDE_WINDSHIELD_LOWER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_SIDE_WINDSHIELD_UPPER=BLOCKS.registerBlock("lrt_cab_side_windshield_upper",p->new LrtBlock(p,LrtBlock.Kind.CAB_SIDE_WINDSHIELD_UPPER),metal());
+ public static final DeferredBlock<LrtBlock> CAB_SIDE_UPPER=BLOCKS.registerBlock("lrt_cab_side_upper",p->new LrtBlock(p,LrtBlock.Kind.CAB_SIDE_UPPER),metal());
+ public static final DeferredBlock<LrtBlock> SIDE_DISPLAY_MOUNT=BLOCKS.registerBlock("lrt_side_display_mount",p->new LrtBlock(p,LrtBlock.Kind.SIDE_DISPLAY_MOUNT),metal());
+ public static final DeferredBlock<LrtBlock> CAB_CONSOLE=BLOCKS.registerBlock("lrt_cab_console",p->new LrtBlock(p,LrtBlock.Kind.CAB_CONSOLE),metal());
+ public static final DeferredBlock<LrtBlock> ARTICULATION_ANCHOR=BLOCKS.registerBlock("lrt_articulation_anchor",p->new LrtBlock(p,LrtBlock.Kind.ARTICULATION_ANCHOR),metal());
+ public static final DeferredBlock<LrtBlock> HORN=BLOCKS.registerBlock("lrt_horn",p->new LrtBlock(p,LrtBlock.Kind.HORN),metal());
+ public static final DeferredBlock<LrtBlock> CEILING_STRIP=BLOCKS.registerBlock("lrt_ceiling_strip",p->new LrtBlock(p,LrtBlock.Kind.CEILING_STRIP),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> CEILING_DOUBLE_STRIP=BLOCKS.registerBlock("lrt_ceiling_double_strip",p->new LrtBlock(p,LrtBlock.Kind.CEILING_DOUBLE_STRIP),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> CEILING_PANEL=BLOCKS.registerBlock("lrt_ceiling_panel",p->new LrtBlock(p,LrtBlock.Kind.CEILING_PANEL),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> CEILING_BULB=BLOCKS.registerBlock("lrt_ceiling_bulb",p->new LrtBlock(p,LrtBlock.Kind.CEILING_BULB),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> CEILING_RING=BLOCKS.registerBlock("lrt_ceiling_ring",p->new LrtBlock(p,LrtBlock.Kind.CEILING_RING),metal().lightLevel(s->12));
+ public static final DeferredBlock<LrtBlock> WINDOW_PANORAMA=BLOCKS.registerBlock("lrt_window_panorama",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_PANORAMA),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_NARROW=BLOCKS.registerBlock("lrt_window_narrow",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_NARROW),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_DIVIDED=BLOCKS.registerBlock("lrt_window_divided",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_DIVIDED),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_TINTED=BLOCKS.registerBlock("lrt_window_tinted",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_TINTED),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_FROSTED=BLOCKS.registerBlock("lrt_window_frosted",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_FROSTED),metal());
+ public static final DeferredBlock<LrtBlock> WINDOW_ROUNDED_CORNER=BLOCKS.registerBlock("lrt_window_rounded_corner",p->new LrtBlock(p,LrtBlock.Kind.WINDOW_ROUNDED_CORNER),metal());
+ public static final DeferredBlock<LrtBlock> BODY_SKIRT=BLOCKS.registerBlock("lrt_body_skirt",p->new LrtBlock(p,LrtBlock.Kind.BODY_SKIRT),metal());
+ public static final DeferredBlock<LrtBlock> BOGEY_SKIRT=BLOCKS.registerBlock("lrt_bogey_skirt",p->new LrtBlock(p,LrtBlock.Kind.BOGEY_SKIRT),metal());
+ public static final DeferredBlock<LrtBlock> SKIRT_END=BLOCKS.registerBlock("lrt_skirt_end",p->new LrtBlock(p,LrtBlock.Kind.SKIRT_END),metal());
+ public static final DeferredBlock<LrtBlock> SKIRT_ACCESS=BLOCKS.registerBlock("lrt_skirt_access",p->new LrtBlock(p,LrtBlock.Kind.SKIRT_ACCESS),metal());
+ public static final DeferredBlock<LrtBlock> CAB_SKIRT=BLOCKS.registerBlock("lrt_cab_skirt",p->new LrtBlock(p,LrtBlock.Kind.CAB_SKIRT),metal());
+ public static List<DeferredBlock<? extends Block>> parts(){return List.of(FLOOR,CAB_FLOOR,WALL,WINDOW,CORNER,WINDOW_CORNER,ROOF,ROOF_EDGE,ROOF_CORNER,CAB_ROOF,LED_VERTICAL,LED_HORIZONTAL,CAB_LOWER,CAB_WINDSHIELD_LOWER,CAB_WINDSHIELD_UPPER,CAB_UPPER,CAB_SIDE_LOWER,CAB_SIDE_WINDSHIELD_LOWER,CAB_SIDE_WINDSHIELD_UPPER,CAB_SIDE_UPPER,PANTOGRAPH,AIR_CONDITIONER,DISPLAY_MOUNT,SIDE_DISPLAY_MOUNT,UNDERBODY_SKIRT,CAB_CONSOLE,SEAT,DOOR,ARTICULATION_ANCHOR,HORN,CEILING_STRIP,CEILING_DOUBLE_STRIP,CEILING_PANEL,CEILING_BULB,CEILING_RING,WINDOW_PANORAMA,WINDOW_NARROW,WINDOW_DIVIDED,WINDOW_TINTED,WINDOW_FROSTED,WINDOW_ROUNDED_CORNER,BODY_SKIRT,BOGEY_SKIRT,SKIRT_END,SKIRT_ACCESS,CAB_SKIRT);}
+ public static final List<DeferredItem<TransitBlockItem>> PART_ITEMS=parts().stream().map(b->ITEMS.register(b.getId().getPath(),()->new TransitBlockItem(b.get(),new Item.Properties()))).toList();
+ public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<LrtBlockEntity>> PART_ENTITY=TYPES.register("lrt_part",()->BlockEntityType.Builder.of(LrtBlockEntity::new,parts().stream().filter(b->b!=DOOR).map(b->b.get()).toArray(Block[]::new)).build(null));
+ public static final DeferredHolder<BlockEntityType<?>,BlockEntityType<LrtDoorBlockEntity>> DOOR_ENTITY=TYPES.register("lrt_door",()->BlockEntityType.Builder.of(LrtDoorBlockEntity::new,DOOR.get()).build(null));
+ public static ResourceLocation id(String s){return ResourceLocation.fromNamespaceAndPath(CreateTransit.MOD_ID,s);}
+ public static void register(IEventBus bus){BLOCKS.register(bus);ITEMS.register(bus);TYPES.register(bus);bus.addListener(LrtSetup::setup);}
+}

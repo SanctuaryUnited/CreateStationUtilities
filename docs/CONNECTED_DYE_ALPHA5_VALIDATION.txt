@@ -1,0 +1,37 @@
+Compilation/JAR build and native CLIENT registration/data-generation checks passed. All ten connected-dye GameTests passed on both full-suite runs. The full suite passed 145 of 146 required tests on each run; the unchanged `full_size_circuit_assembles_and_roundtrips_two_native_stations` timed out with `No sequences finished`, including a fresh-world retry. That existing train-circuit failure remains unresolved; the full suite is not green.
+
+JAR integrity and source/class agreement passed. Compared with alpha.4, only the two connected-dye implementation classes, the gesture record, English messages and version metadata changed. All other JAR entries, including train code and assets, are identical.
+
+JAR SHA-256: 89fad5a16e686dd8f08b414287096cc52afcdb28374a8050a82b20083d521674
+
+Final client/build output:
+[16:30:46] [main/INFO] [ne.ne.ne.da.lo.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[16:30:58] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[16:30:58] [modloading-worker-0/INFO] [co.si.cr.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[16:31:31] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/dye-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[16:31:31] [main/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/dye-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[16:31:31] [main/INFO] [minecraft/DataGenerator]: Starting provider: Create Transit inventory client validation
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+[16:31:32] [main/INFO] [minecraft/DataGenerator]: Create Transit inventory client validation finished after 239 ms
+[16:31:32] [main/INFO] [minecraft/DataGenerator]: All providers took: 242 ms
+[16:31:32] [main/INFO] [minecraft/HashCache]: Caching: total files: 1, old count: 1, new count: 2, removed stale: 0, written: 0
+
+BUILD SUCCESSFUL in 1m 4s
+15 actionable tasks: 2 executed, 13 up-to-date
+
+GameTest evidence:
+alpha5-validation.log
+[16:23:58] [Server thread/INFO] [minecraft/GameTestServer]: 146 tests are now running at position 86915, -59, 42444!
+[16:24:23] [Server thread/ERROR] [minecraft/LogTestReporter]: full_size_circuit_assembles_and_roundtrips_two_native_stations failed at 87113, -60, 43054! No sequences finished
+[16:24:26] [Server thread/INFO] [minecraft/GameTestServer]: ========= 146 GAME TESTS COMPLETE IN 28.10 s ======================
+[16:24:26] [Server thread/INFO] [minecraft/GameTestServer]: 1 required tests failed :(
+alpha5-final.log
+[16:26:52] [Server thread/INFO] [minecraft/GameTestServer]: 146 tests are now running at position 86915, -59, 42444!
+[16:27:35] [Server thread/ERROR] [minecraft/LogTestReporter]: full_size_circuit_assembles_and_roundtrips_two_native_stations failed at 87113, -60, 43054! No sequences finished
+[16:27:37] [Server thread/INFO] [minecraft/GameTestServer]: ========= 146 GAME TESTS COMPLETE IN 44.82 s ======================
+[16:27:37] [Server thread/INFO] [minecraft/GameTestServer]: 1 required tests failed :(

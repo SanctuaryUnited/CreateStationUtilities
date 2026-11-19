@@ -1,0 +1,3 @@
+PASS: 168 indicator/size/lighting combinations; light-pocket clearance; standard center doors and legacy mechanism migration; persisted styles.
+PASS: dynamic short/long trip peaks and exact alignment.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration requires a Minecraft runtime.

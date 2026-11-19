@@ -1,0 +1,1 @@
+PASS: 96 exact crop/sampling matches, native 16x16 dimensions, hashes, skin removal, atlas references and resource JSON syntax.

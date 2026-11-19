@@ -1,0 +1,17 @@
+Create Transit Alpha15.4 — moving escalator audio
+
+Release JAR: create-transit-0.5.0-alpha.15-escalators.4.jar
+SHA-256: 1f0f584f56fe1b7bdad6bead7f0b6ba07db69d015a23f0f9af1dae5a7b8f12b9
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21.
+
+PASS: Java 21 compilation, Gradle build and the existing timing/network checks.
+PASS: Native client tick/logout listeners register on the game bus; sound-engine reload listener registers on the mod bus. Definition, audio resource and 12-block attenuation range checked.
+PASS: All 98 required native Minecraft GameTests, including five new sound tests: one nearest source for a widened mixed-material belt; redstone stop/resume; independent opposite lanes; hearing range and no forced chunk loading; removal, network splits and stable reversal identity.
+PASS: 44 static models / 21,920 native baked quads in four orientations; 80 moving configurations / 139,776 emitted native vertices; 400 tread configurations; all three escalator/travelator QuickBuilds parsed by Minecraft.
+PASS: 233 complete blockstate/item documents preserve the Alpha15.3 geometry and transforms; all 799 reachable release model references resolve.
+PASS: Original Vorbis audio is mono, 44,100 Hz, exactly 8 seconds / 352,800 decoded samples, 36,858 compressed bytes; finite PCM, no clipping. Decoded RMS 0.1972, peak 0.5953. Loop-seam jump 0.021306 is below 1.5 times the normal 99th-percentile sample delta (0.016535).
+PASS: Release archive integrity, version metadata, 167 compiled main classes, all five new sound classes and the exact generated audio resource. Models, textures and blockstates byte-match Alpha15.3. Test classes and deleted EMU/HSR kits are absent.
+
+Validation scope: Native tests cover sound-source selection, synchronized movement state, registration and resource packaging. No graphical Minecraft client or actual audio-device playback/listening test was performed. The preview is converted from the shipped sound file; in-game gain, spatial attenuation and the Blocks slider affect playback.
+
+Build environment: A build-tool-only NeoForm executable lookup workaround was used because this container does not expose ProcessHandle command metadata. No patched build tool or Minecraft runtime class is shipped in the mod.

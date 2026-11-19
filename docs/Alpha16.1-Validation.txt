@@ -1,0 +1,17 @@
+Create Transit Alpha16.1 — creative inventory rework
+
+Release JAR: create-transit-0.5.0-alpha.16-inventory.1.jar
+SHA-256: 67fb79946e4cc658e04e8b46419e251003d714df998223a71995d06d48912bd9
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21.
+
+PASS: Java 21 compilation, Gradle build and existing reversible travel / closing warning / smoothing / network checks.
+PASS: All 101 required native Minecraft GameTests. New checks cover exactly two registered tabs; all 69 vehicle and 42 station items; white dye defaults; real-only search content; no hidden legacy helper entries; full-width divider/padding rows; complete five-row scroll reachability; empty filtered groups; integration-added item retention; copied grid stacks preserving source contents.
+PASS: Actual NeoForge CLIENT distribution data launch (forgedatadev). All three new creative screen/menu/slot mixins transformed the native classes. Screen/menu interfaces and select-tab, click, divider render, scroll invoker and highlight injection handlers are present in the transformed classes.
+PASS: Native registered catalog exported to inventory-layout.json. Vehicle header rows: 0 and 4; 11 total rows, 69 real items. Station header rows: 0, 2, 4 and 8; 10 total rows, 42 real items. UI header/padding cells are absent from native tab contents and search contents.
+PASS: Software preview rendered from that native export and all 111 shipped item models/textures; preview visually inspected.
+PASS: Alpha15.4 source resource comparison: no model, blockstate, texture, sound, recipe or other gameplay data deletions/changes. Only mods metadata and English labels changed; one inventory mixin configuration added.
+PASS: Release archive CRC integrity; exact version metadata; 175 compiled main classes; all three new client-only mixins packaged and configured; shipped textures, blockstates and audio byte-match source. No test classes, patched build tools or deleted EMU/HSR kit assets in the release.
+
+Validation scope: Client mixin application was verified in NeoForge's native client data environment, without a graphical window. An interactive creative-inventory mouse/keyboard session and full graphical Minecraft playtest were not performed. The preview is an expanded software render; in-game layout uses the normal nine-column, five-row scrolling grid. Optional Steam 'n' Rails was omitted from runtime checks (-PwithoutRailways); the existing optional cable track placement in the Gondola catalog is retained and compiles against its API.
+
+Build environment: A build-tool-only NeoForm executable lookup workaround was used because this container does not expose ProcessHandle command metadata. No patched build tool or Minecraft runtime class is shipped in the mod.

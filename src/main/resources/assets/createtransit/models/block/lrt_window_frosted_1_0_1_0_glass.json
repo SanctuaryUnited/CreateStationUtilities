@@ -1,0 +1,202 @@
+{
+  "parent": "minecraft:block/block",
+  "loader": "createtransit:lrt_mesh",
+  "render_type": "minecraft:translucent",
+  "ambientocclusion": false,
+  "textures": {
+    "lrt_body": "createtransit:block/lrt_body",
+    "lrt_accent": "createtransit:block/lrt_accent",
+    "lrt_glass": "createtransit:block/lrt_glass",
+    "lrt_floor": "createtransit:block/lrt_floor",
+    "lrt_seat": "createtransit:block/lrt_seat",
+    "lrt_metal": "createtransit:block/lrt_metal",
+    "lrt_seal": "createtransit:block/lrt_seal",
+    "lrt_ceiling": "createtransit:block/lrt_ceiling",
+    "lrt_vent": "createtransit:block/lrt_vent",
+    "lrt_bellows": "createtransit:block/lrt_bellows",
+    "lrt_bellows_dye": "createtransit:block/lrt_bellows_dye",
+    "lrt_led": "createtransit:block/lrt_led",
+    "lrt_glass_tinted": "createtransit:block/lrt_glass_tinted",
+    "lrt_glass_frosted": "createtransit:block/lrt_glass_frosted",
+    "gondola_led": "createtransit:block/gondola_led",
+    "particle": "createtransit:block/lrt_body"
+  },
+  "quads": [
+    {
+      "vertices": [
+        [
+          15.35,
+          0.65,
+          0.8
+        ],
+        [
+          0,
+          0.65,
+          0.8
+        ],
+        [
+          0,
+          16,
+          0.8
+        ],
+        [
+          15.35,
+          16,
+          0.8
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "texture": "#lrt_glass_frosted",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          0.65,
+          1.4
+        ],
+        [
+          15.35,
+          0.65,
+          1.4
+        ],
+        [
+          15.35,
+          16,
+          1.4
+        ],
+        [
+          0,
+          16,
+          1.4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "texture": "#lrt_glass_frosted",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          15.35,
+          0.65,
+          1.4
+        ],
+        [
+          15.35,
+          0.65,
+          0.8
+        ],
+        [
+          15.35,
+          16,
+          0.8
+        ],
+        [
+          15.35,
+          16,
+          1.4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "texture": "#lrt_glass_frosted",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          0,
+          0.65,
+          0.8
+        ],
+        [
+          15.35,
+          0.65,
+          0.8
+        ],
+        [
+          15.35,
+          0.65,
+          1.4
+        ],
+        [
+          0,
+          0.65,
+          1.4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          16,
+          16
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "texture": "#lrt_glass_frosted",
+      "tint": -1
+    }
+  ]
+}

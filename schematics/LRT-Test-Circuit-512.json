@@ -1,0 +1,699 @@
+{
+  "size": [
+    512,
+    16,
+    512
+  ],
+  "track_y": 1,
+  "floor_y": 2,
+  "platform_top": 3,
+  "track_centers": {
+    "outer": {
+      "west": 72,
+      "east": 440,
+      "north": 72,
+      "south": 440
+    },
+    "inner": {
+      "west": 84,
+      "east": 428,
+      "north": 84,
+      "south": 428
+    }
+  },
+  "stations": [
+    {
+      "name": "Sanctuary Test A - Outer",
+      "pos": [
+        77,
+        3,
+        217
+      ],
+      "target": [
+        72,
+        1,
+        217
+      ],
+      "positive": true
+    },
+    {
+      "name": "Sanctuary Test A - Inner",
+      "pos": [
+        79,
+        3,
+        294
+      ],
+      "target": [
+        84,
+        1,
+        294
+      ],
+      "positive": false
+    },
+    {
+      "name": "Sanctuary Test B - Inner",
+      "pos": [
+        423,
+        3,
+        217
+      ],
+      "target": [
+        428,
+        1,
+        217
+      ],
+      "positive": true
+    },
+    {
+      "name": "Sanctuary Test B - Outer",
+      "pos": [
+        446,
+        3,
+        294
+      ],
+      "target": [
+        440,
+        1,
+        294
+      ],
+      "positive": false
+    }
+  ],
+  "signals": [
+    {
+      "name": "outer west 180",
+      "pos": [
+        68,
+        4,
+        180
+      ],
+      "target": [
+        72,
+        1,
+        180
+      ],
+      "positive": true
+    },
+    {
+      "name": "outer west 324",
+      "pos": [
+        68,
+        4,
+        324
+      ],
+      "target": [
+        72,
+        1,
+        324
+      ],
+      "positive": true
+    },
+    {
+      "name": "outer east 180",
+      "pos": [
+        444,
+        4,
+        180
+      ],
+      "target": [
+        440,
+        1,
+        180
+      ],
+      "positive": false
+    },
+    {
+      "name": "outer east 324",
+      "pos": [
+        444,
+        4,
+        324
+      ],
+      "target": [
+        440,
+        1,
+        324
+      ],
+      "positive": false
+    },
+    {
+      "name": "outer north 224",
+      "pos": [
+        224,
+        4,
+        68
+      ],
+      "target": [
+        224,
+        1,
+        72
+      ],
+      "positive": false
+    },
+    {
+      "name": "outer north 288",
+      "pos": [
+        288,
+        4,
+        68
+      ],
+      "target": [
+        288,
+        1,
+        72
+      ],
+      "positive": false
+    },
+    {
+      "name": "outer south 224",
+      "pos": [
+        224,
+        4,
+        444
+      ],
+      "target": [
+        224,
+        1,
+        440
+      ],
+      "positive": true
+    },
+    {
+      "name": "outer south 288",
+      "pos": [
+        288,
+        4,
+        444
+      ],
+      "target": [
+        288,
+        1,
+        440
+      ],
+      "positive": true
+    },
+    {
+      "name": "inner west 180",
+      "pos": [
+        88,
+        4,
+        180
+      ],
+      "target": [
+        84,
+        1,
+        180
+      ],
+      "positive": false
+    },
+    {
+      "name": "inner west 324",
+      "pos": [
+        88,
+        4,
+        324
+      ],
+      "target": [
+        84,
+        1,
+        324
+      ],
+      "positive": false
+    },
+    {
+      "name": "inner east 180",
+      "pos": [
+        424,
+        4,
+        180
+      ],
+      "target": [
+        428,
+        1,
+        180
+      ],
+      "positive": true
+    },
+    {
+      "name": "inner east 324",
+      "pos": [
+        424,
+        4,
+        324
+      ],
+      "target": [
+        428,
+        1,
+        324
+      ],
+      "positive": true
+    },
+    {
+      "name": "inner north 224",
+      "pos": [
+        224,
+        4,
+        80
+      ],
+      "target": [
+        224,
+        1,
+        84
+      ],
+      "positive": true
+    },
+    {
+      "name": "inner north 288",
+      "pos": [
+        288,
+        4,
+        80
+      ],
+      "target": [
+        288,
+        1,
+        84
+      ],
+      "positive": true
+    },
+    {
+      "name": "inner south 224",
+      "pos": [
+        224,
+        4,
+        432
+      ],
+      "target": [
+        224,
+        1,
+        428
+      ],
+      "positive": false
+    },
+    {
+      "name": "inner south 288",
+      "pos": [
+        288,
+        4,
+        432
+      ],
+      "target": [
+        288,
+        1,
+        428
+      ],
+      "positive": false
+    }
+  ],
+  "observers": [
+    {
+      "name": "Sanctuary Test A - Outer occupancy",
+      "pos": [
+        76,
+        3,
+        308
+      ],
+      "target": [
+        72,
+        1,
+        244
+      ],
+      "positive": true
+    },
+    {
+      "name": "Sanctuary Test A - Inner occupancy",
+      "pos": [
+        80,
+        3,
+        308
+      ],
+      "target": [
+        84,
+        1,
+        278
+      ],
+      "positive": false
+    },
+    {
+      "name": "Sanctuary Test B - Inner occupancy",
+      "pos": [
+        424,
+        3,
+        308
+      ],
+      "target": [
+        428,
+        1,
+        244
+      ],
+      "positive": true
+    },
+    {
+      "name": "Sanctuary Test B - Outer occupancy",
+      "pos": [
+        444,
+        3,
+        308
+      ],
+      "target": [
+        440,
+        1,
+        278
+      ],
+      "positive": false
+    }
+  ],
+  "curves": [
+    {
+      "loop": "outer",
+      "ends": [
+        [
+          72,
+          1,
+          144
+        ],
+        [
+          144,
+          1,
+          72
+        ]
+      ],
+      "axes": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "starts": [
+        [
+          72.5,
+          1.0,
+          144.0
+        ],
+        [
+          144.0,
+          1.0,
+          72.5
+        ]
+      ],
+      "radius": 71.5
+    },
+    {
+      "loop": "outer",
+      "ends": [
+        [
+          368,
+          1,
+          72
+        ],
+        [
+          440,
+          1,
+          144
+        ]
+      ],
+      "axes": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "starts": [
+        [
+          369.0,
+          1.0,
+          72.5
+        ],
+        [
+          440.5,
+          1.0,
+          144.0
+        ]
+      ],
+      "radius": 71.5
+    },
+    {
+      "loop": "outer",
+      "ends": [
+        [
+          440,
+          1,
+          368
+        ],
+        [
+          368,
+          1,
+          440
+        ]
+      ],
+      "axes": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "starts": [
+        [
+          440.5,
+          1.0,
+          369.0
+        ],
+        [
+          369.0,
+          1.0,
+          440.5
+        ]
+      ],
+      "radius": 71.5
+    },
+    {
+      "loop": "outer",
+      "ends": [
+        [
+          144,
+          1,
+          440
+        ],
+        [
+          72,
+          1,
+          368
+        ]
+      ],
+      "axes": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "starts": [
+        [
+          144.0,
+          1.0,
+          440.5
+        ],
+        [
+          72.5,
+          1.0,
+          369.0
+        ]
+      ],
+      "radius": 71.5
+    },
+    {
+      "loop": "inner",
+      "ends": [
+        [
+          84,
+          1,
+          144
+        ],
+        [
+          144,
+          1,
+          84
+        ]
+      ],
+      "axes": [
+        [
+          0,
+          0,
+          -1
+        ],
+        [
+          -1,
+          0,
+          0
+        ]
+      ],
+      "starts": [
+        [
+          84.5,
+          1.0,
+          144.0
+        ],
+        [
+          144.0,
+          1.0,
+          84.5
+        ]
+      ],
+      "radius": 59.5
+    },
+    {
+      "loop": "inner",
+      "ends": [
+        [
+          368,
+          1,
+          84
+        ],
+        [
+          428,
+          1,
+          144
+        ]
+      ],
+      "axes": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          -1
+        ]
+      ],
+      "starts": [
+        [
+          369.0,
+          1.0,
+          84.5
+        ],
+        [
+          428.5,
+          1.0,
+          144.0
+        ]
+      ],
+      "radius": 59.5
+    },
+    {
+      "loop": "inner",
+      "ends": [
+        [
+          428,
+          1,
+          368
+        ],
+        [
+          368,
+          1,
+          428
+        ]
+      ],
+      "axes": [
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0
+        ]
+      ],
+      "starts": [
+        [
+          428.5,
+          1.0,
+          369.0
+        ],
+        [
+          369.0,
+          1.0,
+          428.5
+        ]
+      ],
+      "radius": 59.5
+    },
+    {
+      "loop": "inner",
+      "ends": [
+        [
+          144,
+          1,
+          428
+        ],
+        [
+          84,
+          1,
+          368
+        ]
+      ],
+      "axes": [
+        [
+          -1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "starts": [
+        [
+          144.0,
+          1.0,
+          428.5
+        ],
+        [
+          84.5,
+          1.0,
+          369.0
+        ]
+      ],
+      "radius": 59.5
+    }
+  ],
+  "train_origin": [
+    70,
+    2,
+    215
+  ],
+  "name": "LRT-Test-Circuit-512",
+  "blocks": 49850,
+  "palette": 164,
+  "glue_groups": 3,
+  "crn": true,
+  "train": true
+}

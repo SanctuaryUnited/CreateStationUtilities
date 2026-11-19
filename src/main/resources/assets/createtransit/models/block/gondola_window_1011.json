@@ -1,0 +1,94 @@
+{
+  "parent": "minecraft:block/block",
+  "render_type": "minecraft:solid",
+  "ambientocclusion": true,
+  "textures": {
+    "gondola_metal": "createtransit:block/gondola_metal",
+    "gondola_accent": "createtransit:block/gondola_accent",
+    "gondola_glass": "createtransit:block/gondola_glass",
+    "gondola_floor": "createtransit:block/gondola_floor",
+    "gondola_ceiling": "createtransit:block/gondola_ceiling",
+    "gondola_fabric": "createtransit:block/gondola_fabric",
+    "gondola_led": "createtransit:block/gondola_led",
+    "led_white": "createtransit:block/led_white",
+    "led_green": "createtransit:block/led_green",
+    "gondola_seal": "createtransit:block/gondola_seal",
+    "particle": "createtransit:block/gondola_metal"
+  },
+  "elements": [
+    {
+      "from": [
+        14.5,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        3
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#gondola_metal",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

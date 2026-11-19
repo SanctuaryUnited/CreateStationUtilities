@@ -1,0 +1,10 @@
+Create Transit 0.2.0-dev8 — removal of quarter-block alignment cap
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21
+
+PASS: 204 style/layout/size configurations; persistence; exact two-block / half-block bounds; sideways-only panel travel.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[20:35:54] [Server thread/INFO] [minecraft/GameTestServer]: All 162 required tests passed :)
+BUILD SUCCESSFUL in 1m 19s
+
+Updated native alignment fixture checks 32 east nudges and 48 north nudges (X=2, Z=-3 blocks) and unclamped NBT reload across all four mount orientations; reset and active locking retained. All 3428 resource files unchanged. GUI scale 4 and production renderer checks were passed in dev7; their implementation is unchanged and those native client checks were not repeated in this patch. No graphical Minecraft or connected multiplayer check. Optional Railways runtime excluded using withoutRailways. Integer overflow is refused without wrapping offsets.

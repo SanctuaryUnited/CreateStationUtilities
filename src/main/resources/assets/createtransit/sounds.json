@@ -1,0 +1,135 @@
+{
+  "door_close_chime": {
+    "subtitle": "subtitles.createtransit.close_chime",
+    "sounds": [
+      {
+        "name": "createtransit:door_close_chime",
+        "volume": 0.8
+      }
+    ]
+  },
+  "fare_gate_chime": {
+    "subtitle": "subtitles.createtransit.fare_chime",
+    "sounds": [
+      {
+        "name": "createtransit:fare_gate_chime",
+        "volume": 0.8
+      }
+    ]
+  },
+  "gondola_door_open": {
+    "subtitle": "subtitles.createtransit.gondola_door_open",
+    "sounds": [
+      {
+        "name": "createtransit:gondola_door_open"
+      }
+    ]
+  },
+  "gondola_door_close": {
+    "subtitle": "subtitles.createtransit.gondola_door_close",
+    "sounds": [
+      {
+        "name": "createtransit:gondola_door_close"
+      }
+    ]
+  },
+  "elevator_solid_open": {
+    "subtitle": "subtitles.createtransit.elevator_solid_open",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_solid_open"
+      }
+    ]
+  },
+  "elevator_glass_open": {
+    "subtitle": "subtitles.createtransit.elevator_glass_open",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_glass_open"
+      }
+    ]
+  },
+  "escalator_running": {
+    "subtitle": "subtitles.createtransit.escalator_running",
+    "sounds": [
+      {
+        "name": "createtransit:escalator_running",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_model_door": {
+    "subtitle": "subtitles.createtransit.elevator_model_door",
+    "sounds": [
+      "createtransit:elevator_model_door"
+    ]
+  },
+  "elevator_model_motor": {
+    "subtitle": "subtitles.createtransit.elevator_model_motor",
+    "sounds": [
+      "createtransit:elevator_model_motor"
+    ]
+  },
+  "elevator_arrival_ding": {
+    "subtitle": "subtitles.createtransit.elevator_arrival_ding",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_arrival_ding",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_bell": {
+    "subtitle": "subtitles.createtransit.elevator_bell",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_bell",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_japan_arrival": {
+    "subtitle": "subtitles.createtransit.elevator_japan_arrival",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_japan_arrival",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_classic_bell_doors": {
+    "subtitle": "subtitles.createtransit.elevator_classic_bell_doors",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_classic_bell_doors",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_fm_bell": {
+    "subtitle": "subtitles.createtransit.elevator_fm_bell",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_fm_bell",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "elevator_synth_ding": {
+    "subtitle": "subtitles.createtransit.elevator_synth_ding",
+    "sounds": [
+      {
+        "name": "createtransit:elevator_synth_ding",
+        "attenuation_distance": 12
+      }
+    ]
+  },
+  "station_radio": {
+    "sounds": [
+      {
+        "name": "createtransit:station_radio_stream",
+        "stream": true
+      }
+    ]
+  }
+}

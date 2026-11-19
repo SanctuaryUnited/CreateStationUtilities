@@ -1,0 +1,1 @@
+PASS: 96 skin/model/size/mechanism/speed combinations, 672 poses, 51 migrations; 320 ceiling combinations/on-off, finite geometry, slab envelopes, clear passages and arrival pulses.

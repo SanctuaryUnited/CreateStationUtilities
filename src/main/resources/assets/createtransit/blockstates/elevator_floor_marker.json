@@ -1,0 +1,1 @@
+{"variants":{"facing=north":{"model":"createtransit:block/elevator_floor_marker","y":0,"uvlock":true},"facing=east":{"model":"createtransit:block/elevator_floor_marker","y":90,"uvlock":true},"facing=south":{"model":"createtransit:block/elevator_floor_marker","y":180,"uvlock":true},"facing=west":{"model":"createtransit:block/elevator_floor_marker","y":270,"uvlock":true}}}

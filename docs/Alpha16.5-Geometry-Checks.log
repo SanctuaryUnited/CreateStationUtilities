@@ -1,0 +1,410 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :extractCreateLibraries
+
+> Task :compileJava
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/elevator/client/ElevatorClient.java:11: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/elevator/client/ElevatorClient.java:11: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/lrt/client/LrtClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/lrt/client/LrtClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/client/TransitClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/client/TransitClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorSounds.java:46: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+    @EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                      ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorSounds.java:46: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+    @EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                              ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                               ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/main/java/com/sanctuarygames/createtransit/escalator/client/EscalatorClient.java:10: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+                                                                     ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+10 warnings
+
+> Task :processResources
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+> Task :test
+
+> Task :transitCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+> Task :build
+
+> Task :compileGametestJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :compileClienttestJava
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                  ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/InventoryClientValidation.java:26: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+                                                                          ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorSoundCheck.java:22: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+        check(EscalatorSounds.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.GAME,
+                                                                           ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorSoundCheck.java:22: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+        check(EscalatorSounds.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.GAME,
+                                                                                                       ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorSoundCheck.java:24: warning: [removal] bus() in EventBusSubscriber has been deprecated and marked for removal
+        check(EscalatorSounds.SoundReload.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.MOD,
+                                                                                       ^
+/workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/src/clienttest/java/com/sanctuarygames/createtransit/EscalatorSoundCheck.java:24: warning: [removal] Bus in EventBusSubscriber has been deprecated and marked for removal
+        check(EscalatorSounds.SoundReload.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.MOD,
+                                                                                                                   ^
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+6 warnings
+
+> Task :processClienttestResources
+> Task :clienttestClasses
+
+> Task :escalatorModelCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 80 moving configurations match preview geometry / 29440 native vertices in four orientations.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Glass: 12 dedicated belt sections.
+PASS: Minecraft parsed Escalator-QuickBuild-2-Wide-Solid: 12 dedicated belt sections.
+PASS: Minecraft parsed Travelator-QuickBuild-3-Wide: 30 dedicated belt sections.
+PASS: 58 escalator models / 21544 native baked quads; four orientations, independent materials, glass layers, normalized UV; 400 moving tread configurations match collision.
+
+> Task :escalatorPerformanceCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 576 exact collision unions; 2304 visible-surface/instance/fallback configurations; vertices 953856 -> 200960.
+{
+  "scope": "Alpha16.2 versus Alpha16.3, native CPU/allocation microbenchmark. Fallback rendering includes frame preparation and native vertex emission to a consuming sink, excluding GPU, atlas lookups, actual draw calls and FPS. Both collision implementations cache repeated requests within each tick. Five alternating samples after warmup. Instanced path uploads shared unit quads once and updates surface transforms; its GPU cost is not measured here.",
+  "render_scenarios": {
+    "1_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 5.001736,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.623853,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.529403,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.62219,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.839312,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.366126,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.376881,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.329532,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.532442,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.347008,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "1_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 3.619296,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.569422,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.533359,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.573779,
+          "allocatedBytes": 13087752
+        },
+        {
+          "milliseconds": 3.484846,
+          "allocatedBytes": 13087752
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 1.313037,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.318455,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.321119,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.326306,
+          "allocatedBytes": 4536
+        },
+        {
+          "milliseconds": 1.30886,
+          "allocatedBytes": 4536
+        }
+      ]
+    },
+    "12_sections_shared_clock": {
+      "alpha16_2": [
+        {
+          "milliseconds": 35.345257,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 35.351901,
+          "allocatedBytes": 78193160
+        },
+        {
+          "milliseconds": 50.232059,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 42.8276,
+          "allocatedBytes": 78193120
+        },
+        {
+          "milliseconds": 44.673112,
+          "allocatedBytes": 78193120
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 15.47212,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 15.861207,
+          "allocatedBytes": 13736
+        },
+        {
+          "milliseconds": 18.081849,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 18.06821,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 16.758067,
+          "allocatedBytes": 13696
+        }
+      ]
+    },
+    "12_sections_independent_clocks": {
+      "alpha16_2": [
+        {
+          "milliseconds": 48.171613,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 49.025801,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 47.874584,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 50.074586,
+          "allocatedBytes": 156748000
+        },
+        {
+          "milliseconds": 46.101895,
+          "allocatedBytes": 156748000
+        }
+      ],
+      "alpha16_3_fallback": [
+        {
+          "milliseconds": 16.951284,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 16.359456,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.570211,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 17.636719,
+          "allocatedBytes": 13696
+        },
+        {
+          "milliseconds": 19.37663,
+          "allocatedBytes": 13696
+        }
+      ]
+    }
+  },
+  "java": "21.0.2",
+  "render_frames_per_sample": 600,
+  "collision_ticks_per_sample": 20,
+  "alpha16_2_render": [
+    {
+      "milliseconds": 50.959067,
+      "allocatedBytes": 78400640
+    },
+    {
+      "milliseconds": 36.774936,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 35.250235,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 35.669837,
+      "allocatedBytes": 78193160
+    },
+    {
+      "milliseconds": 35.063548,
+      "allocatedBytes": 78193160
+    }
+  ],
+  "alpha16_3_fallback_render": [
+    {
+      "milliseconds": 17.221564,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 16.504491,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 15.638027,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 15.677144,
+      "allocatedBytes": 13736
+    },
+    {
+      "milliseconds": 15.88278,
+      "allocatedBytes": 13736
+    }
+  ],
+  "alpha16_2_collision": [
+    {
+      "milliseconds": 115.423698,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 88.610412,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 87.993787,
+      "allocatedBytes": 99631296
+    },
+    {
+      "milliseconds": 88.86543,
+      "allocatedBytes": 99628832
+    },
+    {
+      "milliseconds": 85.784202,
+      "allocatedBytes": 99626176
+    }
+  ],
+  "alpha16_3_collision": [
+    {
+      "milliseconds": 0.745225,
+      "allocatedBytes": 257904
+    },
+    {
+      "milliseconds": 0.732186,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.696353,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.58691,
+      "allocatedBytes": 256544
+    },
+    {
+      "milliseconds": 0.60019,
+      "allocatedBytes": 256544
+    }
+  ]
+}
+PASS: CPU/allocation benchmark completed. Visible surfaces and exact collision retained; this is not a graphical FPS test.
+
+> Task :escalatorInclineCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: 320 additional exact incline volumes and 3840 native selection ray casts.
+Completed incline benchmark: 1 sections north independent=false
+Completed incline benchmark: 1 sections east independent=false
+Completed incline benchmark: 12 sections north independent=false
+Completed incline benchmark: 12 sections north independent=true
+Completed incline benchmark: 12 sections east independent=false
+Completed incline benchmark: 12 sections east independent=true
+PASS: incline collision and look-at CPU/allocation benchmark written to /workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/escalator-performance/incline-benchmark.json
+
+> Task :escalatorSoundCheck
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=40423 -Dhttp.proxyHost=127.0.0.1 -Dhttp.proxyPort=40423
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+PASS: Native client tick/logout and mod sound-reload event registration; sound definition/resource and 12-block range.
+
+[Incubating] Problems report is available at: file:///workspace/scratch/52ce15fa3a0d/escalator-smart-project/create-transit/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 19s
+15 actionable tasks: 14 executed, 1 up-to-date

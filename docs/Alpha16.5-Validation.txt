@@ -1,0 +1,30 @@
+Create Transit Alpha16.5 — smart escalators and landing joint repair
+
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Flywheel 1.0.6 / Java 21.0.2.
+
+PASS: build and main/clienttest/gametest compilation; retained transit timing/network checks.
+PASS: all 116 required native Minecraft GameTests in a fresh test world (12.25 s).
+PASS: automatic shape and widening in all four facings, glass/solid skins and regular/powered modes.
+PASS: native BlockItem one-stack placement from bottom to top and top to bottom, including survival consumption, both dye channels and pick block.
+PASS: side-face placement inherits the lane's facing/reverse flags despite the player's different orientation.
+PASS: extending, removing, widening and reversing retain block entities, dyes and exact phase.
+PASS: signal anywhere on the powered network starts it; removing the signal freezes it; regular/powered neighbours remain independent.
+PASS: a real rider stands still without power, rides onto a smart incline, stops on its supported tread, resumes from a signal at the far landing and reaches the upper floor.
+PASS: all twelve old/new parts accept frame and crouched accent dyes; packet/reload/pick persistence retained.
+PASS: Alpha16.4 collision cache classes are byte-identical in the final JAR.
+PASS: 576 original collision unions, 320 additional exact incline volumes, 3,840 selection ray casts and cached outline edges.
+PASS: 2,304 visible-surface/instance/fallback configurations; 80 native/reference moving frames; 58 static models baked in four orientations.
+PASS: twelve actual generated handrail boundary sets match exactly; 512 smart visual states choose a single casing/pane per exposed side.
+PASS: native CLIENT datagen installs inventory mixins and the production Flywheel registration; all 3,072 frame/LED tint combinations use the native handlers.
+PASS: live inventory exposes 69 vehicle items and 40 station items. The escalator section has four smart styles and two travelators.
+PASS: JAR CRC/unique entries, compiled-main-class comparisons, metadata version, reachable resources, no test classes, and 1,276 unrelated kit asset entries preserved exactly.
+
+The single-car LRT journey fixture timed out twice in the shared default batch and passed in both subsequent fresh-world suites after receiving its own batch. Batch isolation is the supported fix for this environment; the specific interference was not traced. Only the test annotation changed; no LRT production code or assets changed. Early placement tests were also corrected to clear the strip template's stone from intended placement cells before exercising survival BlockItem placement. No assertions were removed or weakened to mask a production failure.
+
+Client verification uses NeoForge's CLIENT datagen distribution without a graphics window. The preview renders actual JSON geometry in software. Hardware FPS, Complementary shader appearance, in-game screenshots and audio output were not measured. The confirmed Alpha16.4 FPS implementation is retained exactly. Optional Steam n Rails runtime was omitted from the validation launch; its existing optional integration remains packaged.
+
+Private build-only recovery supplied Java/Gradle, used the official Maven Central copies of LWJGL natives, and replaced NeoForm's unavailable managed-process command lookup with java.home/bin/java. These environment workarounds are absent from the mod JAR and source distribution.
+
+JAR: create-transit-0.5.0-alpha.16-escalators.5.jar
+Bytes: 1520202
+SHA256: 33b9b4c5f39b2caa7cc5cd4b5cb801d5e533e3c985cc466c11cbf13e7f4c0e76

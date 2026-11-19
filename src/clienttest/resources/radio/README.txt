@@ -1,0 +1,1 @@
+Generated 440 Hz stereo sine fixtures, one and twelve seconds long. Authored for decoder/buffering validation; dedicated to CC0. Test resources are excluded from the production JAR. No radio station, music, or manufacturer recording is bundled.

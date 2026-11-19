@@ -1,0 +1,18 @@
+{
+  "source_models": 3523,
+  "original_reachable_models": 1191,
+  "release_models": 1191,
+  "excluded_models": 2332,
+  "exact_duplicate_block_models": 0,
+  "model_json_bytes_before": 19891274,
+  "model_json_bytes_release": 10826978,
+  "model_json_bytes_saved": 9064296,
+  "blocks_kept": 179,
+  "all_reference_geometry_preserved": true,
+  "partial_models_kept": [
+    "cable_segment",
+    "cable_empty",
+    "cable_grip_partial"
+  ],
+  "note": "Resource reduction is verified; full client startup seconds require measurement on the same modpack."
+}

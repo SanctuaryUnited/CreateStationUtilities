@@ -1,0 +1,36 @@
+package com.sanctuarygames.createtransit.elevator.model;
+import com.sanctuarygames.createtransit.elevator.*;
+import net.minecraft.core.*;import net.minecraft.core.component.DataComponents;import net.minecraft.nbt.CompoundTag;import net.minecraft.network.chat.Component;import net.minecraft.world.*;import net.minecraft.world.item.*;import net.minecraft.world.item.component.CustomData;import net.minecraft.world.item.context.UseOnContext;import net.minecraft.world.level.block.Block;
+/** Rail-first refresher; legacy free-placement preview remains available for old builds. */
+public final class ModelCabinItem extends Item {
+ public static BlockPos compactMount(BlockPos original,Direction facing){return original.relative(facing.getClockWise(),2);}
+ public ModelCabinItem(Properties p){super(p);}
+ public static CompoundTag plan(ItemStack stack){return stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getCompound("TransitCabinPlan");}
+ private static void plan(ItemStack stack,CompoundTag plan){var tag=stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag();if(plan.isEmpty())tag.remove("TransitCabinPlan");else tag.put("TransitCabinPlan",plan);stack.set(DataComponents.CUSTOM_DATA,CustomData.of(tag));}
+ @Override public InteractionResult useOn(UseOnContext c){var l=c.getLevel();var p=c.getPlayer();if(p==null)return InteractionResult.PASS;if(l.isClientSide)return InteractionResult.SUCCESS;
+  var stack=c.getItemInHand();var pending=plan(stack);var pos=c.getClickedPos();ElevatorDriveEntity drive=null;
+  if(l.getBlockEntity(pos) instanceof ElevatorDriveEntity d)drive=d;else if(l.getBlockState(pos).getBlock() instanceof ElevatorGuideRailBlock)drive=ElevatorGuideRailBlock.drive(l,pos);
+  if(l.getBlockState(pos).getBlock() instanceof ElevatorGuideRailBlock&&drive==null){
+   if(!p.mayBuild())return InteractionResult.FAIL;
+   var rail=l.getBlockState(pos);var bottom=pos;while(bottom.getY()>l.getMinBuildHeight()&&ElevatorGuideRailBlock.compatible(rail,l.getBlockState(bottom.below())))bottom=bottom.below();
+   var mount=bottom.below();if(!l.hasChunkAt(mount)||!l.getBlockState(mount).canBeReplaced()||!l.mayInteract(p,mount)){p.displayClientMessage(Component.literal("Clear one block directly below the guide rail column for the driver."),false);return InteractionResult.FAIL;}
+   var old=l.getBlockState(mount);l.setBlock(mount,ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorDriveBlock.COMPACT,true).setValue(ElevatorPartBlock.FACING,rail.getValue(ElevatorPartBlock.FACING)),Block.UPDATE_ALL);
+   if(l.getBlockEntity(mount) instanceof ElevatorDriveEntity d){d.configureModel("compact","true");d.configureModel("railMount","true");d.rescan();int chosen=d.floorList().stream().filter(f->f.enabled()).min(java.util.Comparator.comparingInt(f->Math.abs(f.y()-(c.getClickedPos().getY()-1)))).map(ElevatorFloor::y).orElse(mount.getY());if(d.model().activateAt(chosen)){d.setChanged();plan(stack,new CompoundTag());p.displayClientMessage(Component.literal("Default cabin created. Place landing doors manually; click the cabin to select floors, or use this tool on the rail to customize."),false);return InteractionResult.SUCCESS;}p.displayClientMessage(Component.literal(d.model().warning()),false);}
+   l.setBlock(mount,old,Block.UPDATE_ALL);return InteractionResult.FAIL;
+  }
+  if(drive!=null){plan(stack,new CompoundTag());if(drive.model()==null)drive.configureModel("size","3");if(!drive.model().active()&&drive.model().config().compact()){drive.rescan();if(!drive.model().activate())p.displayClientMessage(Component.literal(drive.model().warning()),false);}drive.openPanel(p);return InteractionResult.SUCCESS;}
+  boolean valid=pending.contains("Position")&&l.dimension().location().toString().equals(pending.getString("Dimension"));
+  if(valid&&p.isShiftKeyDown()){pending.putInt("Facing",Direction.from2DDataValue(pending.getInt("Facing")).getClockWise().get2DDataValue());plan(stack,pending);p.displayClientMessage(Component.literal("Cabin preview rotated. Right-click the same placement spot to confirm."),false);return InteractionResult.SUCCESS;}
+  pos=pos.relative(c.getClickedFace());
+  if(!p.mayBuild()||!l.mayInteract(p,pos)||!l.getBlockState(pos).canBeReplaced()){p.displayClientMessage(Component.literal("Cannot place the elevator controller here. Choose a clear block beside the shaft."),false);return InteractionResult.FAIL;}
+  if(!valid||pending.getLong("Position")!=pos.asLong()){
+   pending=new CompoundTag();pending.putLong("Position",pos.asLong());pending.putString("Dimension",l.dimension().location().toString());pending.putInt("Facing",p.getDirection().get2DDataValue());plan(stack,pending);
+   p.displayClientMessage(Component.literal("Cabin preview ready. Crouch-right-click to rotate; right-click this spot again to place. The highlighted opening is the entrance."),false);return InteractionResult.SUCCESS;
+  }
+  var facing=Direction.from2DDataValue(pending.getInt("Facing"));pos=compactMount(pos,facing);
+  for(int row=0;row<=1;row++){var cell=pos.above(row);if(!l.hasChunkAt(cell)||!l.getBlockState(cell).canBeReplaced()||!l.mayInteract(p,cell)){p.displayClientMessage(Component.literal("The blue controller and home marker positions must be clear."),false);return InteractionResult.FAIL;}}
+  var state=ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,Direction.from2DDataValue(pending.getInt("Facing")));
+  l.setBlock(pos,state,Block.UPDATE_ALL);if(!(l.getBlockEntity(pos) instanceof ElevatorDriveEntity d))return InteractionResult.FAIL;
+  d.configureModel("size","3");d.configureModel("compactMount","true");d.configureModel("kit3","true");l.setBlock(pos.above(),ElevatorRegistry.FLOOR_MARKER_RAIL.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing),Block.UPDATE_ALL);d.rescan();plan(stack,new CompoundTag());if(!p.isCreative())stack.shrink(1);d.openPanel(p);return InteractionResult.SUCCESS;
+ }
+}

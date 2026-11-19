@@ -1,0 +1,21 @@
+Create Transit 0.2.0-dev9 — native action-based linking
+Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10 / Java 21
+
+PASS: 204 style/layout/size configurations; persistence; exact two-block / half-block bounds; sideways-only panel travel.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[21:06:18] [Server thread/INFO] [minecraft/GameTestServer]: All 164 required tests passed :)
+PASS: Wave 1 CLIENT production emitter: 4608 configurations / 9179136 vertices; ten native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.
+PASS: GUI scale 4: 72 native widget placements reachable at 1920x1080, 1280x960 and 2560x1440 through the production scrolling layout; no graphics window.
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: Dedicated model cabin entity renderer, landing renderer registration and gondola-only catalog checks.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 1m 47s
+
+New native event-bus fixtures verify empty-hand Sneak+Attack selection with cancellation and marker survival; Use linking from any landing member; idempotent button links; manual link clearing without block removal; held-item pass-through; and remote reach refusal.
+Installed NeoForge 21.1.248 source/patches verified for LeftClickBlock START/CLIENT_HOLD cancellation and continued server action packets even when client prediction is canceled. No custom key registration or hardcoded physical keyboard/mouse input.
+3427 existing resource files unchanged, with only English linking hints updated. No graphical remapped-keyboard/mouse or live connected multiplayer test. Optional Railways runtime excluded using withoutRailways; native client uses the existing private headless asset index.

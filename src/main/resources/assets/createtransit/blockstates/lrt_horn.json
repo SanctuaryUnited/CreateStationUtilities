@@ -1,0 +1,1 @@
+{"multipart":[{"when":{"facing":"north"},"apply":{"model":"createtransit:block/lrt_horn"}},{"when":{"facing":"east"},"apply":{"model":"createtransit:block/lrt_horn","y":90}},{"when":{"facing":"south"},"apply":{"model":"createtransit:block/lrt_horn","y":180}},{"when":{"facing":"west"},"apply":{"model":"createtransit:block/lrt_horn","y":270}}]}

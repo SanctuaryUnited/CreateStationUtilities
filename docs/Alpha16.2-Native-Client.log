@@ -1,0 +1,30 @@
+[08Oct2026 04:05:21.275] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatadev, --assetIndex, headless, --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --gameDir, ., --fml.fmlVersion, 4.0.43, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.248, --fml.neoFormVersion, 20240808.144430, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/resources]
+[08Oct2026 04:05:21.278] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[08Oct2026 04:05:21.279] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.2 by Eclipse Adoptium; OS Linux arch amd64 version 6.18.44
+[08Oct2026 04:05:21.402] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatadev
+[08Oct2026 04:05:21.446] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/workspace/scratch/52ce15fa3a0d/inventory-toolchain/gradle-user/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23126!/ Service=ModLauncher Env=CLIENT
+[08Oct2026 04:05:21.762] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 5 dependencies adding them to mods collection
+[08Oct2026 04:05:21.764] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Create 6.0.10 (create)
+		Create Transit 0.5.0-alpha.16-performance.2 (createtransit)
+		Flywheel 1.0.6 (flywheel)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.248 (neoforge)
+		Ponder 1.0.82+mc1.21.1 (ponder)
+[08Oct2026 04:05:22.464] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[08Oct2026 04:05:22.477] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatadev' with arguments [--gameDir, ., --assetsDir, /workspace/scratch/52ce15fa3a0d/inventory-toolchain/headless-assets, --assetIndex, headless, --mod, createtransit, --all, --output, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/inventory-validation, --existing, /workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/src/main/resources]
+[08Oct2026 04:05:22.551] [main/WARN] [mixin/]: Reference map 'ponder.refmap.json' for ponder-common.mixins.json could not be read. If this is a development environment you can ignore this message
+[08Oct2026 04:05:23.127] [main/WARN] [mixin/]: Error loading class: org/jetbrains/annotations/ApiStatus$ScheduledForRemoval (java.lang.ClassNotFoundException: org.jetbrains.annotations.ApiStatus$ScheduledForRemoval)
+[08Oct2026 04:05:23.242] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.3).
+[08Oct2026 04:05:23.297] [main/INFO] [net.neoforged.neoforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [createtransit]
+[08Oct2026 04:05:28.798] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.248, for MC 1.21.1
+[08Oct2026 04:05:28.874] [modloading-worker-0/INFO] [com.simibubi.create.Create/]: Create 6.0.10 initializing! Commit hash: ac0c444d9828da3453ae8cc65338e8de063286fb
+[08Oct2026 04:05:50.891] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/assets/.mcassetsroot' uses unexpected schema
+[08Oct2026 04:05:50.892] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/workspace/scratch/52ce15fa3a0d/inventory-project/create-transit/build/moddev/artifacts/neoforge-21.1.248.jar%23177!/data/.mcassetsroot' uses unexpected schema
+[08Oct2026 04:05:51.070] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Create Transit inventory client validation
+[08Oct2026 04:05:51.145] [main/INFO] [net.minecraft.data.DataGenerator/]: Create Transit inventory client validation finished after 73 ms
+[08Oct2026 04:05:51.145] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 75 ms
+[08Oct2026 04:05:51.149] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 2, old count: 1, new count: 2, removed stale: 1, written: 0

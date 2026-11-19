@@ -1,0 +1,14 @@
+{
+  "release": "create-transit-0.5.0-alpha.16-inventory.1.jar",
+  "bytes": 1471625,
+  "sha256": "67fb79946e4cc658e04e8b46419e251003d714df998223a71995d06d48912bd9",
+  "compiled_main_classes": 175,
+  "client_mixin_classes": [
+    "CreativeInventoryScreenMixin",
+    "CreativeInventorySlotMixin",
+    "CreativeMenuScrollAccess"
+  ],
+  "resource_integrity": true,
+  "no_test_classes": true,
+  "no_emu_hsr": true
+}

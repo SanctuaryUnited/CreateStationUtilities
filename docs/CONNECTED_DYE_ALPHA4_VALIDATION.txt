@@ -1,0 +1,12 @@
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+[16:01:31] [Server thread/INFO] [minecraft/GameTestServer]: All 144 required tests passed :)
+PASS: Native CLIENT elevator menu-screen factory and installed Create schedule/brass texture resources.
+PASS: Native NeoForge tab sorting places Station Utilities immediately after Vehicle Kits.
+PASS: CLIENT distribution linked the production Flywheel visualizer registration and six dedicated partial model locations. No graphical renderer/FPS test.
+PASS: 3072 received frame/LED dye combinations through native client tint registration.
+PASS: 3072 flat-icon item dye combinations, including untinted detail layers.
+PASS: Actual NeoForge CLIENT launch applied all creative screen, menu-scroll and slot-highlight mixins. Exported the live registered inventory layout.
+BUILD SUCCESSFUL in 2m 31s
+
+JAR SHA-256: 8a5e5e3cea73613de3887149a85c0f5bd04cfa131c5e81ad8988a858264f8e68
+Unrelated existing packaged files: byte-identical to alpha.3

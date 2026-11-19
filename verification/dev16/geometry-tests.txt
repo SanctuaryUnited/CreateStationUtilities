@@ -1,0 +1,1 @@
+PASS: 224 cabin configurations, five door animation poses, 80 style/dye combinations, independent ceiling memory, 16 brightness levels, handrail and skin migration; 2905872 assertions.

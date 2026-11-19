@@ -1,0 +1,12 @@
+import com.sanctuarygames.createtransit.elevator.model.*;import static com.sanctuarygames.createtransit.elevator.model.CabinConfiguration.*;import java.nio.file.*;import java.util.*;
+/** Reproducible mesh exports from shipped geometry, including true animation poses. */
+public final class ExportV14Assets {
+ static String quote(String s){return "\""+s.replace("\\","\\\\").replace("\"","\\\"")+"\"";}
+ static void faces(StringBuilder s,List<CabinGeometry.Face> faces){s.append('[');boolean first=true;for(var f:faces){if(!first)s.append(',');first=false;s.append('[').append(f.material().ordinal());for(var p:List.of(f.a(),f.b(),f.c(),f.d()))s.append(',').append(p.x()).append(',').append(p.y()).append(',').append(p.z());s.append(']');}s.append(']');}
+ static void write(Path root,String key,CabinConfiguration c)throws Exception{
+  var s=new StringBuilder("{\"key\":").append(quote(key)).append(",\"settings\":{");boolean first=true;var p=c.save();for(var k:new TreeSet<>(p.stringPropertyNames())){if(!first)s.append(',');first=false;s.append(quote(k)).append(':').append(quote(p.getProperty(k)));}s.append("},\"materials\":[");for(int i=0;i<CabinGeometry.Material.values().length;i++){if(i>0)s.append(',');s.append(quote(CabinGeometry.Material.values()[i].name()));}s.append("],\"body\":");faces(s,CabinGeometry.body(c));s.append(",\"doors\":");faces(s,CabinGeometry.doors(c,0,0));s.append(",\"opening\":");faces(s,CabinGeometry.doors(c,.5,.5));s.append(",\"open\":");faces(s,CabinGeometry.doors(c,1,1));s.append(",\"landingClosed\":");faces(s,CabinGeometry.landing(c,0));s.append(",\"landingOpening\":");faces(s,CabinGeometry.landing(c,.5));s.append(",\"landingOpen\":");faces(s,CabinGeometry.landing(c,1));s.append('}');Files.writeString(root.resolve(key+".json"),s);
+ }
+ public static void main(String[] args)throws Exception{Path root=Path.of(args[0]);Files.createDirectories(root);int count=0;for(var skin:Skin.values())for(var variant:new Variant[]{Variant.SOLID,Variant.REAR_PANORAMIC,Variant.SCENIC,Variant.CYLINDRICAL})for(var door:DOOR_MODELS)for(int n=2;n<=5;n++){
+  var p=CabinConfiguration.defaults(n,variant).save();p.setProperty("skin",skin.name());p.setProperty("doorStyle",door.name());p.setProperty("compact","true");p.setProperty("wood","minecraft:spruce_planks");p.setProperty("ledColor",skin==Skin.WOOD_TRIM?"1":"9");write(root,n+"_"+variant+"_"+skin+"_"+door,CabinConfiguration.load(p));count++;
+ }System.out.println("Exported "+count+" production cabin meshes, each with three cabin-door and landing-door poses.");}
+}

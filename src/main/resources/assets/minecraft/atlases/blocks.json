@@ -1,0 +1,935 @@
+{
+  "sources": [
+    {"type":"minecraft:single","resource":"createtransit:block/elevator3/call_brushed_metal","sprite":"createtransit:block/elevator3/call_brushed_metal"},
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/classic_brushed_leaf",
+      "sprite": "createtransit:block/elevator3/classic_brushed_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_accent",
+      "sprite": "createtransit:block/led_accent"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_white",
+      "sprite": "createtransit:block/led_white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_green",
+      "sprite": "createtransit:block/led_green"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_amber",
+      "sprite": "createtransit:block/led_amber"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_off",
+      "sprite": "createtransit:block/led_off"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/frame",
+      "sprite": "createtransit:block/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/accent",
+      "sprite": "createtransit:block/accent"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/glass",
+      "sprite": "createtransit:block/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/led_red",
+      "sprite": "createtransit:block/led_red"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/station_dark",
+      "sprite": "createtransit:block/station_dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/fare_arrow",
+      "sprite": "createtransit:block/fare_arrow"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/fare_stop",
+      "sprite": "createtransit:block/fare_stop"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/kiosk_screen",
+      "sprite": "createtransit:block/kiosk_screen"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/kiosk_sign",
+      "sprite": "createtransit:block/kiosk_sign"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/kiosk_reader",
+      "sprite": "createtransit:block/kiosk_reader"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/ticket_paper",
+      "sprite": "createtransit:block/ticket_paper"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_metal",
+      "sprite": "createtransit:block/gondola_metal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_accent",
+      "sprite": "createtransit:block/gondola_accent"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_glass",
+      "sprite": "createtransit:block/gondola_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_floor",
+      "sprite": "createtransit:block/gondola_floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_ceiling",
+      "sprite": "createtransit:block/gondola_ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_fabric",
+      "sprite": "createtransit:block/gondola_fabric"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_led",
+      "sprite": "createtransit:block/gondola_led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/gondola_seal",
+      "sprite": "createtransit:block/gondola_seal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/cable_steel",
+      "sprite": "createtransit:block/cable_steel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/cable_grip_metal",
+      "sprite": "createtransit:block/cable_grip_metal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/cable_grip_rubber",
+      "sprite": "createtransit:block/cable_grip_rubber"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_body",
+      "sprite": "createtransit:block/lrt_body"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_accent",
+      "sprite": "createtransit:block/lrt_accent"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_glass",
+      "sprite": "createtransit:block/lrt_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_floor",
+      "sprite": "createtransit:block/lrt_floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_seat",
+      "sprite": "createtransit:block/lrt_seat"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_metal",
+      "sprite": "createtransit:block/lrt_metal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_seal",
+      "sprite": "createtransit:block/lrt_seal"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_ceiling",
+      "sprite": "createtransit:block/lrt_ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_vent",
+      "sprite": "createtransit:block/lrt_vent"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_bellows",
+      "sprite": "createtransit:block/lrt_bellows"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_bellows_dye",
+      "sprite": "createtransit:block/lrt_bellows_dye"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_led",
+      "sprite": "createtransit:block/lrt_led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_glass_tinted",
+      "sprite": "createtransit:block/lrt_glass_tinted"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/lrt_glass_frosted",
+      "sprite": "createtransit:block/lrt_glass_frosted"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_pressed",
+      "sprite": "createtransit:block/elevator3/touch/down_pressed"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_error",
+      "sprite": "createtransit:block/elevator3/touch/down_error"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_down_called",
+      "sprite": "createtransit:block/elevator3/touch/both_down_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_idle",
+      "sprite": "createtransit:block/elevator3/touch/both_idle"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_down_called",
+      "sprite": "createtransit:block/elevator3/touch/up_down_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_idle",
+      "sprite": "createtransit:block/elevator3/touch/up_idle"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_error",
+      "sprite": "createtransit:block/elevator3/touch/up_error"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_pressed",
+      "sprite": "createtransit:block/elevator3/touch/up_pressed"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_disabled",
+      "sprite": "createtransit:block/elevator3/touch/down_disabled"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_both_called",
+      "sprite": "createtransit:block/elevator3/touch/down_both_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_both_called",
+      "sprite": "createtransit:block/elevator3/touch/both_both_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_down_called",
+      "sprite": "createtransit:block/elevator3/touch/down_down_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_idle",
+      "sprite": "createtransit:block/elevator3/touch/down_idle"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_error",
+      "sprite": "createtransit:block/elevator3/touch/both_error"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_pressed",
+      "sprite": "createtransit:block/elevator3/touch/both_pressed"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_up_called",
+      "sprite": "createtransit:block/elevator3/touch/down_up_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_up_called",
+      "sprite": "createtransit:block/elevator3/touch/up_up_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_up_called",
+      "sprite": "createtransit:block/elevator3/touch/both_up_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_disabled",
+      "sprite": "createtransit:block/elevator3/touch/both_disabled"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_hover",
+      "sprite": "createtransit:block/elevator3/touch/up_hover"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/both_hover",
+      "sprite": "createtransit:block/elevator3/touch/both_hover"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_both_called",
+      "sprite": "createtransit:block/elevator3/touch/up_both_called"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/up_disabled",
+      "sprite": "createtransit:block/elevator3/touch/up_disabled"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/touch/down_hover",
+      "sprite": "createtransit:block/elevator3/touch/down_hover"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/base_trim",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/ceiling",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/dark",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/edge",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/floor",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/frame",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/glass",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/led",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/panel",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/silver",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/trim",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/white",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/base_trim",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/ceiling",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/dark",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/edge",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/floor",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/frame",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/glass",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/led",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/panel",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/silver",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/trim",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/white",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/base_trim",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/ceiling",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/dark",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/edge",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/floor",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/frame",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/glass",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/led",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/panel",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/silver",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/trim",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/white",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/base_trim",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/ceiling",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/dark",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/edge",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/floor",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/frame",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/glass",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/led",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/panel",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/silver",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/trim",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/white",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/base_trim",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/ceiling",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/dark",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/edge",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/floor",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/frame",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/glass",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/led",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/panel",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/silver",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/trim",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/white",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/base_trim",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/ceiling",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/dark",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/edge",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/floor",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/frame",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/glass",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/led",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/panel",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/silver",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/trim",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/white",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/base_trim",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/ceiling",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/dark",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/edge",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/floor",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/frame",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/glass",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/led",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/panel",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/silver",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/trim",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/white",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/base_trim",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/base_trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/ceiling",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/ceiling"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/dark",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/dark"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/edge",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/edge"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/floor",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/floor"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/frame",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/frame"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/glass",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/led",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/led"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/panel",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/panel"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/silver",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/silver"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/trim",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/trim"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/white",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/white"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/shell",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/door_leaf",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/modern_dark/door_glass",
+      "sprite": "createtransit:block/elevator3/off/modern_dark/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/shell",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/door_leaf",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/off/brushed_steel/door_glass",
+      "sprite": "createtransit:block/elevator3/off/brushed_steel/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/shell",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/door_leaf",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/modern_dark/door_glass",
+      "sprite": "createtransit:block/elevator3/low/modern_dark/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/shell",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/door_leaf",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/low/brushed_steel/door_glass",
+      "sprite": "createtransit:block/elevator3/low/brushed_steel/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/shell",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/door_leaf",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/modern_dark/door_glass",
+      "sprite": "createtransit:block/elevator3/medium/modern_dark/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/shell",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/door_leaf",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/medium/brushed_steel/door_glass",
+      "sprite": "createtransit:block/elevator3/medium/brushed_steel/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/shell",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/door_leaf",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/modern_dark/door_glass",
+      "sprite": "createtransit:block/elevator3/high/modern_dark/door_glass"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/shell",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/shell"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/door_leaf",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/door_leaf"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "createtransit:block/elevator3/high/brushed_steel/door_glass",
+      "sprite": "createtransit:block/elevator3/high/brushed_steel/door_glass"
+    }
+  ]
+}

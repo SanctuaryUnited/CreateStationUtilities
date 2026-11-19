@@ -1,0 +1,44 @@
+package com.sanctuarygames.createtransit.radio.client;
+import java.util.*;import java.util.concurrent.*;import com.sanctuarygames.createtransit.CreateTransit;import com.sanctuarygames.createtransit.elevator.model.ModelCabinEntity;import com.sanctuarygames.createtransit.radio.*;import com.sanctuarygames.createtransit.registry.ModSounds;import net.minecraft.client.Minecraft;import net.minecraft.client.resources.sounds.*;import net.minecraft.client.sounds.*;import net.minecraft.nbt.*;import net.minecraft.sounds.SoundSource;import net.minecraft.util.RandomSource;import net.minecraft.network.chat.Component;import net.neoforged.api.distmarker.Dist;import net.neoforged.bus.api.SubscribeEvent;import net.neoforged.fml.common.EventBusSubscriber;import net.neoforged.neoforge.client.event.ClientTickEvent;import net.neoforged.neoforge.network.PacketDistributor;
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,value=Dist.CLIENT)
+public final class RadioClient {
+ private static final Map<String,RadioSound> active=new HashMap<>();private static final Map<String,Long> retry=new HashMap<>();private static CompoundTag sources=new CompoundTag();private static Object lastLevel;private static int ticks;private static long lastChat;private static volatile String status="Silent — no configured station";
+ public static void sync(){var mc=Minecraft.getInstance();mc.execute(()->{for(var sound:active.values())sound.end();active.clear();retry.clear();publishAcoustics();ticks=ticks/10*10+9;if(mc.getConnection()!=null)PacketDistributor.sendToServer(new RadioNetwork.Query());status=com.sanctuarygames.createtransit.client.StationClientSettings.get().streamerMode?"Streamer Mode — radio muted":"Resynchronizing nearby radio…";});}
+ public static void receive(CompoundTag tag){sources=tag;}
+ public static String status(){return status;}
+ public static boolean isRadioSound(SoundInstance sound){return sound instanceof RadioSound s&&!s.isStopped();}
+ @SubscribeEvent public static void tick(ClientTickEvent.Post event){var mc=Minecraft.getInstance();if(mc.level!=lastLevel){for(var s:active.values())s.end();active.clear();SharedRadioStreams.clear();retry.clear();sources=new CompoundTag();lastLevel=mc.level;publishAcoustics();status="Silent — no configured station";}
+  if(mc.level==null||mc.player==null)return;if(++ticks%40==0)PacketDistributor.sendToServer(new RadioNetwork.Query());
+  publishAcoustics();if(ticks%10!=0)return;SharedRadioStreams.sweep();
+  var selected=new LinkedHashMap<String,CompoundTag>();var warming=new ArrayList<CompoundTag>();var list=sources.getList("Sources",10);
+  if(list.isEmpty())status="Silent — no active emitters";
+  if(!com.sanctuarygames.createtransit.client.StationClientSettings.get().streamerMode&&com.sanctuarygames.createtransit.client.StationClientSettings.get().radioVolume>0&&mc.options.getSoundSourceVolume(SoundSource.BLOCKS)>0)for(int i=0;i<Math.min(32,list.size());i++){
+   var t=list.getCompound(i);boolean inside=t.getString("Mode").equals("INSIDE")&&mc.level.getEntity(t.getInt("Entity")) instanceof ModelCabinEntity c&&inside(c,mc.player.position());var previous=active.get(t.getString("Id"));inside=inside||t.getString("Mode").equals("INSIDE")&&previous!=null&&!previous.isStopped()&&previous.outsideTicks<=10;boolean audible=(inside||t.getBoolean("Audible")&&(!t.getString("Mode").equals("INSIDE")||mc.level.getEntity(t.getInt("Entity"))==null))&&(inside||mc.player.distanceToSqr(t.getDouble("X"),t.getDouble("Y"),t.getDouble("Z"))<=Math.pow(RadioAcoustics.range(t),2));
+   if(audible){if(selected.size()<SharedRadioStreams.LIMIT)selected.put(t.getString("Id"),t);}else warming.add(t);
+  }
+  for(int i=0;i<Math.min(warming.size(),SharedRadioStreams.LIMIT-selected.size());i++)SharedRadioStreams.warm(warming.get(i).getString("Url"));
+  var iterator=active.entrySet().iterator();while(iterator.hasNext()){var entry=iterator.next();var t=selected.get(entry.getKey());var sound=entry.getValue();
+   boolean changed=t!=null&&(!sound.url.equals(t.getString("Url"))||sound.radius!=RadioSettings.clampRadius(RadioAcoustics.range(t))||sound.reverb!=t.getBoolean("Reverb")||sound.integrated!=RadioAcoustics.available());
+   if(t==null||changed||sound.isStopped()){sound.end();if(sound.failed)retry.put(entry.getKey(),System.currentTimeMillis()+10000);iterator.remove();}
+  }
+  retry.entrySet().removeIf(e->e.getValue()<System.currentTimeMillis());
+  for(var entry:selected.entrySet()){var sound=active.get(entry.getKey());if(sound==null&&!retry.containsKey(entry.getKey())){sound=new RadioSound(entry.getValue());active.put(entry.getKey(),sound);publishAcoustics();mc.getSoundManager().play(sound);}if(sound!=null)sound.update(entry.getValue());}
+  publishAcoustics();
+ }
+ private static boolean inside(ModelCabinEntity c,net.minecraft.world.phys.Vec3 p){return c.hasInside(p)||c.hasInside(p.add(0,.65,0))||c.hasInside(p.add(0,-.65,0));}
+ private static void publishAcoustics(){RadioAcoustics.publish(active.values().stream().filter(s->s.integrated&&!s.isStopped()).map(s->new RadioAcoustics.Profile(s.getX(),s.getY(),s.getZ(),s.dry,s.wet,s.wetLevel,s.falloff,s.muffling,s.reverb)).toList());}
+ public static Sound withRange(Sound sound,int radius){return new Sound(sound.getLocation(),sound.getVolume(),sound.getPitch(),sound.getWeight(),sound.getType(),true,false,RadioSettings.clampRadius(radius));}
+ private static final class RadioSound extends AbstractTickableSoundInstance {
+  final String url;final String id;volatile AudioStream stream;private int entity,radius,dry,wet;private double wetLevel,falloff,muffling;private volatile double bassDb;private float baseVolume;private boolean reverb,integrated;private String mode;private volatile boolean failed,canceled;private int age,outsideTicks;private volatile double boost=1;
+  RadioSound(CompoundTag t){super(ModSounds.STATION_RADIO.get(),SoundSource.BLOCKS,RandomSource.create());url=t.getString("Url");id=t.getString("Id");looping=false;relative=false;update(t);status="Connecting…";}
+  void update(CompoundTag t){double requested=t.getDouble("Volume")*com.sanctuarygames.createtransit.client.StationClientSettings.get().radioVolume;baseVolume=(float)Math.min(1,requested);volume=baseVolume;boost=Math.max(1,requested);radius=RadioSettings.clampRadius(RadioAcoustics.range(t));dry=t.getInt("Radius");wet=t.getInt("ReverbRadius");wetLevel=t.getDouble("ReverbLevel");bassDb=RadioSettings.readAcoustic(t,"BassDb",0,0,6);falloff=RadioSettings.readAcoustic(t,"Falloff",1,.5,2);muffling=RadioSettings.readAcoustic(t,"Muffling",1,0,2);reverb=t.getBoolean("Reverb");integrated=RadioAcoustics.available();attenuation=integrated?Attenuation.LINEAR:Attenuation.NONE;entity=t.getInt("Entity");mode=t.getString("Mode");x=t.getDouble("X");y=t.getDouble("Y");z=t.getDouble("Z");followCabin();updateVolume();}
+  private void updateVolume(){var listener=Minecraft.getInstance().getCameraEntity();volume=integrated||listener==null?baseVolume:baseVolume*RadioAcoustics.fade(listener.getEyePosition().distanceTo(new net.minecraft.world.phys.Vec3(x,y,z)),dry,falloff);}
+  @Override public boolean canStartSilent(){return true;}
+  private void followCabin(){var level=Minecraft.getInstance().level;if(level!=null&&entity>=0&&level.getEntity(entity) instanceof ModelCabinEntity c){var pos=c.world(c.configuration().size()/2.0,2,c.configuration().size()/2.0);x=pos.x;y=pos.y;z=pos.z;}}
+  public void tick(){var mc=Minecraft.getInstance();if(com.sanctuarygames.createtransit.client.StationClientSettings.get().streamerMode){end();return;}if(mc.level==null||mc.player==null||failed||++age>(stream==null?800:100)&&!mc.getSoundManager().isActive(this)){end();return;}if(entity>=0){var e=mc.level.getEntity(entity);if(e instanceof ModelCabinEntity c){followCabin();if(inside(c,mc.player.position()))outsideTicks=0;if(mode.equals("INSIDE")&&!inside(c,mc.player.position())&&++outsideTicks>10){end();return;}}else if(mode.equals("INSIDE")&&++outsideTicks>10){end();return;}}updateVolume();if(!mode.equals("INSIDE")&&mc.player.distanceToSqr(x,y,z)>(radius+4.0)*(radius+4.0))end();}
+  @Override public WeighedSoundEvents resolve(SoundManager manager){var resolved=super.resolve(manager);if(sound!=null)sound=withRange(sound,radius);return resolved;}
+  @Override public CompletableFuture<AudioStream> getStream(SoundBufferLibrary buffers,Sound sound,boolean looping){status="Connecting / buffering…";return SharedRadioStreams.open(url).<AudioStream>thenApply(raw->{var s=new RadioGainStream(raw,()->boost,()->bassDb);stream=s;if(canceled)try{s.close();}catch(java.io.IOException ignored){}else status="Playing";return s;}).whenComplete((s,error)->{if(error!=null&&!canceled){failed=true;status="Radio connection failed";}});}
+
+  void end(){canceled=true;stop();Minecraft.getInstance().getSoundManager().stop(this);var s=stream;if(s!=null)try{s.close();}catch(java.io.IOException ignored){}}
+ }
+}

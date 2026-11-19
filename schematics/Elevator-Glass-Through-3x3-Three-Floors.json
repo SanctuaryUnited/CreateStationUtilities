@@ -1,0 +1,30 @@
+{
+  "size": [
+    9,
+    32,
+    10
+  ],
+  "cabin_size": [
+    3,
+    5,
+    3
+  ],
+  "floors": [
+    2,
+    14,
+    26
+  ],
+  "blocks": 281,
+  "cabin_blocks": 42,
+  "drive": [
+    1,
+    2,
+    3
+  ],
+  "landing_sides": [
+    "front",
+    "rear",
+    "front"
+  ],
+  "note": "Own drive; no Create pulley or rotational power. Right click drive then select a floor."
+}

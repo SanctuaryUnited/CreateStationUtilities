@@ -1,0 +1,15 @@
+package com.sanctuarygames.createtransit.elevator.model;
+import com.sanctuarygames.createtransit.elevator.*;import net.minecraft.world.item.*;import net.minecraft.world.item.context.UseOnContext;import net.minecraft.world.InteractionResult;
+public final class ModelLandingItem extends Item{
+ public ModelLandingItem(Properties p){super(p);}
+ /** Clicking any bottom frame cell finds the complete entrance, without a corner-placement puzzle. */
+ public static net.minecraft.core.BlockPos snap(net.minecraft.world.level.Level l,net.minecraft.core.BlockPos clicked,net.minecraft.core.Direction facing){
+  net.minecraft.core.BlockPos found=null;double best=1.001;boolean tie=false;
+  for(var drive:ElevatorNetwork.controllers(l))if(drive.model()!=null){drive.ensureFloors();int size=drive.model().config().size();for(var floor:drive.floorList())if(floor.marker().getY()==clicked.getY())for(boolean rear:java.util.List.of(false,true)){
+   if(rear&&!drive.model().config().rearEnabled())continue;var base=drive.model().landingPosition(floor.y(),rear);if(!drive.model().matchesLanding(base,facing,size))continue;
+   double dist=Double.MAX_VALUE;for(int x=0;x<size;x++)dist=Math.min(dist,ModelLandingBlock.part(base,facing,x,0).distSqr(clicked));
+   if(dist<best-.0001){best=dist;found=base;tie=false;}else if(Math.abs(dist-best)<.0001&&found!=null&&!found.equals(base))tie=true;
+  }}return found!=null&&!tie?found:clicked;
+ }
+ @Override public InteractionResult useOn(UseOnContext c){var l=c.getLevel();var player=c.getPlayer();if(player==null||!player.mayBuild())return InteractionResult.FAIL;var base=snap(l,c.getClickedPos().relative(c.getClickedFace()),player.getDirection());var d=ElevatorNetwork.nearest(l,base);ElevatorDriveEntityMatch: {com.sanctuarygames.createtransit.elevator.ElevatorDriveEntity match=null;for(var candidate:ElevatorNetwork.controllers(l))if(candidate.model()!=null&&candidate.model().matchesLanding(base,player.getDirection(),candidate.model().config().size())){if(match!=null){match=null;break ElevatorDriveEntityMatch;}match=candidate;}if(match!=null)d=match;}int size=d==null||d.model()==null?3:d.model().config().size();boolean kit3=size>=3;var facing=player.getDirection();if(!ModelLandingBlock.available(l,base,size,facing,kit3))return InteractionResult.FAIL;for(int x=0;x<size;x++)for(int y=0;y<(kit3?3:2);y++){var cell=ModelLandingBlock.part(base,facing,x,y);if(!l.mayInteract(player,cell)||!l.getBlockState(cell).canBeReplaced())return InteractionResult.FAIL;}if(!l.isClientSide){ModelLandingBlock.install(l,base,size,facing,false,0,3,kit3);if(l.getBlockEntity(base) instanceof ModelLandingEntity door){boolean linked=door.autoLink();player.displayClientMessage(net.minecraft.network.chat.Component.literal(linked?"Elevator landing connected automatically.":"Landing placed. Align it with a cabin entrance and floor marker; it will connect automatically. Use the wrench for manual linking."),false);}if(!player.isCreative())c.getItemInHand().shrink(1);}return InteractionResult.sidedSuccess(l.isClientSide);}
+}

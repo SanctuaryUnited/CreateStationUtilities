@@ -1,0 +1,281 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+version = '0.2.0-dev18.4'
+group = 'com.sanctuarygames.createtransit'
+base { archivesName = 'create-station-utilities' }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+neoForge {
+    version = '21.1.248'
+    runs {
+        client { client() }
+        server { server(); programArgument '--nogui' }
+    }
+    mods { createtransit { sourceSet sourceSets.main } }
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+// Keep the packaged metadata aligned with the release filename.
+tasks.named('processResources') {
+    inputs.property('modVersion', project.version.toString())
+    inputs.property('modDescription', 'Modern station equipment, dedicated vehicle kits and independent modular elevators with glass and solid cabins, dyeable LEDs, animated doors and floor controls.')
+    filesMatching('META-INF/neoforge.mods.toml') {
+        filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [modVersion: project.version.toString()])
+    }
+}
+// Generated model names can change between patches. Never package obsolete
+// resources retained in an incremental output directory.
+tasks.named('jar') {
+    exclude { details ->
+        if (details.isDirectory()) return false
+        def path = details.path
+        (path.startsWith('assets/createtransit/') || path.startsWith('data/createtransit/')) &&
+            !file('src/main/resources/' + path).isFile()
+    }
+}
+tasks.register('transitCheck', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.TransitCheck'
+}
+tasks.named('check') { dependsOn 'transitCheck' }
+tasks.named('test') { failOnNoDiscoveredTests = false }
+
+sourceSets {
+    gametest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+    clienttest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+tasks.register('lrtModelCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.LrtModelCheck'
+    args file('src/main/resources/assets/createtransit/models').absolutePath, file('schematics').absolutePath
+}
+tasks.named('processGametestResources') { from('schematics') { include 'LRT*.nbt','Elevator*.nbt'; into 'schematics' } }
+if (providers.gradleProperty('withoutRailways').isPresent()) sourceSets.gametest.java.exclude '**/CableTrackGameTests.java'
+// Incremental Java compilation may retain an excluded test's old class files.
+// Prevent their optional-only signatures from being scanned in the base runtime.
+if (providers.gradleProperty('withoutRailways').isPresent()) {
+    tasks.register('removeOptionalGameTests', Delete) {
+        delete fileTree(layout.buildDirectory.dir('classes/java/gametest')) { include '**/CableTrackGameTests*.class' }
+        mustRunAfter 'compileGametestJava'
+    }
+    tasks.matching { it.name == 'runGameTestServer' }.configureEach { dependsOn 'removeOptionalGameTests' }
+}
+configurations {
+    gametestImplementation.extendsFrom implementation
+    gametestRuntimeOnly.extendsFrom runtimeOnly
+    clienttestImplementation.extendsFrom implementation
+    clienttestRuntimeOnly.extendsFrom runtimeOnly
+}
+if (providers.gradleProperty('clientValidation').isPresent()) neoForge {
+    runs { client { sourceSet=sourceSets.clienttest; systemProperty 'transit.clientRenderValidation','true'; programArgument '--quickPlaySingleplayer'; programArgument 'Alpha8Validation' } }
+    mods { createtransit { sourceSet sourceSets.clienttest } }
+}
+repositories { mavenCentral(); maven { url = 'https://api.modrinth.com/maven' } }
+configurations { embeddedCreate; embeddedRadio }
+dependencies {
+    compileOnly(providers.gradleProperty('localRadioJar').isPresent()?files(providers.gradleProperty('localRadioJar').get()):'javazoom:jlayer:1.0.1')
+    embeddedRadio(providers.gradleProperty('localRadioJar').isPresent()?files(providers.gradleProperty('localRadioJar').get()):'javazoom:jlayer:1.0.1')
+    implementation 'maven.modrinth:create:6.0.10+mc1.21.1'
+    embeddedCreate 'maven.modrinth:create:6.0.10+mc1.21.1'
+    // Public API dependency only; Steam 'n' Rails remains a separate, optional mod.
+    compileOnly(providers.gradleProperty('localRailwaysJar').isPresent()?files(providers.gradleProperty('localRailwaysJar').get()):'maven.modrinth:L3Jv0QZI:HOPX5oro')
+    if (!providers.gradleProperty('withoutRailways').isPresent()) runtimeOnly 'maven.modrinth:L3Jv0QZI:HOPX5oro'
+    compileOnly files(fileTree(layout.buildDirectory.dir('create-libs')) { include '**/*.jar' }).builtBy('extractCreateLibraries')
+}
+// The distribution includes its public API libraries as jar-in-jar dependencies.
+// Extract only for compilation; Create owns their runtime loading.
+tasks.register('extractCreateLibraries', Sync) {
+    from { configurations.embeddedCreate.collect { zipTree(it).matching { include 'META-INF/jarjar/*.jar' } } }
+    into layout.buildDirectory.dir('create-libs')
+}
+neoForge {
+    runs {
+        gameTestServer {
+            type = 'gameTestServer'
+            jvmArgument '-Xmx2G'
+            systemProperty 'neoforge.enabledGameTestNamespaces', 'createtransit'
+            sourceSet = sourceSets.gametest
+        }
+    }
+    mods { createtransit { sourceSet sourceSets.gametest } }
+}
+tasks.register('elevatorModelCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.ElevatorModelCheck'
+    args file('src/main/resources/assets/createtransit').absolutePath, file('src/main/resources/data/createtransit').absolutePath
+}
+
+// Package only models reachable from blockstates, items and explicit Create partials.
+// Exact duplicate references are resolved within each kit by optimize_loading_assets.py.
+def releaseModelManifest = file('tools/release-models.txt')
+def releaseModels = releaseModelManifest.readLines().findAll { !it.isBlank() }.toSet()
+tasks.named('jar') {
+    inputs.file(releaseModelManifest)
+    exclude { details ->
+        def prefix = 'assets/createtransit/models/'
+        !details.isDirectory() && details.path.startsWith(prefix) && details.path.endsWith('.json') &&
+            !releaseModels.contains(details.path.substring(prefix.length(), details.path.length() - 5))
+    }
+}
+tasks.register('escalatorModelCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.EscalatorModelCheck'
+    args file('src/main/resources/assets/createtransit/models/block').absolutePath, file('schematics').absolutePath
+}
+tasks.register('escalatorSoundCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.EscalatorSoundCheck'
+}
+tasks.register('escalatorPerformanceCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.EscalatorPerformanceCheck'
+    jvmArgs '-Xmx1G'
+    args file('build/escalator-performance/benchmark.json').absolutePath
+}
+tasks.register('escalatorInclineCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.EscalatorInclineCheck'
+    jvmArgs '-Xmx1G'
+    args file('build/escalator-performance/incline-benchmark.json').absolutePath
+}
+
+if (providers.gradleProperty('inventoryValidation').isPresent()) neoForge {
+    runs {
+        inventoryData {
+            data()
+            sourceSet = sourceSets.clienttest
+            programArguments.addAll '--mod', 'createtransit', '--all', '--output', file('build/inventory-validation').absolutePath, '--existing', file('src/main/resources').absolutePath
+        }
+    }
+    mods { createtransit { sourceSet sourceSets.clienttest } }
+}
+
+// Engine-core regression tests deliberately run without a Minecraft client.
+tasks.register('elevator3CoreCheck', JavaExec) {
+    dependsOn 'compileElevator3Core'
+    classpath = files(layout.buildDirectory.dir('elevator3-core'))
+    mainClass = 'CabinCoreTest'
+}
+tasks.register('compileElevator3Core', JavaCompile) {
+    source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinMotionController.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/CabinCoreTest.java')
+    classpath = files()
+    destinationDirectory = layout.buildDirectory.dir('elevator3-core')
+}
+tasks.named('check') { dependsOn 'elevator3CoreCheck' }
+
+tasks.register('compileDoorStyleCheck', JavaCompile) {
+ source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/DoorStyleTest.java')
+ classpath = files(); destinationDirectory = layout.buildDirectory.dir('door-style-check')
+ javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(21) }
+}
+tasks.register('doorStyleCheck', JavaExec) { dependsOn 'compileDoorStyleCheck'; classpath = files(layout.buildDirectory.dir('door-style-check')); mainClass = 'DoorStyleTest' }
+tasks.named('check') { dependsOn 'doorStyleCheck' }
+
+// JLayer is distributed as a standard NeoForge nested dependency, not flattened into this mod.
+tasks.named('processResources') { from(configurations.embeddedRadio) { into 'META-INF/jarjar' } }
+if (providers.gradleProperty('uiValidation').isPresent()) neoForge {
+ runs { client { sourceSet=sourceSets.clienttest; jvmArgument '-Xmx3G';jvmArgument '-XX:ActiveProcessorCount=2';systemProperty 'transit.uiValidation','true';programArguments.addAll '--width','1280','--height','960' } }
+ mods { createtransit { sourceSet sourceSets.clienttest } }
+}
+
+// Graphical capture uses the same reachable model set as the shipped JAR.
+// Source-only archived models remain in the source ZIP, not in the runtime pack.
+tasks.named('processResources') {
+ inputs.property('uiReleaseResources', providers.gradleProperty('uiValidation').isPresent())
+ inputs.property('uiCaptureOnlyResources',providers.gradleProperty('uiCaptureOnlyResources').isPresent())
+ if(providers.gradleProperty('uiValidation').isPresent()||providers.gradleProperty('radioReentryValidation').isPresent()) doLast {
+  fileTree(destinationDir).matching { include 'assets/createtransit/models/**/*.json' }.files.each { f ->
+   def relative=destinationDir.toPath().relativize(f.toPath()).toString().replace('\\','/')
+   def key=relative.substring('assets/createtransit/models/'.length(),relative.length()-5)
+   if(!releaseModels.contains(key))f.delete()
+  }
+  if(providers.gradleProperty('uiCaptureOnlyResources').isPresent())fileTree(destinationDir).matching {include 'assets/createtransit/blockstates/*.json'}.files.each { f -> if(f.name!='station_speaker.json')f.text='''{"variants":{"":{"model":"minecraft:block/air"}}}''' }
+ }
+}
+
+// Audio regression uses Minecraft's actual four one-second startup reads.
+tasks.register('compileRadioBufferCheck', JavaCompile) {
+ source = files('src/main/java/com/sanctuarygames/createtransit/radio/client/RadioPcmBuffer.java','src/clienttest/java/com/sanctuarygames/createtransit/radio/client/RadioBufferCheck.java')
+ classpath = files(); destinationDirectory = layout.buildDirectory.dir('radio-buffer-check')
+}
+tasks.register('radioBufferCheck', JavaExec) {
+ dependsOn 'compileRadioBufferCheck';classpath=files(layout.buildDirectory.dir('radio-buffer-check'))
+ mainClass='com.sanctuarygames.createtransit.radio.client.RadioBufferCheck'
+}
+tasks.named('check') { dependsOn 'radioBufferCheck' }
+
+if(providers.gradleProperty('soundPhysicsValidation').isPresent()) dependencies { runtimeOnly files(providers.gradleProperty('soundPhysicsJar').get()) }
+
+// Integrated audio regression runs against real Minecraft channels and an HTTP fixture.
+if(providers.gradleProperty('radioReentryValidation').isPresent()) {
+ neoForge {
+  runs { client { sourceSet=sourceSets.clienttest; jvmArgument '-Xmx3G'; jvmArgument '-XX:ActiveProcessorCount=2'; systemProperty 'transit.radioReentryValidation','true'; programArguments.addAll '--quickPlaySingleplayer','RadioReentryValidation','--width','1280','--height','960' } }
+  mods { createtransit { sourceSet sourceSets.clienttest } }
+ }
+}
+tasks.named('processResources') {
+ inputs.property('radioReentryValidation',providers.gradleProperty('radioReentryValidation').isPresent())
+ inputs.property('radioReentryBaseline',providers.gradleProperty('radioReentryBaseline').isPresent())
+ if(providers.gradleProperty('radioReentryValidation').isPresent()) doLast {
+  def f=file(destinationDir.toPath().resolve('createtransit.mixins.json'))
+  def config=new groovy.json.JsonSlurper().parse(f)
+  config.client.add('RadioEnvironmentProbeMixin')
+  if(providers.gradleProperty('radioReentryBaseline').isPresent()) config.client.add('RadioRefreshDisabledMixin')
+  f.text=groovy.json.JsonOutput.toJson(config)
+ }
+}
+
+// Test-only real-client passenger journey; no validation classes enter the release JAR.
+if(providers.gradleProperty('cabinJourneyValidation').isPresent()) neoForge {
+ runs { client { sourceSet=sourceSets.clienttest; jvmArgument '-Xmx3G'; jvmArgument '-XX:ActiveProcessorCount=2'; systemProperty 'transit.cabinJourneyValidation','true';systemProperty 'transit.modelBakeMetrics','true'; programArguments.addAll '--quickPlaySingleplayer','CabinJourneyValidation','--width','1280','--height','960' } }
+ mods { createtransit { sourceSet sourceSets.clienttest } }
+}
+tasks.named('processResources') {
+ inputs.property('cabinJourneyValidation',providers.gradleProperty('cabinJourneyValidation').isPresent())
+ if(providers.gradleProperty('cabinJourneyValidation').isPresent()) doLast {
+  fileTree(destinationDir).matching {include 'assets/createtransit/models/**/*.json'}.files.each { f ->
+   def relative=destinationDir.toPath().relativize(f.toPath()).toString().replace('\\','/')
+   def key=relative.substring('assets/createtransit/models/'.length(),relative.length()-5)
+   if(!releaseModels.contains(key))f.delete()
+  }
+ }
+}
+
+if(providers.gradleProperty('hallwayValidation').isPresent()) neoForge {
+ runs { client { sourceSet=sourceSets.clienttest; jvmArgument '-Xmx3G';jvmArgument '-XX:ActiveProcessorCount=2';systemProperty 'transit.hallwayValidation','true';programArguments.addAll '--quickPlaySingleplayer','HallwayValidation','--width','1280','--height','960' } }
+ mods {createtransit {sourceSet sourceSets.clienttest}}
+}
+
+// Exact 46px body / 32px doorway and per-style color-memory regression suite.
+tasks.register('compileElevators30Check', JavaCompile) {
+ source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','CabinSelectorLayout.java' }, 'tests/elevator3/Elevators30Test.java')
+ classpath = files(); destinationDirectory = layout.buildDirectory.dir('elevators30-check')
+}
+tasks.register('elevators30Check', JavaExec) {
+ dependsOn 'compileElevators30Check'; classpath=files(layout.buildDirectory.dir('elevators30-check')); mainClass='Elevators30Test'
+}
+tasks.named('check') { dependsOn 'elevators30Check' }
+
+// Bounded native validation of this update, without altering archived legacy suites.
+if (providers.gradleProperty('elevators30Validation').isPresent()) {
+ sourceSets.gametest.java.setSrcDirs(['src/elevators30test/java'])
+}
+
+tasks.register('v13ElevatorRendererCheck', JavaExec) {
+    dependsOn 'clienttestClasses'
+    classpath = sourceSets.clienttest.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.elevator.client.V13ElevatorRendererCheck'
+}

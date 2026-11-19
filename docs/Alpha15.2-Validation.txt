@@ -1,0 +1,26 @@
+Create Transit Alpha 15.2 escalator refinement — 2026-10-07
+
+JAR: create-transit-0.5.0-alpha.15-escalators.2.jar
+Bytes: 1409463
+SHA-256: fa8897110fcdbffd3e078f9c7549c1a05df3738de4bc3824244aa74d20d783a9
+
+PASS: production JAR compiled; transit logic checks passed.
+PASS: all 93 native GameTests; fresh world, 82 retained + 11 escalator tests.
+Native test server: Minecraft 1.21.1 / NeoForge 21.1.248 / Create 6.0.10.
+Native tests completed in 1.361 minutes; Gradle runGameTestServer succeeded.
+
+Escalator coverage: ascending and descending riders at phases 0, .025, .0625 and .11; landing transitions; dynamic collision; widened lanes without internal rails; independent opposite-direction lanes; shared phase; once-per-tick rider carrying; solid obstacles; wrench reversal; placement direction; redstone stop/resume; persistent dyes; neighbor removal.
+
+PASS: 44 escalator models / 21,152 native baked quads across four orientations.
+PASS: all static faces have nondegenerate normals; diagonal underside follows the incline.
+PASS: 80 moving configurations match the preview geometry; 139,776 actual renderer vertices checked across four orientations.
+PASS: normalized sprite UVs, dedicated materials, dye channels, translucent glass without dark ambient occlusion, and 400 tread configurations matching collision.
+PASS: Minecraft parsed both 2-wide escalator QuickBuilds (12 kit sections each) and the 3-wide travelator (30 kit sections).
+PASS: 8 recipes remain distinct under vanilla mirror matching.
+PASS: packaged metadata version matches JAR; archive contains all 799 reachable models, 8 escalator blockstates and 8 recipes; model references resolve; no EMU/HSR kit assets or test-only visual contract shipped.
+
+Preview: software render of the actual blockstate/model JSON, moving box geometry and native structure NBT. Support blocks are hidden in the preview. The PNG and GIF are not Minecraft screenshots.
+
+Limits: no graphical client, multiplayer player-motion session or Complementary Reimagined shader playtest. Optional Steam 'n' Rails cable-track GameTests were excluded; cable integration is unchanged. No measured client startup-time claim.
+
+Design: preserves the established one-forward/one-up incline grid (45 degrees), existing block IDs, QuickBuild layouts and controls. Inventory redesign remains a separate update.

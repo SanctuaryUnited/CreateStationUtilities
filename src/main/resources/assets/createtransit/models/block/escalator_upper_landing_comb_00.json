@@ -1,0 +1,552 @@
+{
+  "loader": "createtransit:escalator_mesh",
+  "ambientocclusion": true,
+  "render_type": "minecraft:solid",
+  "textures": {
+    "metal": "createtransit:block/escalator_metal",
+    "rail": "createtransit:block/escalator_rail",
+    "underbody": "createtransit:block/escalator_underbody",
+    "panel": "createtransit:block/escalator_panel",
+    "glass": "createtransit:block/escalator_glass",
+    "steps": "createtransit:block/escalator_steps",
+    "comb": "createtransit:block/escalator_comb",
+    "rubber": "createtransit:block/escalator_rubber",
+    "grip": "createtransit:block/escalator_grip",
+    "edge": "createtransit:block/escalator_edge",
+    "led": "createtransit:block/escalator_led",
+    "trim_off": "createtransit:block/escalator_trim_off",
+    "arrow": "createtransit:block/escalator_arrow",
+    "stop": "createtransit:block/escalator_stop",
+    "particle": "createtransit:block/escalator_metal"
+  },
+  "quads": [
+    {
+      "vertices": [
+        [
+          3.02,
+          1.85,
+          0
+        ],
+        [
+          3.02,
+          2.06,
+          0
+        ],
+        [
+          12.98,
+          2.06,
+          0
+        ],
+        [
+          12.98,
+          1.85,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          12.98,
+          1.85,
+          4
+        ],
+        [
+          12.98,
+          2.06,
+          4
+        ],
+        [
+          3.02,
+          2.06,
+          4
+        ],
+        [
+          3.02,
+          1.85,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          1.85,
+          4
+        ],
+        [
+          3.02,
+          2.06,
+          4
+        ],
+        [
+          3.02,
+          2.06,
+          0
+        ],
+        [
+          3.02,
+          1.85,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          12.98,
+          1.85,
+          0
+        ],
+        [
+          12.98,
+          2.06,
+          0
+        ],
+        [
+          12.98,
+          2.06,
+          4
+        ],
+        [
+          12.98,
+          1.85,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          2.06,
+          0
+        ],
+        [
+          3.02,
+          2.06,
+          4
+        ],
+        [
+          12.98,
+          2.06,
+          4
+        ],
+        [
+          12.98,
+          2.06,
+          0
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          1.85,
+          4
+        ],
+        [
+          3.02,
+          1.85,
+          0
+        ],
+        [
+          12.98,
+          1.85,
+          0
+        ],
+        [
+          12.98,
+          1.85,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#comb",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          2.065,
+          3.25
+        ],
+        [
+          3.02,
+          2.1,
+          3.25
+        ],
+        [
+          12.98,
+          2.1,
+          3.25
+        ],
+        [
+          12.98,
+          2.065,
+          3.25
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          12.98,
+          2.065,
+          4
+        ],
+        [
+          12.98,
+          2.1,
+          4
+        ],
+        [
+          3.02,
+          2.1,
+          4
+        ],
+        [
+          3.02,
+          2.065,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          2.065,
+          4
+        ],
+        [
+          3.02,
+          2.1,
+          4
+        ],
+        [
+          3.02,
+          2.1,
+          3.25
+        ],
+        [
+          3.02,
+          2.065,
+          3.25
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          12.98,
+          2.065,
+          3.25
+        ],
+        [
+          12.98,
+          2.1,
+          3.25
+        ],
+        [
+          12.98,
+          2.1,
+          4
+        ],
+        [
+          12.98,
+          2.065,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          2.1,
+          3.25
+        ],
+        [
+          3.02,
+          2.1,
+          4
+        ],
+        [
+          12.98,
+          2.1,
+          4
+        ],
+        [
+          12.98,
+          2.1,
+          3.25
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    },
+    {
+      "vertices": [
+        [
+          3.02,
+          2.065,
+          4
+        ],
+        [
+          3.02,
+          2.065,
+          3.25
+        ],
+        [
+          12.98,
+          2.065,
+          3.25
+        ],
+        [
+          12.98,
+          2.065,
+          4
+        ]
+      ],
+      "uv": [
+        [
+          0,
+          16
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          16,
+          0
+        ],
+        [
+          16,
+          16
+        ]
+      ],
+      "texture": "#edge",
+      "tint": -1
+    }
+  ]
+}

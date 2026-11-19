@@ -1,0 +1,39 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.2.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :extractCreateLibraries UP-TO-DATE
+> Task :compileJava
+> Task :processResources UP-TO-DATE
+> Task :classes
+> Task :jarJar NO-SOURCE
+> Task :jar
+> Task :assemble
+> Task :compileDoorStyleCheck UP-TO-DATE
+
+> Task :doorStyleCheck
+PASS: 288 skin/model/size/mechanism/speed combinations, 2016 poses, 51 migrations; 320 ceiling combinations/on-off, finite geometry, slab envelopes, clear passages and arrival pulses.
+
+> Task :compileElevator3Core UP-TO-DATE
+
+> Task :elevator3CoreCheck
+PASS: 112 indicator/size/lighting combinations; light-pocket clearance; regular and optional telescoping doors; persisted styles.
+PASS: dynamic short/long trip peaks and exact alignment.
+PASS: 144 cabin setting combinations; all 9 chime selections persist; FIFO trips both directions; per-floor doors; obstruction reopening; unload pause; snapshot recovery; collision and door interlocks. Pure core check; native integration is tested separately.
+
+> Task :compileRadioBufferCheck UP-TO-DATE
+
+> Task :radioBufferCheck
+PASS: radio PCM: four exact one-second startup reads + two-second reserve; no partial-chunk silence padding; bounded eight-second ring; wrap/order; underrun recovery; EOF and startup cancellation.
+
+> Task :compileTestJava UP-TO-DATE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test
+
+> Task :transitCheck
+PASS: reversible travel, closing warning, smoothing, cyclic networks, input removal, disconnection, fail-closed size limit.
+
+> Task :check
+> Task :build
+
+BUILD SUCCESSFUL in 26s
+13 actionable tasks: 7 executed, 6 up-to-date

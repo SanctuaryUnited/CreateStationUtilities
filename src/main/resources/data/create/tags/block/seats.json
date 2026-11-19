@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "createtransit:gondola_seat",
+    "createtransit:lrt_seat"
+  ]
+}
