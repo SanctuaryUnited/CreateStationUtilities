@@ -35,6 +35,8 @@ public final class ElevatorBanks extends SavedData {
         long departAt;
         boolean departing;
         long assignedAt;
+        /** First tick at which no car could serve this call; transient, -1 while servable. */
+        long unservableSince=-1;
         Job(Call call){this.call=call;}
     }
     private static final class Bank {
@@ -261,7 +263,50 @@ public final class ElevatorBanks extends SavedData {
 
     @SubscribeEvent
     public static void tick(LevelTickEvent.Post event){
-        if(event.getLevel() instanceof ServerLevel level&&level.getGameTime()%5==0)get(level).dispatch(level);
+        if(!(event.getLevel() instanceof ServerLevel level))return;
+        long time=level.getGameTime();
+        if(time%PRUNE_INTERVAL==0)get(level).prune(level);
+        if(time%5==0)get(level).dispatch(level);
+    }
+
+    private static final int PRUNE_INTERVAL=200,UNSERVABLE_TICKS=1200;
+    /** Forget saved state whose blocks are gone. Positions are only judged in loaded chunks, so cars
+     *  and panels that are merely out of range are kept. This also cleans data saved by older versions,
+     *  which never removed anything. */
+    void prune(ServerLevel level){
+        boolean changed=false;
+        var stale=new HashSet<Car>();
+        for(var bank:banks.values())for(var c:bank.cars)if(level.hasChunkAt(c.drive)&&drive(level,c)==null)stale.add(c);
+        if(!stale.isEmpty()){
+            for(var bank:banks.values())removeCars(bank,stale);
+            for(var c:stale)if(banks.values().stream().noneMatch(b->b.cars.stream().anyMatch(x->x.id.equals(c.id))))membership.remove(c.id);
+            changed=true;
+        }
+        for(var it=banks.values().iterator();it.hasNext();)if(it.next().cars.isEmpty()){it.remove();changed=true;}
+        changed|=selectorOverrides.entrySet().removeIf(e->activeBank(e.getValue())==null
+            ||level.hasChunkAt(e.getKey())&&!(level.getBlockState(e.getKey()).getBlock() instanceof ElevatorCallBlock));
+        long now=level.getGameTime();
+        for(var it=jobs.iterator();it.hasNext();){
+            var job=it.next();var scope=job.call.scope;
+            if(scope.bank!=null&&!banks.containsKey(scope.bank)){it.remove();changed=true;continue;}
+            if(job.car!=null){job.unservableSince=-1;continue;}
+            var candidates=cars(level,scope);
+            // Only expire on a definitive answer: the panel and every candidate car are loaded.
+            boolean known=level.hasChunkAt(scope.panel)&&candidates.stream().allMatch(c->level.hasChunkAt(c.drive));
+            if(!known||candidates.stream().anyMatch(c->eligible(drive(level,c),job.call))){job.unservableSince=-1;continue;}
+            if(job.unservableSince<0){job.unservableSince=now;continue;}
+            if(now-job.unservableSince<UNSERVABLE_TICKS)continue;
+            for(var id:job.riders){
+                var rider=level.getServer().getPlayerList().getPlayer(id);
+                if(rider!=null)ElevatorFeedback.error(rider,"No elevator car can serve this call. Call again once the bank is back in service.");
+            }
+            it.remove();changed=true;
+        }
+        if(changed){panelResolutions.clear();setDirty();}
+    }
+    private static void removeCars(Bank bank,Set<Car> stale){
+        bank.cars.removeIf(stale::contains);
+        bank.merged.forEach(child->removeCars(child,stale));
     }
 
     private void dispatch(ServerLevel level){

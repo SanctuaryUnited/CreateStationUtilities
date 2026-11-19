@@ -1,3 +1,8 @@
+## Unreleased
+
+### Fixed
+- Elevator bank data no longer grows forever. Cars whose drive was broken, banks left with no cars, selector links to broken panels, and calls that can no longer be served are now cleaned up automatically, including data left by older versions. Only loaded areas are checked, so elevators that are just out of range are never affected. A call that no car can serve for 60 seconds now expires, so its call button light turns off, and riders get a message.
+
 ## 0.3.1 — Inventory icons and sound recovery
 
 ### Fixed

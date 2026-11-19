@@ -17,7 +17,13 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 
 ## Phase 2 — Data growth / leaks
 
-- [ ] **4. `ElevatorBanks` saved data never pruned.** Drop cars, membership, `selectorOverrides` and pending jobs when a drive or panel is permanently removed (not on chunk unload); expire jobs for missing banked panels; expire unassigned jobs with no eligible car. *PATCH*
+- [x] **4. `ElevatorBanks` saved data never pruned.** `ElevatorBanks.prune()` runs every 10 s and only judges positions in loaded chunks, so out-of-range state is never touched:
+  - Cars whose drive is gone are removed from their bank and from nested merged banks, so undoing a merge can't restore them.
+  - Banks left with no cars are deleted.
+  - Selector overrides pointing at a missing panel or a deleted bank are dropped.
+  - Calls whose bank is gone are dropped. A call no car can serve for 60 s, while its panel and cars are loaded, expires and its riders are told.
+  - It checks the world instead of relying on break events, so data from older versions is cleaned too. Banked calls are tied to the landing rather than the panel that placed them, so breaking one of several panels keeps the call.
+  - Note: car letters are assigned by position in the bank, so removing a car re-letters the cars after it. *PATCH*
 - [ ] **5. Radio groups can never be deleted.** Prune groups with no members and/or add a delete action. *PATCH (prune) / MINOR (new action)*
 - [ ] **6. Direct-buffer churn in radio streaming** (`RadioPcmBuffer.read`, `Mp3.read`, `MonoOgg.read`, Hub reader). Use heap or reused buffers internally; only the buffer handed to OpenAL must be direct. *PATCH*
 
