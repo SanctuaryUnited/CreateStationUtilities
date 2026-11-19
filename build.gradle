@@ -14,7 +14,16 @@ neoForge {
     }
     mods { createtransit { sourceSet sourceSets.main } }
 }
-tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+// NeoForge and the Youer server require Java 21. Pin every compile and check task to it,
+// including the standalone ones below, so a newer JDK running Gradle cannot leak in.
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+    javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(21) }
+}
+tasks.withType(JavaExec).configureEach {
+    javaLauncher = javaToolchains.launcherFor { languageVersion = JavaLanguageVersion.of(21) }
+}
 // Keep the packaged metadata aligned with the release filename.
 tasks.named('processResources') {
     inputs.property('modVersion', project.version.toString())
@@ -179,7 +188,6 @@ tasks.named('check') { dependsOn 'elevator3CoreCheck' }
 tasks.register('compileDoorStyleCheck', JavaCompile) {
  source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/DoorStyleTest.java')
  classpath = files(); destinationDirectory = layout.buildDirectory.dir('door-style-check')
- javaCompiler = javaToolchains.compilerFor { languageVersion = JavaLanguageVersion.of(21) }
 }
 tasks.register('doorStyleCheck', JavaExec) { dependsOn 'compileDoorStyleCheck'; classpath = files(layout.buildDirectory.dir('door-style-check')); mainClass = 'DoorStyleTest' }
 tasks.named('check') { dependsOn 'doorStyleCheck' }
