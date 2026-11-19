@@ -12,7 +12,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - [x] Server config `radio.stationEditors`, default `OPERATORS` (op level 2 or single-player owner). *Breaking: builders could previously edit stations.*
   - [ ] Optional: skip warm-up connections to out-of-range sources (trades instant start for fewer connections). *PATCH*
   - Known limit: the client checks DNS before connecting, but `HttpURLConnection` resolves again, so a DNS-rebinding host could still slip through. The operators-only default and the allow-list reduce this risk.
-- [ ] **2. Client/server thread race on `ElevatorNetwork` maps** (`ElevatorPartEntity.onLoad`/`setRemoved`). Gate on `!level.isClientSide`, and do the same for `StationSpeakerEntity.setRemoved`. *PATCH*
+- [x] **2. Client/server thread race on `ElevatorNetwork` maps** (`ElevatorPartEntity.onLoad`/`setRemoved`). The outer per-level maps are now synchronized. They were not gated on `!level.isClientSide`, because shared code such as `ModelLandingItem.useOn` uses these lookups on the client to predict a click's result. `StationSpeakerEntity.setRemoved` is now server-only, matching `onLoad`. *PATCH*
 - [ ] **3. Radio group overflow can kick a player** (`RadioStations.effective` → `group()` throws at 64). Fall back to local settings and never create groups from a read path. *PATCH*
 
 ## Phase 2 — Data growth / leaks
