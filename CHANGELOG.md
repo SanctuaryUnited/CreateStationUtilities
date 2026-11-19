@@ -1,4 +1,4 @@
-## Unreleased — Radio stream safety
+## 0.3.0 — Radio stream safety and stability
 
 ### Breaking
 - Only operators (permission level 2) or the owner of a single-player world can now add or remove radio stations. Upgrade: to restore the old behaviour, set `radio.stationEditors = "BUILDERS"` in `serverconfig/createtransit-server.toml`.
