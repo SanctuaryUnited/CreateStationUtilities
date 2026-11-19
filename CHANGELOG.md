@@ -1,3 +1,15 @@
+## Unreleased — Radio stream safety
+
+### Breaking
+- Only operators (permission level 2) or the owner of a single-player world can now add or remove radio stations. Upgrade: to restore the old behaviour, set `radio.stationEditors = "BUILDERS"` in `serverconfig/createtransit-server.toml`.
+
+### Added
+- Server config `createtransit-server.toml` with `radio.stationEditors` and `radio.allowedHosts`, an optional list of approved stream hosts (`*.example.net` wildcards allowed).
+
+### Fixed
+- Clients refuse radio streams, and redirects, that point at their own computer, local network, link-local or cloud-metadata addresses, multicast, CGNAT or IPv6 private ranges.
+- The server rejects stations with localhost names or private IP addresses, and stops advertising saved stations that fail these rules or the allow-list.
+
 ## 0.2.0-dev18.1 — Elevator and client interface refinements
 
 - Live Y-level returns to cabin headers and appears on landing displays during travel. Animated arrows scroll repeating chevrons. Landing arrival lanterns offer accent or green-up/red-down colors.

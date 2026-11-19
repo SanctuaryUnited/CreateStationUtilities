@@ -11,7 +11,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 @Mod(CreateTransit.MOD_ID)
 public final class CreateTransit {
     public static final String MOD_ID="createtransit";
-    public CreateTransit(IEventBus bus) {
+    public CreateTransit(IEventBus bus, net.neoforged.fml.ModContainer container) {
+        container.registerConfig(net.neoforged.fml.config.ModConfig.Type.SERVER, TransitServerConfig.SPEC);
         ModBlocks.BLOCKS.register(bus);ModItems.ITEMS.register(bus);ModCreativeTabs.TABS.register(bus);ModEntities.TYPES.register(bus);ModSounds.SOUNDS.register(bus);ModMenus.MENUS.register(bus);
         com.sanctuarygames.createtransit.lrt.LrtRegistry.register(bus);
         com.sanctuarygames.createtransit.elevator.ElevatorRegistry.register(bus);com.sanctuarygames.createtransit.radio.RadioRegistry.register(bus);

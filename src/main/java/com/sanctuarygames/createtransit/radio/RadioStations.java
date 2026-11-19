@@ -12,6 +12,36 @@ public final class RadioStations extends SavedData {
   if(name.isBlank()||name.length()>32)throw new IllegalArgumentException("Station name must be 1–32 characters");
   try{var u=URI.create(url);if(url.length()>256||!("http".equalsIgnoreCase(u.getScheme())||"https".equalsIgnoreCase(u.getScheme()))||u.getHost()==null||u.getUserInfo()!=null||u.getFragment()!=null)throw new IllegalArgumentException();}catch(IllegalArgumentException e){throw new IllegalArgumentException("Use a direct HTTP(S) audio stream URL, without login details or fragments");}return url;
  }
+ /** True for addresses a shared stream must never target: this machine, the LAN, link-local
+  * (including cloud metadata), multicast, CGNAT, benchmarking and reserved ranges, IPv6 ULA. */
+ public static boolean privateAddress(java.net.InetAddress a){
+  if(a.isAnyLocalAddress()||a.isLoopbackAddress()||a.isLinkLocalAddress()||a.isSiteLocalAddress()||a.isMulticastAddress())return true;
+  byte[] b=a.getAddress();
+  if(b.length==4){int x=b[0]&255,y=b[1]&255;return x==0||x==100&&(y&0xC0)==64||x==198&&(y&0xFE)==18||x>=240;}
+  return b.length==16&&(b[0]&0xFE)==0xFC;
+ }
+ /** Rejects private hosts that are visible without DNS: localhost names and IP literals. */
+ static boolean privateLiteral(String host){
+  if(host==null)return true;host=host.toLowerCase(Locale.ROOT);
+  if(host.equals("localhost")||host.endsWith(".localhost"))return true;
+  boolean v6=host.startsWith("[")&&host.endsWith("]");
+  if(!v6&&!host.matches("[0-9.]+"))return false;
+  try{return privateAddress(java.net.InetAddress.getByName(v6?host.substring(1,host.length()-1):host));}catch(java.net.UnknownHostException e){return true;}
+ }
+ public static String host(String url){return URI.create(url).getHost();}
+ private static void requireEditor(net.minecraft.server.level.ServerPlayer editor){
+  if(!com.sanctuarygames.createtransit.TransitServerConfig.canEditStations(editor))throw new IllegalArgumentException("Only server operators can add or remove radio stations");
+ }
+ /** Player-initiated add: permission, allow-list and private-address checks before saving. */
+ public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){
+  requireEditor(editor);validate(name,url);String host=host(url);
+  if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
+  if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
+  return add(name,url);
+ }
+ /** Stations saved before these rules, or after the allow-list changed, are not sent to clients. */
+ public boolean servable(Station s){var host=host(s.url());return !privateLiteral(host)&&com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host);}
+ public void remove(net.minecraft.server.level.ServerPlayer editor,String id){requireEditor(editor);remove(id);}
  public String add(String name,String url){validate(name,url);if(stations.size()>=16)throw new IllegalArgumentException("Maximum 16 custom stations per world");String id=UUID.randomUUID().toString();stations.put(id,new Station(id,name,url));setDirty();return id;}
  public void remove(String id){stations.remove(id);setDirty();}
  public Station station(String id){return stations.get(id);}
