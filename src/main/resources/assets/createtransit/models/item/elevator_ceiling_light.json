@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/elevator_ceiling_light_item"}
+{"parent":"createtransit:block/elevator_ceiling_light_item","display":{"gui":{"rotation":[30,225,0],"translation":[0.0,3.28,1.894],"scale":[0.625,0.625,0.625]}}}

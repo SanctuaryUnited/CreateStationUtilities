@@ -1,1 +1,1 @@
-{"parent": "createtransit:block/column_speaker"}
+{"parent":"createtransit:block/column_speaker","display":{"gui":{"rotation":[30,225,0],"translation":[3.758,-1.879,3.255],"scale":[0.901,0.901,0.901]}}}

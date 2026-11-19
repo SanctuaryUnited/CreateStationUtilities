@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/elevator_solid_corner_item"}
+{"parent":"createtransit:block/elevator_solid_corner_item","display":{"gui":{"rotation":[30,225,0],"translation":[-0.02,0.0,0.0],"scale":[0.623,0.623,0.623]}}}

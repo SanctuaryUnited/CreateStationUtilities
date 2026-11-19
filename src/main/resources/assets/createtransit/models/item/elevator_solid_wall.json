@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/elevator_door_header_item"}
+{"parent":"createtransit:block/elevator_door_header_item","display":{"gui":{"rotation":[30,225,0],"translation":[-3.845,1.922,-3.33],"scale":[0.777,0.777,0.777]}}}

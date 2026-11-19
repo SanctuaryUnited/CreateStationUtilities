@@ -1,1 +1,1 @@
-{"parent": "createtransit:block/ceiling_speaker"}
+{"parent":"createtransit:block/ceiling_speaker","display":{"gui":{"rotation":[30,225,0],"translation":[4.071,-2.036,3.526],"scale":[0.976,0.976,0.976]}}}

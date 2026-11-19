@@ -1,1 +1,1 @@
-{"parent": "createtransit:block/station_speaker"}
+{"parent":"createtransit:block/station_speaker","display":{"gui":{"rotation":[30,225,0],"translation":[4.172,-2.086,3.613],"scale":[1.0,1.0,1.0]}}}

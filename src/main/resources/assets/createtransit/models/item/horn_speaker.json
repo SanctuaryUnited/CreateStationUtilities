@@ -1,1 +1,1 @@
-{"parent": "createtransit:block/horn_speaker"}
+{"parent":"createtransit:block/horn_speaker","display":{"gui":{"rotation":[30,225,0],"translation":[2.185,-1.093,1.892],"scale":[0.883,0.883,0.883]}}}

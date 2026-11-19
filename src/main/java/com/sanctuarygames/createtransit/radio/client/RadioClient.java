@@ -19,7 +19,10 @@ public final class RadioClient {
   for(int i=0;i<Math.min(warming.size(),SharedRadioStreams.LIMIT-selected.size());i++)SharedRadioStreams.warm(warming.get(i).getString("Url"));
   var iterator=active.entrySet().iterator();while(iterator.hasNext()){var entry=iterator.next();var t=selected.get(entry.getKey());var sound=entry.getValue();
    boolean changed=t!=null&&(!sound.url.equals(t.getString("Url"))||sound.radius!=RadioSettings.clampRadius(RadioAcoustics.range(t))||sound.reverb!=t.getBoolean("Reverb")||sound.integrated!=RadioAcoustics.available());
-   if(t==null||changed||sound.isStopped()){sound.end();if(sound.failed)retry.put(entry.getKey(),System.currentTimeMillis()+10000);iterator.remove();}
+   // A sound-engine restart (F3+T, audio device change) drops channels without stopping the
+   // instance, and its own tick() stops running, so check engine ownership from here.
+   boolean dropped=ticks-sound.started>40&&!mc.getSoundManager().isActive(sound);
+   if(t==null||changed||sound.isStopped()||dropped){sound.end();if(sound.failed)retry.put(entry.getKey(),System.currentTimeMillis()+10000);iterator.remove();}
   }
   retry.entrySet().removeIf(e->e.getValue()<System.currentTimeMillis());
   for(var entry:selected.entrySet()){var sound=active.get(entry.getKey());if(sound==null&&!retry.containsKey(entry.getKey())){sound=new RadioSound(entry.getValue());active.put(entry.getKey(),sound);publishAcoustics();mc.getSoundManager().play(sound);}if(sound!=null)sound.update(entry.getValue());}
@@ -29,7 +32,7 @@ public final class RadioClient {
  private static void publishAcoustics(){RadioAcoustics.publish(active.values().stream().filter(s->s.integrated&&!s.isStopped()).map(s->new RadioAcoustics.Profile(s.getX(),s.getY(),s.getZ(),s.dry,s.wet,s.wetLevel,s.falloff,s.muffling,s.reverb)).toList());}
  public static Sound withRange(Sound sound,int radius){return new Sound(sound.getLocation(),sound.getVolume(),sound.getPitch(),sound.getWeight(),sound.getType(),true,false,RadioSettings.clampRadius(radius));}
  private static final class RadioSound extends AbstractTickableSoundInstance {
-  final String url;final String id;volatile AudioStream stream;private int entity,radius,dry,wet;private double wetLevel,falloff,muffling;private volatile double bassDb;private float baseVolume;private boolean reverb,integrated;private String mode;private volatile boolean failed,canceled;private int age,outsideTicks;private volatile double boost=1;
+  final String url;final String id;final int started=ticks;volatile AudioStream stream;private int entity,radius,dry,wet;private double wetLevel,falloff,muffling;private volatile double bassDb;private float baseVolume;private boolean reverb,integrated;private String mode;private volatile boolean failed,canceled;private int age,outsideTicks;private volatile double boost=1;
   RadioSound(CompoundTag t){super(ModSounds.STATION_RADIO.get(),SoundSource.BLOCKS,RandomSource.create());url=t.getString("Url");id=t.getString("Id");looping=false;relative=false;update(t);status="Connecting…";}
   void update(CompoundTag t){double requested=t.getDouble("Volume")*com.sanctuarygames.createtransit.client.StationClientSettings.get().radioVolume;baseVolume=(float)Math.min(1,requested);volume=baseVolume;boost=Math.max(1,requested);radius=RadioSettings.clampRadius(RadioAcoustics.range(t));dry=t.getInt("Radius");wet=t.getInt("ReverbRadius");wetLevel=t.getDouble("ReverbLevel");bassDb=RadioSettings.readAcoustic(t,"BassDb",0,0,6);falloff=RadioSettings.readAcoustic(t,"Falloff",1,.5,2);muffling=RadioSettings.readAcoustic(t,"Muffling",1,0,2);reverb=t.getBoolean("Reverb");integrated=RadioAcoustics.available();attenuation=integrated?Attenuation.LINEAR:Attenuation.NONE;entity=t.getInt("Entity");mode=t.getString("Mode");x=t.getDouble("X");y=t.getDouble("Y");z=t.getDouble("Z");followCabin();updateVolume();}
   private void updateVolume(){var listener=Minecraft.getInstance().getCameraEntity();volume=integrated||listener==null?baseVolume:baseVolume*RadioAcoustics.fade(listener.getEyePosition().distanceTo(new net.minecraft.world.phys.Vec3(x,y,z)),dry,falloff);}
