@@ -1,3 +1,10 @@
+## 0.3.1 — Inventory icons and sound recovery
+
+### Fixed
+- Speakers and cabin radios went silent after F3+T or a change of Windows audio device, while still showing "Playing". They now reconnect within about a second.
+- The elevator motor hum no longer stays silent after the sound engine restarts mid-trip.
+- 62 inventory icons are resized and centred so they fit their slots. Gondola walls, corners, LED strips and doors no longer spill into neighbouring slots or draw as bars along the slot edge, most visibly in creative search. Placed blocks and held items are unchanged.
+
 ## 0.3.0 — Radio stream safety and stability
 
 ### Breaking

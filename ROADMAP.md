@@ -28,13 +28,15 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [ ] **9. `ensureFloors()` rescans every call for non-rail drives.** Cache legacy floor results per tick. *PATCH*
 - [ ] **10. `StationSpeakerBlock.CODEC` loses the style** (always `"box"`). *PATCH*
 - [ ] **11. `RadioAudio.Mp3.read` stereo down-mix can index past the buffer** on an odd sample count. *PATCH*
+- [x] **11a. Oversized and off-centre inventory icons** (found in 0.3.0 client testing). 26 item models used `display.gui.scale` 0.9 and one used 1.2, so parts overflowed neighbouring slots, and edge-mounted parts drew as bars along the slot edge. Fixed with `tools/fit_gui_icons.py` (run it after the asset generators; `--check` reports drift): it keeps each icon's rotation, sizes it to a vanilla block icon's on-screen footprint, and centres it from the element bounds. 62 icons refitted. Only `display.gui` changed, so placed blocks and held items are unaffected. *PATCH*
+- [x] **11b. Radio and elevator motor silent after a sound-engine restart** (found in 0.3.0 client testing). F3+T and Windows audio-device changes restart Minecraft's sound engine, which drops channels without stopping the sound instances. `RadioClient` and `CabinMotorClient` now treat a sound the engine no longer tracks as stopped, and recreate it. Escalator loops already did. *PATCH*
 
 ## Phase 4 — Build and tests
 
 - [ ] **12. Gametests don't compile**: `EscalatorGameTests`, `EscalatorSoundGameTests`, `SmartEscalatorGameTests` call the removed `EscalatorNetwork.reverse`. Switch them to `EscalatorNetwork.configure`. *No release*
 - [ ] **13. Client tests don't compile**: `RadioAcousticsCheck`, `RadioAudioCheck` use old `RadioAcoustics.Profile`/`fade` and `RadioGainStream` signatures. *No release*
 - [x] **14. Bump the dev NeoForge from 21.1.248 to 21.1.267** in `build.gradle`. Keep `neoforge.mods.toml` at `[21.1.248,)`; raising the floor would be MAJOR. *No release*
-- [ ] **15. Verify the client mixins on 21.1.267** with one `runClient` launch, then check the log for injection failures.
+- [x] **15. Verify the client mixins on 21.1.267.** Checked with in-world testing of 0.3.0: creative tab, cable track and sound engine all clean. Note: `runClient` compiles gametests, so launch it with `-Pelevators30Validation` until item 12 is fixed.
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 
