@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/transit_seat"}
+{"parent":"createtransit:block/transit_seat","display":{"gui":{"rotation":[30,225,0],"translation":[0.245,-0.123,0.212],"scale":[0.693,0.693,0.693]}}}

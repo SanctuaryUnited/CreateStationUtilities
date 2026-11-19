@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/elevator_led_strip"}
+{"parent":"createtransit:block/elevator_led_strip","display":{"gui":{"rotation":[30,225,0],"translation":[-4.775,2.388,-4.135],"scale":[0.963,0.963,0.963]}}}

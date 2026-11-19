@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/display_mount"}
+{"parent":"createtransit:block/display_mount","display":{"gui":{"rotation":[30,225,0],"translation":[-0.032,-4.686,-2.743],"scale":[0.905,0.905,0.905]}}}

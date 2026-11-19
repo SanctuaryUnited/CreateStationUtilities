@@ -1,1 +1,1 @@
-{"parent":"createtransit:block/elevator_floor_marker"}
+{"parent":"createtransit:block/elevator_floor_marker","display":{"gui":{"rotation":[30,225,0],"translation":[0.0,6.045,3.49],"scale":[1.0,1.0,1.0]}}}
