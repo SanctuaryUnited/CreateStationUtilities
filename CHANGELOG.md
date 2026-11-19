@@ -10,6 +10,7 @@
 - Clients refuse radio streams, and redirects, that point at their own computer, local network, link-local or cloud-metadata addresses, multicast, CGNAT or IPv6 private ranges.
 - The server rejects stations with localhost names or private IP addresses, and stops advertising saved stations that fail these rules or the allow-list.
 - Fixed a rare race in single-player and LAN worlds, where the client and built-in server threads changed the same elevator tracking maps at once. It could cause a hang, or an elevator part that was never registered.
+- Speakers whose radio group no longer exists, for example ones pasted from another world, no longer recreate that group just by being checked. Once a world had 64 groups, that check could kick the nearby player. The speaker now plays its own settings until it joins a group.
 
 ## 0.2.0-dev18.1 — Elevator and client interface refinements
 

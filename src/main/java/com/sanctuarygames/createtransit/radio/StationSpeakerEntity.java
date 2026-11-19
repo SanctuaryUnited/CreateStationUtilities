@@ -10,7 +10,7 @@ public final class StationSpeakerEntity extends BlockEntity implements com.sanct
  public StationSpeakerEntity(BlockPos p,BlockState s){super(RadioRegistry.SPEAKER_ENTITY.get(),p,s);}
  @Override public void onLoad(){super.onLoad();if(level!=null&&!level.isClientSide)RadioNetwork.add(this);}
  @Override public void setRemoved(){if(level!=null&&!level.isClientSide)RadioNetwork.remove(this);super.setRemoved();}
- public CompoundTag snapshot(){var t=new CompoundTag();t.put("Radio",radio.save());t.putString("Group",group);t.putInt("Primary",primary);t.putInt("Secondary",secondary);if(level instanceof net.minecraft.server.level.ServerLevel l){var data=RadioStations.get(l);t.put("RadioStations",data.snapshot());if(!group.isBlank())t.put("GroupRadio",data.group(group,radio).save());}return t;}
+ public CompoundTag snapshot(){var t=new CompoundTag();t.put("Radio",radio.save());t.putString("Group",group);t.putInt("Primary",primary);t.putInt("Secondary",secondary);if(level instanceof net.minecraft.server.level.ServerLevel l){var data=RadioStations.get(l);t.put("RadioStations",data.snapshot());if(!group.isBlank())t.put("GroupRadio",data.peek(group,radio).save());}return t;}
  @Override public CompoundTag getUpdateTag(HolderLookup.Provider p){return saveWithoutMetadata(p);}
  @Override public net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket getUpdatePacket(){return net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket.create(this);}
  public void open(Player p){if(p instanceof ServerPlayer player){var t=snapshot();player.openMenu(new SimpleMenuProvider((id,inv,who)->new SpeakerMenu(id,inv,this),Component.literal("Station Speaker")),buf->{buf.writeBlockPos(worldPosition);buf.writeNbt(t);});}}
