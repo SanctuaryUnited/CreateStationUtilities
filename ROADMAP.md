@@ -49,11 +49,19 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [x] **13. Client tests don't compile.** `RadioAcousticsCheck` and `RadioAudioCheck` were updated to the current `Profile`, `fade` and `RadioGainStream` signatures. Added `radioStreamCheck`, which checks heap internal PCM, direct OpenAL output and byte order across the ring wrap. Six of the seven standalone client checks pass. *No release*
 - [x] **14. Bump the dev NeoForge from 21.1.248 to 21.1.267** in `build.gradle`. Keep `neoforge.mods.toml` at `[21.1.248,)`; raising the floor would be MAJOR. *No release*
 - [x] **15. Verify the client mixins on 21.1.267.** Checked with in-world testing of 0.3.0: creative tab, cable track and sound engine all clean. Item 12 fixed the gametest compile, so plain `runClient` works.
-- [ ] **18. 26 gametests and `elevatorModelCheck` already failed in the dev18.4 import.** These are mostly Elevators 3 cabin, landing and alignment tests, plus the refresher, inventory-tab and voxel-cylinder tests.
-  - They fail identically on the untouched `v0.2.0-dev18.4` source, so no release caused them. They hadn't run because the suite didn't compile.
-  - Each one needs triage: is the test stale (the feature changed on purpose) or is it a real bug?
-  - `elevatorModelCheck` predates the `elevator3/` texture folder and models without elements.
-  - Note: `run/world` persists between gametest runs, and the LRT and cable circuit tests paste at fixed coordinates, so delete it before a full run. *PATCH for any real bugs found*
+- [x] **18. 26 gametests and `elevatorModelCheck` already failed in the dev18.4 import.** They fail identically on the untouched `v0.2.0-dev18.4` source, and hadn't run because the suite didn't compile. Each was diagnosed with actual values and updated only where a release note (DEV16, DEV17 or DEV18.x), the current `Elevators30GameTests` or an explicit code rule documents the change:
+  - 2.8-tall V17 shell, while compact legacy shells stay 2.5.
+  - 3×3 only for new cabins, and V17 nudges move in whole blocks.
+  - Three-row landings, and the door mechanism and two-speed options are removed.
+  - Static blocks now block assembly, and a cabin can't face its own guide rail.
+  - No 32-stop cap.
+  - The Destination Selector raises the parts count to 25 and the Station tab to 26.
+  - The default light level is 6, landing facing follows the cabin, and `IDLE` replaces "doors open while closed".
+  - Update Cabin now starts from V13 geometry.
+
+  Narrowed checks keep their intent: sizes 2/4/5 still load, and four-way rotation still runs, with the 180° turn expected to be refused. `runGameTestServer` now uses its own `run-gametest/` folder and starts from a fresh world. 193 of 194 pass; the remaining failure is item 19. *No release*
+- [ ] **19. Starter kits facing east or south can't install their home-floor landing.** The computed landing position overlaps the kit's own floor-marker rail ("Landing space obstructed"), while north and west work. Found by `kit_preview_rotates_without_placing_or_consuming_then_confirms`. *PATCH*
+- [ ] **20. Clearer refusal when a rotated cabin's entrance would face its guide rail.** It currently reports "Cabin overlaps blocks, another cabin, or is unloaded". *PATCH*
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 

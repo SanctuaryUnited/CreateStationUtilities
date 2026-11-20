@@ -24,8 +24,8 @@ public final class InventoryReworkGameTests {
         var unique = new HashSet<Item>();
         for (var tab : List.of(ModCreativeTabs.VEHICLES.get(), ModCreativeTabs.STATION.get())) {
             tab.buildContents(new CreativeModeTab.ItemDisplayParameters(FeatureFlags.VANILLA_SET, false, h.getLevel().registryAccess()));
-            int expected = tab == ModCreativeTabs.VEHICLES.get() ? 23 + (net.neoforged.fml.ModList.get().isLoaded("railways") ? 1 : 0) : 25;
-            h.assertTrue(tab.getDisplayItems().size() == expected, "All current kit parts appear exactly once");
+            int expected = tab == ModCreativeTabs.VEHICLES.get() ? 23 + (net.neoforged.fml.ModList.get().isLoaded("railways") ? 1 : 0) : 26; // 26 includes the Elevator Destination Selector added in DEV17
+            h.assertTrue(tab.getDisplayItems().size() == expected, "All current kit parts appear exactly once: " + tab.getDisplayItems().stream().map(st -> BuiltInRegistries.ITEM.getKey(st.getItem()).getPath()).toList());
             h.assertTrue(tab.getSearchTabDisplayItems().size() == expected, "Search contains real items without blank/separator entries");
             for (var stack : tab.getDisplayItems()) {
                 h.assertTrue(!stack.isEmpty() && unique.add(stack.getItem()), "No empty or duplicate catalog items");

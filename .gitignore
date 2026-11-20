@@ -35,3 +35,4 @@ desktop.ini
 # Secrets
 .env
 .env.*
+run-gametest/
