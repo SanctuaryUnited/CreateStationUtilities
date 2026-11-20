@@ -1,5 +1,8 @@
 ## 0.3.2 — Saved-data cleanup and radio memory
 
+### Changed
+- The radio settings screen no longer says "no bundled stations". It now reads "MP3 / Ogg • direct live streams". The mod still ships with no stations.
+
 ### Fixed
 - Elevator bank data no longer grows forever. Cars whose drive was broken, banks left with no cars, selector links to broken panels, and calls that can no longer be served are now cleaned up automatically, including data left by older versions. Only loaded areas are checked, so elevators that are just out of range are never affected. A call that no car can serve for 60 seconds now expires, so its call button light turns off, and riders get a message.
 - Radio groups are no longer kept forever. The world now records which speakers belong to each group, and a group with no speakers left is deleted after 24,000 ticks (one in-game day) of server time. The delay covers speakers riding on contraptions or trains. Only loaded areas are checked, so speakers that are just out of range keep their group. This also frees slots once a world reaches the 64-group limit. Groups saved by older versions are never deleted automatically, because some of their speakers may not have loaded since the upgrade.

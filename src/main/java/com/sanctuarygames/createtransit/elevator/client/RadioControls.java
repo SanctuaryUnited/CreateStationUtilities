@@ -26,6 +26,6 @@ public final class RadioControls {
   var name=h.field(14,y+134,width-28,"",32);name.setHint(net.minecraft.network.chat.Component.literal("Custom station name"));
   var url=h.field(14,y+160,width-28,"",256);url.setHint(net.minecraft.network.chat.Component.literal("https://host.example/live.mp3"));
   h.button("Add station",14,y+186,w,b->h.send(12,name.getValue(),url.getValue()));h.button("Remove selected",right,y+186,w,b->h.send(14,"",selected)).active=!selected.isEmpty();
-  h.button("MP3 / Ogg • direct live streams • no bundled stations",14,y+212,width-28,b->{}).active=false;
+  h.button("MP3 / Ogg • direct live streams",14,y+212,width-28,b->{}).active=false;
  }
 }
