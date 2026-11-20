@@ -5,6 +5,16 @@ import net.minecraft.core.*;import net.minecraft.core.component.DataComponents;i
 public final class ModelCabinItem extends Item {
  public static BlockPos compactMount(BlockPos original,Direction facing){return original.relative(facing.getClockWise(),2);}
  public ModelCabinItem(Properties p){super(p);}
+ /** A pending kit plan's preview drive: unplaced, at the clicked spot, facing the planned way. */
+ public static ElevatorDriveEntity plannedDrive(net.minecraft.world.level.Level level,BlockPos clicked,Direction facing){var d=new ElevatorDriveEntity(clicked,ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing));d.setLevel(level);return d;}
+ /** The cabin CabinPlacementPreview draws for a drive. Confirming a kit plan must build this exact
+  * footprint and entrance, so the preview and gametests both use this method. */
+ public static ModelCabinEntity previewCabin(ElevatorDriveEntity drive){
+  var e=new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(),drive.getLevel());e.configure(drive.model()==null?CabinConfiguration.defaults(3,CabinConfiguration.Variant.SOLID):drive.model().config());e.bind(drive);var a=drive.anchor();
+  e.setPos(drive.model()==null?new net.minecraft.world.phys.Vec3(a.getX(),a.getY()+.875,a.getZ()):drive.model().placementOrigin(a.getY()));e.updateBounds();return e;
+ }
+ /** The gold entrance outline drawn on a preview or placed cabin. */
+ public static net.minecraft.world.phys.AABB entranceBox(ModelCabinEntity e){var c=e.configuration();return e.worldBox(new CabinGeometry.Box(CabinGeometry.left(c),.125,CabinGeometry.INSET,CabinGeometry.left(c)+CabinGeometry.width(c),2.125,CabinGeometry.INSET+.5));}
  public static CompoundTag plan(ItemStack stack){return stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag().getCompound("TransitCabinPlan");}
  private static void plan(ItemStack stack,CompoundTag plan){var tag=stack.getOrDefault(DataComponents.CUSTOM_DATA,CustomData.EMPTY).copyTag();if(plan.isEmpty())tag.remove("TransitCabinPlan");else tag.put("TransitCabinPlan",plan);stack.set(DataComponents.CUSTOM_DATA,CustomData.of(tag));}
  @Override public InteractionResult useOn(UseOnContext c){var l=c.getLevel();var p=c.getPlayer();if(p==null)return InteractionResult.PASS;if(l.isClientSide)return InteractionResult.SUCCESS;

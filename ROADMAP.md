@@ -60,8 +60,11 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - Update Cabin now starts from V13 geometry.
 
   Narrowed checks keep their intent: sizes 2/4/5 still load, and four-way rotation still runs, with the 180° turn expected to be refused. `runGameTestServer` now uses its own `run-gametest/` folder and starts from a fresh world. 193 of 194 pass; the remaining failure is item 19. *No release*
-- [ ] **19. Starter kits facing east or south can't install their home-floor landing.** The computed landing position overlaps the kit's own floor-marker rail ("Landing space obstructed"), while north and west work. Found by `kit_preview_rotates_without_placing_or_consuming_then_confirms`. *PATCH*
-- [ ] **20. Clearer refusal when a rotated cabin's entrance would face its guide rail.** It currently reports "Cabin overlaps blocks, another cabin, or is unloaded". *PATCH*
+- [x] **19. Starter kits facing east or south can't install their home-floor landing.** The computed landing position overlaps the kit's own floor-marker rail ("Landing space obstructed"), while north and west work. Found by `kit_preview_rotates_without_placing_or_consuming_then_confirms`.
+  - Cause: setting the size re-applies the rail mount, and its quarter turn turned every kit cabin away from its previewed entrance. East and south kits then could not install a home landing, and west kits had the controller in front of the doorway.
+  - Fix: the kit's compact mount resets that rotation, so the cabin matches the preview. The preview and the gametests now share `ModelCabinItem.previewCabin`.
+  - `KitPlacementGameTests` checks all four facings: footprint, gold entrance, landing install, activation and a clear doorway. Fixed in 0.4.1. *PATCH*
+- [x] **20. Clearer refusal when a rotated cabin's entrance would face its guide rail.** Activation now reports when the cabin would cut into its own drive or rail column. Fixed in 0.4.1. *PATCH*
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 

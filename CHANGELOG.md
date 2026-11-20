@@ -1,3 +1,15 @@
+## 0.4.1 — Elevator Cabin Kit placement
+
+### Fixed
+- Cabin Kits now build the cabin exactly as the preview showed it, in every facing, with the doors on the highlighted gold side.
+  - Before this fix, every placed kit cabin was turned a quarter from its preview, so the doors were not on the gold side.
+  - Facing east or south, the home-floor landing then landed on the kit's own controller and couldn't be installed ("Landing space obstructed").
+  - Facing west, the controller stood in front of the middle of the doorway.
+- A cabin rotated so a doorway faces its own guide rail now says so ("Rotate it in Alignment so the rail is beside the cabin, not behind a doorway"). Before, it reported "Cabin overlaps blocks, another cabin, or is unloaded".
+
+### Upgrade
+- Only newly placed kits change, because each controller saves its layout. To fix a cabin already built from a kit, empty and deactivate it, then use **Alignment → Rotate** until the preview's entrance faces your landing. Or break the controller and place the kit again.
+
 ## 0.4.0 — Default stations, saved-data cleanup and radio memory
 
 ### Added
