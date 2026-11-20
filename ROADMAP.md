@@ -75,6 +75,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - `ModelCabinItem.layout()` picks the drive orientation whose doorway faces the player and shifts the known-good layout onto the click.
   - The preview adds a white landing outline, and the in-game messages are rewritten.
   - *MINOR*
+- [x] **22. Step-by-step elevator help in game** (0.5.0). The Cabin Kit is renamed from "Elevator Refresher". Setup items get Shift-for-steps tooltips (`ElevatorHelp`). `/csu guide elevator` and `/csu guide bank` print numbered steps. The old Elevator 2 tooltips are gone. *MINOR*
 
 ## Future — Possible features (radio)
 

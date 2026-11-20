@@ -5,6 +5,7 @@ import net.minecraft.core.*;import net.minecraft.core.component.DataComponents;i
 public final class ModelCabinItem extends Item {
  public static BlockPos compactMount(BlockPos original,Direction facing){return original.relative(facing.getClockWise(),2);}
  public ModelCabinItem(Properties p){super(p);}
+ @Override public void appendHoverText(ItemStack stack,Item.TooltipContext context,java.util.List<Component> out,net.minecraft.world.item.TooltipFlag flag){super.appendHoverText(stack,context,out,flag);com.sanctuarygames.createtransit.elevator.ElevatorHelp.tooltip("tooltip.createtransit.elevator_cabin_kit",out);}
  /** A pending kit plan's preview drive: unplaced, at the clicked spot, facing the planned way. */
  public static ElevatorDriveEntity plannedDrive(net.minecraft.world.level.Level level,BlockPos clicked,Direction facing){var d=new ElevatorDriveEntity(clicked,ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing));d.setLevel(level);return d;}
  /** The cabin CabinPlacementPreview draws for a drive. Confirming a kit plan must build this exact
@@ -61,6 +62,6 @@ public final class ModelCabinItem extends Item {
   for(int row=0;row<=1;row++){var cell=pos.above(row);if(!l.hasChunkAt(cell)||!l.getBlockState(cell).canBeReplaced()||!l.mayInteract(p,cell)){p.displayClientMessage(Component.literal("Can't build here: the controller (blue box) and the block above it must be empty."),false);return InteractionResult.FAIL;}}
   var state=ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing);
   l.setBlock(pos,state,Block.UPDATE_ALL);if(!(l.getBlockEntity(pos) instanceof ElevatorDriveEntity d))return InteractionResult.FAIL;
-  d.configureModel("size","3");d.configureModel("compactMount","true");d.configureModel("kit3","true");l.setBlock(pos.above(),ElevatorRegistry.FLOOR_MARKER_RAIL.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing),Block.UPDATE_ALL);d.rescan();plan(stack,new CompoundTag());if(!p.isCreative())stack.shrink(1);p.displayClientMessage(Component.literal("Cabin Kit built. Place a Landing Door Kit in the white outline, then activate the cabin in this controller."),false);d.openPanel(p);return InteractionResult.SUCCESS;
+  d.configureModel("size","3");d.configureModel("compactMount","true");d.configureModel("kit3","true");l.setBlock(pos.above(),ElevatorRegistry.FLOOR_MARKER_RAIL.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing),Block.UPDATE_ALL);d.rescan();plan(stack,new CompoundTag());if(!p.isCreative())stack.shrink(1);p.displayClientMessage(Component.literal("Cabin Kit built. Next: build the guide-rail shaft up from the marker, put a Landing Door Kit in the white outline at each floor, then press Activate here. Type /csu guide elevator for every step."),false);d.openPanel(p);return InteractionResult.SUCCESS;
  }
 }

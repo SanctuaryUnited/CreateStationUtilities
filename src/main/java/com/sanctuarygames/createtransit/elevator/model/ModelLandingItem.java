@@ -2,6 +2,7 @@ package com.sanctuarygames.createtransit.elevator.model;
 import com.sanctuarygames.createtransit.elevator.*;import net.minecraft.world.item.*;import net.minecraft.world.item.context.UseOnContext;import net.minecraft.world.InteractionResult;
 public final class ModelLandingItem extends Item{
  public ModelLandingItem(Properties p){super(p);}
+ @Override public void appendHoverText(net.minecraft.world.item.ItemStack stack,Item.TooltipContext context,java.util.List<net.minecraft.network.chat.Component> out,net.minecraft.world.item.TooltipFlag flag){super.appendHoverText(stack,context,out,flag);com.sanctuarygames.createtransit.elevator.ElevatorHelp.tooltip("tooltip.createtransit.elevator_landing_kit",out);}
  /** Clicking any bottom frame cell finds the complete entrance, without a corner-placement puzzle. */
  public static net.minecraft.core.BlockPos snap(net.minecraft.world.level.Level l,net.minecraft.core.BlockPos clicked,net.minecraft.core.Direction facing){
   net.minecraft.core.BlockPos found=null;double best=1.001;boolean tie=false;

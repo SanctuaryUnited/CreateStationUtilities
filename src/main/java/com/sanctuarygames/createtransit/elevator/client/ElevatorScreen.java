@@ -356,7 +356,7 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
             button(String.format(java.util.Locale.ROOT,"X: %.2f   Z: %.2f blocks",(t.getInt("AlignmentX")-t.getInt("BaseAlignmentX"))/16.0,(t.getInt("AlignmentZ")-t.getInt("BaseAlignmentZ"))/16.0),14,y+56,imageWidth-28,b->{}).active=false;
             button("Reset alignment",14,y+84,w,b->setting("nudge","reset")).active=!active;button("Rotate 90°",right,y+84,w,b->setting("rotate","clockwise")).active=!active;
             button("Realign landing at current floor",14,y+110,imageWidth-28,b->action(9,menu.status(0),"","",true,0,0,0)).active=!active;
-            button("Hold Refresher to preview",14,y+136,imageWidth-28,b->{}).active=false;
+            button("Hold the Cabin Kit to preview",14,y+136,imageWidth-28,b->{}).active=false;
             button("Auto Center",14,y+162,imageWidth-28,b->setting("autoCenter","true")).active=!active;
             button("X −1/16",14,y+190,w,b->setting("nudge","westFine")).active=!active&&cabinValue("legacyGeometry").equals("true");button("X +1/16",right,y+190,w,b->setting("nudge","eastFine")).active=!active&&cabinValue("legacyGeometry").equals("true");
             button("Z −1/16",14,y+218,w,b->setting("nudge","northFine")).active=!active&&cabinValue("legacyGeometry").equals("true");button("Z +1/16",right,y+218,w,b->setting("nudge","southFine")).active=!active&&cabinValue("legacyGeometry").equals("true");

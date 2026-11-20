@@ -1,11 +1,14 @@
-## 0.5.0 — Cabin Kits aimed from the doorway
+## 0.5.0 — Easier elevator setup
 
 ### Changed
 - **Cabin Kits are aimed from the doorway.** Click the floor where you want to walk in. The block above it becomes the spot in front of the door, and the cabin is built straight ahead in the direction you're facing, with its door facing you. Crouch-right-click turns the cabin around that doorway. Elevators that are already built don't move.
 - Clearer Cabin Kit messages that name the preview colours and the next step.
+- The Cabin Kit is now called **Elevator Cabin Kit** in game. It was shown as "Elevator Refresher". Its item ID is unchanged.
+- Elevator tooltips are rewritten for the current elevators. Each setup item (Cabin Kit, Landing Door Kit, Guide Rail, Floor Marker Guide Rail, controller, Floor Call, Destination Selector) says what it's for, and shows step-by-step placement while Shift is held. The old tooltips described the retired Elevator 2 linking.
 
 ### Added
 - The Cabin Kit preview also outlines the landing door in white, alongside the gold doorway and the blue controller.
+- `/csu guide`, `/csu guide elevator` and `/csu guide bank` print numbered setup steps in chat for one elevator or a bank of elevators. The command runs on the client, so it works on any server.
 
 ## 0.4.1 — Elevator Cabin Kit placement
 
