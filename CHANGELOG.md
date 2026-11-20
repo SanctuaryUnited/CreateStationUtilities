@@ -1,4 +1,7 @@
-## 0.3.2 — Saved-data cleanup and radio memory
+## 0.4.0 — Default stations, saved-data cleanup and radio memory
+
+### Added
+- Server config `radio.defaultStations` in `createtransit-server.toml`: a list of `"Name|URL"` stations added to each world automatically. Each one is added once per world, so a station an operator removes stays removed. Entries follow the same rules as stations added in game (public address, `radio.allowedHosts`, 16-station limit), and any refused entry is logged as a warning. Edits apply on the next server start or when the config file is reloaded. The list is empty by default, so the mod still ships with no stations.
 
 ### Changed
 - The radio settings screen no longer says "no bundled stations". It now reads "MP3 / Ogg • direct live streams". The mod still ships with no stations.

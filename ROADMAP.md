@@ -69,10 +69,11 @@ a stream mount like this, not the `/public/...` player page, which is HTML.
 - [ ] **F4. AAC decoding** (for the 320 kbps `radio-ultrahigh.aac` mount). Needs a bundled decoder (JAAD is
   unmaintained; FFmpeg bindings are large). Little audible benefit while playback is mono and positional,
   and it raises bandwidth per listener from about 192 to 320 kbps. Low priority; reconsider after F2. *MINOR*
-- [ ] **F5. Default stations from server config.** A `radio.defaultStations` list of name and URL pairs, added
-  to each world's station list when it is first created, or when a listed URL is missing. Entries go through
-  the same checks as player-added stations (public host, `allowedHosts`, the 16-station cap). The default is
-  empty, so the mod still ships with no stations. Lets Sanctuary preconfigure its own radio without bundling
-  it for everyone. *MINOR*
+- [x] **F5. Default stations from server config** (shipped in 0.4.0). `radio.defaultStations` takes `"Name|URL"`
+  entries. Each URL is offered to a world once, on server start or config reload, and tracked in
+  `SeededDefaults`, so an operator's removal sticks. A URL already in the list counts as added. Entries go
+  through the same checks as player-added stations: public host, `allowedHosts` and the 16-station cap.
+  Refused entries are logged and retried later. The default is empty, so the mod still ships with no
+  stations. *MINOR*
 - Not planned: WebSocket audio. AzuraCast's WebSocket carries now-playing metadata, not audio, and HTTP
   streaming is already the right way to deliver it.

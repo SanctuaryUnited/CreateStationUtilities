@@ -81,12 +81,33 @@ public final class RadioStations extends SavedData {
   if(!com.sanctuarygames.createtransit.TransitServerConfig.canEditStations(editor))throw new IllegalArgumentException("Only server operators can add or remove radio stations");
  }
  /** Player-initiated add: permission, allow-list and private-address checks before saving. */
- public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){
-  requireEditor(editor);validate(name,url);String host=host(url);
+ public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){requireEditor(editor);return addChecked(name,url);}
+ private String addChecked(String name,String url){
+  validate(name,url);String host=host(url);
   if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
   if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
   return add(name,url);
  }
+ // URLs of config default stations already offered to this world, so an operator's removal sticks.
+ private final LinkedHashSet<String> seededDefaults=new LinkedHashSet<>();
+ private static final org.slf4j.Logger LOGGER=com.mojang.logging.LogUtils.getLogger();
+ /** Adds each "Name|URL" default once per world, with the same checks as a player-added station.
+  * A URL already in the list counts as added. Returns a message for each entry that was refused. */
+ public List<String> seedDefaults(List<? extends String> entries){
+  var problems=new ArrayList<String>();
+  for(var entry:entries){
+   int bar=entry.indexOf('|');if(bar<=0){problems.add("\""+entry+"\": expected Name|URL");continue;}
+   String name=entry.substring(0,bar).strip(),url=entry.substring(bar+1).strip();
+   if(seededDefaults.contains(url))continue;
+   try{if(stations.values().stream().noneMatch(s->s.url().equals(url)))addChecked(name,url);seededDefaults.add(url);setDirty();}
+   catch(IllegalArgumentException e){problems.add("\""+name+"\": "+e.getMessage());}
+  }
+  return problems;
+ }
+ public static void seedDefaults(MinecraftServer server){
+  for(var problem:get(server.overworld()).seedDefaults(com.sanctuarygames.createtransit.TransitServerConfig.DEFAULT_STATIONS.get()))LOGGER.warn("Skipped default radio station {}",problem);
+ }
+ @SubscribeEvent public static void serverStarted(net.neoforged.neoforge.event.server.ServerStartedEvent event){seedDefaults(event.getServer());}
  /** Stations saved before these rules, or after the allow-list changed, are not sent to clients. */
  public boolean servable(Station s){var host=host(s.url());return !privateLiteral(host)&&com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host);}
  public void remove(net.minecraft.server.level.ServerPlayer editor,String id){requireEditor(editor);remove(id);}
@@ -94,8 +115,9 @@ public final class RadioStations extends SavedData {
  public void remove(String id){stations.remove(id);setDirty();}
  public Station station(String id){return stations.get(id);}
  public CompoundTag snapshot(){return save(new CompoundTag(),null);}
- @Override public CompoundTag save(CompoundTag tag,HolderLookup.Provider provider){var list=new ListTag();for(var s:stations.values()){var t=new CompoundTag();t.putString("Id",s.id());t.putString("Name",s.name());t.putString("Url",s.url());list.add(t);}tag.put("Stations",list);var gs=new ListTag();groups.forEach((name,settings)->{var g=settings.save();g.putString("Name",name);var since=emptySince.get(name);if(since!=null)g.putLong("EmptySince",since);if(untracked.contains(name))g.putBoolean("Untracked",true);gs.add(g);});tag.put("Groups",gs);var ms=new ListTag();members.forEach((key,group)->{var m=new CompoundTag();m.putString("Key",key);m.putString("Group",group);ms.add(m);});tag.put("Members",ms);return tag;}
+ @Override public CompoundTag save(CompoundTag tag,HolderLookup.Provider provider){var list=new ListTag();for(var s:stations.values()){var t=new CompoundTag();t.putString("Id",s.id());t.putString("Name",s.name());t.putString("Url",s.url());list.add(t);}tag.put("Stations",list);var gs=new ListTag();groups.forEach((name,settings)->{var g=settings.save();g.putString("Name",name);var since=emptySince.get(name);if(since!=null)g.putLong("EmptySince",since);if(untracked.contains(name))g.putBoolean("Untracked",true);gs.add(g);});tag.put("Groups",gs);var ms=new ListTag();members.forEach((key,group)->{var m=new CompoundTag();m.putString("Key",key);m.putString("Group",group);ms.add(m);});tag.put("Members",ms);var seeded=new ListTag();seededDefaults.forEach(u->seeded.add(StringTag.valueOf(u)));tag.put("SeededDefaults",seeded);return tag;}
  private static RadioStations load(CompoundTag tag,HolderLookup.Provider provider){var data=new RadioStations();var list=tag.getList("Stations",10);for(int i=0;i<Math.min(16,list.size());i++){var t=list.getCompound(i);try{validate(t.getString("Name"),t.getString("Url"));String id=UUID.fromString(t.getString("Id")).toString();data.stations.put(id,new Station(id,t.getString("Name"),t.getString("Url")));}catch(IllegalArgumentException ignored){}}boolean legacy=!tag.contains("Members");var gs=tag.getList("Groups",10);for(int i=0;i<Math.min(64,gs.size());i++){var g=gs.getCompound(i);try{String name=g.getString("Name");data.group(name,new RadioSettings()).load(g);if(g.contains("EmptySince"))data.emptySince.put(name,g.getLong("EmptySince"));if(legacy||g.getBoolean("Untracked"))data.untracked.add(name);}catch(IllegalArgumentException ignored){}}
   var ms=tag.getList("Members",10);for(int i=0;i<Math.min(MAX_MEMBERS,ms.size());i++){var m=ms.getCompound(i);String group=m.getString("Group");if(data.groups.containsKey(group)&&m.getString("Key").contains("@"))data.members.put(m.getString("Key"),group);}
+  var seeded=tag.getList("SeededDefaults",8);for(int i=0;i<Math.min(256,seeded.size());i++)data.seededDefaults.add(seeded.getString(i));
   return data;}
 }

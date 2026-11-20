@@ -14,6 +14,7 @@ public final class TransitServerConfig {
     public static final ModConfigSpec SPEC;
     public static final ModConfigSpec.EnumValue<StationEditors> STATION_EDITORS;
     public static final ModConfigSpec.ConfigValue<List<? extends String>> ALLOWED_HOSTS;
+    public static final ModConfigSpec.ConfigValue<List<? extends String>> DEFAULT_STATIONS;
 
     static {
         var b = new ModConfigSpec.Builder();
@@ -29,6 +30,13 @@ public final class TransitServerConfig {
                 "Private, LAN and loopback addresses are always refused by clients.")
             .defineListAllowEmpty("allowedHosts", List.of(), () -> "radio.example.net",
                 o -> o instanceof String s && !s.isBlank() && s.length() <= 253);
+        DEFAULT_STATIONS = b.comment(
+                "Stations added to each world's station list automatically, as \"Name|URL\".",
+                "Each entry is added once per world. If an operator removes it, it stays removed.",
+                "Entries follow the same rules as stations added in game: a public host, allowedHosts and the 16-station limit.",
+                "Example: [\"Sanctuary Radio|https://radio.example.net/listen/station/radio.mp3\"]")
+            .defineListAllowEmpty("defaultStations", List.of(), () -> "Station name|https://radio.example.net/stream.mp3",
+                o -> o instanceof String s && s.indexOf('|') > 0 && s.length() <= 300);
         b.pop();
         SPEC = b.build();
     }
