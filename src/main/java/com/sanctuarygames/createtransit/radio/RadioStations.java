@@ -1,6 +1,7 @@
 package com.sanctuarygames.createtransit.radio;
-import java.net.URI;import java.util.*;import net.minecraft.nbt.*;import net.minecraft.core.HolderLookup;import net.minecraft.server.level.ServerLevel;import net.minecraft.world.level.saveddata.SavedData;
+import java.net.URI;import net.minecraft.core.BlockPos;import net.minecraft.core.registries.Registries;import net.minecraft.resources.*;import net.minecraft.server.MinecraftServer;import net.neoforged.bus.api.SubscribeEvent;import net.neoforged.fml.common.EventBusSubscriber;import net.neoforged.neoforge.event.tick.ServerTickEvent;import java.util.*;import net.minecraft.nbt.*;import net.minecraft.core.HolderLookup;import net.minecraft.server.level.ServerLevel;import net.minecraft.world.level.saveddata.SavedData;
 /** Intentionally ships with zero stations. Stored once per world, shared across dimensions. */
+@EventBusSubscriber(modid=com.sanctuarygames.createtransit.CreateTransit.MOD_ID)
 public final class RadioStations extends SavedData {
  public record Station(String id,String name,String url){}
  private final LinkedHashMap<String,RadioSettings> groups=new LinkedHashMap<>();
@@ -9,6 +10,50 @@ public final class RadioStations extends SavedData {
   * Never creates, never throws, so status queries and menu snapshots cannot hit the group limit. */
  public RadioSettings peek(String name,RadioSettings seed){if(name.isBlank())return seed;var found=groups.get(name);if(found!=null)return found;var copy=new RadioSettings();copy.load(seed.save());copy.volume=1;return copy;}
  public RadioSettings effective(String name,RadioSettings local){var shared=peek(name,local);var value=new RadioSettings();value.load(local.save());if(!name.isBlank()){value.enabled=shared.enabled;value.station=shared.station;value.mode=shared.mode;value.volume=Math.min(3,value.volume*shared.volume);}return value;}
+
+ // Group membership: "dimension@pos" -> group name, so unused groups can be pruned without loading chunks.
+ private final LinkedHashMap<String,String> members=new LinkedHashMap<>();
+ /** Game time each group was first seen with no members; it is deleted after GROUP_GRACE_TICKS. */
+ private final HashMap<String,Long> emptySince=new HashMap<>();
+ /** Groups saved before membership was tracked. Never auto-deleted: some of their speakers may be in
+  * chunks that have not loaded since, and deleting the group would silently drop its shared settings. */
+ private final HashSet<String> untracked=new HashSet<>();
+ static final int PRUNE_INTERVAL=200,GROUP_GRACE_TICKS=24000,MAX_MEMBERS=65536;
+ public static String memberKey(ServerLevel level,BlockPos pos){return level.dimension().location()+"@"+pos.asLong();}
+ /** Records the speaker at key as a member of group. A blank or unknown group just clears the record. */
+ public void setMember(String key,String group){
+  boolean known=!group.isBlank()&&groups.containsKey(group);
+  if(known&&!members.containsKey(key)&&members.size()>=MAX_MEMBERS)return;
+  String old=known?members.put(key,group):members.remove(key);
+  boolean changed=!Objects.equals(old,known?group:null);
+  if(known)changed|=emptySince.remove(group)!=null;
+  if(changed)setDirty();
+ }
+ @SubscribeEvent public static void tick(ServerTickEvent.Post event){var server=event.getServer();if(server.getTickCount()%PRUNE_INTERVAL==0)get(server.overworld()).prune(server);}
+ /** Drops members whose speaker is gone (only judged in loaded chunks), then deletes groups that have
+  * had no members for GROUP_GRACE_TICKS. The grace period covers speakers riding contraptions. */
+ boolean prune(MinecraftServer server){
+  long now=server.overworld().getGameTime();boolean changed=false;
+  var it=members.entrySet().iterator();
+  while(it.hasNext()){
+   var e=it.next();String key=e.getKey(),group=e.getValue();int at=key.lastIndexOf('@');ServerLevel level=null;BlockPos pos=null;
+   try{level=server.getLevel(ResourceKey.create(Registries.DIMENSION,ResourceLocation.parse(key.substring(0,at))));pos=BlockPos.of(Long.parseLong(key.substring(at+1)));}catch(RuntimeException ignored){}
+   boolean gone=level==null||pos==null||!groups.containsKey(group)||level.hasChunkAt(pos)&&!(level.getBlockEntity(pos) instanceof StationSpeakerEntity s&&s.group.equals(group));
+   if(gone){it.remove();changed=true;}
+  }
+  var used=new HashSet<>(members.values());
+  var groupIt=groups.keySet().iterator();
+  while(groupIt.hasNext()){
+   String name=groupIt.next();
+   if(used.contains(name)||untracked.contains(name)){changed|=emptySince.remove(name)!=null;continue;}
+   Long since=emptySince.get(name);
+   if(since==null||since>now){emptySince.put(name,now);changed=true;}
+   else if(now-since>=GROUP_GRACE_TICKS){groupIt.remove();emptySince.remove(name);changed=true;}
+  }
+  changed|=emptySince.keySet().retainAll(groups.keySet());changed|=untracked.retainAll(groups.keySet());
+  if(changed)setDirty();return changed;
+ }
+ boolean hasGroup(String name){return groups.containsKey(name);}
  private final LinkedHashMap<String,Station> stations=new LinkedHashMap<>();
  public static RadioStations get(ServerLevel l){return l.getServer().overworld().getDataStorage().computeIfAbsent(new Factory<>(RadioStations::new,RadioStations::load,null),"createtransit_radio");}
  public static String validate(String name,String url){
@@ -36,12 +81,33 @@ public final class RadioStations extends SavedData {
   if(!com.sanctuarygames.createtransit.TransitServerConfig.canEditStations(editor))throw new IllegalArgumentException("Only server operators can add or remove radio stations");
  }
  /** Player-initiated add: permission, allow-list and private-address checks before saving. */
- public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){
-  requireEditor(editor);validate(name,url);String host=host(url);
+ public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){requireEditor(editor);return addChecked(name,url);}
+ private String addChecked(String name,String url){
+  validate(name,url);String host=host(url);
   if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
   if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
   return add(name,url);
  }
+ // URLs of config default stations already offered to this world, so an operator's removal sticks.
+ private final LinkedHashSet<String> seededDefaults=new LinkedHashSet<>();
+ private static final org.slf4j.Logger LOGGER=com.mojang.logging.LogUtils.getLogger();
+ /** Adds each "Name|URL" default once per world, with the same checks as a player-added station.
+  * A URL already in the list counts as added. Returns a message for each entry that was refused. */
+ public List<String> seedDefaults(List<? extends String> entries){
+  var problems=new ArrayList<String>();
+  for(var entry:entries){
+   int bar=entry.indexOf('|');if(bar<=0){problems.add("\""+entry+"\": expected Name|URL");continue;}
+   String name=entry.substring(0,bar).strip(),url=entry.substring(bar+1).strip();
+   if(seededDefaults.contains(url))continue;
+   try{if(stations.values().stream().noneMatch(s->s.url().equals(url)))addChecked(name,url);seededDefaults.add(url);setDirty();}
+   catch(IllegalArgumentException e){problems.add("\""+name+"\": "+e.getMessage());}
+  }
+  return problems;
+ }
+ public static void seedDefaults(MinecraftServer server){
+  for(var problem:get(server.overworld()).seedDefaults(com.sanctuarygames.createtransit.TransitServerConfig.DEFAULT_STATIONS.get()))LOGGER.warn("Skipped default radio station {}",problem);
+ }
+ @SubscribeEvent public static void serverStarted(net.neoforged.neoforge.event.server.ServerStartedEvent event){seedDefaults(event.getServer());}
  /** Stations saved before these rules, or after the allow-list changed, are not sent to clients. */
  public boolean servable(Station s){var host=host(s.url());return !privateLiteral(host)&&com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host);}
  public void remove(net.minecraft.server.level.ServerPlayer editor,String id){requireEditor(editor);remove(id);}
@@ -49,6 +115,9 @@ public final class RadioStations extends SavedData {
  public void remove(String id){stations.remove(id);setDirty();}
  public Station station(String id){return stations.get(id);}
  public CompoundTag snapshot(){return save(new CompoundTag(),null);}
- @Override public CompoundTag save(CompoundTag tag,HolderLookup.Provider provider){var list=new ListTag();for(var s:stations.values()){var t=new CompoundTag();t.putString("Id",s.id());t.putString("Name",s.name());t.putString("Url",s.url());list.add(t);}tag.put("Stations",list);var gs=new ListTag();groups.forEach((name,settings)->{var g=settings.save();g.putString("Name",name);gs.add(g);});tag.put("Groups",gs);return tag;}
- private static RadioStations load(CompoundTag tag,HolderLookup.Provider provider){var data=new RadioStations();var list=tag.getList("Stations",10);for(int i=0;i<Math.min(16,list.size());i++){var t=list.getCompound(i);try{validate(t.getString("Name"),t.getString("Url"));String id=UUID.fromString(t.getString("Id")).toString();data.stations.put(id,new Station(id,t.getString("Name"),t.getString("Url")));}catch(IllegalArgumentException ignored){}}var gs=tag.getList("Groups",10);for(int i=0;i<Math.min(64,gs.size());i++){var g=gs.getCompound(i);try{data.group(g.getString("Name"),new RadioSettings()).load(g);}catch(IllegalArgumentException ignored){}}return data;}
+ @Override public CompoundTag save(CompoundTag tag,HolderLookup.Provider provider){var list=new ListTag();for(var s:stations.values()){var t=new CompoundTag();t.putString("Id",s.id());t.putString("Name",s.name());t.putString("Url",s.url());list.add(t);}tag.put("Stations",list);var gs=new ListTag();groups.forEach((name,settings)->{var g=settings.save();g.putString("Name",name);var since=emptySince.get(name);if(since!=null)g.putLong("EmptySince",since);if(untracked.contains(name))g.putBoolean("Untracked",true);gs.add(g);});tag.put("Groups",gs);var ms=new ListTag();members.forEach((key,group)->{var m=new CompoundTag();m.putString("Key",key);m.putString("Group",group);ms.add(m);});tag.put("Members",ms);var seeded=new ListTag();seededDefaults.forEach(u->seeded.add(StringTag.valueOf(u)));tag.put("SeededDefaults",seeded);return tag;}
+ private static RadioStations load(CompoundTag tag,HolderLookup.Provider provider){var data=new RadioStations();var list=tag.getList("Stations",10);for(int i=0;i<Math.min(16,list.size());i++){var t=list.getCompound(i);try{validate(t.getString("Name"),t.getString("Url"));String id=UUID.fromString(t.getString("Id")).toString();data.stations.put(id,new Station(id,t.getString("Name"),t.getString("Url")));}catch(IllegalArgumentException ignored){}}boolean legacy=!tag.contains("Members");var gs=tag.getList("Groups",10);for(int i=0;i<Math.min(64,gs.size());i++){var g=gs.getCompound(i);try{String name=g.getString("Name");data.group(name,new RadioSettings()).load(g);if(g.contains("EmptySince"))data.emptySince.put(name,g.getLong("EmptySince"));if(legacy||g.getBoolean("Untracked"))data.untracked.add(name);}catch(IllegalArgumentException ignored){}}
+  var ms=tag.getList("Members",10);for(int i=0;i<Math.min(MAX_MEMBERS,ms.size());i++){var m=ms.getCompound(i);String group=m.getString("Group");if(data.groups.containsKey(group)&&m.getString("Key").contains("@"))data.members.put(m.getString("Key"),group);}
+  var seeded=tag.getList("SeededDefaults",8);for(int i=0;i<Math.min(256,seeded.size());i++)data.seededDefaults.add(seeded.getString(i));
+  return data;}
 }

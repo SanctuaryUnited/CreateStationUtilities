@@ -19,6 +19,12 @@ public final class CreateTransit {
         com.sanctuarygames.createtransit.escalator.EscalatorRegistry.register(bus);
         if(net.neoforged.fml.ModList.get().isLoaded("railways"))com.sanctuarygames.createtransit.cable.CableRailways.register(bus);
         bus.addListener(GondolaSetup::setup);
+        // Editing defaultStations while the server runs adds new entries without a restart.
+        bus.addListener((net.neoforged.fml.event.config.ModConfigEvent.Reloading e) -> {
+            if (e.getConfig().getSpec() != TransitServerConfig.SPEC) return;
+            var server = net.neoforged.neoforge.server.ServerLifecycleHooks.getCurrentServer();
+            if (server != null) server.execute(() -> com.sanctuarygames.createtransit.radio.RadioStations.seedDefaults(server));
+        });
         NeoForge.EVENT_BUS.addListener(net.neoforged.bus.api.EventPriority.LOWEST, true, CreateTransit::allowAccentDye);
     }
     private static void allowAccentDye(PlayerInteractEvent.RightClickBlock e) {

@@ -1,6 +1,7 @@
 package com.sanctuarygames.createtransit.radio.client;
 import java.io.*;import java.net.*;import java.nio.*;import java.util.concurrent.*;import javax.sound.sampled.AudioFormat;import net.minecraft.client.sounds.*;import javazoom.jl.decoder.*;
-/** Bounded network/decode buffers. The Minecraft audio thread never waits for a network read. */
+/** Bounded network/decode buffers. The Minecraft audio thread never waits for a network read.
+ * read() returns heap buffers: only SharedRadioStreams readers hand PCM to OpenAL, and those are direct. */
 public final class RadioAudio implements AudioStream {
  private static final ExecutorService CLEANUP=Executors.newFixedThreadPool(4,r->{var t=new Thread(r,"Transit radio cleanup");t.setDaemon(true);return t;});
  private final AudioStream decoder;private final RadioPcmBuffer buffer;private final Thread producer;
@@ -74,14 +75,14 @@ public final class RadioAudio implements AudioStream {
   Mp3(InputStream input)throws IOException{this.input=input;bits=new Bitstream(input);frame();if(format==null)throw new IOException("No MP3 audio frames (AAC/HLS/playlists are not supported)");}
   private void frame()throws IOException{try{var h=bits.readFrame();if(h==null){eof=true;return;}var sample=(SampleBuffer)decoder.decodeFrame(h,bits);channels=sample.getChannelCount();if(format==null)format=new AudioFormat(sample.getSampleFrequency(),16,1,true,false);else if(sample.getSampleFrequency()!=(int)format.getSampleRate())throw new IOException("Stream sample rate changed");pending=java.util.Arrays.copyOf(sample.getBuffer(),sample.getBufferLength());index=0;bits.closeFrame();}catch(JavaLayerException e){throw new IOException("MP3 decode failed",e);}}
   public AudioFormat getFormat(){return format;}
-  public ByteBuffer read(int size)throws IOException{var b=ByteBuffer.allocateDirect(size/2*2).order(ByteOrder.LITTLE_ENDIAN);while(b.remaining()>=2){if(index>=pending.length){if(eof)break;frame();if(eof)break;}int value=pending[index++];if(channels==2)value=(value+pending[index++])/2;b.putShort((short)value);}return b.flip();}
+  public ByteBuffer read(int size)throws IOException{var b=ByteBuffer.allocate(size/2*2).order(ByteOrder.LITTLE_ENDIAN);while(b.remaining()>=2){if(index>=pending.length){if(eof)break;frame();if(eof)break;}int value=pending[index++];if(channels==2&&index<pending.length)value=(value+pending[index++])/2;b.putShort((short)value);}return b.flip();}
   public void close()throws IOException{input.close();try{bits.close();}catch(BitstreamException ignored){}}
  }
  private static final class MonoOgg implements AudioStream {
   private final JOrbisAudioStream ogg;private final AudioFormat format;
   MonoOgg(JOrbisAudioStream stream){ogg=stream;var f=ogg.getFormat();format=new AudioFormat(f.getSampleRate(),16,1,true,false);}
   public AudioFormat getFormat(){return format;}
-  public ByteBuffer read(int bytes)throws IOException{int channels=ogg.getFormat().getChannels();var raw=ogg.read(bytes*channels).order(ByteOrder.LITTLE_ENDIAN);if(channels==1)return raw;var out=ByteBuffer.allocateDirect(raw.remaining()/channels).order(ByteOrder.LITTLE_ENDIAN);while(raw.remaining()>=channels*2){int sum=0;for(int i=0;i<channels;i++)sum+=raw.getShort();out.putShort((short)(sum/channels));}return out.flip();}
+  public ByteBuffer read(int bytes)throws IOException{int channels=ogg.getFormat().getChannels();var raw=ogg.read(bytes*channels).order(ByteOrder.LITTLE_ENDIAN);if(channels==1)return raw;var out=ByteBuffer.allocate(raw.remaining()/channels).order(ByteOrder.LITTLE_ENDIAN);while(raw.remaining()>=channels*2){int sum=0;for(int i=0;i<channels;i++)sum+=raw.getShort();out.putShort((short)(sum/channels));}return out.flip();}
   public void close()throws IOException{ogg.close();}
  }
 }

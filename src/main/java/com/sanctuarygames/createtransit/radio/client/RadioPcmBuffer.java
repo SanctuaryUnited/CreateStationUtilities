@@ -54,7 +54,8 @@ final class RadioPcmBuffer {
         if (size == 0) throw failure != null ? failure : new IOException("Radio stream contained no audio");
     }
 
-    /** Never waits for network or decoding. Partial real audio is NOT padded with silence. */
+    /** Never waits for network or decoding. Partial real audio is NOT padded with silence.
+     * Returns a heap buffer: this feeds the shared live history, never OpenAL directly. */
     synchronized ByteBuffer read(int requested) {
         int wanted = Math.max(0, Math.min(requested, samples.length)) / frameSize * frameSize;
         int count = Math.min(wanted, size);
@@ -62,9 +63,9 @@ final class RadioPcmBuffer {
             // An actual network underrun, not merely a decoder-chunk boundary.
             // A short fallback keeps OpenAL's source alive while fresh data arrives.
             underruns++;
-            return ByteBuffer.allocateDirect(Math.min(wanted, silenceBytes)).order(ByteOrder.LITTLE_ENDIAN);
+            return ByteBuffer.allocate(Math.min(wanted, silenceBytes)).order(ByteOrder.LITTLE_ENDIAN);
         }
-        var output = ByteBuffer.allocateDirect(count).order(ByteOrder.LITTLE_ENDIAN);
+        var output = ByteBuffer.allocate(count).order(ByteOrder.LITTLE_ENDIAN);
         int first = Math.min(count, samples.length - head);
         output.put(samples, head, first);
         output.put(samples, 0, count - first);
