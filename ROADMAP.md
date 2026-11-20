@@ -43,10 +43,17 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 
 ## Phase 4 — Build and tests
 
-- [ ] **12. Gametests don't compile**: `EscalatorGameTests`, `EscalatorSoundGameTests`, `SmartEscalatorGameTests` call the removed `EscalatorNetwork.reverse`. Switch them to `EscalatorNetwork.configure`. *No release*
-- [ ] **13. Client tests don't compile**: `RadioAcousticsCheck`, `RadioAudioCheck` use old `RadioAcoustics.Profile`/`fade` and `RadioGainStream` signatures. *No release*
+- [x] **12. Gametests don't compile.** The three escalator suites now flip direction through `escalator.EscalatorTestAccess`, which calls `EscalatorNetwork.configure` the way the settings menu does. `runClient` works again without `-Pelevators30Validation`.
+  - `SpeakerUpdateGameTests` now expects one saved group, because item 3 stopped reads from creating groups.
+  - The scratch tests from 0.3.0–0.4.0 are now permanent: `RadioSecurity`, `RadioGroup`, `RadioGroupPrune`, `BankPrune` and `DefaultStations`. *No release*
+- [x] **13. Client tests don't compile.** `RadioAcousticsCheck` and `RadioAudioCheck` were updated to the current `Profile`, `fade` and `RadioGainStream` signatures. Added `radioStreamCheck`, which checks heap internal PCM, direct OpenAL output and byte order across the ring wrap. Six of the seven standalone client checks pass. *No release*
 - [x] **14. Bump the dev NeoForge from 21.1.248 to 21.1.267** in `build.gradle`. Keep `neoforge.mods.toml` at `[21.1.248,)`; raising the floor would be MAJOR. *No release*
-- [x] **15. Verify the client mixins on 21.1.267.** Checked with in-world testing of 0.3.0: creative tab, cable track and sound engine all clean. Note: `runClient` compiles gametests, so launch it with `-Pelevators30Validation` until item 12 is fixed.
+- [x] **15. Verify the client mixins on 21.1.267.** Checked with in-world testing of 0.3.0: creative tab, cable track and sound engine all clean. Item 12 fixed the gametest compile, so plain `runClient` works.
+- [ ] **18. 26 gametests and `elevatorModelCheck` already failed in the dev18.4 import.** These are mostly Elevators 3 cabin, landing and alignment tests, plus the refresher, inventory-tab and voxel-cylinder tests.
+  - They fail identically on the untouched `v0.2.0-dev18.4` source, so no release caused them. They hadn't run because the suite didn't compile.
+  - Each one needs triage: is the test stale (the feature changed on purpose) or is it a real bug?
+  - `elevatorModelCheck` predates the `elevator3/` texture folder and models without elements.
+  - Note: `run/world` persists between gametest runs, and the LRT and cable circuit tests paste at fixed coordinates, so delete it before a full run. *PATCH for any real bugs found*
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 
