@@ -18,7 +18,7 @@ public final class SharedRadioStreams {
   Hub(RadioAudio source){this.source=source;var f=source.getFormat();second=(int)f.getSampleRate()*f.getFrameSize();frame=f.getFrameSize();history=new byte[second*8];append(source.read(second*4));
    pump=Thread.ofPlatform().daemon().name("Station radio live clock").start(()->{long next=System.nanoTime();int chunk=second/20/frame*frame;try{while(!closed){next+=50_000_000L;long remaining=next-System.nanoTime();if(remaining>0)TimeUnit.NANOSECONDS.sleep(remaining);else if(remaining<-1_000_000_000L)next=System.nanoTime();append(source.read(chunk));if(source.ended()&&source.bufferedBytes()==0)break;}}catch(InterruptedException ignored){Thread.currentThread().interrupt();}});
   }
-  private synchronized void append(ByteBuffer data){while(data.hasRemaining()){history[(int)(written%history.length)]=data.get();written++;}}
+  private synchronized void append(ByteBuffer data){while(data.hasRemaining()){int at=(int)(written%history.length),count=Math.min(data.remaining(),history.length-at);data.get(history,at,count);written+=count;}}
   void close(){closed=true;pump.interrupt();source.close();}
   synchronized long liveBytes(){return written;}
   synchronized AudioStream reader(Runnable release){return new AudioStream(){long cursor=Math.max(0,written-second*4L);boolean closedReader;public AudioFormat getFormat(){return source.getFormat();}
@@ -28,7 +28,8 @@ public final class SharedRadioStreams {
     int count=(int)Math.min(want,Math.max(0,written-cursor));
     // A live source that hasn't advanced yet must not be mistaken for EOF.
     if(count==0&&(!source.ended()||source.bufferedBytes()>0)&&!Hub.this.closed)return ByteBuffer.allocateDirect(Math.min(want,second/20/frame*frame)).order(ByteOrder.LITTLE_ENDIAN);
-    var out=ByteBuffer.allocateDirect(count).order(ByteOrder.LITTLE_ENDIAN);for(int i=0;i<count;i++)out.put(history[(int)(cursor++%history.length)]);return out.flip();}}
+    // Direct: Minecraft passes this buffer to OpenAL. Copied in at most two runs around the ring.
+    var out=ByteBuffer.allocateDirect(count).order(ByteOrder.LITTLE_ENDIAN);while(out.hasRemaining()){int at=(int)(cursor%history.length),run=Math.min(out.remaining(),history.length-at);out.put(history,at,run);cursor+=run;}return out.flip();}}
    public void close(){synchronized(Hub.this){if(closedReader)return;closedReader=true;}release.run();}
   };}
  }

@@ -24,8 +24,12 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - Calls whose bank is gone are dropped. A call no car can serve for 60 s, while its panel and cars are loaded, expires and its riders are told.
   - It checks the world instead of relying on break events, so data from older versions is cleaned too. Banked calls are tied to the landing rather than the panel that placed them, so breaking one of several panels keeps the call.
   - Note: car letters are assigned by position in the bank, so removing a car re-letters the cars after it. *PATCH*
-- [ ] **5. Radio groups can never be deleted.** Prune groups with no members and/or add a delete action. *PATCH (prune) / MINOR (new action)*
-- [ ] **6. Direct-buffer churn in radio streaming** (`RadioPcmBuffer.read`, `Mp3.read`, `MonoOgg.read`, Hub reader). Use heap or reused buffers internally; only the buffer handed to OpenAL must be direct. *PATCH*
+- [x] **5. Radio groups can never be deleted.** `RadioStations` now saves group members (`Members`: dimension@pos → group). They are recorded on join or leave and when a speaker loads, and `prune()` runs every 10 s:
+  - It drops a member only when its chunk is loaded and no speaker there is in that group.
+  - It deletes a group after `GROUP_GRACE_TICKS` (24000) with no members. The delay covers speakers carried on contraptions.
+  - Legacy groups, saved before `Members` existed, are flagged `Untracked` and kept until one of their speakers loads.
+  - A manual delete action is still possible as a *MINOR*. *PATCH*
+- [x] **6. Direct-buffer churn in radio streaming.** `RadioPcmBuffer.read`, `Mp3.read` and `MonoOgg.read` now return heap buffers. The Hub reader still returns a direct buffer, because it goes to OpenAL through `RadioGainStream`. `Hub.append` and the reader copy in bulk around the ring instead of byte by byte. The raw buffer from vanilla `JOrbisAudioStream` is left as is. *PATCH*
 
 ## Phase 3 — Correctness and performance
 
@@ -33,7 +37,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [ ] **8. `ModelCabinController.probe()` constructs a throwaway entity on every landing lookup.** Compute landing positions without an entity, or cache per config/floor. *PATCH*
 - [ ] **9. `ensureFloors()` rescans every call for non-rail drives.** Cache legacy floor results per tick. *PATCH*
 - [ ] **10. `StationSpeakerBlock.CODEC` loses the style** (always `"box"`). *PATCH*
-- [ ] **11. `RadioAudio.Mp3.read` stereo down-mix can index past the buffer** on an odd sample count. *PATCH*
+- [x] **11. `RadioAudio.Mp3.read` stereo down-mix can index past the buffer** on an odd sample count. Fixed alongside item 6. *PATCH*
 - [x] **11a. Oversized and off-centre inventory icons** (found in 0.3.0 client testing). 26 item models used `display.gui.scale` 0.9 and one used 1.2, so parts overflowed neighbouring slots, and edge-mounted parts drew as bars along the slot edge. Fixed with `tools/fit_gui_icons.py` (run it after the asset generators; `--check` reports drift): it keeps each icon's rotation, sizes it to a vanilla block icon's on-screen footprint, and centres it from the element bounds. 62 icons refitted. Only `display.gui` changed, so placed blocks and held items are unaffected. *PATCH*
 - [x] **11b. Radio and elevator motor silent after a sound-engine restart** (found in 0.3.0 client testing). F3+T and Windows audio-device changes restart Minecraft's sound engine, which drops channels without stopping the sound instances. `RadioClient` and `CabinMotorClient` now treat a sound the engine no longer tracks as stopped, and recreate it. Escalator loops already did. *PATCH*
 
