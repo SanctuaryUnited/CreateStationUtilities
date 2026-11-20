@@ -68,6 +68,14 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 
+## Usability
+
+- [ ] **21. Aim Cabin Kits from the doorway** (on trial, branch `feat/kit-door-aiming`, planned 0.5.0).
+  - The clicked block is the hallway spot in front of the doorway, and the cabin is built straight ahead.
+  - `ModelCabinItem.layout()` picks the drive orientation whose doorway faces the player and shifts the known-good layout onto the click.
+  - The preview adds a white landing outline, and the in-game messages are rewritten.
+  - Revert by dropping the branch. *MINOR*
+
 ## Future — Possible features (radio)
 
 Sanctuary Radio runs on AzuraCast and currently uses the MP3 mount
