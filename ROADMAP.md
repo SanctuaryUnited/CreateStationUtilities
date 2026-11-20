@@ -27,7 +27,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [x] **5. Radio groups can never be deleted.** `RadioStations` now saves group members (`Members`: dimension@pos → group). They are recorded on join or leave and when a speaker loads, and `prune()` runs every 10 s:
   - It drops a member only when its chunk is loaded and no speaker there is in that group.
   - It deletes a group after `GROUP_GRACE_TICKS` (24000) with no members. The delay covers speakers carried on contraptions.
-  - Legacy groups, saved before `Members` existed, are flagged `Untracked` and kept until one of their speakers loads.
+  - Legacy groups, saved before `Members` existed, are flagged `Untracked` and never auto-deleted, since their unloaded speakers were never recorded. At most 64 can remain.
   - A manual delete action is still possible as a *MINOR*. *PATCH*
 - [x] **6. Direct-buffer churn in radio streaming.** `RadioPcmBuffer.read`, `Mp3.read` and `MonoOgg.read` now return heap buffers. The Hub reader still returns a direct buffer, because it goes to OpenAL through `RadioGainStream`. `Hub.append` and the reader copy in bulk around the ring instead of byte by byte. The raw buffer from vanilla `JOrbisAudioStream` is left as is. *PATCH*
 

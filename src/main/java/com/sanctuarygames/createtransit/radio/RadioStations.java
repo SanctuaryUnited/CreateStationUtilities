@@ -15,7 +15,8 @@ public final class RadioStations extends SavedData {
  private final LinkedHashMap<String,String> members=new LinkedHashMap<>();
  /** Game time each group was first seen with no members; it is deleted after GROUP_GRACE_TICKS. */
  private final HashMap<String,Long> emptySince=new HashMap<>();
- /** Groups saved before membership was tracked. Kept until one of their speakers loads. */
+ /** Groups saved before membership was tracked. Never auto-deleted: some of their speakers may be in
+  * chunks that have not loaded since, and deleting the group would silently drop its shared settings. */
  private final HashSet<String> untracked=new HashSet<>();
  static final int PRUNE_INTERVAL=200,GROUP_GRACE_TICKS=24000,MAX_MEMBERS=65536;
  public static String memberKey(ServerLevel level,BlockPos pos){return level.dimension().location()+"@"+pos.asLong();}
@@ -25,7 +26,7 @@ public final class RadioStations extends SavedData {
   if(known&&!members.containsKey(key)&&members.size()>=MAX_MEMBERS)return;
   String old=known?members.put(key,group):members.remove(key);
   boolean changed=!Objects.equals(old,known?group:null);
-  if(known){changed|=untracked.remove(group);changed|=emptySince.remove(group)!=null;}
+  if(known)changed|=emptySince.remove(group)!=null;
   if(changed)setDirty();
  }
  @SubscribeEvent public static void tick(ServerTickEvent.Post event){var server=event.getServer();if(server.getTickCount()%PRUNE_INTERVAL==0)get(server.overworld()).prune(server);}
