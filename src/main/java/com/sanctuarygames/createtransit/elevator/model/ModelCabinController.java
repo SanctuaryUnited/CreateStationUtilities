@@ -38,7 +38,16 @@ public final class ModelCabinController implements CabinMotionController.World {
  public boolean active(){return cabinId!=null;}public Policy policy(int y){return policies.getOrDefault(y,new Policy(true,config.rearEnabled(),0,0));}
  private Level level(){return drive.getLevel();}
  private ModelCabinEntity probe(int floor){var e=new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(),level());e.configure(config);e.bind(drive);e.mirrorIndicators(mirrorIndicators);e.setPos(placementOrigin(floor));e.updateBounds();return e;}
- private BlockPos landing(int floor,boolean rear){var e=cabin==null?probe(floor):cabin;var p=rear?e.world(config.size()-.5,0,config.size()+.5):e.world(.5,0,-.500001);return BlockPos.containing(p.x,floor+1,p.z);}
+ // Landing lookups run for every call button, bank scan and landing check while the cabin is not
+ // spawned. Reuse one probe for them, rebuilt only when something that shapes the cabin changes.
+ private record ProbeKey(CabinConfiguration config,boolean mirror,int alignmentX,int alignmentZ,int rotation,net.minecraft.world.level.block.state.BlockState mount,BlockPos at){}
+ private ProbeKey landingProbeKey;private ModelCabinEntity landingProbe;
+ private ModelCabinEntity landingProbe(int floor){
+  var key=new ProbeKey(config,mirrorIndicators,alignmentX,alignmentZ,rotation,drive.getBlockState(),drive.getBlockPos());
+  if(landingProbe==null||!key.equals(landingProbeKey)||landingProbe.level()!=level()){landingProbe=probe(floor);landingProbeKey=key;return landingProbe;}
+  landingProbe.setPos(placementOrigin(floor));landingProbe.updateBounds();return landingProbe;
+ }
+ private BlockPos landing(int floor,boolean rear){var e=cabin==null?landingProbe(floor):cabin;var p=rear?e.world(config.size()-.5,0,config.size()+.5):e.world(.5,0,-.500001);return BlockPos.containing(p.x,floor+1,p.z);}
  public Direction landingFacing(boolean rear){return facing(rear);}
  private Direction facing(boolean rear){var f=cabinFacing();return rear?f.getOpposite():f;}
  public BlockPos landingPosition(int floor,boolean rear){return landing(floor,rear);}

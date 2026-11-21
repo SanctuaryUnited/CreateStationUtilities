@@ -1,3 +1,11 @@
+## 0.5.1 — Elevator and speaker fixes
+
+### Fixed
+- A copied elevator controller (from a schematic, or picked with its data) now gets its own identity. Before, the copy and the original shared one, so elevator banks could mix up their cars. The original keeps its identity and its bank membership.
+- Call buttons, banks and landing checks no longer build a temporary cabin every time they look up where a landing goes. The result is reused until the cabin's settings, alignment or rotation change.
+- Elevators without floor-marker rails no longer rescan their whole shaft several times in the same tick.
+- The speaker block's codec now keeps the speaker style (ceiling, column, horn). Before, it always produced the box speaker.
+
 ## 0.5.0 — Quality-of-life update
 
 ### Changed

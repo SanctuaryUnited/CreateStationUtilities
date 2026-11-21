@@ -2,7 +2,7 @@ package com.sanctuarygames.createtransit.radio;
 import com.mojang.serialization.MapCodec;import net.minecraft.core.*;import net.minecraft.world.*;import net.minecraft.world.entity.player.Player;import net.minecraft.world.item.context.BlockPlaceContext;import net.minecraft.world.level.*;import net.minecraft.world.level.block.*;import net.minecraft.world.level.block.entity.*;import net.minecraft.world.level.block.state.*;import net.minecraft.world.level.block.state.properties.*;import net.minecraft.world.phys.*;import net.minecraft.world.phys.shapes.*;
 /** One speaker model mounts to walls or ceiling using the clicked face. */
 public final class StationSpeakerBlock extends BaseEntityBlock {
- public static final DirectionProperty FACING=BlockStateProperties.FACING;public static final MapCodec<StationSpeakerBlock> CODEC=simpleCodec(StationSpeakerBlock::new);
+ public static final DirectionProperty FACING=BlockStateProperties.FACING;public static final MapCodec<StationSpeakerBlock> CODEC=com.mojang.serialization.codecs.RecordCodecBuilder.mapCodec(i->i.group(propertiesCodec(),com.mojang.serialization.Codec.STRING.optionalFieldOf("style","box").forGetter(b->b.style)).apply(i,StationSpeakerBlock::new));
  public final String style;public StationSpeakerBlock(Properties p){this(p,"box");}public StationSpeakerBlock(Properties p,String style){super(p);this.style=style;registerDefaultState(defaultBlockState().setValue(FACING,Direction.NORTH));}
  @Override protected MapCodec<? extends BaseEntityBlock> codec(){return CODEC;}
  @Override protected void createBlockStateDefinition(StateDefinition.Builder<Block,BlockState>b){b.add(FACING);}
