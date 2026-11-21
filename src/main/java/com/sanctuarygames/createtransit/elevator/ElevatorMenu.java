@@ -54,7 +54,7 @@ public final class ElevatorMenu extends AbstractContainerMenu {
     public void accept(CompoundTag tag){state=tag.copy();var list=state.getList("Stops",10);var result=new ArrayList<ElevatorFloor>();for(int i=0;i<list.size();i++)result.add(ElevatorFloor.load(list.getCompound(i)));cachedStops=List.copyOf(result);floors=cachedStops.stream().mapToInt(ElevatorFloor::y).toArray();}
     public int status(int i){return state.getInt(i==0?"Current":i==1?"Target":"Phase");}
     @Override public void broadcastChanges(){
-        super.broadcastChanges();if(bankMode()!=0&&player.level().getGameTime()%5!=0)return;if(drive!=null&&player instanceof ServerPlayer server){var snapshot=snapshot(drive,player,configuration,accessPos);if(configuration&&bankMode()==0)snapshot.put("ConfigClipboard",player.getPersistentData().getCompound(CONFIG_CLIPBOARD).copy());String warning=snapshot.getString("RailWarning");if(snapshot.getInt("Phase")==ElevatorDriveEntity.FAULT)warning=snapshot.getString("Message");if(!warning.equals(lastWarning)){lastWarning=warning;if(!warning.isBlank())ElevatorFeedback.error(player,warning);}if(!snapshot.equals(lastSent)){accept(snapshot);PacketDistributor.sendToPlayer(server,new ElevatorPackets.Snapshot(containerId,snapshot));lastSent=snapshot.copy();}}
+        super.broadcastChanges();if(bankMode()!=0&&player.level().getGameTime()%5!=0)return;if(drive!=null&&player instanceof ServerPlayer server){var snapshot=snapshot(drive,player,configuration,accessPos);if(configuration&&bankMode()==0)snapshot.put("ConfigClipboard",player.getPersistentData().getCompound(CONFIG_CLIPBOARD).copy());String warning=snapshot.getString("RailWarningKey");if(snapshot.getInt("Phase")==ElevatorDriveEntity.FAULT)warning=snapshot.getString("MessageKey");if(!warning.equals(lastWarning)){lastWarning=warning;if(!warning.isBlank())ElevatorFeedback.error(player,warning);}if(!snapshot.equals(lastSent)){accept(snapshot);PacketDistributor.sendToPlayer(server,new ElevatorPackets.Snapshot(containerId,snapshot));lastSent=snapshot.copy();}}
     }
     public boolean action(Player sender,ElevatorPackets.Action action){
         if(drive==null||sender!=player||sender.containerMenu!=this||action.menuId()!=containerId||!stillValid(sender))return false;
@@ -64,7 +64,7 @@ public final class ElevatorMenu extends AbstractContainerMenu {
             var banks=ElevatorBanks.get(level);
             if(bankMode()==2){
                 boolean accepted=action.operation()==0&&banks.destination(level,accessPos,action.floorY(),server);
-                if(!accepted)ElevatorFeedback.error(sender,"No bank car serves that destination.");
+                if(!accepted)ElevatorFeedback.error(sender,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.no_bank_car_serves_that_destination"));
                 return accepted;
             }
             if(!configuration||!sender.mayBuild()||!level.mayInteract(sender,accessPos))return false;
@@ -72,7 +72,7 @@ public final class ElevatorMenu extends AbstractContainerMenu {
             if(operation>=17&&operation<=19){
                 String error=operation==19?(banks.select(level,accessPos,server)?"":"No linked bank at this panel"):banks.link(level,accessPos,server,operation==17);
                 if(!error.isEmpty())ElevatorFeedback.error(sender,error);
-                else sender.displayClientMessage(net.minecraft.network.chat.Component.literal("Bank selection saved"),true);
+                else sender.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.bank_selection_saved"),true);
                 return error.isEmpty();
             }
             if(operation>=24&&operation<=27){
@@ -100,14 +100,14 @@ public final class ElevatorMenu extends AbstractContainerMenu {
             case 15 -> {
                 if(drive.model()==null)yield false;
                 sender.getPersistentData().put(CONFIG_CLIPBOARD,drive.model().copySettings());
-                sender.displayClientMessage(net.minecraft.network.chat.Component.literal("Elevator configuration copied"),true);
+                sender.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.elevator_configuration_copied"),true);
                 yield true;
             }
             case 16 -> drive.pasteModelSettings(sender.getPersistentData().getCompound(CONFIG_CLIPBOARD));
             default -> false;
         };if(!result)chatError();broadcastChanges();return result;
     }
-    private void chatError(){var t=drive.snapshot();String message=t.getString("Message");if(message.isBlank())message="Request rejected. Check the selected floor and elevator setup.";ElevatorFeedback.error(player,message);lastWarning=message;}
+    private void chatError(){var t=drive.snapshot();String message=t.getString("MessageKey");if(message.isBlank())message="Request rejected. Check the selected floor and elevator setup.";ElevatorFeedback.error(player,message);lastWarning=message;}
     @Override public boolean clickMenuButton(Player sender,int index){return bankMode()==0&&drive!=null&&stillValid(sender)&&index>=0&&index<floors.length&&drive.requestFloor(floors[index]);}
     @Override public boolean stillValid(Player p){
         if(drive==null)return true;

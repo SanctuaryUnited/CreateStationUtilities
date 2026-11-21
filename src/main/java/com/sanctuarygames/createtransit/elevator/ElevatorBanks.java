@@ -298,7 +298,7 @@ public final class ElevatorBanks extends SavedData {
             if(now-job.unservableSince<UNSERVABLE_TICKS)continue;
             for(var id:job.riders){
                 var rider=level.getServer().getPlayerList().getPlayer(id);
-                if(rider!=null)ElevatorFeedback.error(rider,"No elevator car can serve this call. Call again once the bank is back in service.");
+                if(rider!=null)ElevatorFeedback.error(rider,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.no_elevator_car_can_serve_this"));
             }
             it.remove();changed=true;
         }
@@ -339,7 +339,7 @@ public final class ElevatorBanks extends SavedData {
                             else{
                                 for(var id:job.riders){
                                     var player=level.getServer().getPlayerList().getPlayer(id);
-                                    if(player!=null)ElevatorFeedback.error(player,"The assigned car can no longer serve this destination.");
+                                    if(player!=null)ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.the_assigned_car_can_no_longer"));
                                 }
                                 reserved.remove(job.car.id);iterator.remove();setDirty();continue;
                             }

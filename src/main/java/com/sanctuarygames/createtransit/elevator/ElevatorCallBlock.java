@@ -179,8 +179,8 @@ public final class ElevatorCallBlock extends ElevatorPartBlock {
             var banks=ElevatorBanks.get(server);
             if(destinationSelector&&player.isShiftKeyDown()&&player instanceof net.minecraft.server.level.ServerPlayer editor
                 &&player.mayBuild()&&level.mayInteract(player,pos)){
-                if(banks.associateSelector(server,pos,editor))player.displayClientMessage(Component.literal("Selector linked to the selected bank"),true);
-                else ElevatorFeedback.error(player,"Select a bank with a registered landing beside this selector.");
+                if(banks.associateSelector(server,pos,editor))player.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.selector_linked_to_the_selected_bank"),true);
+                else ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.select_a_bank_with_a_registered"));
                 return ItemInteractionResult.CONSUME;
             }
             var d=banks.menuDrive(server,pos,!destinationSelector);
@@ -192,7 +192,7 @@ public final class ElevatorCallBlock extends ElevatorPartBlock {
             var banks=ElevatorBanks.get(server);
             if(destinationSelector){
                 var drive=banks.menuDrive(server,pos,false);
-                if(drive==null)ElevatorFeedback.error(player,"Place the selector beside a linked bank landing.");
+                if(drive==null)ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.place_the_selector_beside_a_linked"));
                 else if(player.isShiftKeyDown())drive.openPanel(player,false,pos);
                 else if(screenHit(state,hit)&&player instanceof net.minecraft.server.level.ServerPlayer rider
                         &&level.getBlockEntity(pos) instanceof ElevatorPartEntity panel&&panel.destinationDisplay.isEmpty()){
@@ -203,7 +203,7 @@ public final class ElevatorCallBlock extends ElevatorPartBlock {
                         panel.deniedDestinationSlot=row;
                         panel.deniedDestinationUntil=server.getGameTime()+12;
                         panel.sync();
-                        ElevatorFeedback.error(player,"No bank car serves that destination.");
+                        ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.no_bank_car_serves_that_destination"));
                     }
                 }
                 return InteractionResult.CONSUME;
@@ -211,7 +211,7 @@ public final class ElevatorCallBlock extends ElevatorPartBlock {
             if(banks.hasService(server,pos)){
                 int dir=level.getBlockEntity(pos) instanceof ElevatorPartEntity panel?callDirection(state,hit,panel):0;
                 if(dir==0)return InteractionResult.CONSUME;
-                if(!bankCall(server,pos,dir))ElevatorFeedback.error(player,"No bank car serves this direction.");
+                if(!bankCall(server,pos,dir))ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.no_bank_car_serves_this_direction"));
                 return InteractionResult.CONSUME;
             }
             if(player.isShiftKeyDown()&&player.getMainHandItem().isEmpty()&&level.getBlockEntity(pos) instanceof ElevatorPartEntity button&&(!button.callMarkers().isEmpty()||button.markerDrive()!=null)){button.clearMarkers();button.bindMarker(null);player.displayClientMessage(Component.translatable("message.createtransit.elevator.links_cleared"),false);}
@@ -220,7 +220,7 @@ public final class ElevatorCallBlock extends ElevatorPartBlock {
                 int direction=callDirection(state,hit,panel);
                 if(direction==0||direction>0&&panel.callUp||direction<0&&panel.callDown)return InteractionResult.CONSUME;
                 int count=call(level,pos,direction);
-                if(count==0)ElevatorFeedback.error(player,"No available linked floor. Check marker rails and service settings.");
+                if(count==0)ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.no_available_linked_floor_check_marker"));
                 else player.displayClientMessage(Component.translatable("message.createtransit.elevator.called",count),false);
             }
         }

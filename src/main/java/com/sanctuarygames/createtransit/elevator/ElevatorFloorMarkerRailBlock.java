@@ -17,7 +17,7 @@ public final class ElevatorFloorMarkerRailBlock extends ElevatorGuideRailBlock {
             if (!level.isClientSide) {
                 var d = drive(level, pos);
                 if (d != null) { d.rescan(); ElevatorLinking.marker(level, pos, player); }
-                else player.displayClientMessage(Component.literal("Marker rail is not connected to an Elevator Drive"),false);
+                else player.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.marker_rail_is_not_connected_to_2"),false);
             }
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
@@ -27,7 +27,7 @@ public final class ElevatorFloorMarkerRailBlock extends ElevatorGuideRailBlock {
         if (!level.isClientSide) {
             var d = drive(level, pos);
             if (d != null) { d.rescan(); d.openPanel(player, true, pos); }
-            else player.displayClientMessage(Component.literal("No connected drive below this marker. Check the guide rails."),false);
+            else player.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.no_connected_drive_below_this_marker"),false);
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

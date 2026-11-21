@@ -44,6 +44,29 @@ public final class TransitText {
         return language.has(key) ? Component.translatableWithFallback(key, language.getOrDefault(key), args) : Component.translatable(key, args);
     }
 
+    // Encoded keys let messages travel through code that stores plain strings (controller warnings,
+    // block-entity sync) and still be translated wherever they are shown.
+    private static final char KEY = '', ARG = '';
+
+    /** A translatable message as a string, decoded later by {@link #text} or {@link #plain}. */
+    public static String key(String key, Object... args) {
+        var b = new StringBuilder().append(KEY).append(key);
+        for (var arg : args) b.append(ARG).append(arg);
+        return b.toString();
+    }
+
+    public static boolean isKey(String s) { return s != null && !s.isEmpty() && s.charAt(0) == KEY; }
+
+    /** A message string as a component: translated if it was made by {@link #key}, else literal. */
+    public static MutableComponent text(String s) {
+        if (!isKey(s)) return Component.literal(s == null ? "" : s);
+        var parts = s.substring(1).split(String.valueOf(ARG), -1);
+        return tr(parts[0], (Object[]) java.util.Arrays.copyOfRange(parts, 1, parts.length));
+    }
+
+    /** A message string as readable text in this side's language (English on a server). */
+    public static String plain(String s) { return isKey(s) ? text(s).getString() : s == null ? "" : s; }
+
     /** "[Elevator] " style prefix for a topic, from message.createtransit.prefix.&lt;topic&gt;. */
     public static MutableComponent prefix(String topic) {
         return Component.literal("[").append(tr("message.createtransit.prefix." + topic)).append("] ").withStyle(ChatFormatting.DARK_AQUA);

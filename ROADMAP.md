@@ -84,7 +84,17 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - text from `en_us.json`, so it can be translated
 
   Cabin Kit, Landing Door Kit and controller messages now use it, and `ElevatorFeedback` and `/csu guide` go through it. `langKeyCheck` (part of `check`) fails the build if code references a key that is missing from `en_us.json`. Chosen over bundling Adventure: no extra dependency, no conversion bridge to keep in step with NeoForge, and vanilla components already cover what the mod needs. *MINOR*
-- [ ] **24. Move the remaining hard-coded messages into `en_us.json`.** The controller's own warnings and refusals are still English strings, shown in chat and in the controller screen. Give them keys so the mod can be fully translated before a Modrinth or CurseForge release. *PATCH*
+- [x] **24. Move the remaining hard-coded messages into `en_us.json`** (0.5.0).
+  - 135 elevator warnings, refusals, faults and link messages now have keys:
+    - the controller and cabin warnings
+    - rail discovery
+    - controller-block messages and faults
+    - feedback chat
+    - landing, marker and call-button messages
+  - Controller warnings travel through the existing string plumbing as encoded keys (`TransitText.key`) and are translated where they are shown: in chat, and in the controller screen's status tooltip.
+  - The sync data keeps plain English in `Message`/`RailWarning` for older clients, and adds `MessageKey`/`RailWarningKey` for translation.
+  - `langKeyCheck` now covers 183 references. *PATCH*
+- [ ] **26. Translate the screen labels.** About 130 button and label strings in the elevator, escalator, speaker and settings screens are still English literals. This is the last step before a translation pass and a Modrinth or CurseForge release. *PATCH*
 - [ ] **25. Ponder scenes for elevators.** These are Create's animated in-game tutorials (press W on an item). Create is already a dependency, so they add nothing to the jar. Scenes:
   - placing a Cabin Kit, with the preview colours and turning
   - building the guide-rail shaft with floor markers
