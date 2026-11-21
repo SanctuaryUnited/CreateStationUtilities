@@ -7,7 +7,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
-@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,value=Dist.CLIENT)
 public final class TransitClient {
     @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers e){e.registerBlockEntityRenderer(ModEntities.TRANSIT.get(),TransitDoorRenderer::new);e.registerBlockEntityRenderer(ModEntities.STATION.get(),StationRenderer::new);e.registerBlockEntityRenderer(ModEntities.GONDOLA.get(),GondolaRender.Pieces::new);e.registerBlockEntityRenderer(ModEntities.GONDOLA_DOOR.get(),GondolaRender.Doors::new);if(net.neoforged.fml.ModList.get().isLoaded("railways"))com.sanctuarygames.createtransit.cable.client.CableClient.renderers(e);}
     @SubscribeEvent public static void screens(RegisterMenuScreensEvent e){e.register(ModMenus.KIOSK.get(),KioskScreen::new);}

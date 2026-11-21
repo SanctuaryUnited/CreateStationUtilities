@@ -7,7 +7,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
-@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,value=Dist.CLIENT)
 public final class EscalatorClient {
  static { EscalatorSurfaceModels.init(); }
  @SubscribeEvent public static void screens(RegisterMenuScreensEvent e){e.register(EscalatorRegistry.MENU.get(),EscalatorScreen::new);}

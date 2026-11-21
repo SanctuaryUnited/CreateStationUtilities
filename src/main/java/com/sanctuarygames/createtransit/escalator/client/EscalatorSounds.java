@@ -42,8 +42,8 @@ public final class EscalatorSounds {
 
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) { clear(); }
 
-    // Sound engine events use the mod bus; client ticks/logout use the game bus.
-    @EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    // FML puts the sound engine reload on the mod bus and ticks/logout on the game bus, by event type.
+    @EventBusSubscriber(modid = CreateTransit.MOD_ID, value = Dist.CLIENT)
     public static final class SoundReload {
         @SubscribeEvent public static void reload(SoundEngineLoadEvent event) { clear(); }
     }

@@ -7,7 +7,7 @@ public final class V15RenderCheck {
  public static void run(){
   for(int n=2;n<=5;n++)for(var frame:CabinConfiguration.FrameType.values())for(boolean right:new boolean[]{false,true}){
    var props=CabinConfiguration.defaults(n,CabinConfiguration.Variant.SOLID).save();props.setProperty("frameType",frame.name());var config=CabinConfiguration.load(props);double d=DoorGeometry.depth(config);var mount=DoorIndicatorLayout.mount(config,.4,d,right,DoorIndicatorLayout.stripZ(.4,d,true));double edge=right?CabinGeometry.left(config)+CabinGeometry.width(config)-.002:CabinGeometry.left(config)+.002;
-   check(Math.abs(Math.abs(mount.x()-edge)-1d/32)<1e-9,"Raised beyond inner housing face");check(right?mount.x()<edge:mount.x()>edge,"Mount faces doorway opening");check(Math.abs(mount.z()-(.4+d/2))<1e-9,"Inset depth centered");
+   check(Math.abs(Math.abs(mount.x()-edge)-1d/32)<1e-9,"Raised beyond inner housing face");check(right?mount.x()<edge:mount.x()>edge,"Mount faces doorway opening");double strip=DoorIndicatorLayout.stripZ(.4,d,true),clear=strip-DoorIndicatorLayout.STRIP_HALF-DoorIndicatorLayout.STRIP_CLEARANCE;check(mount.z()-mount.width()/2>=.4-1e-9&&mount.z()+mount.width()/2<=clear+1e-9,"Plate on the jamb and clear of the door strip");check(Math.abs(mount.z()-Math.min(.4+d/2,clear-mount.width()/2))<1e-9,"Plate centred on the jamb where the strip allows");
   }
   check(!DoorIndicatorLayout.plaque(null)&&DoorIndicatorLayout.plaque("G")&&DoorIndicatorLayout.plaque("F2"),"Cabin omits plaques; landing ID retains them");
   for(var header:CabinConfiguration.IndicatorStyle.values())for(var side:CabinConfiguration.IndicatorStyle.values()){

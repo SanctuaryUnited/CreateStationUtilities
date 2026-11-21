@@ -5,7 +5,6 @@ import com.sanctuarygames.createtransit.escalator.client.EscalatorSounds;
 import java.io.InputStreamReader;
 import java.util.Objects;
 import net.neoforged.bus.api.BusBuilder;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.IModBusEvent;
 
 /** Check native event registration without requiring a graphics/audio device. */
@@ -19,10 +18,11 @@ public final class EscalatorSoundCheck {
         var modEvents = BusBuilder.builder().markerType(IModBusEvent.class).build();
         gameEvents.register(EscalatorSounds.class);
         modEvents.register(EscalatorSounds.SoundReload.class);
-        check(EscalatorSounds.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.GAME,
-            "Tick/logout listeners are assigned to the game bus");
-        check(EscalatorSounds.SoundReload.class.getAnnotation(EventBusSubscriber.class).bus() == EventBusSubscriber.Bus.MOD,
-            "Sound-engine reload listener is assigned to the mod bus");
+        // FML routes each listener by its event type, so the reload event must be a mod-bus event and the others not.
+        check(IModBusEvent.class.isAssignableFrom(net.neoforged.neoforge.client.event.sound.SoundEngineLoadEvent.class),
+            "Sound-engine reload listener is routed to the mod bus");
+        check(!IModBusEvent.class.isAssignableFrom(net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent.LoggingOut.class),
+            "Logout listener is routed to the game bus");
         try (var reader = new InputStreamReader(Objects.requireNonNull(EscalatorSoundCheck.class.getResourceAsStream(
             "/assets/createtransit/sounds.json")))) {
             var sound = JsonParser.parseReader(reader).getAsJsonObject().getAsJsonObject("escalator_running");
