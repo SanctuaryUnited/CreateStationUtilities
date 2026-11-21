@@ -71,6 +71,38 @@ public final class CorrectnessGameTests {
         h.succeed();
     }
 
+    /** A running cabin swaps between models that share its footprint; rounded still needs a deactivated cabin. */
+    @GameTest(template = "elevator2_shaft", batch = "correctness")
+    public static void running_cabin_changes_model_and_glass(GameTestHelper h) {
+        var d = drive(h, new BlockPos(5, 2, 5));
+        var player = net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(h.getLevel());
+        check(d.configureModel("size", "3"), "Size");
+        for (var f : d.floorList()) check(d.installModelLanding(player, f.y()), "Landing: " + d.model().warning());
+        check(d.activateModel(), "Activate: " + d.model().warning());
+        var m = d.model();
+        var cabin = m.entity();
+        for (var v : new String[]{"REAR_PANORAMIC", "SCENIC", "SOLID", "REAR_PANORAMIC"}) {
+            check(d.configureModel("variant", v), "Running cabin accepts model " + v + ": " + m.warning());
+            check(cabin.configuration().variant().name().equals(v), "The cabin entity shows model " + v);
+        }
+        check(d.configureModel("leftGlass", "true") && cabin.configuration().leftGlazed(), "Left glass shows on a rear panoramic cabin");
+        check(!d.configureModel("variant", "CYLINDRICAL"), "Rounded needs a deactivated cabin");
+        check(cabin.configuration().variant() == CabinConfiguration.Variant.REAR_PANORAMIC, "A refused change leaves the cabin as it was");
+        // Swappable models must not move a single wall, or a rider could end up inside one.
+        for (boolean legacy : new boolean[]{false, true}) {
+            java.util.List<CabinGeometry.Box> first = null;
+            for (var v : new CabinConfiguration.Variant[]{CabinConfiguration.Variant.SOLID, CabinConfiguration.Variant.REAR_PANORAMIC, CabinConfiguration.Variant.SCENIC}) {
+                var props = CabinConfiguration.defaults(3, v).save();
+                props.setProperty("legacyGeometry", "" + legacy); props.setProperty("v13Geometry", "" + legacy);
+                props.setProperty("leftGlass", "true"); props.setProperty("rightGlass", "true");
+                var boxes = CabinGeometry.collision(CabinConfiguration.load(props), 0, 0);
+                if (first == null) first = boxes;
+                else check(first.equals(boxes), "Model " + v + " keeps the same walls (legacy=" + legacy + ")");
+            }
+        }
+        h.succeed();
+    }
+
     /** Item 10: the speaker block codec keeps each style instead of always decoding a box speaker. */
     @GameTest(template = "empty", batch = "correctness")
     public static void speaker_codec_keeps_its_style(GameTestHelper h) {

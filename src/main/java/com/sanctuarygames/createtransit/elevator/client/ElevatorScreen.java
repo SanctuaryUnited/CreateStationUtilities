@@ -157,6 +157,7 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
     private record Choice(String key,String[] values,int x,int y,int w,int offset){}
     private String choiceName(String key,String value){if(key.equals("doorStyle"))return switch(value){
         case "CLASSIC_BRUSHED_STEEL" -> "Classic Brushed Steel";case "CLASSIC_WOOD" -> "Classic Wood";default -> "OG Steel";};
+        if(key.equals("variant"))return switch(value){case "REAR_PANORAMIC"->"Rear Panoramic";case "CYLINDRICAL"->"Rounded";case "SCENIC"->"Scenic";case "WOOD"->"Wood";default->"Solid";};
         if(key.equals("skin"))return value.equals("MODERN_DARK")?"V13 Charcoal Steel":"V13 Brushed Steel";if(key.equals("handrail"))return value.equals("MATCH")?"Match Cabin Skin":value.equals("BRUSHED")?"Brushed Silver":"Dark Metal";if(key.equals("lighting"))return switch(value){case "PANEL"->"Single Large Panel";case "RECESSED"->"Four Panels";case "STRIPS"->"Perimeter Frame";case "LINEAR"->"Three Linear Strips";case "GRID"->"Center + Four Corners";default->value;};return key.equals("chime")?Component.translatable(com.sanctuarygames.createtransit.elevator.model.CabinConfiguration.Chime.valueOf(value).translationKey()).getString():value.replace("_"," ");}
     private Button cycle(String label,String key,String[] values,int x,int y,int w){String current=cabinValue(key);boolean dye=key.equals("primary")||key.equals("secondary")||(key.equals("ledColor")||key.equals("ceilingColor"));var result=button(label+": "+(dye?dyeName(dyeId(current)):choiceName(key,current))+" ▾",x,y,w,b->{int index=Math.max(0,Arrays.asList(values).indexOf(current));choice=new Choice(key,values,b.getX(),Math.clamp(b.getY()+20,topPos+44,topPos+imageHeight-130),Math.max(w,120),Math.max(0,Math.min(values.length-5,index-2)));choiceOffset=choiceTarget=choice.offset*20;choiceTime=0;});if(dye){int color=net.minecraft.world.item.DyeColor.byId(dyeId(current)).getTextureDiffuseColor();result.setTooltip(Tooltip.create(text(dyeName(dyeId(current)))));StationUi.swatch(result,color);}return result;}
     @Override public boolean mouseClicked(double x,double y,int button){if(false){if(nameBox!=null&&nameBox.visible&&nameBox.isMouseOver(x,y)){pickMaterial("materialPrimary");return true;}if(idBox!=null&&idBox.visible&&idBox.isMouseOver(x,y)){pickMaterial("materialSecondary");return true;}}if(button==0&&x>=leftPos+imageWidth-10&&x<=leftPos+imageWidth&&y>=topPos+contentTop&&y<=topPos+imageHeight-36&&contentBottom>imageHeight-36){draggingScroll=true;dragScroll(y);return true;}if(choice!=null){var c=choice;int count=Math.min(5,c.values.length);if(x>=c.x&&x<c.x+c.w&&y>=c.y&&y<c.y+count*20){int selected=Math.clamp((int)((y-c.y+choiceOffset)/20),0,c.values.length-1);setting(c.key,c.values[selected]);}choice=null;return true;}return super.mouseClicked(x,y,button);}
@@ -166,6 +167,14 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
     private void animateScroll(){long now=System.nanoTime();double dt=scrollTime==0?.016:Math.min(.1,(now-scrollTime)/1e9);scrollTime=now;scrollTarget=Math.clamp(scrollTarget,0,Math.max(0,contentBottom-(imageHeight-36)));double d=scrollTarget-scroll;scroll=Math.abs(d)<1? (int)Math.round(scrollTarget):(int)Math.round(scroll+Math.copySign(Math.max(1,Math.abs(d)*(1-Math.exp(-18*dt))),d));positionWidgets();}
     @Override public boolean keyPressed(int key,int scan,int mods){if(choice!=null&&key==256){choice=null;return true;}if(key!=256&&getFocused() instanceof EditBox box&&box.isFocused()){box.keyPressed(key,scan,mods);return true;}return super.keyPressed(key,scan,mods);}
 
+    /** Model picker. A running cabin can swap between the models that share its footprint; rounded needs a deactivated cabin. */
+    private void modelCycle(String label,int x,int y,int w,boolean assembled){
+        String[] all={"REAR_PANORAMIC","SOLID","CYLINDRICAL","SCENIC"};boolean rounded=cabinValue("variant").equals("CYLINDRICAL");
+        var b=cycle(label,"variant",assembled?java.util.Arrays.stream(all).filter(v->!v.equals("CYLINDRICAL")).toArray(String[]::new):all,x,y,w);
+        if(assembled){b.active=!rounded;b.setTooltip(net.minecraft.client.gui.components.Tooltip.create(com.sanctuarygames.createtransit.TransitText.tr(rounded?"tooltip.createtransit.cabin.rounded_locked":"tooltip.createtransit.cabin.rounded_needs_deactivate")));}
+    }
+    /** Greys out a setting that only applies to one cabin model and says which. */
+    private void needs(Button b,String model){if(cabinValue("variant").equals(model))return;b.active=false;b.setTooltip(net.minecraft.client.gui.components.Tooltip.create(com.sanctuarygames.createtransit.TransitText.tr("tooltip.createtransit.cabin.needs_model",com.sanctuarygames.createtransit.TransitText.tr("gui.createtransit.ui."+(model.equals("CYLINDRICAL")?"rounded":"rear_panoramic")))));}
     private Button toggle(String label,String key,int x,int y,int w){return button(label+": "+cabinValue(key),x,y,w,b->setting(key,Boolean.toString(!Boolean.parseBoolean(cabinValue(key)))));}
     private void alignmentSetup(int bottom){
         boolean active=menu.state().getBoolean("Assembled");int w=(imageWidth-34)/2,right=20+w;
@@ -200,9 +209,9 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
         button("Controller delays",right,112,w,b->{editor=2;init();});
         if(cabinPage==0){
             button("Cabin: "+cabinValue("size")+" × "+cabinValue("size"),14,140,w,b->{}).active=false;
-            cycle("Style","variant",new String[]{"REAR_PANORAMIC","SOLID","CYLINDRICAL","SCENIC"},right,140,w).active=!active;
-            toggle("Left window","leftGlass",14,166,w).active=cabinValue("variant").equals("REAR_PANORAMIC");toggle("Right window","rightGlass",right,166,w).active=cabinValue("variant").equals("REAR_PANORAMIC");
-            toggle("Curved glass","curvedGlass",14,192,w).active=cabinValue("variant").equals("CYLINDRICAL");
+            modelCycle("Style",right,140,w,active);
+            needs(toggle("Left window","leftGlass",14,166,w),"REAR_PANORAMIC");needs(toggle("Right window","rightGlass",right,166,w),"REAR_PANORAMIC");
+            needs(toggle("Curved glass","curvedGlass",14,192,w),"CYLINDRICAL");
             String[] dyes=java.util.stream.IntStream.range(0,16).mapToObj(Integer::toString).toArray(String[]::new);cycle("Body dye","primary",dyes,14,218,w);cycle("Accent dye","secondary",dyes,right,218,w);
         }else if(cabinPage==1){
             cycle("Skin","skin",new String[]{"MODERN_DARK","BRUSHED_STEEL"},14,140,imageWidth-28);
@@ -242,7 +251,7 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
         if(data.isEmpty())return;
         var c=data.getCompound("Configuration");
         var radio=data.getCompound("Radio");
-        var detail=text("Cabin "+c.getString("variant")+" / "+choiceName("skin",c.getString("skin"))+
+        var detail=text("Cabin "+choiceName("variant",c.getString("variant"))+" / "+choiceName("skin",c.getString("skin"))+
             " · Light "+c.getString("brightness")+" · "+data.getDouble("Speed")+" blocks/tick"+
             "\nDoors "+c.getString("front")+(Boolean.parseBoolean(c.getString("rearEnabled"))?" + rear":"")+
             " · Frame "+c.getString("frameType")+" · Chime "+c.getString("chime")+
@@ -304,10 +313,10 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
              break;
             }
             button("Cabin: "+cabinValue("size")+" × "+cabinValue("size"),14,y,w,b->{}).active=false;
-            cycle("Model","variant",new String[]{"REAR_PANORAMIC","SOLID","CYLINDRICAL","SCENIC"},right,y,w).active=!active;
+            modelCycle("Model",right,y,w,active);
             button("Voxel cabin geometry / 40 px height",14,y+26,imageWidth-28,b->{}).active=false;
             String[] dyes=java.util.stream.IntStream.range(0,16).mapToObj(Integer::toString).toArray(String[]::new);cycle("Body dye","primary",dyes,14,y+52,w);cycle("Accent dye","secondary",dyes,right,y+52,w);
-            toggle("Left glass","leftGlass",14,y+78,w);toggle("Right glass","rightGlass",right,y+78,w);toggle("Curved glass","curvedGlass",14,y+104,w);
+            needs(toggle("Left glass","leftGlass",14,y+78,w),"REAR_PANORAMIC");needs(toggle("Right glass","rightGlass",right,y+78,w),"REAR_PANORAMIC");needs(toggle("Curved glass","curvedGlass",14,y+104,w),"CYLINDRICAL");
             toggle("Rear entrance","rearEnabled",right,y+104,w).active=!active&&!cabinValue("variant").equals("CYLINDRICAL");
             cycle("Skin","skin",new String[]{"MODERN_DARK","BRUSHED_STEEL"},14,y+130,imageWidth-28);
             cycle("Handrail","handrail",new String[]{"MATCH","BRUSHED","DARK"},14,y+156,imageWidth-28);

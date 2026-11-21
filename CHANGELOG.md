@@ -5,6 +5,10 @@
 - Call buttons, banks and landing checks no longer build a temporary cabin every time they look up where a landing goes. The result is reused until the cabin's settings, alignment or rotation change.
 - Elevators without floor-marker rails no longer rescan their whole shaft several times in the same tick.
 - The speaker block's codec now keeps the speaker style (ceiling, column, horn). Before, it always produced the box speaker.
+- Changing the cabin model or its glass in the controller screen no longer appears to do nothing:
+  - A running cabin can now switch between Solid, Rear Panoramic and Scenic, which share the same walls. Only Rounded still needs the cabin returned home and deactivated, and the Model button's tooltip says so.
+  - Left and right glass only apply to the Rear Panoramic model, and curved glass only to Rounded. Those toggles are now greyed out on other models, with a tooltip naming the model they need.
+  - Models show readable names (Rounded instead of CYLINDRICAL).
 
 ## 0.5.0 — Quality-of-life update
 
