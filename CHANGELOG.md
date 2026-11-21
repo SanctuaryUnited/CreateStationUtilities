@@ -9,6 +9,7 @@
   - A running cabin can now switch between Solid, Rear Panoramic and Scenic, which share the same walls. Only Rounded still needs the cabin returned home and deactivated, and the Model button's tooltip says so.
   - Left and right glass only apply to the Rear Panoramic model, and curved glass only to Rounded. Those toggles are now greyed out on other models, with a tooltip naming the model they need.
   - Models show readable names (Rounded instead of CYLINDRICAL).
+- A cabin behind glass no longer disappears. Glass landing doors and glass cabin walls were sometimes drawn before the cabin, which hid it and showed the shaft and guide rails through the glass instead. Glass now draws after every solid part, and each pane shows one layer instead of two.
 
 ## 0.5.0 — Quality-of-life update
 

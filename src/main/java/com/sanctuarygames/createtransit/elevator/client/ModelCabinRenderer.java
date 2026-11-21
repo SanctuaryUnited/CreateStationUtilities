@@ -125,7 +125,10 @@ var sprites=new EnumMap<CabinGeometry.Material,TextureAtlasSprite>(CabinGeometry
  /** V13 face emission. Each authored face keeps its own UV rectangle. */
  private static void emit(CabinConfiguration c,List<CabinGeometry.Face> faces,PoseStack pose,MultiBufferSource buffers,int light,Map<CabinGeometry.Material,TextureAtlasSprite> sprites,float alpha){
   for(boolean transparent:new boolean[]{false,true}){
-   var out=buffers.getBuffer((transparent||alpha<1)?RenderType.entityTranslucent(TextureAtlas.LOCATION_BLOCKS):RenderType.entitySolid(TextureAtlas.LOCATION_BLOCKS));
+   // Glass goes in the translucent block sheet, which Minecraft draws after every entity and block entity's
+   // solid parts. entityTranslucent is flushed as soon as another renderer asks for a different type, so glass
+   // could reach the depth buffer before the cabin behind it and hide the cabin, showing the shaft instead.
+   var out=buffers.getBuffer(alpha<1?RenderType.entityTranslucent(TextureAtlas.LOCATION_BLOCKS):transparent?net.minecraft.client.renderer.Sheets.translucentCullBlockSheet():RenderType.entitySolid(TextureAtlas.LOCATION_BLOCKS));
    emitFaces(c,faces,pose,out,light,sprites,alpha,transparent);
   }
  }
