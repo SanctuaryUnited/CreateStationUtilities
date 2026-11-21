@@ -5,6 +5,7 @@
 - Clearer Cabin Kit messages that name the preview colours and the next step.
 - The Cabin Kit is now called **Elevator Cabin Kit** in game. It was shown as "Elevator Refresher". Its item ID is unchanged.
 - Elevator tooltips are rewritten for the current elevators. Each setup item (Cabin Kit, Landing Door Kit, Guide Rail, Floor Marker Guide Rail, controller, Floor Call, Destination Selector) says what it's for, and shows step-by-step placement while Shift is held. The old tooltips described the retired Elevator 2 linking.
+- Plain-language setup messages. The landing door now says whether it linked. A missing rail on the controller names the Floor Marker Guide Rail. Removing an active controller explains how to deactivate it. Activation refusals say what to place or clear.
 
 ### Added
 - The Cabin Kit preview also outlines the landing door in white, alongside the gold doorway and the blue controller.
