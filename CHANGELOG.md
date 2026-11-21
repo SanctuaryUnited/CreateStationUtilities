@@ -1,3 +1,19 @@
+## 0.5.2 — Smooth Rounded cabin
+
+### Changed
+- The Rounded cabin's back half is now drawn as a smooth curve instead of 1/8-block steps. That covers the curved glass or wall, the floor and ceiling edge, the handrail and the floor and ceiling LED strips, in both the current and the older (V13) cabin look.
+  - Curved glass is one clear pane between slim top and bottom rails, with no vertical lines at every step.
+  - The handrail follows the curve and joins the side rails, with a few evenly spaced brackets.
+  - Collision still uses the stepped shape, so walking and riding are unchanged. Existing cabins need no rebuild.
+- The README is shorter and only lists what the mod needs and does now. Old release notes stay in the changelog.
+
+### Fixed
+- The cabin's destination board is no longer cut off on its left edge. On 2- and 3-wide cabins it was slightly wider than the wall beside the doorway, so its edge sat inside the side wall. It's now centred between the side wall and the door's LED strip, and narrowed a little where it doesn't fit. 4- and 5-wide cabins keep the full size. The floor buttons line up with the new size.
+- The arrow indicators on the cabin's door jambs now sit at the same height as the landing door's arrows. They were measured from slightly below the cabin floor's surface, so they sat about 1.5 pixels higher. This was only in the current cabin look; the older (V13) look was already aligned.
+- Jamb arrow indicators no longer cover the edge of the door status light strip beside them, on cabins and landings alike. The arrow panel now keeps a small gap from the strip, and still stays level with the matching landing or cabin arrows.
+- Players could walk straight through the walls of a cabin 3 wide or bigger and fall out, usually while riding. Near a map-section line, the game didn't find the cabin when checking a player's movement against it, so its walls had no collision there. Cabins are now always found, so their walls, floor and jambs block everywhere. This was in earlier versions too. As a safety net, a rider whose feet fall slightly behind a rising floor is also put back on it.
+- Players could walk into a cabin's door jamb (where the indicator lights are) while it rose past a landing, and on out of the cabin. When a walk is blocked, Minecraft retries it as a small step up, and that retry ignored the cabin's walls. With the landing's blocks in step range, it let the player through. Cabin walls now count for the step-up too. This was in earlier versions too.
+
 ## 0.5.1 — Elevator and speaker fixes
 
 ### Fixed

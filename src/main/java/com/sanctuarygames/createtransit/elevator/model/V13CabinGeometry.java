@@ -14,8 +14,7 @@ final class V13CabinGeometry {
   var q=new ArrayList<Face>();double n=c.size(),t=.0625,L=left(c),R=L+width(c);
   if(c.variant()==Variant.CYLINDRICAL){
    box(q,Material.FLOOR,0,0,0,n,.125,n/2);box(q,Material.FRAME,0,3.125,0,n,3.25,n/2);
-   for(var strip:voxelRear(c)){box(q,Material.FLOOR,strip.x0(),0,strip.z0(),strip.x1(),.125,strip.z1());box(q,Material.FRAME,strip.x0(),3.125,strip.z0(),strip.x1(),3.25,strip.z1());}
-   for(var wall:voxelWalls(c)){box(q,wall(c,c.curvedGlass()),wall.x0(),.125,wall.z0(),wall.x1(),3.125,wall.z1());for(double h:new double[]{.2,3.02})box(q,Material.ACCENT,wall.x0(),h,wall.z0(),wall.x1(),h+.055,wall.z1());}
+   roundedRear(q,c);
   }else{
    box(q,Material.FLOOR,0,0,0,n,.125,n);box(q,Material.FRAME,0,3.125,0,n,3.25,n);
    if(!c.rearEnabled())box(q,wall(c,c.rearGlass()),0,.125,n-t,n,3.125,n);
@@ -54,6 +53,17 @@ final class V13CabinGeometry {
   // Keep every ceiling fixture clear of the front/rear pocket and pressed against the ceiling.
   for(int i=lightsStart;i<q.size();i++){var f=q.get(i);q.set(i,new Face(lightPoint(f.a(),c),lightPoint(f.b(),c),lightPoint(f.c(),c),lightPoint(f.d(),c),f.material(),f.u0(),f.v0(),f.u1(),f.v1()));}
   return compactFaces(q);
+ }
+ /** The rear half drawn as smooth curves. Collision keeps the stepped voxelRear and voxelWalls boxes. */
+ private static void roundedRear(List<Face> q,CabinConfiguration c){
+  double n=c.size(),t=.0625,R=n/2,ri=R-t;var s=new RoundedShell(n/2,n/2,R);
+  s.disc(q,Material.FLOOR,R,.125,true);s.disc(q,Material.FLOOR,R,0,false);s.surface(q,Material.FLOOR,R,0,.125,true);
+  s.disc(q,Material.FRAME,R,3.125,false);s.disc(q,Material.FRAME,R,3.25,true);s.surface(q,Material.FRAME,R,3.125,3.25,true);
+  if(c.curvedGlass()){
+   s.band(q,Material.METAL,ri-.004,R,.125,.215,true,false);s.band(q,Material.METAL,ri-.004,R,3.035,3.125,false,true);
+   s.surface(q,Material.GLASS,R,.215,3.035,true);s.surface(q,Material.GLASS,ri,.215,3.035,false);
+  }else s.band(q,wall(c,false),ri,R,.125,3.125,false,false);
+  for(double h:new double[]{.2,3.02})s.surface(q,Material.ACCENT,ri-.006,h,h+.055,false);
  }
  public static Point lightPoint(Point p,CabinConfiguration c){double min=.58,max=c.rearEnabled()?c.size()-.58:c.size()-.12;return new Point(p.x(),Math.min(3.124,p.y()+.004),Math.clamp(p.z(),min,max));}
  public static double compactY(double y){return y<=2.125?y:2.125+(y-2.125)/3;}

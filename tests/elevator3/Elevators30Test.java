@@ -42,6 +42,29 @@ public class Elevators30Test {
   check(!defaults(3,Variant.SOLID).legacyGeometry(),"New 3×3 cabin uses V17");
   check(defaults(3,Variant.SOLID).skin()==Skin.BRUSHED_STEEL&&defaults(3,Variant.SOLID).brightness()==6,"New finish and brightness");
   eq(DoorGeometry.LANDING_PANEL_START+PANEL_DEPTH,1-SEAM_CLEARANCE,"Landing closes on its own side of the seam");
+  for(int size=2;size<=5;size++)for(boolean legacy:new boolean[]{false,true}){
+   var sc=set(set(defaults(size,Variant.SOLID),"legacyGeometry",""+legacy),"v13Geometry",""+legacy);
+   double half=CabinSelectorLayout.width(sc)/2,mid=CabinSelectorLayout.center(sc,false);
+   check(mid-half>=CabinSelectorLayout.wallFace(sc)+1e-9,"Destination board clears the side wall at size "+size);
+   check(mid+half<=CabinSelectorLayout.ledEdge(sc)-1e-9,"Destination board clears the door LED at size "+size);
+   check(half*2>=4/16.0,"Destination board stays readable at size "+size);
+   if(size>=4)eq(half*2,CabinSelectorLayout.WIDTH,"Wide cabins keep the full board");
+   eq(CabinSelectorLayout.center(sc,true),size-mid,"Rear board mirrors the front");
+  }
+  eq(DoorIndicatorLayout.cabinJambBase(),FLOOR_TOP,"Cabin jamb arrows sit at the same height as landing arrows");
+  for(int size=2;size<=5;size++){var ic=defaults(size,Variant.SOLID);for(boolean right:new boolean[]{false,true}){
+   double ld=DoorGeometry.depth(ic);
+   var cabinMount=DoorIndicatorLayout.mount(ic,0,PASSAGE_DEPTH,right,DoorIndicatorLayout.cabinStripZ(ic,false));var landingMount=DoorIndicatorLayout.mount(ic,1-ld,ld,right,DoorIndicatorLayout.landingStripZ(ic));
+   eq(cabinMount.x(),landingMount.x(),"Cabin and landing arrows share a jamb line");eq(cabinMount.width(),landingMount.width(),"Cabin and landing arrows are the same size");}}
+  // Every jamb's arrow plate stays clear of that jamb's door status strip and inside the jamb.
+  for(int size=2;size<=5;size++)for(var frame:FrameType.values())for(boolean legacy:new boolean[]{false,true})for(boolean rear:new boolean[]{false,true}){
+   var ic=set(set(set(defaults(size,Variant.SOLID),"frameType",frame.name()),"legacyGeometry",""+legacy),"v13Geometry",""+legacy);
+   double start=Math.min(entranceFace(ic,rear),passageEnd(ic,rear)),ld=DoorGeometry.depth(ic);
+   double[][] jambs={{start,PASSAGE_DEPTH,DoorIndicatorLayout.cabinStripZ(ic,rear)},{1-ld,ld,DoorIndicatorLayout.landingStripZ(ic)}};
+   for(var j:jambs){var m=DoorIndicatorLayout.mount(ic,j[0],j[1],false,j[2]);double lo=m.z()-m.width()/2,hi=m.z()+m.width()/2;
+    check(hi<=j[2]-DoorIndicatorLayout.STRIP_HALF-1e-9||lo>=j[2]+DoorIndicatorLayout.STRIP_HALF+1e-9,"Arrow plate clears the door status strip ("+size+" "+frame+" legacy="+legacy+" rear="+rear+")");
+    check(lo>=j[0]-1e-9&&hi<=j[0]+j[1]+1e-9&&m.width()>=.12-1e-9,"Arrow plate stays on its jamb");}
+  }
   check(CabinSelectorLayout.pages(6)==1&&CabinSelectorLayout.pages(7)==2,"Six stops per selector page");
   check(CabinSelectorLayout.arrowAt(5,62)==1&&CabinSelectorLayout.arrowAt(27,62)==-1,"Footer arrows advance and rewind");
   var old=defaults(3,Variant.SOLID).save();

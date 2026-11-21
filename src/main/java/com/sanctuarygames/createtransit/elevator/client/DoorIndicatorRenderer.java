@@ -33,15 +33,16 @@ public final class DoorIndicatorRenderer {
    p.popPose();
   }
   for(boolean right:new boolean[]{false,true}){
-   var mount=DoorIndicatorLayout.mount(c,z,depth,right);
+   // Landings and older cabins share this path; each keeps its plate clear of its own door status strip.
+   var mount=DoorIndicatorLayout.mount(c,z,depth,right,landing!=null?DoorIndicatorLayout.stripZ(z,depth,true):DoorIndicatorLayout.cabinStripZ(c,z>c.size()/2.0));
    drawJamb(c,p,b,mount.x(),y,mount.z(),mount.yaw(),mount.width(),lantern,landing,directional,powered);
   }
  }
  public static void cabinArrows(CabinConfiguration c,PoseStack pose,MultiBufferSource buffers,boolean rear,int direction,boolean directional){
   double start=Math.min(CabinGeometry.entranceFace(c,rear),CabinGeometry.passageEnd(c,rear));
   for(boolean right:new boolean[]{false,true}){
-   var mount=DoorIndicatorLayout.mount(c,start,CabinGeometry.PASSAGE_DEPTH,right);
-   drawJamb(c,pose,buffers,mount.x(),.22,mount.z(),mount.yaw(),mount.width(),direction,null,directional,true);
+   var mount=DoorIndicatorLayout.mount(c,start,CabinGeometry.PASSAGE_DEPTH,right,DoorIndicatorLayout.cabinStripZ(c,rear));
+   drawJamb(c,pose,buffers,mount.x(),DoorIndicatorLayout.cabinJambBase(),mount.z(),mount.yaw(),mount.width(),direction,null,directional,true);
   }
  }
  static int accent(CabinConfiguration c){
@@ -72,14 +73,13 @@ public final class DoorIndicatorRenderer {
   int rgb=opening?(progress>=.999||blink?0x32ff69:0):(blink?0xff3030:0);
   if(progress<=0&&!opening)rgb=0;
   double left=CabinGeometry.left(c),right=left+CabinGeometry.width(c);
-  double inset=Math.min(.125,jambDepth*.25);
-  double stripZ=rear?jambStart+jambDepth-inset:jambStart+inset;
+  double stripZ=DoorIndicatorLayout.stripZ(jambStart,jambDepth,rear);
   for(boolean rightSide:new boolean[]{false,true}){
    pose.pushPose();
    pose.translate(rightSide?right-.004:left+.004,y,stripZ);
    pose.mulPose(Axis.YP.rotationDegrees(rightSide?90:-90));
    double height=Math.min(1.81,DoorGeometry.panelTop(c)-.16);
-   IndicatorArtwork.rect(pose,buffers,-.024,.065,.048,height+.03,0,0x101114);
+   IndicatorArtwork.rect(pose,buffers,-DoorIndicatorLayout.STRIP_HALF,.065,2*DoorIndicatorLayout.STRIP_HALF,height+.03,0,0x101114);
    if(rgb!=0)IndicatorArtwork.rect(pose,buffers,-.0135,.08,.027,height,-.008,rgb);
    pose.popPose();
   }

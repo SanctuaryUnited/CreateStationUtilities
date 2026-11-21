@@ -77,7 +77,7 @@ public final class ModelCabinEntity extends Entity {
   if(start.z<=CabinGeometry.passageEnd(c,false)||start.z>=(c.rearEnabled()?CabinGeometry.passageEnd(c,true):c.size()-CabinGeometry.INSET))return null;
   double distance=(plane-start.z)/ray.z;
   if(distance<0||distance>player.entityInteractionRange())return null;
-  double u=.5+(start.x+ray.x*distance-CabinSelectorLayout.center(c,rear))*(rear?-1:1)/CabinSelectorLayout.WIDTH;
+  double u=.5+(start.x+ray.x*distance-CabinSelectorLayout.center(c,rear))*(rear?-1:1)/CabinSelectorLayout.width(c);
   double v=1-(start.y+ray.y*distance-CabinSelectorLayout.BOTTOM)/CabinSelectorLayout.HEIGHT;
   if(u<0||u>=1||v<0||v>=1)return null;
   return new Vec3(u*32,v*64,rear?1:0);
@@ -164,10 +164,19 @@ public final class ModelCabinEntity extends Entity {
  public boolean hasInside(Vec3 p){var q=local(p);double n=configuration().size();if(q.x<.06||q.x>n-.06||q.z<.06||q.z>n-.06||q.y<.02||q.y>CabinGeometry.ceilingBottom(configuration()))return false;if(configuration().variant()==CabinConfiguration.Variant.CYLINDRICAL&&configuration().voxelCurve()&&q.z>n/2)return CabinGeometry.voxelRear(configuration()).stream().anyMatch(b->q.x>=b.x0()+.04&&q.x<=b.x1()-.04&&q.z>=b.z0()&&q.z<=b.z1());return configuration().variant()!=CabinConfiguration.Variant.CYLINDRICAL||q.z<=n/2||Math.pow(q.x-n/2,2)+Math.pow(q.z-n/2,2)<Math.pow(n/2-.04,2);}
  public List<AABB> collision(){return CabinGeometry.collision(configuration(),front(1),rear(1)).stream().map(this::worldBox).toList();}
  public void advanceDoors(){previousFront=entityData.get(FRONT);previousRear=entityData.get(REAR);entityData.set(FRONT,Math.clamp(previousFront+(frontOpen?1:-1),0,40));entityData.set(REAR,Math.clamp(previousRear+(rearOpen?1:-1),0,40));}
- public void carry(double dy,boolean client){if(Math.abs(dy)<1e-9)return;CabinCollisions.IGNORE.set(getUUID());try{for(var rider:level().getEntitiesOfClass(LivingEntity.class,getBoundingBox().inflate(0,.1,0)))if(hasInside(rider.position())&&(!client||rider instanceof Player p&&p.isLocalPlayer())){boolean grounded=local(rider.position()).y<.2;double targetY=rider.getY()+dy;rider.move(MoverType.SELF,new Vec3(0,dy,0));if(grounded){
+ /** How far below the floor top a rider's feet may lag (a late client update) and still be carried and put back. */
+ public static final double CATCH_UP=.6;
+ /** Inside the cabin's walls. While rising, feet slightly under the floor count too, so they are put back on it. */
+ public boolean riding(Vec3 p,boolean rising){var q=local(p);if(!rising)return hasInside(p);return q.y>=CabinGeometry.FLOOR_TOP-CATCH_UP&&hasInside(new Vec3(p.x,getY()+Math.max(q.y,CabinGeometry.FLOOR_TOP),p.z));}
+ public void carry(double dy,boolean client){if(Math.abs(dy)<1e-9)return;CabinCollisions.IGNORE.set(getUUID());try{
+  // The floor top after this step. A rider whose feet fell behind the floor (a late update, or a tick the client
+  // missed) is put back on it; otherwise collision ignores the floor box they are inside and they drop out.
+  double floor=getY()+dy+CabinGeometry.FLOOR_TOP;
+  for(var rider:level().getEntitiesOfClass(LivingEntity.class,getBoundingBox().inflate(0,CATCH_UP,0)))if(riding(rider.position(),dy>0)&&(!client||rider instanceof Player p&&p.isLocalPlayer())){boolean grounded=local(rider.position()).y<.2;double targetY=rider.getY()+dy;rider.move(MoverType.SELF,new Vec3(0,dy,0));if(grounded){
  // Entity.move drops sufficiently small displacements; keep feet out of the ascending floor.
  if(Math.abs(rider.getY()-targetY)<.001)rider.setPos(rider.getX(),targetY,rider.getZ());
  rider.setOnGround(true);}
+ if(dy>0&&rider.getY()<floor-1e-4){rider.setPos(rider.getX(),floor,rider.getZ());rider.setOnGround(true);var v=rider.getDeltaMovement();if(v.y<0)rider.setDeltaMovement(v.x,0,v.z);}
 rider.fallDistance=0;}}finally{CabinCollisions.IGNORE.remove();}}
  @Override public void onSyncedDataUpdated(EntityDataAccessor<?> key){super.onSyncedDataUpdated(key);if(level().isClientSide){if(key==FRONT){previousFront=lastFront;lastFront=entityData.get(FRONT);frontUpdateTick=level().getGameTime();}if(key==REAR){previousRear=lastRear;lastRear=entityData.get(REAR);rearUpdateTick=level().getGameTime();}}}
  @Override public void lerpTo(double x,double y,double z,float yaw,float pitch,int steps){lx=x;ly=y;lz=z;lerp=Math.clamp(steps,1,5);}

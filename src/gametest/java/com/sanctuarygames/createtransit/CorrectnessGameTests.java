@@ -114,4 +114,137 @@ public final class CorrectnessGameTests {
         }
         h.succeed();
     }
+
+    /** Riders anywhere on the floor, including the front corners beside the doorway, travel with the cabin. */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 900)
+    public static void riders_in_every_corner_travel_with_the_cabin(GameTestHelper h) {
+        var d = drive(h, new BlockPos(5, 2, 5));
+        var installer = net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(h.getLevel());
+        check(d.configureModel("size", "3") && d.configureModel("variant", "SCENIC"), "Scenic 3x3");
+        for (var f : d.floorList()) check(d.installModelLanding(installer, f.y()), "Landing: " + d.model().warning());
+        check(d.activateModel(), "Activate: " + d.model().warning());
+        var e = d.model().entity();
+        var c = e.configuration();
+        double n = c.size(), wall = 2 * CabinGeometry.INSET, front = CabinGeometry.passageEnd(c, false), half = .3, gap = .02;
+        // Local positions: both front corners against the doorway jambs, both back corners, and the middle.
+        double[][] spots = {{wall + half + gap, front + half + gap}, {n - wall - half - gap, front + half + gap},
+            {wall + half + gap, n - wall - half - gap}, {n - wall - half - gap, n - wall - half - gap}, {n / 2, n / 2}};
+        var riders = new java.util.ArrayList<net.minecraft.world.entity.LivingEntity>();
+        for (int i = 0; i < spots.length; i++) {
+            var at = e.world(spots[i][0], CabinGeometry.FLOOR_TOP, spots[i][1]);
+            net.minecraft.world.entity.LivingEntity rider;
+            if (i == 0) {
+                // A server player in the corner the bug was seen in; the rest are armour stands.
+                var player = new net.neoforged.neoforge.common.util.FakePlayer(h.getLevel(), new com.mojang.authlib.GameProfile(java.util.UUID.randomUUID(), "corner-rider"));
+                h.getLevel().addNewPlayer(player);
+                rider = player;
+            } else {
+                rider = new net.minecraft.world.entity.decoration.ArmorStand(h.getLevel(), at.x, at.y, at.z);
+                h.getLevel().addFreshEntity(rider);
+            }
+            rider.setPos(at.x, at.y, at.z);
+            riders.add(rider);
+        }
+        int base = d.anchor().getY();
+        check(d.requestFloor(base + 12), "Trip requested");
+        boolean[] moved = {false}, lagged = {false};
+        var late = new net.minecraft.world.entity.decoration.ArmorStand(h.getLevel(), 0, 0, 0);
+        h.getLevel().addFreshEntity(late);
+        var lateSpot = e.world(n / 2, CabinGeometry.FLOOR_TOP, front + half + gap);
+        late.setPos(lateSpot.x, lateSpot.y, lateSpot.z);
+        h.onEachTick(() -> {
+            var s = d.model().state();
+            if (s == null) return;
+            if (s.state() == CabinMotionController.State.FAULT) throw new GameTestAssertException(s.fault());
+            if (s.state() == CabinMotionController.State.MOVING) {
+                moved[0] = true;
+                // Walking into the side wall and the front jamb while moving: the walls must stop the rider.
+                var walker = riders.get(0);
+                var out = e.world(spots[0][0] - .3, CabinGeometry.FLOOR_TOP, spots[0][1] - .3).subtract(e.world(spots[0][0], CabinGeometry.FLOOR_TOP, spots[0][1]));
+                walker.move(net.minecraft.world.entity.MoverType.SELF, out);
+                var w = e.local(walker.position());
+                check(w.x >= wall + half - .01 && w.z >= front + half - .01, "Moving cabin walls stop a walking rider: local " + w + " at y " + s.y());
+                var back = e.world(spots[0][0], CabinGeometry.FLOOR_TOP, spots[0][1]);
+                walker.setPos(walker.getX() + (back.x - walker.getX()), walker.getY(), walker.getZ() + (back.z - walker.getZ()));
+            }
+            // A rider whose feet fell behind the rising floor (as a late client update does) is put back on it.
+            if (moved[0] && !lagged[0] && s.y() > base + 2) {
+                late.setPos(late.getX(), e.getY() + CabinGeometry.FLOOR_TOP - .3, late.getZ());
+                lagged[0] = true;
+            } else if (lagged[0]) {
+                var q = e.local(late.position());
+                check(Math.abs(q.y - CabinGeometry.FLOOR_TOP) < .05, "A rider that fell behind the floor is put back on it: local y " + q.y);
+            }
+            for (int i = 0; i < riders.size(); i++) {
+                var q = e.local(riders.get(i).position());
+                check(Math.abs(q.y - CabinGeometry.FLOOR_TOP) < .05 && Math.abs(q.x - spots[i][0]) < .05 && Math.abs(q.z - spots[i][1]) < .05,
+                    "Rider " + i + " stays on the floor where it stood: local " + q + " expected (" + spots[i][0] + ", " + spots[i][1] + ") state " + s.state() + " y " + s.y());
+            }
+            if (moved[0] && s.state() == CabinMotionController.State.DOORS_OPEN && Math.abs(s.y() - (base + 12)) < .001) {
+                riders.forEach(net.minecraft.world.entity.Entity::discard);
+                late.discard();
+                check(lagged[0], "Late rider was tested");
+                h.succeed();
+            }
+        });
+    }
+
+    /** Cabin walls are found for collision anywhere on the cabin, even far from its anchor corner across a section line. */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 40)
+    public static void cabin_walls_found_far_from_the_anchor_corner(GameTestHelper h) {
+        var l = h.getLevel();
+        var cabin = new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(), l);
+        cabin.configure(CabinConfiguration.defaults(5, CabinConfiguration.Variant.SOLID));
+        var origin = h.absolutePos(new BlockPos(2, 2, 2));
+        cabin.setPos(origin.getX(), origin.getY(), origin.getZ());
+        cabin.updateBounds();
+        l.addFreshEntity(cabin);
+        var missed = new java.util.ArrayList<String>();
+        for (int dx = 0; dx < 16; dx++) for (int dz = 0; dz < 16; dz += 5) {
+            cabin.setPos(origin.getX() + dx + .5, origin.getY(), origin.getZ() + dz + .5);
+            cabin.updateBounds();
+            // A player-sized box against the far side wall, as far from the anchor as the cabin allows.
+            for (var spot : new double[][]{{4.5, 2.5}, {2.5, 4.5}, {4.5, 4.5}}) {
+                var p = cabin.world(spot[0], 1, spot[1]);
+                var query = new net.minecraft.world.phys.AABB(p.x - .3, p.y, p.z - .3, p.x + .3, p.y + 1.8, p.z + .3);
+                if (CabinCollisions.add(l, null, query, java.util.List.of()).isEmpty()) missed.add("anchor+" + dx + "," + dz + " spot " + spot[0] + "," + spot[1]);
+            }
+        }
+        cabin.discard();
+        check(missed.isEmpty(), "Cabin collision not found at " + missed.size() + " spots, e.g. " + missed.stream().limit(3).toList());
+        h.succeed();
+    }
+
+    /**
+     * Minecraft's step-up retry (used when a walk is blocked) gathers its own collision shapes. With a block edge
+     * within step height, as when a rising cabin passes a landing, it must still include the cabin's walls.
+     */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 40)
+    public static void step_up_does_not_walk_through_cabin_jambs(GameTestHelper h) {
+        var l = h.getLevel();
+        var cabin = new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(), l);
+        var c = CabinConfiguration.defaults(3, CabinConfiguration.Variant.SOLID);
+        cabin.configure(c);
+        var origin = h.absolutePos(new BlockPos(4, 2, 4));
+        // Floor top 0.7 above a block line, so the block in front of the doorway has its top 0.3 above the rider's feet.
+        cabin.setPos(origin.getX(), origin.getY() + .7 - CabinGeometry.FLOOR_TOP, origin.getZ());
+        cabin.updateBounds();
+        l.addFreshEntity(cabin);
+        double jamb = CabinGeometry.left(c), feet = CabinGeometry.FLOOR_TOP;
+        var outside = cabin.world(jamb + .5, feet + .3, -.5);
+        l.setBlockAndUpdate(BlockPos.containing(outside.x, outside.y - .5, outside.z), net.minecraft.world.level.block.Blocks.STONE.defaultBlockState());
+        var player = new net.neoforged.neoforge.common.util.FakePlayer(l, new com.mojang.authlib.GameProfile(java.util.UUID.randomUUID(), "jamb-walker"));
+        l.addNewPlayer(player);
+        var start = cabin.world(jamb + .3 + .002, feet, .33);
+        player.setPos(start.x, start.y, start.z);
+        player.setOnGround(true);
+        // Walk diagonally into the jamb and toward the closed door.
+        var step = cabin.world(jamb + .3 + .002 - .2, feet, .33 - .2).subtract(start);
+        player.move(net.minecraft.world.entity.MoverType.SELF, step);
+        var q = cabin.local(player.position());
+        player.discard();
+        cabin.discard();
+        check(q.x >= jamb + .3 - .01, "Walking into the jamb is blocked, even with a block edge in step range: local " + q);
+        h.succeed();
+    }
 }

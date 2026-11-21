@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'net.neoforged.moddev' version '2.0.148'
 }
-version = '0.5.1'
+version = '0.5.2'
 group = 'com.sanctuarygames.createtransit'
 base { archivesName = 'create-station-utilities' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -187,14 +187,14 @@ tasks.register('elevator3CoreCheck', JavaExec) {
     mainClass = 'CabinCoreTest'
 }
 tasks.register('compileElevator3Core', JavaCompile) {
-    source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinMotionController.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/CabinCoreTest.java')
+    source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinMotionController.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','RoundedShell.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/CabinCoreTest.java')
     classpath = files()
     destinationDirectory = layout.buildDirectory.dir('elevator3-core')
 }
 tasks.named('check') { dependsOn 'elevator3CoreCheck' }
 
 tasks.register('compileDoorStyleCheck', JavaCompile) {
- source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/DoorStyleTest.java')
+ source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','RoundedShell.java','DoorStyleTextures.java','IndicatorSignal.java' }, 'tests/elevator3/DoorStyleTest.java')
  classpath = files(); destinationDirectory = layout.buildDirectory.dir('door-style-check')
 }
 tasks.register('doorStyleCheck', JavaExec) { dependsOn 'compileDoorStyleCheck'; classpath = files(layout.buildDirectory.dir('door-style-check')); mainClass = 'DoorStyleTest' }
@@ -284,7 +284,7 @@ if(providers.gradleProperty('hallwayValidation').isPresent()) neoForge {
 
 // Exact 46px body / 32px doorway and per-style color-memory regression suite.
 tasks.register('compileElevators30Check', JavaCompile) {
- source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','CabinSelectorLayout.java' }, 'tests/elevator3/Elevators30Test.java')
+ source = files(fileTree('src/main/java/com/sanctuarygames/createtransit/elevator/model') { include 'CabinConfiguration.java','CabinGeometry.java','DoorGeometry.java','V13CabinGeometry.java','RoundedShell.java','CabinSelectorLayout.java','DoorIndicatorLayout.java' }, 'tests/elevator3/Elevators30Test.java')
  classpath = files(); destinationDirectory = layout.buildDirectory.dir('elevators30-check')
 }
 tasks.register('elevators30Check', JavaExec) {

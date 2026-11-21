@@ -9,7 +9,8 @@ public final class CabinGeometry {
  public record Point(double x,double y,double z){}
  public record Face(Point a,Point b,Point c,Point d,Material material,double u0,double v0,double u1,double v1){public Face(Point a,Point b,Point c,Point d,Material material){this(a,b,c,d,material,0,0,1,1);}}
  public record Box(double x0,double y0,double z0,double x1,double y1,double z1){public Box{if(x1<=x0||y1<=y0||z1<=z0)throw new IllegalArgumentException("Empty collider");}}
- private record Part(Material material,Box bounds,boolean solid){}
+ /** A box of the cabin. Hidden parts are collision only, for shapes drawn some other way (the Rounded rear). */
+ private record Part(Material material,Box bounds,boolean solid,boolean visible){}
  private static final Map<CabinConfiguration,List<Part>> PARTS=Collections.synchronizedMap(new LinkedHashMap<>(32,.75f,true){protected boolean removeEldestEntry(Map.Entry<CabinConfiguration,List<Part>> e){return size()>96;}});
  private static final Map<CabinConfiguration,List<Face>> CACHE=Collections.synchronizedMap(new LinkedHashMap<>(32,.75f,true){protected boolean removeEldestEntry(Map.Entry<CabinConfiguration,List<Face>> e){return size()>96;}});
  public static double height(CabinConfiguration c){return c.legacyGeometry()?LEGACY_HEIGHT:HEIGHT;}
@@ -39,7 +40,8 @@ public final class CabinGeometry {
   quad(q,m,x,y,Z,x,Y,Z,x,Y,z,x,y,z);quad(q,m,X,y,z,X,Y,z,X,Y,Z,X,y,Z);
   quad(q,m,x,Y,z,x,Y,Z,X,Y,Z,X,Y,z);quad(q,m,x,y,Z,x,y,z,X,y,z,X,y,Z);
  }
- private static void part(List<Part> p,Material m,boolean solid,double x,double y,double z,double X,double Y,double Z){if(X>x&&Y>y&&Z>z)p.add(new Part(m,new Box(x,y,z,X,Y,Z),solid));}
+ private static void part(List<Part> p,Material m,boolean solid,double x,double y,double z,double X,double Y,double Z){if(X>x&&Y>y&&Z>z)p.add(new Part(m,new Box(x,y,z,X,Y,Z),solid,true));}
+ private static void hidden(List<Part> p,double x,double y,double z,double X,double Y,double Z){if(X>x&&Y>y&&Z>z)p.add(new Part(Material.WALL,new Box(x,y,z,X,Y,Z),true,false));}
  private static Material rail(CabinConfiguration c){return c.handrail()==Handrail.DARK?Material.RAIL_DARK:c.handrail()==Handrail.MATCH?Material.RAIL_MATCH:Material.HANDRAIL;}
  /**
   * Light metal framing around a glass wall: a post at each end plus top and bottom rails, so the pane reads as
@@ -69,15 +71,9 @@ public final class CabinGeometry {
   double roofRear=c.legacyGeometry()?b:c.rearEnabled()?back:b;
   if(c.variant()==Variant.CYLINDRICAL){
    part(p,Material.FLOOR,true,a,0,nose,b,FLOOR_TOP,n/2);part(p,Material.CEILING,true,a,ceilingBottom(c),roofFront,b,height(c),n/2);
-   for(var s:voxelRear(c)){part(p,Material.FLOOR,true,s.x0(),0,s.z0(),s.x1(),FLOOR_TOP,s.z1());part(p,Material.CEILING,true,s.x0(),ceilingBottom(c),s.z0(),s.x1(),height(c),s.z1());}
-   // One bracket per sixteenth of a turn around the curve, rather than one on every 1/8-block step.
-   var bracketed=new java.util.HashSet<Long>();
-   for(var w:voxelWalls(c)){double angle=Math.atan2((w.z0()+w.z1())/2-n/2,(w.x0()+w.x1())/2-n/2);boolean bracket=bracketed.add(Math.round(Math.floor(angle/(Math.PI/8))));
-    part(p,c.curvedGlass()?Material.GLASS:Material.WALL,true,w.x0(),FLOOR_TOP,w.z0(),w.x1(),ceilingBottom(c),w.z1());
-    double x=w.x0(),X=w.x1(),z=w.z0(),Z=w.z1();
-    if(X-x>Z-z){double zz=z-.10;part(p,rail(c),false,x,1.08,zz,X,1.16,zz+.0625);if(bracket)part(p,Material.METAL,false,(x+X)/2-.018,1.04,zz+.035,(x+X)/2+.018,1.10,z+.01);}
-    else {double xx=x<n/2?X+.02:x-.0825;part(p,rail(c),false,xx,1.08,z,xx+.0625,1.16,Z);if(bracket)part(p,Material.METAL,false,Math.min(x,xx),1.04,(z+Z)/2-.018,Math.max(X,xx+.0625),1.10,(z+Z)/2+.018);}
-   }
+   // The rear half is drawn as a smooth curve by roundedRear; these stepped boxes are only its collision.
+   for(var s:voxelRear(c)){hidden(p,s.x0(),0,s.z0(),s.x1(),FLOOR_TOP,s.z1());hidden(p,s.x0(),ceilingBottom(c),s.z0(),s.x1(),height(c),s.z1());}
+   for(var w:voxelWalls(c))hidden(p,w.x0(),w.y0(),w.z0(),w.x1(),w.y1(),w.z1());
    back=n/2;
   }else{
    part(p,Material.FLOOR,true,a,0,nose,b,FLOOR_TOP,tail);part(p,Material.CEILING,true,a,ceilingBottom(c),roofFront,b,height(c),roofRear);
@@ -135,38 +131,38 @@ public final class CabinGeometry {
    double dx=fx-cx,dy=fy-cy,dz=fz-cz,ax=Math.abs(dx)/(b.x1()-b.x0()),ay=Math.abs(dy)/(b.y1()-b.y0()),az=Math.abs(dz)/(b.z1()-b.z0());
    double px=fx,py=fy,pz=fz;if(ax>=ay&&ax>=az)px+=Math.signum(dx)*e;else if(ay>=az)py+=Math.signum(dy)*e;else pz+=Math.signum(dz)*e;
    boolean hidden=false;
-   for(var o:all){if(o==part||o.material()!=Material.GLASS)continue;var k=o.bounds();
+   for(var o:all){if(o==part||!o.visible()||o.material()!=Material.GLASS)continue;var k=o.bounds();
     if(px>k.x0()&&px<k.x1()&&py>k.y0()&&py<k.y1()&&pz>k.z0()&&pz<k.z1()){hidden=true;break;}}
    if(!hidden)q.add(f);
   }
  }
- public static List<Face> body(CabinConfiguration c){if(c.v13Geometry())return V13CabinGeometry.body(c);return CACHE.computeIfAbsent(c,k->{var q=new ArrayList<Face>();var all=parts(c);for(var p:all){var b=p.bounds();if(p.material()==Material.GLASS){glassFaces(q,p,all);continue;}box(q,p.material(),b.x0(),b.y0(),b.z0(),b.x1(),b.y1(),b.z1());}if(!c.legacyGeometry()&&c.variant()==Variant.CYLINDRICAL)addCurvedLedFaces(q,c);
+ public static List<Face> body(CabinConfiguration c){if(c.v13Geometry())return V13CabinGeometry.body(c);return CACHE.computeIfAbsent(c,k->{var q=new ArrayList<Face>();var all=parts(c);for(var p:all){if(!p.visible())continue;var b=p.bounds();if(p.material()==Material.GLASS){glassFaces(q,p,all);continue;}box(q,p.material(),b.x0(),b.y0(),b.z0(),b.x1(),b.y1(),b.z1());}if(c.variant()==Variant.CYLINDRICAL)roundedRear(q,c);
    return List.copyOf(q);});}
- private static void addCurvedLedFaces(List<Face> faces,CabinConfiguration c){
-  var path=new ArrayList<Point>();
-  var rows=voxelRear(c);
-  double front=passageEnd(c,false)+.04,side=2*INSET+.012;
-  double join=c.size()/2-INSET-.013;
-  double inner=rows.getFirst().x0()+INSET+.012;
-  path.add(new Point(side,0,front));
-  path.add(new Point(side,0,join));
-  path.add(new Point(inner,0,join));
-  for(var row:rows){
-   path.add(new Point(row.x0()+INSET+.011,0,row.z0()-INSET-.012));
-   path.add(new Point(row.x0()+INSET+.011,0,row.z1()-INSET-.012));
-  }
-  for(var row:voxelRear(c).reversed()){
-   path.add(new Point(row.x1()-INSET-.011,0,row.z1()-INSET-.012));
-   path.add(new Point(row.x1()-INSET-.011,0,row.z0()-INSET-.012));
-  }
-  path.add(new Point(c.size()-inner,0,join));
-  path.add(new Point(c.size()-side,0,join));
-  path.add(new Point(c.size()-side,0,front));
-  for(int i=0;i<path.size()-1;i++){
-   var a=path.get(i);var b=path.get(i+1);
-   if(Math.abs(a.x()-b.x())+Math.abs(a.z()-b.z())<1e-8)continue;
-   for(double y:new double[]{.19,ceilingBottom(c)-.075})
-    quad(faces,Material.ACCENT,a.x(),y,a.z(),a.x(),y+.035,a.z(),b.x(),y+.035,b.z(),b.x(),y,b.z());
+ /**
+  * The Rounded cabin's rear half as smooth curves: floor, ceiling, wall or glass, handrail and LED strips. They meet
+  * the straight side walls, rails and strips at the cabin's middle. Collision keeps the stepped boxes.
+  */
+ private static void roundedRear(List<Face> q,CabinConfiguration c){
+  double n=c.size(),t=INSET,R=n/2-INSET,ri=R-t,low=FLOOR_TOP,high=ceilingBottom(c);var s=new RoundedShell(n/2,n/2,R);
+  s.disc(q,Material.FLOOR,R,FLOOR_TOP,true);s.disc(q,Material.FLOOR,R,0,false);s.surface(q,Material.FLOOR,R,0,FLOOR_TOP,true);
+  s.disc(q,Material.CEILING,R,high,false);s.disc(q,Material.CEILING,R,height(c),true);s.surface(q,Material.CEILING,R,high,height(c),true);
+  if(c.curvedGlass()){
+   // One clear curved pane between slim top and bottom rails, which stand slightly proud on the inside.
+   double rail=.09;
+   s.band(q,Material.METAL,ri-.004,R,low,low+rail,true,false);s.band(q,Material.METAL,ri-.004,R,high-rail,high,false,true);
+   s.surface(q,Material.GLASS,R,low+rail,high-rail,true);s.surface(q,Material.GLASS,ri,low+rail,high-rail,false);
+  }else s.band(q,Material.WALL,ri,R,low,high,false,false);
+  // Same radial offsets as the straight side rails, so the curve continues them.
+  s.band(q,rail(c),ri-.10,ri-.0375,1.08,1.16,true,true);
+  int brackets=Math.max(2,(int)Math.round(Math.PI*ri/.9));
+  for(int i=0;i<brackets;i++)s.bracket(q,Material.METAL,ri-.06,ri,Math.PI*(i+.5)/brackets,.036,1.04,1.10);
+  if(c.legacyGeometry())return;
+  double front=passageEnd(c,false)+.04,side=2*INSET+.012,mid=n/2;
+  for(double y:new double[]{.19,ceilingBottom(c)-.075}){
+   // Single-sided strips wound to face into the cabin.
+   quad(q,Material.ACCENT,side,y,front,side,y+.035,front,side,y+.035,mid,side,y,mid);
+   quad(q,Material.ACCENT,n-side,y,mid,n-side,y+.035,mid,n-side,y+.035,front,n-side,y,front);
+   s.surface(q,Material.ACCENT,ri-.012,y,y+.035,false);
   }
  }
  public static List<Face> doors(CabinConfiguration c,double front,double rear){if(c.v13Geometry())return V13CabinGeometry.doors(c,front,rear);var q=new ArrayList<Face>();DoorGeometry.cabinPanels(q,c,panelStart(c,false),FLOOR_TOP,front,c.front());if(c.rearEnabled())DoorGeometry.cabinPanels(q,c,panelStart(c,true),FLOOR_TOP,rear,c.rear());return List.copyOf(q);}
