@@ -156,7 +156,17 @@ public final class CorrectnessGameTests {
             var s = d.model().state();
             if (s == null) return;
             if (s.state() == CabinMotionController.State.FAULT) throw new GameTestAssertException(s.fault());
-            if (s.state() == CabinMotionController.State.MOVING) moved[0] = true;
+            if (s.state() == CabinMotionController.State.MOVING) {
+                moved[0] = true;
+                // Walking into the side wall and the front jamb while moving: the walls must stop the rider.
+                var walker = riders.get(0);
+                var out = e.world(spots[0][0] - .3, CabinGeometry.FLOOR_TOP, spots[0][1] - .3).subtract(e.world(spots[0][0], CabinGeometry.FLOOR_TOP, spots[0][1]));
+                walker.move(net.minecraft.world.entity.MoverType.SELF, out);
+                var w = e.local(walker.position());
+                check(w.x >= wall + half - .01 && w.z >= front + half - .01, "Moving cabin walls stop a walking rider: local " + w + " at y " + s.y());
+                var back = e.world(spots[0][0], CabinGeometry.FLOOR_TOP, spots[0][1]);
+                walker.setPos(walker.getX() + (back.x - walker.getX()), walker.getY(), walker.getZ() + (back.z - walker.getZ()));
+            }
             // A rider whose feet fell behind the rising floor (as a late client update does) is put back on it.
             if (moved[0] && !lagged[0] && s.y() > base + 2) {
                 late.setPos(late.getX(), e.getY() + CabinGeometry.FLOOR_TOP - .3, late.getZ());
@@ -177,5 +187,31 @@ public final class CorrectnessGameTests {
                 h.succeed();
             }
         });
+    }
+
+    /** Cabin walls are found for collision anywhere on the cabin, even far from its anchor corner across a section line. */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 40)
+    public static void cabin_walls_found_far_from_the_anchor_corner(GameTestHelper h) {
+        var l = h.getLevel();
+        var cabin = new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(), l);
+        cabin.configure(CabinConfiguration.defaults(5, CabinConfiguration.Variant.SOLID));
+        var origin = h.absolutePos(new BlockPos(2, 2, 2));
+        cabin.setPos(origin.getX(), origin.getY(), origin.getZ());
+        cabin.updateBounds();
+        l.addFreshEntity(cabin);
+        var missed = new java.util.ArrayList<String>();
+        for (int dx = 0; dx < 16; dx++) for (int dz = 0; dz < 16; dz += 5) {
+            cabin.setPos(origin.getX() + dx + .5, origin.getY(), origin.getZ() + dz + .5);
+            cabin.updateBounds();
+            // A player-sized box against the far side wall, as far from the anchor as the cabin allows.
+            for (var spot : new double[][]{{4.5, 2.5}, {2.5, 4.5}, {4.5, 4.5}}) {
+                var p = cabin.world(spot[0], 1, spot[1]);
+                var query = new net.minecraft.world.phys.AABB(p.x - .3, p.y, p.z - .3, p.x + .3, p.y + 1.8, p.z + .3);
+                if (CabinCollisions.add(l, null, query, java.util.List.of()).isEmpty()) missed.add("anchor+" + dx + "," + dz + " spot " + spot[0] + "," + spot[1]);
+            }
+        }
+        cabin.discard();
+        check(missed.isEmpty(), "Cabin collision not found at " + missed.size() + " spots, e.g. " + missed.stream().limit(3).toList());
+        h.succeed();
     }
 }
