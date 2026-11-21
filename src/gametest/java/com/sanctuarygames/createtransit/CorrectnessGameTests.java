@@ -114,4 +114,68 @@ public final class CorrectnessGameTests {
         }
         h.succeed();
     }
+
+    /** Riders anywhere on the floor, including the front corners beside the doorway, travel with the cabin. */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 900)
+    public static void riders_in_every_corner_travel_with_the_cabin(GameTestHelper h) {
+        var d = drive(h, new BlockPos(5, 2, 5));
+        var installer = net.neoforged.neoforge.common.util.FakePlayerFactory.getMinecraft(h.getLevel());
+        check(d.configureModel("size", "3") && d.configureModel("variant", "SCENIC"), "Scenic 3x3");
+        for (var f : d.floorList()) check(d.installModelLanding(installer, f.y()), "Landing: " + d.model().warning());
+        check(d.activateModel(), "Activate: " + d.model().warning());
+        var e = d.model().entity();
+        var c = e.configuration();
+        double n = c.size(), wall = 2 * CabinGeometry.INSET, front = CabinGeometry.passageEnd(c, false), half = .3, gap = .02;
+        // Local positions: both front corners against the doorway jambs, both back corners, and the middle.
+        double[][] spots = {{wall + half + gap, front + half + gap}, {n - wall - half - gap, front + half + gap},
+            {wall + half + gap, n - wall - half - gap}, {n - wall - half - gap, n - wall - half - gap}, {n / 2, n / 2}};
+        var riders = new java.util.ArrayList<net.minecraft.world.entity.LivingEntity>();
+        for (int i = 0; i < spots.length; i++) {
+            var at = e.world(spots[i][0], CabinGeometry.FLOOR_TOP, spots[i][1]);
+            net.minecraft.world.entity.LivingEntity rider;
+            if (i == 0) {
+                // A server player in the corner the bug was seen in; the rest are armour stands.
+                var player = new net.neoforged.neoforge.common.util.FakePlayer(h.getLevel(), new com.mojang.authlib.GameProfile(java.util.UUID.randomUUID(), "corner-rider"));
+                h.getLevel().addNewPlayer(player);
+                rider = player;
+            } else {
+                rider = new net.minecraft.world.entity.decoration.ArmorStand(h.getLevel(), at.x, at.y, at.z);
+                h.getLevel().addFreshEntity(rider);
+            }
+            rider.setPos(at.x, at.y, at.z);
+            riders.add(rider);
+        }
+        int base = d.anchor().getY();
+        check(d.requestFloor(base + 12), "Trip requested");
+        boolean[] moved = {false}, lagged = {false};
+        var late = new net.minecraft.world.entity.decoration.ArmorStand(h.getLevel(), 0, 0, 0);
+        h.getLevel().addFreshEntity(late);
+        var lateSpot = e.world(n / 2, CabinGeometry.FLOOR_TOP, front + half + gap);
+        late.setPos(lateSpot.x, lateSpot.y, lateSpot.z);
+        h.onEachTick(() -> {
+            var s = d.model().state();
+            if (s == null) return;
+            if (s.state() == CabinMotionController.State.FAULT) throw new GameTestAssertException(s.fault());
+            if (s.state() == CabinMotionController.State.MOVING) moved[0] = true;
+            // A rider whose feet fell behind the rising floor (as a late client update does) is put back on it.
+            if (moved[0] && !lagged[0] && s.y() > base + 2) {
+                late.setPos(late.getX(), e.getY() + CabinGeometry.FLOOR_TOP - .3, late.getZ());
+                lagged[0] = true;
+            } else if (lagged[0]) {
+                var q = e.local(late.position());
+                check(Math.abs(q.y - CabinGeometry.FLOOR_TOP) < .05, "A rider that fell behind the floor is put back on it: local y " + q.y);
+            }
+            for (int i = 0; i < riders.size(); i++) {
+                var q = e.local(riders.get(i).position());
+                check(Math.abs(q.y - CabinGeometry.FLOOR_TOP) < .05 && Math.abs(q.x - spots[i][0]) < .05 && Math.abs(q.z - spots[i][1]) < .05,
+                    "Rider " + i + " stays on the floor where it stood: local " + q + " expected (" + spots[i][0] + ", " + spots[i][1] + ") state " + s.state() + " y " + s.y());
+            }
+            if (moved[0] && s.state() == CabinMotionController.State.DOORS_OPEN && Math.abs(s.y() - (base + 12)) < .001) {
+                riders.forEach(net.minecraft.world.entity.Entity::discard);
+                late.discard();
+                check(lagged[0], "Late rider was tested");
+                h.succeed();
+            }
+        });
+    }
 }
