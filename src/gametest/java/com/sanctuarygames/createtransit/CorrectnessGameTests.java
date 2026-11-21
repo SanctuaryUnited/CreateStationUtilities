@@ -214,4 +214,37 @@ public final class CorrectnessGameTests {
         check(missed.isEmpty(), "Cabin collision not found at " + missed.size() + " spots, e.g. " + missed.stream().limit(3).toList());
         h.succeed();
     }
+
+    /**
+     * Minecraft's step-up retry (used when a walk is blocked) gathers its own collision shapes. With a block edge
+     * within step height, as when a rising cabin passes a landing, it must still include the cabin's walls.
+     */
+    @GameTest(template = "elevator2_shaft", batch = "correctness", timeoutTicks = 40)
+    public static void step_up_does_not_walk_through_cabin_jambs(GameTestHelper h) {
+        var l = h.getLevel();
+        var cabin = new ModelCabinEntity(ElevatorRegistry.MODEL_CABIN.get(), l);
+        var c = CabinConfiguration.defaults(3, CabinConfiguration.Variant.SOLID);
+        cabin.configure(c);
+        var origin = h.absolutePos(new BlockPos(4, 2, 4));
+        // Floor top 0.7 above a block line, so the block in front of the doorway has its top 0.3 above the rider's feet.
+        cabin.setPos(origin.getX(), origin.getY() + .7 - CabinGeometry.FLOOR_TOP, origin.getZ());
+        cabin.updateBounds();
+        l.addFreshEntity(cabin);
+        double jamb = CabinGeometry.left(c), feet = CabinGeometry.FLOOR_TOP;
+        var outside = cabin.world(jamb + .5, feet + .3, -.5);
+        l.setBlockAndUpdate(BlockPos.containing(outside.x, outside.y - .5, outside.z), net.minecraft.world.level.block.Blocks.STONE.defaultBlockState());
+        var player = new net.neoforged.neoforge.common.util.FakePlayer(l, new com.mojang.authlib.GameProfile(java.util.UUID.randomUUID(), "jamb-walker"));
+        l.addNewPlayer(player);
+        var start = cabin.world(jamb + .3 + .002, feet, .33);
+        player.setPos(start.x, start.y, start.z);
+        player.setOnGround(true);
+        // Walk diagonally into the jamb and toward the closed door.
+        var step = cabin.world(jamb + .3 + .002 - .2, feet, .33 - .2).subtract(start);
+        player.move(net.minecraft.world.entity.MoverType.SELF, step);
+        var q = cabin.local(player.position());
+        player.discard();
+        cabin.discard();
+        check(q.x >= jamb + .3 - .01, "Walking into the jamb is blocked, even with a block edge in step range: local " + q);
+        h.succeed();
+    }
 }

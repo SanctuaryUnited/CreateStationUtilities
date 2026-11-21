@@ -12,6 +12,7 @@
 - The arrow indicators on the cabin's door jambs now sit at the same height as the landing door's arrows. They were measured from slightly below the cabin floor's surface, so they sat about 1.5 pixels higher. This was only in the current cabin look; the older (V13) look was already aligned.
 - Jamb arrow indicators no longer cover the edge of the door status light strip beside them, on cabins and landings alike. The arrow panel now keeps a small gap from the strip, and still stays level with the matching landing or cabin arrows.
 - Players could walk straight through the walls of a cabin 3 wide or bigger and fall out, usually while riding. Near a map-section line, the game didn't find the cabin when checking a player's movement against it, so its walls had no collision there. Cabins are now always found, so their walls, floor and jambs block everywhere. This was in earlier versions too. As a safety net, a rider whose feet fall slightly behind a rising floor is also put back on it.
+- Players could walk into a cabin's door jamb (where the indicator lights are) while it rose past a landing, and on out of the cabin. When a walk is blocked, Minecraft retries it as a small step up, and that retry ignored the cabin's walls. With the landing's blocks in step range, it let the player through. Cabin walls now count for the step-up too. This was in earlier versions too.
 
 ## 0.5.1 — Elevator and speaker fixes
 
