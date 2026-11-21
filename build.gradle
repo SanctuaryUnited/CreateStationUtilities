@@ -224,6 +224,11 @@ tasks.register('radioBufferCheck', JavaExec) {
  mainClass='com.sanctuarygames.createtransit.radio.client.RadioBufferCheck'
 }
 tasks.named('check') { dependsOn 'radioBufferCheck' }
+// Shared live stream: heap PCM internally, direct buffers for OpenAL, byte order kept across the ring wrap.
+tasks.register('radioStreamCheck', JavaExec) {
+ dependsOn 'clienttestClasses'; classpath = sourceSets.clienttest.runtimeClasspath
+ mainClass = 'com.sanctuarygames.createtransit.radio.client.RadioStreamCheck'
+}
 
 if(providers.gradleProperty('soundPhysicsValidation').isPresent()) dependencies { runtimeOnly files(providers.gradleProperty('soundPhysicsJar').get()) }
 

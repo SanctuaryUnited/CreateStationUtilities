@@ -96,7 +96,7 @@ public final class EscalatorSoundGameTests {
         h.runAtTickTime(5, () -> {
             var original = EscalatorSoundscape.collect(h.getLevel(), List.of(a, middle, b), listener);
             var player = TransitTestPlayers.makeMockPlayer(h, net.minecraft.world.level.GameType.CREATIVE);
-            EscalatorNetwork.reverse(h.getLevel(), a, player);
+            com.sanctuarygames.createtransit.escalator.EscalatorTestAccess.reverse(h.getLevel(),a);
             var reversed = EscalatorSoundscape.collect(h.getLevel(), List.of(b, middle, a), listener);
             h.assertTrue(original.size() == 1 && reversed.getFirst().key().equals(original.getFirst().key()),
                 "Reversal keeps one loop with the same connected-belt identity");
