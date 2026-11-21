@@ -33,8 +33,16 @@ public final class TransitText {
     private record Sent(String text, long tick) {}
     private static final Map<Player, Sent> LAST = java.util.Collections.synchronizedMap(new WeakHashMap<>());
 
-    /** Translated text with arguments. */
-    public static MutableComponent tr(String key, Object... args) { return Component.translatable(key, args); }
+    /**
+     * Translated text with arguments. The player's language is used when it has the key; otherwise
+     * Minecraft falls back to en_us. The English line also travels with the message as a fallback, so a
+     * player on an older version of the mod (whose language file lacks a new key) still reads a sentence
+     * instead of the raw key. NeoForge loads mods' en_us.json on servers, which is where it comes from.
+     */
+    public static MutableComponent tr(String key, Object... args) {
+        var language = Language.getInstance();
+        return language.has(key) ? Component.translatableWithFallback(key, language.getOrDefault(key), args) : Component.translatable(key, args);
+    }
 
     /** "[Elevator] " style prefix for a topic, from message.createtransit.prefix.&lt;topic&gt;. */
     public static MutableComponent prefix(String topic) {
