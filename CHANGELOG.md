@@ -10,6 +10,7 @@
 ### Fixed
 - The cabin's destination board is no longer cut off on its left edge. On 2- and 3-wide cabins it was slightly wider than the wall beside the doorway, so its edge sat inside the side wall. It's now centred between the side wall and the door's LED strip, and narrowed a little where it doesn't fit. 4- and 5-wide cabins keep the full size. The floor buttons line up with the new size.
 - The arrow indicators on the cabin's door jambs now sit at the same height as the landing door's arrows. They were measured from slightly below the cabin floor's surface, so they sat about 1.5 pixels higher. This was only in the current cabin look; the older (V13) look was already aligned.
+- Jamb arrow indicators no longer cover the edge of the door status light strip beside them, on cabins and landings alike. The arrow panel now keeps a small gap from the strip, and still stays level with the matching landing or cabin arrows.
 
 ## 0.5.1 — Elevator and speaker fixes
 
