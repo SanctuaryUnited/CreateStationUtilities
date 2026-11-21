@@ -14,6 +14,7 @@
   - Glass has an even, light tint with no glare streaks.
   - Glass walls (Scenic, Rear Panoramic) get slim corner posts and top and bottom rails, and each wall stays one clear pane.
   - Glass doors get a proper frame, a kick plate at the bottom and a head rail.
+  - Faces between touching glass pieces are no longer drawn, so corners and stepped walls show fewer seams. The Rounded cabin's handrail has fewer brackets. Smoothing the Rounded cabin's stepped glass is planned for 0.5.2.
   - Collision and the cabin outline are unchanged.
 
 ## 0.5.0 — Quality-of-life update

@@ -70,11 +70,13 @@ public final class CabinGeometry {
   if(c.variant()==Variant.CYLINDRICAL){
    part(p,Material.FLOOR,true,a,0,nose,b,FLOOR_TOP,n/2);part(p,Material.CEILING,true,a,ceilingBottom(c),roofFront,b,height(c),n/2);
    for(var s:voxelRear(c)){part(p,Material.FLOOR,true,s.x0(),0,s.z0(),s.x1(),FLOOR_TOP,s.z1());part(p,Material.CEILING,true,s.x0(),ceilingBottom(c),s.z0(),s.x1(),height(c),s.z1());}
-   for(var w:voxelWalls(c)){
+   // One bracket per sixteenth of a turn around the curve, rather than one on every 1/8-block step.
+   var bracketed=new java.util.HashSet<Long>();
+   for(var w:voxelWalls(c)){double angle=Math.atan2((w.z0()+w.z1())/2-n/2,(w.x0()+w.x1())/2-n/2);boolean bracket=bracketed.add(Math.round(Math.floor(angle/(Math.PI/8))));
     part(p,c.curvedGlass()?Material.GLASS:Material.WALL,true,w.x0(),FLOOR_TOP,w.z0(),w.x1(),ceilingBottom(c),w.z1());
     double x=w.x0(),X=w.x1(),z=w.z0(),Z=w.z1();
-    if(X-x>Z-z){double zz=z-.10;part(p,rail(c),false,x,1.08,zz,X,1.16,zz+.0625);part(p,Material.METAL,false,(x+X)/2-.018,1.04,zz+.035,(x+X)/2+.018,1.10,z+.01);}
-    else {double xx=x<n/2?X+.02:x-.0825;part(p,rail(c),false,xx,1.08,z,xx+.0625,1.16,Z);part(p,Material.METAL,false,Math.min(x,xx),1.04,(z+Z)/2-.018,Math.max(X,xx+.0625),1.10,(z+Z)/2+.018);}
+    if(X-x>Z-z){double zz=z-.10;part(p,rail(c),false,x,1.08,zz,X,1.16,zz+.0625);if(bracket)part(p,Material.METAL,false,(x+X)/2-.018,1.04,zz+.035,(x+X)/2+.018,1.10,z+.01);}
+    else {double xx=x<n/2?X+.02:x-.0825;part(p,rail(c),false,xx,1.08,z,xx+.0625,1.16,Z);if(bracket)part(p,Material.METAL,false,Math.min(x,xx),1.04,(z+Z)/2-.018,Math.max(X,xx+.0625),1.10,(z+Z)/2+.018);}
    }
    back=n/2;
   }else{
@@ -121,7 +123,24 @@ public final class CabinGeometry {
    case GRID->{light(p,c,cx-.13,cz-.13,cx+.13,cz+.13);for(double x:new double[]{x0,x1-.12})for(double z:new double[]{z0,z1-.12})light(p,c,x,z,x+.12,z+.12);}
   }
  }
- public static List<Face> body(CabinConfiguration c){if(c.v13Geometry())return V13CabinGeometry.body(c);return CACHE.computeIfAbsent(c,k->{var q=new ArrayList<Face>();for(var p:parts(c)){var b=p.bounds();box(q,p.material(),b.x0(),b.y0(),b.z0(),b.x1(),b.y1(),b.z1());}if(!c.legacyGeometry()&&c.variant()==Variant.CYLINDRICAL)addCurvedLedFaces(q,c);
+ /**
+  * A glass part's faces, minus those that sit against another glass part. Stepped (rounded) and meeting walls are
+  * built from several glass boxes; drawing the faces between them shows every seam as a stripe through the glass.
+  */
+ private static void glassFaces(List<Face> q,Part part,List<Part> all){
+  var b=part.bounds();var faces=new ArrayList<Face>();box(faces,Material.GLASS,b.x0(),b.y0(),b.z0(),b.x1(),b.y1(),b.z1());
+  double cx=(b.x0()+b.x1())/2,cy=(b.y0()+b.y1())/2,cz=(b.z0()+b.z1())/2,e=1e-4;
+  for(var f:faces){
+   double fx=(f.a().x()+f.c().x())/2,fy=(f.a().y()+f.c().y())/2,fz=(f.a().z()+f.c().z())/2;
+   double dx=fx-cx,dy=fy-cy,dz=fz-cz,ax=Math.abs(dx)/(b.x1()-b.x0()),ay=Math.abs(dy)/(b.y1()-b.y0()),az=Math.abs(dz)/(b.z1()-b.z0());
+   double px=fx,py=fy,pz=fz;if(ax>=ay&&ax>=az)px+=Math.signum(dx)*e;else if(ay>=az)py+=Math.signum(dy)*e;else pz+=Math.signum(dz)*e;
+   boolean hidden=false;
+   for(var o:all){if(o==part||o.material()!=Material.GLASS)continue;var k=o.bounds();
+    if(px>k.x0()&&px<k.x1()&&py>k.y0()&&py<k.y1()&&pz>k.z0()&&pz<k.z1()){hidden=true;break;}}
+   if(!hidden)q.add(f);
+  }
+ }
+ public static List<Face> body(CabinConfiguration c){if(c.v13Geometry())return V13CabinGeometry.body(c);return CACHE.computeIfAbsent(c,k->{var q=new ArrayList<Face>();var all=parts(c);for(var p:all){var b=p.bounds();if(p.material()==Material.GLASS){glassFaces(q,p,all);continue;}box(q,p.material(),b.x0(),b.y0(),b.z0(),b.x1(),b.y1(),b.z1());}if(!c.legacyGeometry()&&c.variant()==Variant.CYLINDRICAL)addCurvedLedFaces(q,c);
    return List.copyOf(q);});}
  private static void addCurvedLedFaces(List<Face> faces,CabinConfiguration c){
   var path=new ArrayList<Point>();
