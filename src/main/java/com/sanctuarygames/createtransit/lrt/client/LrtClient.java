@@ -7,7 +7,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
-@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,value=Dist.CLIENT)
 public final class LrtClient {
  @SubscribeEvent public static void models(ModelEvent.RegisterGeometryLoaders e){e.register(LrtRegistry.id("lrt_mesh"),new LrtModelLoader());}
  @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers e){e.registerBlockEntityRenderer(LrtRegistry.PART_ENTITY.get(),LrtRender.Parts::new);e.registerBlockEntityRenderer(LrtRegistry.DOOR_ENTITY.get(),LrtRender.Doors::new);}

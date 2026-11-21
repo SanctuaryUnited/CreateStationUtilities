@@ -65,8 +65,9 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - Fix: the kit's compact mount resets that rotation, so the cabin matches the preview. The preview and the gametests now share `ModelCabinItem.previewCabin`.
   - `KitPlacementGameTests` checks all four facings: footprint, gold entrance, landing install, activation and a clear doorway. Fixed in 0.4.1. *PATCH*
 - [x] **20. Clearer refusal when a rotated cabin's entrance would face its guide rail.** Activation now reports when the cabin would cut into its own drive or rail column. Fixed in 0.4.1. *PATCH*
-- [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
-- [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
+- [x] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required). Nothing in the build read it; the packaged file is `src/main/resources/META-INF/neoforge.mods.toml`. *No release*
+- [x] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
+  - Confirmed: 21.1.248 ships FML 4.0.43, which already sends each listener to the mod bus or the game bus by its event type (`IModBusEvent`). The `bus = Bus.MOD` settings are removed. *No release*
 
 ## Usability
 

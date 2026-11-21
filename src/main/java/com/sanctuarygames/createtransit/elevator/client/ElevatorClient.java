@@ -8,7 +8,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.*;
-@EventBusSubscriber(modid=CreateTransit.MOD_ID,bus=EventBusSubscriber.Bus.MOD,value=Dist.CLIENT)
+@EventBusSubscriber(modid=CreateTransit.MOD_ID,value=Dist.CLIENT)
 public final class ElevatorClient {
  @SubscribeEvent public static void renderers(EntityRenderersEvent.RegisterRenderers e){e.registerBlockEntityRenderer(ElevatorRegistry.PART_ENTITY.get(),ElevatorRenderer::new);e.registerEntityRenderer(ElevatorRegistry.CABIN.get(),ContraptionEntityRenderer::new);e.registerEntityRenderer(ElevatorRegistry.MODEL_CABIN.get(),ModelCabinRenderer::new);e.registerBlockEntityRenderer(ElevatorRegistry.MODEL_LANDING_ENTITY.get(),ModelLandingRenderer::new);}
  // Create's normal renderer omits the block mesh while a Flywheel backend is active.

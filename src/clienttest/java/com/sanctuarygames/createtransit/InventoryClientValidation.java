@@ -23,7 +23,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
 /** Real NeoForge CLIENT launch/mixin checks, without opening a graphics window. */
-@EventBusSubscriber(modid = CreateTransit.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = CreateTransit.MOD_ID, value = Dist.CLIENT)
 public final class InventoryClientValidation {
     private static void check(boolean ok, String message) { if (!ok) throw new AssertionError(message); }
 

@@ -1,3 +1,8 @@
+## Unreleased
+
+### Changed
+- Build cleanup with no change in game: removed an unused copy of the mod metadata file, and dropped NeoForge's deprecated `EventBusSubscriber.Bus` setting. NeoForge 21.1.248 and newer pick the right event bus on their own.
+
 ## 0.5.2 — Smooth Rounded cabin
 
 ### Changed
