@@ -5,7 +5,8 @@ import java.util.Locale;
 import net.minecraft.server.level.ServerPlayer;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-/** Per-world server settings (serverconfig/createtransit-server.toml). */
+/** Server settings in config/createtransit-server.toml. A copy in a world's serverconfig/ folder
+ *  overrides it for that world only (NeoForge 21.1). */
 public final class TransitServerConfig {
     private TransitServerConfig() {}
 

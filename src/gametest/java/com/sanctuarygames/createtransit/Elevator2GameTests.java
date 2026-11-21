@@ -53,11 +53,11 @@ public final class Elevator2GameTests {
         });
     }
     @GameTest(template="elevator2_shaft",batch="elevator2",timeoutTicks=80)
-    public static void disconnected_and_neighboring_shafts_do_not_share_floors_and_limit_is_bounded(GameTestHelper h){
+    public static void disconnected_and_neighboring_shafts_do_not_share_floors_and_have_no_fixed_stop_cap(GameTestHelper h){
         var a=h.absolutePos(new BlockPos(3,2,3));var b=a.east(4);
         var da=(ElevatorDriveEntity)place(h,a,ElevatorRegistry.DRIVE.get(),Direction.SOUTH);var db=(ElevatorDriveEntity)place(h,b,ElevatorRegistry.DRIVE.get(),Direction.SOUTH);
         for(int y=1;y<=40;y++){place(h,a.above(y),y<=33?ElevatorRegistry.FLOOR_MARKER_RAIL.get():ElevatorRegistry.GUIDE_RAIL.get(),Direction.SOUTH);place(h,b.above(y),y==1||y==13?ElevatorRegistry.FLOOR_MARKER_RAIL.get():ElevatorRegistry.GUIDE_RAIL.get(),Direction.SOUTH);}
-        da.rescan();db.rescan();check(da.railWarning().contains("maximum 32"),"More than 32 stops produces an explicit configuration error");check(db.floorList().size()==2,"Close neighboring shaft discovers only its own two markers");
+        da.rescan();db.rescan();check(da.floorList().size()==33&&!da.railWarning().contains("maximum"),"More than 32 stops are accepted; DEV17 removed the fixed cap: "+da.floorList().size()+" / "+da.railWarning());check(db.floorList().size()==2,"Close neighboring shaft discovers only its own two markers");
         h.getLevel().setBlock(b.above(7),Blocks.AIR.defaultBlockState(),3);db.rescan();check(db.floorList().size()==1&&db.railWarning().contains("gap"),"Scan never crosses a gap to discover an unreachable marker: "+db.floorList()+" / "+db.railWarning());
         check(ElevatorGuideRailBlock.drive(h.getLevel(),b.above(13))==null,"Disconnected upper marker cannot bind through a broken rail");
         place(h,b.above(7),ElevatorRegistry.GUIDE_RAIL.get(),Direction.EAST);db.rescan();check(db.railWarning().contains("mounting"),"Wrong rail orientation is reported");h.succeed();

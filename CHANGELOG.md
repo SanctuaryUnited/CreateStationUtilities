@@ -1,3 +1,18 @@
+## 0.4.1 — Elevator Cabin Kit placement
+
+### Fixed
+- Cabin Kits now build the cabin exactly as the preview showed it, in every facing, with the doors on the highlighted gold side.
+  - Before this fix, every placed kit cabin was turned a quarter from its preview, so the doors were not on the gold side.
+  - Facing east or south, the home-floor landing then landed on the kit's own controller and couldn't be installed ("Landing space obstructed").
+  - Facing west, the controller stood in front of the middle of the doorway.
+- A cabin rotated so a doorway faces its own guide rail now says so ("Rotate it in Alignment so the rail is beside the cabin, not behind a doorway"). Before, it reported "Cabin overlaps blocks, another cabin, or is unloaded".
+
+### Changed
+- Documentation: the server config lives in `config/createtransit-server.toml` in the game or server folder. A copy in a world's `serverconfig/` folder overrides it for that world only. Earlier notes said `serverconfig/` only.
+
+### Upgrade
+- Only newly placed kits change, because each controller saves its layout. To fix a cabin already built from a kit, empty and deactivate it, then use **Alignment → Rotate** until the preview's entrance faces your landing. Or break the controller and place the kit again.
+
 ## 0.4.0 — Default stations, saved-data cleanup and radio memory
 
 ### Added
@@ -22,7 +37,7 @@
 ## 0.3.0 — Radio stream safety and stability
 
 ### Breaking
-- Only operators (permission level 2) or the owner of a single-player world can now add or remove radio stations. Upgrade: to restore the old behaviour, set `radio.stationEditors = "BUILDERS"` in `serverconfig/createtransit-server.toml`.
+- Only operators (permission level 2) or the owner of a single-player world can now add or remove radio stations. Upgrade: to restore the old behaviour, set `radio.stationEditors = "BUILDERS"` in `config/createtransit-server.toml` (or a per-world copy in `<world>/serverconfig/`).
 
 ### Added
 - Server config `createtransit-server.toml` with `radio.stationEditors` and `radio.allowedHosts`, an optional list of approved stream hosts (`*.example.net` wildcards allowed).

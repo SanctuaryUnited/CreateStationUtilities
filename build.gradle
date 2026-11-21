@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'net.neoforged.moddev' version '2.0.148'
 }
-version = '0.4.0'
+version = '0.4.1'
 group = 'com.sanctuarygames.createtransit'
 base { archivesName = 'create-station-utilities' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -112,6 +112,8 @@ neoForge {
             jvmArgument '-Xmx2G'
             systemProperty 'neoforge.enabledGameTestNamespaces', 'createtransit'
             sourceSet = sourceSets.gametest
+            // Own folder, so it never touches the runServer world in run/.
+            gameDirectory = project.file('run-gametest')
         }
     }
     mods { createtransit { sourceSet sourceSets.gametest } }
@@ -224,6 +226,8 @@ tasks.register('radioBufferCheck', JavaExec) {
  mainClass='com.sanctuarygames.createtransit.radio.client.RadioBufferCheck'
 }
 tasks.named('check') { dependsOn 'radioBufferCheck' }
+// LRT and cable circuit tests paste at fixed coordinates, so start every gametest run from a fresh world.
+tasks.matching { it.name == 'runGameTestServer' }.configureEach { doFirst { delete 'run-gametest/world' } }
 // Shared live stream: heap PCM internally, direct buffers for OpenAL, byte order kept across the ring wrap.
 tasks.register('radioStreamCheck', JavaExec) {
  dependsOn 'clienttestClasses'; classpath = sourceSets.clienttest.runtimeClasspath
