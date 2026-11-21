@@ -41,7 +41,7 @@ public final class DoorIndicatorRenderer {
   double start=Math.min(CabinGeometry.entranceFace(c,rear),CabinGeometry.passageEnd(c,rear));
   for(boolean right:new boolean[]{false,true}){
    var mount=DoorIndicatorLayout.mount(c,start,CabinGeometry.PASSAGE_DEPTH,right);
-   drawJamb(c,pose,buffers,mount.x(),.22,mount.z(),mount.yaw(),mount.width(),direction,null,directional,true);
+   drawJamb(c,pose,buffers,mount.x(),DoorIndicatorLayout.cabinJambBase(),mount.z(),mount.yaw(),mount.width(),direction,null,directional,true);
   }
  }
  static int accent(CabinConfiguration c){

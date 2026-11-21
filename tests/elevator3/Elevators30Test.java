@@ -51,6 +51,10 @@ public class Elevators30Test {
    if(size>=4)eq(half*2,CabinSelectorLayout.WIDTH,"Wide cabins keep the full board");
    eq(CabinSelectorLayout.center(sc,true),size-mid,"Rear board mirrors the front");
   }
+  eq(DoorIndicatorLayout.cabinJambBase(),FLOOR_TOP,"Cabin jamb arrows sit at the same height as landing arrows");
+  for(int size=2;size<=5;size++){var ic=defaults(size,Variant.SOLID);for(boolean right:new boolean[]{false,true}){
+   var cabinMount=DoorIndicatorLayout.mount(ic,0,PASSAGE_DEPTH,right);var landingMount=DoorIndicatorLayout.mount(ic,1-DoorGeometry.depth(ic),DoorGeometry.depth(ic),right);
+   eq(cabinMount.x(),landingMount.x(),"Cabin and landing arrows share a jamb line");eq(cabinMount.width(),landingMount.width(),"Cabin and landing arrows are the same size");}}
   check(CabinSelectorLayout.pages(6)==1&&CabinSelectorLayout.pages(7)==2,"Six stops per selector page");
   check(CabinSelectorLayout.arrowAt(5,62)==1&&CabinSelectorLayout.arrowAt(27,62)==-1,"Footer arrows advance and rewind");
   var old=defaults(3,Variant.SOLID).save();
