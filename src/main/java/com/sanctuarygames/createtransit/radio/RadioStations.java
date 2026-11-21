@@ -82,9 +82,16 @@ public final class RadioStations extends SavedData {
  }
  /** Player-initiated add: permission, allow-list and private-address checks before saving. */
  public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){requireEditor(editor);return addChecked(name,url);}
+ /** Reserved example names (RFC 2606/6761) that can never host a stream: example.com/.net/.org, .example, .test, .invalid. */
+ static boolean placeholderHost(String host){
+  if(host==null)return false;host=host.toLowerCase(Locale.ROOT);
+  for(var d:new String[]{"example.com","example.net","example.org"})if(host.equals(d)||host.endsWith("."+d))return true;
+  return host.equals("example")||host.endsWith(".example")||host.endsWith(".test")||host.endsWith(".invalid");
+ }
  private String addChecked(String name,String url){
   validate(name,url);String host=host(url);
   if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
+  if(placeholderHost(host))throw new IllegalArgumentException("\""+host+"\" is an example address, not a real stream. Replace it with your station's stream URL");
   if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
   return add(name,url);
  }

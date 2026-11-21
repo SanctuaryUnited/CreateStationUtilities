@@ -10,6 +10,9 @@
 - Every screen's text (elevator controller, bank setup, destination selector, escalator, speaker, material picker and client settings) now comes from the language file, so the whole mod can be translated. Untranslated lines show in English.
 - Plain-language setup messages. The landing door now says whether it linked. A missing rail on the controller names the Floor Marker Guide Rail. Removing an active controller explains how to deactivate it. Activation refusals say what to place or clear.
 
+### Fixed
+- Radio stations pointing at reserved example addresses (`example.com`, `example.net`, `example.org`, `.example`, `.test`, `.invalid`) are refused, whether added in game or through `radio.defaultStations`, with a message to replace the example URL. Before, copying the placeholder from the config comment added a station that could never connect.
+
 ### Added
 - The Cabin Kit preview also outlines the landing door in white, alongside the gold doorway and the blue controller.
 - `/csu guide`, `/csu guide elevator` and `/csu guide bank` print numbered setup steps in chat for one elevator or a bank of elevators. The command runs on the client, so it works on any server.

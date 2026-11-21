@@ -12,6 +12,8 @@ public final class DefaultStationsGameTests {
   var d=new RadioStations();
   var problems=d.seedDefaults(List.of("Sanctuary Radio|"+url,"Local|http://192.168.1.5/radio.mp3","Loop|http://localhost/x.mp3","no separator","Bad|ftp://example.net/a"));
   check(count(d)==1,"only the public station added, got "+count(d));
+  var placeholder=new RadioStations();var refused=placeholder.seedDefaults(List.of("Sanctuary Radio|https://radio.example.net/listen/station/radio.mp3","Test|https://stream.example.com/a.mp3","Dev|http://radio.test/live.mp3"));
+  check(count(placeholder)==0&&refused.size()==3&&refused.get(0).contains("example address"),"Example/placeholder hosts from the config comment are refused: "+refused);
   check(problems.size()==4,"four refusals reported: "+problems);
   var st=d.snapshot().getList("Stations",10).getCompound(0);check(st.getString("Name").equals("Sanctuary Radio")&&st.getString("Url").equals(url),"name and URL parsed");
   check(d.seedDefaults(List.of("Sanctuary Radio|"+url)).isEmpty()&&count(d)==1,"second start does not duplicate");
