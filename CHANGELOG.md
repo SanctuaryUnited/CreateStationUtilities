@@ -1,3 +1,12 @@
+## 0.5.2 — Smooth Rounded cabin
+
+### Changed
+- The Rounded cabin's back half is now drawn as a smooth curve instead of 1/8-block steps. That covers the curved glass or wall, the floor and ceiling edge, the handrail and the floor and ceiling LED strips, in both the current and the older (V13) cabin look.
+  - Curved glass is one clear pane between slim top and bottom rails, with no vertical lines at every step.
+  - The handrail follows the curve and joins the side rails, with a few evenly spaced brackets.
+  - Collision still uses the stepped shape, so walking and riding are unchanged. Existing cabins need no rebuild.
+- The README is shorter and only lists what the mod needs and does now. Old release notes stay in the changelog.
+
 ## 0.5.1 — Elevator and speaker fixes
 
 ### Fixed

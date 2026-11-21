@@ -109,7 +109,7 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - forming a bank with the wrench and the Destination Selector
 
   This would replace most of the chat guide for new players. *MINOR*
-- [ ] **27. Smooth Rounded cabin.** The Rounded (cylindrical) cabin is built from 1/8-block steps. Since 0.5.1 made glass visible, each step edge of curved glass shows as a thin vertical line, and the handrail is a staircase of short pieces.
+- [x] **27. Smooth Rounded cabin.** *(0.5.2)* The Rounded (cylindrical) cabin is built from 1/8-block steps. Since 0.5.1 made glass visible, each step edge of curved glass shows as a thin vertical line, and the handrail is a staircase of short pieces.
   - Draw the curved glass, the handrail and the ceiling and floor LED strips as smooth curves.
   - Do it in both `CabinGeometry` and `V13CabinGeometry`.
   - Collision keeps the stepped shape, so this is visual only. *PATCH*
