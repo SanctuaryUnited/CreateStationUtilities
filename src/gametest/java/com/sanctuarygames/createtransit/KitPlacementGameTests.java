@@ -62,10 +62,14 @@ public final class KitPlacementGameTests {
             // the landing is where the preview outlined it, and the cabin is straight ahead.
             var home = d.model().landingPosition(d.anchor().getY(), false);
             check(home.equals(kit.landingBase()) && d.model().cabinFacing() == kit.landingFacing(), "Landing goes where the preview outlined it, facing " + planned);
-            check(ModelLandingBlock.part(home, kit.landingFacing(), 1, 0).relative(planned.getOpposite()).equals(clicked.atY(home.getY())), "Clicked block is the doorway approach, facing " + planned);
+            check(ModelLandingBlock.part(home, kit.landingFacing(), 1, 0).relative(planned.getOpposite()).equals(clicked), "Clicked block is the doorway approach, facing " + planned);
+            // Level with the floor the player clicked: no step up into the landing or the cabin.
+            check(home.getY() == clicked.getY(), "Home landing stands on the clicked floor, facing " + planned + ": y=" + home.getY() + " vs " + clicked.getY());
+            check(mount.getY() == clicked.getY() - 1, "Controller sits in the floor block, facing " + planned);
             check(d.installModelLanding(player, d.anchor().getY()), "Home landing installs, facing " + planned + ": " + d.model().warning());
             check(d.activateModel(), "Kit cabin activates, facing " + planned + ": " + d.model().warning());
             var cabin = d.model().entity();
+            check(Math.abs(cabin.getY() + CabinGeometry.FLOOR_TOP - clicked.getY()) < 1e-6, "Cabin floor is level with the clicked floor, facing " + planned + ": " + (cabin.getY() + CabinGeometry.FLOOR_TOP));
             check(same(cabin.getBoundingBox(), previewBox), "Cabin stays where the preview was, facing " + planned + ": " + cabin.getBoundingBox() + " vs " + previewBox);
             check(same(ModelCabinItem.entranceBox(cabin), previewEntrance), "Doors open on the gold preview side, facing " + planned + ": " + ModelCabinItem.entranceBox(cabin) + " vs " + previewEntrance);
             var ahead = cabin.getBoundingBox().getCenter().subtract(Vec3.atCenterOf(clicked));
@@ -79,6 +83,40 @@ public final class KitPlacementGameTests {
                     check(!column.equals(doorway.relative(d.model().cabinFacing().getOpposite(), depth)) && !column.equals(doorway.relative(d.model().cabinFacing(), depth)),
                         "Controller is clear of the doorway, facing " + planned);
             check(d.deactivateModel(), "Cleanup, facing " + planned);
+        }
+        h.succeed();
+    }
+
+    /** The kit mines the floor block for its controller, but never an unbreakable block or one holding items. */
+    @GameTest(template = "elevator2_shaft", batch = "kit_placement", timeoutTicks = 60)
+    public static void kit_mines_the_controller_floor_block_only_when_it_may(GameTestHelper h) {
+        var l = h.getLevel();
+        var player = FakePlayerFactory.getMinecraft(l);
+        player.getAbilities().mayBuild = true;
+        player.getAbilities().instabuild = false;
+        player.setShiftKeyDown(false);
+        var facing = Direction.NORTH;
+        player.setYRot(facing.toYRot());
+        var clicked = h.absolutePos(new BlockPos(7, 2, 20));
+        var kit = ModelCabinItem.layout(l, clicked, facing);
+        var floor = kit.drive();
+        for (var blocker : java.util.List.of(net.minecraft.world.level.block.Blocks.BEDROCK, net.minecraft.world.level.block.Blocks.CHEST, net.minecraft.world.level.block.Blocks.STONE)) {
+            l.setBlock(floor, blocker.defaultBlockState(), 3);
+            var stack = new ItemStack(ElevatorRegistry.CABIN_ITEM.get(), 1);
+            player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+            var hit = new BlockHitResult(Vec3.atCenterOf(clicked.below()), Direction.UP, clicked.below(), false);
+            var context = new UseOnContext(player, InteractionHand.MAIN_HAND, hit);
+            ElevatorRegistry.CABIN_ITEM.get().useOn(context);
+            ElevatorRegistry.CABIN_ITEM.get().useOn(context);
+            boolean built = l.getBlockEntity(floor) instanceof ElevatorDriveEntity;
+            if (blocker == net.minecraft.world.level.block.Blocks.STONE) {
+                check(built, "Ordinary floor block is mined for the controller");
+                check(stack.isEmpty(), "Kit used up once built");
+                check(!l.getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class, new AABB(floor).inflate(1), e -> e.getItem().is(net.minecraft.world.item.Items.COBBLESTONE)).isEmpty(), "Mined floor block drops like normal mining");
+            } else {
+                check(!built && l.getBlockState(floor).is(blocker), blocker + " is never removed for the controller");
+                check(stack.getCount() == 1, "Kit kept when refused on " + blocker);
+            }
         }
         h.succeed();
     }

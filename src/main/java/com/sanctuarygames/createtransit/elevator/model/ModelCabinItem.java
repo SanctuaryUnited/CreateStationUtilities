@@ -24,13 +24,15 @@ public final class ModelCabinItem extends Item {
  public static KitLayout layout(net.minecraft.world.level.Level level,BlockPos doorway,Direction into){
   for(var driveFacing:Direction.Plane.HORIZONTAL){
    var cabin=previewCabin(plannedDrive(level,doorway,driveFacing));var landingFacing=driveFacing.getClockWise();
-   var front=cabin.world(.5,0,-.500001);var base=BlockPos.containing(front.x,doorway.getY()+1,front.z);var middle=ModelLandingBlock.part(base,landingFacing,1,0);
+   var front=cabin.world(.5,0,-.500001);var base=BlockPos.containing(front.x,doorway.getY(),front.z);var middle=ModelLandingBlock.part(base,landingFacing,1,0);
    var centre=cabin.getBoundingBox().getCenter();double dx=middle.getX()+.5-centre.x,dz=middle.getZ()+.5-centre.z;
    var outward=Math.abs(dx)>Math.abs(dz)?(dx>0?Direction.EAST:Direction.WEST):(dz>0?Direction.SOUTH:Direction.NORTH);
    if(outward!=into.getOpposite())continue;
    // Slide the whole layout so the block in front of the doorway is the clicked one.
    var spot=middle.relative(outward);int sx=doorway.getX()-spot.getX(),sz=doorway.getZ()-spot.getZ();
-   return new KitLayout(doorway.offset(sx,0,sz),driveFacing,base.offset(sx,0,sz),landingFacing);
+   // The cabin floor is level with the floor marker, which sits on the controller. Putting the controller in the
+   // floor block keeps the home floor, landing and cabin level with the floor the player clicked.
+   return new KitLayout(doorway.offset(sx,-1,sz),driveFacing,base.offset(sx,0,sz),landingFacing);
   }
   throw new IllegalStateException("No kit orientation faces "+into);
  }
@@ -59,9 +61,21 @@ public final class ModelCabinItem extends Item {
    com.sanctuarygames.createtransit.TransitText.tell(p,com.sanctuarygames.createtransit.TransitText.Tone.INFO,"elevator","message.createtransit.kit.preview");return InteractionResult.SUCCESS;
   }
   var kit=layout(l,pos,Direction.from2DDataValue(pending.getInt("Facing")));var facing=kit.driveFacing();pos=kit.drive();
-  for(int row=0;row<=1;row++){var cell=pos.above(row);if(!l.hasChunkAt(cell)||!l.getBlockState(cell).canBeReplaced()||!l.mayInteract(p,cell)){com.sanctuarygames.createtransit.TransitText.tell(p,com.sanctuarygames.createtransit.TransitText.Tone.WARN,"elevator","message.createtransit.kit.controller_blocked");return InteractionResult.FAIL;}}
+  var marker=pos.above();if(!l.hasChunkAt(pos)||!l.hasChunkAt(marker)||!l.getBlockState(marker).canBeReplaced()||!l.mayInteract(p,marker)){com.sanctuarygames.createtransit.TransitText.tell(p,com.sanctuarygames.createtransit.TransitText.Tone.WARN,"elevator","message.createtransit.kit.controller_blocked");return InteractionResult.FAIL;}
+  if(!clearFloor(l,p,pos)){com.sanctuarygames.createtransit.TransitText.tell(p,com.sanctuarygames.createtransit.TransitText.Tone.WARN,"elevator","message.createtransit.kit.controller_floor_blocked");return InteractionResult.FAIL;}
   var state=ElevatorRegistry.DRIVE.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing);
   l.setBlock(pos,state,Block.UPDATE_ALL);if(!(l.getBlockEntity(pos) instanceof ElevatorDriveEntity d))return InteractionResult.FAIL;
   d.configureModel("size","3");d.configureModel("compactMount","true");d.configureModel("kit3","true");l.setBlock(pos.above(),ElevatorRegistry.FLOOR_MARKER_RAIL.get().defaultBlockState().setValue(ElevatorPartBlock.FACING,facing),Block.UPDATE_ALL);d.rescan();plan(stack,new CompoundTag());if(!p.isCreative())stack.shrink(1);com.sanctuarygames.createtransit.TransitText.tell(p,com.sanctuarygames.createtransit.TransitText.Tone.SUCCESS,"elevator","message.createtransit.kit.built");d.openPanel(p);return InteractionResult.SUCCESS;
+ }
+ /**
+  * The controller goes in the floor block under the blue outline. That block is mined as if the player broke it
+  * (dropped, unless in Creative), but only when the player could break it: not unbreakable, holding no contents,
+  * and allowed by protection mods.
+  */
+ static boolean clearFloor(net.minecraft.world.level.Level l,net.minecraft.world.entity.player.Player p,BlockPos cell){
+  var state=l.getBlockState(cell);if(state.canBeReplaced())return true;
+  if(!p.mayBuild()||!l.mayInteract(p,cell)||l.getBlockEntity(cell)!=null||state.getDestroySpeed(l,cell)<0)return false;
+  if(p instanceof net.minecraft.server.level.ServerPlayer sp&&net.neoforged.neoforge.common.CommonHooks.fireBlockBreak(l,sp.gameMode.getGameModeForPlayer(),sp,cell,state).isCanceled())return false;
+  return l.destroyBlock(cell,!p.isCreative(),p);
  }
 }
