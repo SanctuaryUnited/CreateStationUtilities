@@ -12,6 +12,8 @@
 
 ### Fixed
 - Radio stations pointing at reserved example addresses (`example.com`, `example.net`, `example.org`, `.example`, `.test`, `.invalid`) are refused, whether added in game or through `radio.defaultStations`, with a message to replace the example URL. Before, copying the placeholder from the config comment added a station that could never connect.
+- Changing a station's URL in `radio.defaultStations` now updates that station in place instead of adding a second station with the same name. Speakers and elevators tuned to it keep working. Stations added by players are never changed this way, and a default an operator removed stays removed.
+- When two stations share a name, the station picker shows each one's host, for example "Sanctuary Radio (radio.sanctuaryunited.net)", so they can be told apart.
 
 ### Added
 - The Cabin Kit preview also outlines the landing door in white, alongside the gold doorway and the blue controller.

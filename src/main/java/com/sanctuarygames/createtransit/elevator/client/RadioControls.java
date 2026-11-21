@@ -2,12 +2,20 @@ package com.sanctuarygames.createtransit.elevator.client;
 import java.util.*;import net.minecraft.nbt.CompoundTag;import net.minecraft.client.gui.components.*;import com.sanctuarygames.createtransit.radio.client.RadioClient;
 /** Shared radio editor for cabin and wall/ceiling speaker menus. */
 public final class RadioControls {
+ /** A station's name, plus its host when another station has the same name. */
+ static String stationLabel(java.util.List<net.minecraft.nbt.CompoundTag> list,int index){
+  var name=list.get(index).getString("Name");
+  boolean duplicate=list.stream().filter(t->t.getString("Name").equals(name)).count()>1;
+  if(!duplicate)return name;
+  try{return name+" ("+java.net.URI.create(list.get(index).getString("Url")).getHost()+")";}catch(IllegalArgumentException e){return name;}
+ }
+
  public interface Host {Button button(String label,int x,int y,int w,Button.OnPress action);EditBox field(int x,int y,int w,String value,int max);void send(int op,String key,String value);void slider(String label,int x,int y,int w,double value,java.util.function.DoubleConsumer save);default void adjusted(String label,int x,int y,int w,double v,boolean distance,java.util.function.DoubleConsumer save){double step=distance?1d/252:label.toLowerCase(java.util.Locale.ROOT).contains("volume")?1d/300:.01;button("−",x,y,22,b->save.accept(Math.max(0,v-step)));slider(label,x+26,y,w-52,v,save);button("+",x+w-22,y,22,b->save.accept(Math.min(1,v+step)));}}
  private RadioControls(){}
  public static void build(Host h,CompoundTag state,CompoundTag radio,int y,int width,boolean speaker){
   int w=(width-34)/2,right=w+20;boolean grouped=speaker&&!state.getString("Group").isBlank();var control=grouped?state.getCompound("GroupRadio"):radio;String prefix=grouped?"group.":"";h.button("Radio: "+(control.getBoolean("Enabled")?"On":"Off"),14,y,width-28,b->h.send(13,prefix+"enabled",Boolean.toString(!control.getBoolean("Enabled"))));
   var raw=state.getCompound("RadioStations").getList("Stations",10);var list=new ArrayList<CompoundTag>();for(int i=0;i<raw.size();i++)list.add(raw.getCompound(i));String selected=control.getString("Station");int index=-1;for(int i=0;i<list.size();i++)if(list.get(i).getString("Id").equals(selected))index=i;final int next=(index+1)%Math.max(1,list.size());
-  h.button(list.isEmpty()?"No stations — add one below":"Station: "+(index<0?"None":list.get(index).getString("Name")),14,y+26,width-28,b->{if(!list.isEmpty())h.send(13,prefix+"station",list.get(next).getString("Id"));}).active=!list.isEmpty();
+  h.button(list.isEmpty()?"No stations — add one below":"Station: "+(index<0?"None":stationLabel(list,index)),14,y+26,width-28,b->{if(!list.isEmpty())h.send(13,prefix+"station",list.get(next).getString("Id"));}).active=!list.isEmpty();
   h.adjusted("Volume",14,y+52,width-28,radio.getDouble("Volume")/3,false,v->h.send(13,"volume",String.format(Locale.ROOT,"%.2f",v*3)));
   String[] modes=speaker?new String[]{"NEARBY","POWERED","UNPOWERED"}:new String[]{"NEARBY","INSIDE"};String mode=control.getString("Mode");h.button("Playback: "+mode,14,y+78,width-28,b->h.send(13,prefix+"mode",modes[(Arrays.asList(modes).indexOf(mode)+1)%modes.length]));
   h.adjusted("Direct range",14,y+104,width-28,com.sanctuarygames.createtransit.radio.RadioSettings.radiusToSlider(radio.getInt("Radius")),true,v->h.send(13,"radius",Integer.toString(com.sanctuarygames.createtransit.radio.RadioSettings.radiusFromSlider(v))));
