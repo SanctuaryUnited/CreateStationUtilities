@@ -67,6 +67,50 @@ public final class TransitText {
     /** A message string as readable text in this side's language (English on a server). */
     public static String plain(String s) { return isKey(s) ? text(s).getString() : s == null ? "" : s; }
 
+    // Screen labels: written in English in code and translated here, so every screen goes through one
+    // function. A whole label is looked up first, for full-sentence context; otherwise each phrase between
+    // separators is translated, so "Chime: " + value + " ▾" translates "Chime" and keeps the value.
+    private static final java.util.regex.Pattern UI_SPLIT = java.util.regex.Pattern.compile(": | • |• | ▾|▾| \\| | / | — |\\(|\\)|, |…");
+
+    /** Key for a screen label phrase: gui.createtransit.ui.<lowercase words joined by _> (max 60 chars). */
+    public static String uiKey(String phrase) {
+        var slug = phrase.toLowerCase(java.util.Locale.ROOT).replaceAll("[^a-z0-9]+", "_").replaceAll("^_+|_+$", "");
+        if (slug.length() > 60) slug = slug.substring(0, 60).replaceAll("_+$", "");
+        return "gui.createtransit.ui." + slug;
+    }
+
+    /** A screen label in the current language; untranslated phrases (names, numbers) pass through. */
+    public static String ui(String english) {
+        if (english == null || english.isBlank()) return english == null ? "" : english;
+        var language = Language.getInstance();
+        var wholeCore = uiCore(english);
+        var whole = uiKey(wholeCore);
+        if (!wholeCore.isEmpty() && language.has(whole)) return english.replace(wholeCore, language.getOrDefault(whole));
+        var m = UI_SPLIT.matcher(english);
+        var out = new StringBuilder();
+        int last = 0;
+        while (m.find()) { out.append(uiPhrase(english.substring(last, m.start()), language)).append(m.group()); last = m.end(); }
+        return out.append(uiPhrase(english.substring(last), language)).toString();
+    }
+
+    /** A screen label component in the current language. */
+    public static MutableComponent uiText(String english) { return Component.literal(ui(english)); }
+
+    /** Words of a phrase without surrounding symbols, e.g. "• Frame" -> "Frame", "+ rear" -> "rear". */
+    public static String uiCore(String phrase) { return phrase.replaceAll("^[^A-Za-z0-9]+|[^A-Za-z0-9.!?%]+$", ""); }
+
+    private static String uiPhrase(String phrase, Language language) {
+        var core = uiCore(phrase);
+        if (core.isEmpty() || !core.matches(".*[A-Za-z].*")) return phrase;
+        var key = uiKey(core);
+        if (!language.has(key)) return phrase;
+        var translated = language.getOrDefault(key);
+        // Keys ignore case, so keep the original's lower-case start mid-label ("Doors close after 5s").
+        if (Character.isLowerCase(core.charAt(0)) && !translated.isEmpty())
+            translated = translated.substring(0, 1).toLowerCase(java.util.Locale.ROOT) + translated.substring(1);
+        return phrase.replace(core, translated);
+    }
+
     /** "[Elevator] " style prefix for a topic, from message.createtransit.prefix.&lt;topic&gt;. */
     public static MutableComponent prefix(String topic) {
         return Component.literal("[").append(tr("message.createtransit.prefix." + topic)).append("] ").withStyle(ChatFormatting.DARK_AQUA);

@@ -94,7 +94,12 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - Controller warnings travel through the existing string plumbing as encoded keys (`TransitText.key`) and are translated where they are shown: in chat, and in the controller screen's status tooltip.
   - The sync data keeps plain English in `Message`/`RailWarning` for older clients, and adds `MessageKey`/`RailWarningKey` for translation.
   - `langKeyCheck` now covers 183 references. *PATCH*
-- [ ] **26. Translate the screen labels.** About 130 button and label strings in the elevator, escalator, speaker and settings screens are still English literals. This is the last step before a translation pass and a Modrinth or CurseForge release. *PATCH*
+- [x] **26. Translate the screen labels** (0.5.0). Every elevator, escalator, speaker, material-picker and settings screen now draws its text through `TransitText.ui()`, via `StationUi` buttons, tabs and sliders, `setMessage`, and the screens' text helpers.
+  - Labels are looked up whole first. Labels built from pieces ("Chime: " + value) are translated piece by piece, and names, numbers and symbols pass through.
+  - 252 labels are in `en_us.json` as `gui.createtransit.ui.*`.
+  - `tools/extract_ui_labels.py` adds new ones.
+  - The `Styled` buttons pick their "Go"/"Activate" highlight from the English label, so translating the text doesn't change it.
+  - A gametest swaps in a fake language to check the phrase rules. *PATCH*
 - [ ] **25. Ponder scenes for elevators.** These are Create's animated in-game tutorials (press W on an item). Create is already a dependency, so they add nothing to the jar. Scenes:
   - placing a Cabin Kit, with the preview colours and turning
   - building the guide-rail shaft with floor markers

@@ -27,7 +27,7 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
     private boolean ceilingPage;
     private boolean building;private boolean compactNavigation;private int tab,contentTop=100;private String[] tabs={"Setup","Doors","Cabin","Motion","Alignment","Radio","Advanced"};
     public ElevatorScreen(ElevatorMenu menu,Inventory inventory,Component title){super(menu,inventory,title);imageWidth=360;imageHeight=304;if(menu.configuration&&menu.state().contains("ModelCabin")){editor=4;if(!menu.accessPos.equals(menu.drivePos))tab=1;}}
-    private Component text(String value){return Component.literal(value);}
+    private Component text(String value){return com.sanctuarygames.createtransit.TransitText.uiText(value);}
     private Button footerButton(String label,int x,int y,int w,Button.OnPress action){return addRenderableWidget(StationUi.button(leftPos+x,topPos+y,w,20,label,action));}
     private <T extends AbstractWidget>T scrolling(T widget,int y){scrollWidgets.put(widget,y);contentBottom=Math.max(contentBottom,y+widget.getHeight());positionWidgets();return widget;}
     private void positionWidgets(){if(building)return;scroll=layoutWidgets(scrollWidgets,topPos,imageHeight,scroll,contentTop+(menu.configuration&&editor>2?14:0),contentBottom);}
@@ -396,7 +396,7 @@ public final class ElevatorScreen extends AbstractContainerScreen<ElevatorMenu> 
         if(previewY>0&&(tab==1||tab==2)&&editor!=0&&previewY-scroll<imageHeight-36&&previewY-scroll+previewHeight>contentTop){g.enableScissor(leftPos+8,topPos+contentTop,leftPos+imageWidth-8,topPos+imageHeight-36);try{var config=com.sanctuarygames.createtransit.elevator.model.CabinNbt.config(menu.state().getCompound("ModelCabin").getCompound("Configuration"));modelPreview.draw(g,config,leftPos+14,topPos+previewY-scroll,imageWidth-28,previewHeight-4,tab==1,label(menu.status(0)),Integer.compare(menu.status(1),menu.status(0)),menu.state().getCompound("ModelCabin").getBoolean("MirrorIndicators"));}finally{g.disableScissor();}}
         if(editor==0){g.enableScissor(leftPos+4,topPos+100,leftPos+imageWidth-4,topPos+imageHeight-36);var stops=new ArrayList<>(menu.stops());Collections.reverse(stops);for(int row=0;row<rows&&page*rows+row<stops.size();row++){int y=119+row*28-scroll;card(g,leftPos+10,topPos+y,imageWidth-20,26);var f=stops.get(page*rows+row);if(f.y()==menu.status(0)&&menu.state().getBoolean("Aligned"))g.fill(leftPos+11,topPos+y+2,leftPos+14,topPos+y+24,StationUi.accent());}g.disableScissor();}
     }
-    private void line(GuiGraphics g,String value,int x,int y,int maxWidth,int color){g.drawString(font,font.plainSubstrByWidth(value,maxWidth),x,y,color,false);}
+    private void line(GuiGraphics g,String value,int x,int y,int maxWidth,int color){g.drawString(font,font.plainSubstrByWidth(com.sanctuarygames.createtransit.TransitText.ui(value),maxWidth),x,y,color,false);}
     private String label(int y){return menu.stops().stream().filter(f->f.y()==y).map(ElevatorFloor::id).findFirst().orElse("Y "+y);}
     @Override protected void renderLabels(GuiGraphics g,int mouseX,int mouseY){
         var state=menu.state();

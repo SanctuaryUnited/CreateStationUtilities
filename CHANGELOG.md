@@ -7,6 +7,7 @@
 - Elevator tooltips are rewritten for the current elevators. Each setup item (Cabin Kit, Landing Door Kit, Guide Rail, Floor Marker Guide Rail, controller, Floor Call, Destination Selector) says what it's for, and shows step-by-step placement while Shift is held. The old tooltips described the retired Elevator 2 linking.
 - Elevator chat messages share one style: an `[Elevator]` prefix and a colour for success, warning or error. A repeat of the same message within five seconds is suppressed. The kit, landing door and controller messages moved into the language file, so resource packs can reword or translate them. Lines missing from a player's language show in English. Server messages also carry their English text, so players on an older version of the mod see a sentence, not a raw text key.
 - All elevator status, warning and refusal messages (135 of them) now come from the language file, ready for translation. Clients on older versions still see the English text in the controller screen.
+- Every screen's text (elevator controller, bank setup, destination selector, escalator, speaker, material picker and client settings) now comes from the language file, so the whole mod can be translated. Untranslated lines show in English.
 - Plain-language setup messages. The landing door now says whether it linked. A missing rail on the controller names the Floor Marker Guide Rail. Removing an active controller explains how to deactivate it. Activation refusals say what to place or clear.
 
 ### Added

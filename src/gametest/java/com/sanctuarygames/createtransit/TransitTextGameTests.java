@@ -25,4 +25,27 @@ public final class TransitTextGameTests {
         check(TransitText.plain("Ready").equals("Ready") && !TransitText.isKey("Ready"), "Plain strings pass through unchanged");
         h.succeed();
     }
+
+    /** Screen labels translate phrase by phrase; names, numbers and symbols pass through. */
+    @GameTest(template = "empty", batch = "transit_text")
+    public static void screen_labels_translate_by_phrase(GameTestHelper h) {
+        var real = net.minecraft.locale.Language.getInstance();
+        net.minecraft.locale.Language.inject(new net.minecraft.locale.Language() {
+            @Override public String getOrDefault(String key, String fallback) { return real.has(key) ? "«" + real.getOrDefault(key) + "»" : fallback; }
+            @Override public boolean has(String key) { return real.has(key); }
+            @Override public boolean isDefaultRightToLeft() { return false; }
+            @Override public net.minecraft.util.FormattedCharSequence getVisualOrder(net.minecraft.network.chat.FormattedText text) { return real.getVisualOrder(text); }
+        });
+        try {
+            check(TransitText.ui("Activate").equals("«Activate»"), "Single label: " + TransitText.ui("Activate"));
+            check(TransitText.ui("Chime: F3 ▾").equals("«Chime»: F3 ▾"), "Joined label keeps the value: " + TransitText.ui("Chime: F3 ▾"));
+            check(TransitText.ui("• Frame").equals("• «Frame»"), "Symbol prefix kept: " + TransitText.ui("• Frame"));
+            var sentence = "Door mode: AUTO • delays are in ticks (20 = 1 second)";
+            check(TransitText.ui(sentence).equals("«Door mode: AUTO • delays are in ticks (20 = 1 second»)"), "Whole sentence keeps its bracket: " + TransitText.ui(sentence));
+            check(TransitText.ui("X +1/16").equals("X +1/16") && TransitText.ui("Lobby 7").equals("Lobby 7"), "Names, numbers and unkeyed labels pass through");
+        } finally {
+            net.minecraft.locale.Language.inject(real);
+        }
+        h.succeed();
+    }
 }
