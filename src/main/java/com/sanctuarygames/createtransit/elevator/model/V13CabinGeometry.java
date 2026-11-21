@@ -23,6 +23,15 @@ final class V13CabinGeometry {
   double depth=c.variant()==Variant.CYLINDRICAL?n/2:n;
   box(q,wall(c,c.leftGlazed()),0,.125,0,t,3.125,depth);box(q,wall(c,c.rightGlazed()),n-t,.125,0,n,3.125,depth);
   for(double x:new double[]{0,n-t})for(double z:new double[]{0,depth-t})box(q,Material.METAL,x,.125,z,x+t,3.125,z+t);
+  // Glass walls get top and bottom rails (the corner posts above frame their ends), so they read as glazing.
+  if(c.variant()!=Variant.CYLINDRICAL){
+   for(double x:new double[]{0,n-t})if(x==0?c.leftGlazed():c.rightGlazed()){
+    for(double y:new double[]{.125,3.035})box(q,Material.METAL,x==0?0:x-.004,y,0,x==0?t+.004:n,y+.09,depth);
+   }
+   if(!c.rearEnabled()&&c.rearGlass()){
+    for(double y:new double[]{.125,3.035})box(q,Material.METAL,0,y,n-t-.004,n,y+.09,n);
+   }
+  }
   // Interior rails and floor/ceiling LED trim are visible from inside the cabin.
   for(double x:new double[]{t+.01,n-t-.055}){
    if(c.handrail()!=Handrail.NONE)box(q,rail(c),x,1.12,.18,x+.045,1.18,depth-.12);
@@ -141,8 +150,8 @@ final class V13CabinGeometry {
    }
    double x=panel.x0(),X=panel.x1(),w=X-x+.008;double originalZ=z;z=panel.z0();int start=q.size();
    if(full||slit){
-    double inset=slit?w*.34:.04,a=x+inset,b=X-inset;
-    double bottom=y+(style==DoorStyle.INDUSTRIAL?.85:slit?.45:.06),top=y+(style==DoorStyle.INDUSTRIAL?1.58:slit?1.64:1.81);
+    double inset=slit?w*.34:Math.min(.09,w/5),a=x+inset,b=X-inset;
+    double bottom=y+(style==DoorStyle.INDUSTRIAL?.85:slit?.45:.16),top=y+(style==DoorStyle.INDUSTRIAL?1.58:slit?1.64:1.81);
     box(q,Material.COPY_PRIMARY,x,y+.005,z,a,y+panelTop(c),z+.025);
     box(q,Material.COPY_PRIMARY,b,y+.005,z,X,y+panelTop(c),z+.025);
     box(q,Material.COPY_PRIMARY,a,y+.005,z,b,bottom,z+.025);

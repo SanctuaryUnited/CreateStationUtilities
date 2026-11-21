@@ -669,5 +669,13 @@
   "gui.createtransit.ui.wall_ceiling_shared_station_list": "Wall / ceiling • shared station list",
   "gui.createtransit.ui.wall_muffling": "Wall muffling",
   "gui.createtransit.ui.wall_muffling_requires_sound_physics_remastered": "Wall muffling requires Sound Physics Remastered",
-  "gui.createtransit.ui.west": "West"
+  "gui.createtransit.ui.west": "West",
+  "gui.createtransit.ui.rear_panoramic": "Rear Panoramic",
+  "gui.createtransit.ui.rounded": "Rounded",
+  "gui.createtransit.ui.scenic": "Scenic",
+  "gui.createtransit.ui.wood": "Wood",
+  "tooltip.createtransit.cabin.needs_model": "Only used by the %s model. Change Model first.",
+  "tooltip.createtransit.cabin.rounded_needs_deactivate": "Solid, Rear Panoramic and Scenic can be swapped while the cabin runs. To pick Rounded, return the cabin home and deactivate it first.",
+  "tooltip.createtransit.cabin.rounded_locked": "A rounded cabin has a different shape. Return it home and deactivate it to change the model.",
+  "message.createtransit.elevator.deactivate_before_rounded_model": "The rounded model has a different shape: return and deactivate the cabin before switching to or from it"
 }

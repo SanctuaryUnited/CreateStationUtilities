@@ -54,6 +54,16 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
     public long motionTick(){return motionTick;} public int phase(){return phase;}
     public String message(){return com.sanctuarygames.createtransit.TransitText.plain(message);} public String railWarning(){return com.sanctuarygames.createtransit.TransitText.plain(railWarning);} public String railWarningText(){return railWarning;}
     public String elevatorName(){return elevatorName;} public UUID identifier(){return identifier;}
+    @Override public void onLoad(){super.onLoad();if(level instanceof net.minecraft.server.level.ServerLevel l)claimIdentifier(l);}
+    /** A controller copied with its data (schematic, pick-block with NBT) arrives with the original's
+     *  identifier, which banks use to tell cars apart. The copy gets a fresh one: it is the copy if a bank
+     *  registered that identifier at another position, or if another loaded controller already has it. */
+    void claimIdentifier(net.minecraft.server.level.ServerLevel l){
+        var registered=ElevatorBanks.get(l).carPosition(identifier);
+        boolean copy=registered!=null&&!registered.equals(worldPosition);
+        if(!copy)for(var other:ElevatorNetwork.controllers(l))if(other!=this&&!other.getBlockPos().equals(worldPosition)&&identifier.equals(other.identifier)){copy=true;break;}
+        if(copy){identifier=UUID.randomUUID();setChanged();}
+    }
     public ControlledContraptionEntity cabin(){return cabin;}
     public boolean assembled(){return model!=null&&model.active()||cabin!=null||cabinId!=null;}
     public boolean railMode(){return railMode;} public List<ElevatorFloor> floorList(){return floors;}
@@ -62,7 +72,10 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
     public int targetFloor(){return anchor().getY()+(int)Math.round(target);}
     public boolean pending(int y){if(model!=null)return model.pending(y);return queue.contains(y)||((phase==CLOSING||phase==MOVING||phase==LEVELING)&&targetFloor()==y);}
     public void invalidateRails(){railsDirty=true;}
-    public void ensureFloors(){if(level!=null&&!level.isClientSide&&!scanning&&(railsDirty||!railMode))rescan();}
+    // Drives without floor-marker rails have no change flag, so they rescan on demand, but at most once a
+    // game tick: call buttons, banks and menus can ask many times in the same tick.
+    private long legacyScanTick=Long.MIN_VALUE;
+    public void ensureFloors(){if(level==null||level.isClientSide||scanning)return;if(railsDirty){rescan();return;}if(!railMode&&level.getGameTime()!=legacyScanTick){legacyScanTick=level.getGameTime();rescan();}}
     public String floorDisplayName(int y){
         for(var floor:floors)if(floor.y()==y)return floor.name().isBlank()?floor.id():floor.name();
         return "Y "+y;

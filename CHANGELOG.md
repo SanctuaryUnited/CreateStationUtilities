@@ -1,3 +1,22 @@
+## 0.5.1 — Elevator and speaker fixes
+
+### Fixed
+- A copied elevator controller (from a schematic, or picked with its data) now gets its own identity. Before, the copy and the original shared one, so elevator banks could mix up their cars. The original keeps its identity and its bank membership.
+- Call buttons, banks and landing checks no longer build a temporary cabin every time they look up where a landing goes. The result is reused until the cabin's settings, alignment or rotation change.
+- Elevators without floor-marker rails no longer rescan their whole shaft several times in the same tick.
+- The speaker block's codec now keeps the speaker style (ceiling, column, horn). Before, it always produced the box speaker.
+- Changing the cabin model or its glass in the controller screen no longer appears to do nothing:
+  - A running cabin can now switch between Solid, Rear Panoramic and Scenic, which share the same walls. Only Rounded still needs the cabin returned home and deactivated, and the Model button's tooltip says so.
+  - Left and right glass only apply to the Rear Panoramic model, and curved glass only to Rounded. Those toggles are now greyed out on other models, with a tooltip naming the model they need.
+  - Models show readable names (Rounded instead of CYLINDRICAL).
+- A cabin behind glass no longer disappears. Glass landing doors and glass cabin walls were sometimes drawn before the cabin, which hid it and showed the shaft and guide rails through the glass instead. Glass now draws after every solid part, and each pane shows one layer instead of two.
+- Cabin glass now looks like glass. Before, it was nearly invisible apart from bright glare streaks, so glass walls looked like open sides and glass doors looked like bare panes.
+  - Glass has an even, light tint with no glare streaks.
+  - Glass walls (Scenic, Rear Panoramic) get slim corner posts and top and bottom rails, and each wall stays one clear pane.
+  - Glass doors get a proper frame, a kick plate at the bottom and a head rail.
+  - Faces between touching glass pieces are no longer drawn, so corners and stepped walls show fewer seams. The Rounded cabin's handrail has fewer brackets. Smoothing the Rounded cabin's stepped glass is planned for 0.5.2.
+  - Collision and the cabin outline are unchanged.
+
 ## 0.5.0 — Quality-of-life update
 
 ### Changed

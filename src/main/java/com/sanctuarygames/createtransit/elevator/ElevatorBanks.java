@@ -63,6 +63,13 @@ public final class ElevatorBanks extends SavedData {
     private static final String SELECTION="CsuBankSelection";
     private static final String PRIMARY="CsuMergePrimary", SECONDARY="CsuMergeSecondary";
 
+    /** Where the car with this identifier was registered in a bank, or null if it is in none. */
+    public BlockPos carPosition(UUID id){
+        var bank=membership.get(id);if(bank==null)return null;
+        var pending=new ArrayDeque<Bank>();pending.add(bank);
+        while(!pending.isEmpty()){var b=pending.poll();for(var c:b.cars)if(c.id().equals(id))return c.drive();pending.addAll(b.merged);}
+        return null;
+    }
     public static ElevatorBanks get(ServerLevel level){
         return level.getDataStorage().computeIfAbsent(new Factory<>(ElevatorBanks::new,ElevatorBanks::load,null),"createtransit_elevator_banks");
     }

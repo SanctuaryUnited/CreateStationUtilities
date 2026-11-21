@@ -33,10 +33,10 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 
 ## Phase 3 — Correctness and performance
 
-- [ ] **7. Copied drives share a UUID** (`ElevatorDriveEntity.loadAdditional`). Regenerate `Identifier` when another loaded drive at a different position already owns it. *PATCH*
-- [ ] **8. `ModelCabinController.probe()` constructs a throwaway entity on every landing lookup.** Compute landing positions without an entity, or cache per config/floor. *PATCH*
-- [ ] **9. `ensureFloors()` rescans every call for non-rail drives.** Cache legacy floor results per tick. *PATCH*
-- [ ] **10. `StationSpeakerBlock.CODEC` loses the style** (always `"box"`). *PATCH*
+- [x] **7. Copied drives share a UUID** (0.5.1: `ElevatorDriveEntity.claimIdentifier` on load. The copy re-identifies if a bank registered the ID elsewhere or another loaded controller has it.) (`ElevatorDriveEntity.loadAdditional`). Regenerate `Identifier` when another loaded drive at a different position already owns it. *PATCH*
+- [x] **8. `ModelCabinController.probe()` constructs a throwaway entity on every landing lookup.** (0.5.1: `landing()` reuses one probe, keyed on config, mirror, alignment, rotation and mount.) Compute landing positions without an entity, or cache per config/floor. *PATCH*
+- [x] **9. `ensureFloors()` rescans every call for non-rail drives.** (0.5.1: at most once per game tick.) Cache legacy floor results per tick. *PATCH*
+- [x] **10. `StationSpeakerBlock.CODEC` loses the style** (0.5.1: the codec encodes `style`.) (always `"box"`). *PATCH*
 - [x] **11. `RadioAudio.Mp3.read` stereo down-mix can index past the buffer** on an odd sample count. Fixed alongside item 6. *PATCH*
 - [x] **11a. Oversized and off-centre inventory icons** (found in 0.3.0 client testing). 26 item models used `display.gui.scale` 0.9 and one used 1.2, so parts overflowed neighbouring slots, and edge-mounted parts drew as bars along the slot edge. Fixed with `tools/fit_gui_icons.py` (run it after the asset generators; `--check` reports drift): it keeps each icon's rotation, sizes it to a vanilla block icon's on-screen footprint, and centres it from the element bounds. 62 icons refitted. Only `display.gui` changed, so placed blocks and held items are unaffected. *PATCH*
 - [x] **11b. Radio and elevator motor silent after a sound-engine restart** (found in 0.3.0 client testing). F3+T and Windows audio-device changes restart Minecraft's sound engine, which drops channels without stopping the sound instances. `RadioClient` and `CabinMotorClient` now treat a sound the engine no longer tracks as stopped, and recreate it. Escalator loops already did. *PATCH*
@@ -109,6 +109,10 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - forming a bank with the wrench and the Destination Selector
 
   This would replace most of the chat guide for new players. *MINOR*
+- [ ] **27. Smooth Rounded cabin.** The Rounded (cylindrical) cabin is built from 1/8-block steps. Since 0.5.1 made glass visible, each step edge of curved glass shows as a thin vertical line, and the handrail is a staircase of short pieces.
+  - Draw the curved glass, the handrail and the ceiling and floor LED strips as smooth curves.
+  - Do it in both `CabinGeometry` and `V13CabinGeometry`.
+  - Collision keeps the stepped shape, so this is visual only. *PATCH*
 
 ## Future — Possible features (radio)
 
