@@ -37,6 +37,7 @@ public final class RadioAudioCheck {
     private static void AudioStreamGainCheck()throws Exception{var original=ByteBuffer.allocateDirect(8).order(java.nio.ByteOrder.LITTLE_ENDIAN);for(short value:new short[]{1000,-1000,20000,-20000})original.putShort(value);original.flip();var base=new net.minecraft.client.sounds.AudioStream(){public javax.sound.sampled.AudioFormat getFormat(){return new javax.sound.sampled.AudioFormat(44100,16,1,true,false);}public ByteBuffer read(int size){return original.duplicate().order(java.nio.ByteOrder.LITTLE_ENDIAN);}public void close(){}};try(var amplified=new RadioGainStream(base,()->3,()->0)){var samples=amplified.read(8).order(java.nio.ByteOrder.LITTLE_ENDIAN);check(samples.getShort()==3000&&samples.getShort()==-3000&&samples.getShort()==32767&&samples.getShort()==-32768,"Actual PCM amplification and clipping bounds");}System.out.println("PASS: 300 percent saved gain, amplified PCM and bounded saturation.");}
     public static void run()throws Exception{
         RadioBufferCheck.run();
+        RadioAudio.allowLoopbackForTests=true;
         var server=HttpServer.create(new InetSocketAddress("127.0.0.1",0),0);
         var pool=Executors.newCachedThreadPool(r->{var t=new Thread(r,"Radio fixture HTTP");t.setDaemon(true);return t;});server.setExecutor(pool);
         byte[] mp3=fixture("long-tone.mp3");var stalledRelease=new CountDownLatch(1);
@@ -83,6 +84,8 @@ public final class RadioAudioCheck {
             CompletableFuture<Boolean> stopped=CompletableFuture.supplyAsync(()->{try(var stream=RadioAudio.open(base+"/stalled",s->{if(s.startsWith("Buffering"))warming.countDown();},canceled::get)){return false;}catch(IOException expected){return canceled.get();}},pool);
             check(warming.await(2,TimeUnit.SECONDS),"Stalled fixture reaches asynchronous prebuffer");canceled.set(true);check(stopped.get(1,TimeUnit.SECONDS),"Cancel startup without waiting for network timeout");stalledRelease.countDown();
             System.out.println("PASS: real HTTP MP3/Ogg, four immediate one-second startup buffers, full PCM continuity across decoder chunks, byte-identical ICY metadata stripping, bursty-network paced playback with zero underruns, nonblocking reads and canceled warmup. No public-station listening test.");
-        }finally{stalledRelease.countDown();server.stop(0);pool.shutdownNow();}
+        }finally{stalledRelease.countDown();server.stop(0);pool.shutdownNow();RadioAudio.allowLoopbackForTests=false;}
+        boolean refused=false;try{RadioAudio.requirePublicHost("127.0.0.1");}catch(java.io.IOException expected){refused=true;}
+        check(refused,"Loopback streams are refused outside the test fixture");
     }
 }

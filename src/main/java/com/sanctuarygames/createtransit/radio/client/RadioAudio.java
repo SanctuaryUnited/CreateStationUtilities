@@ -29,10 +29,15 @@ public final class RadioAudio implements AudioStream {
    result=new RadioAudio(decoder,status);result.buffer.awaitStartup(canceled,20000);status.accept("Playing");return result;
   }catch(Exception ex){if(result!=null)result.close();else if(input!=null)try{input.close();}catch(IOException ignored){}throw ex instanceof IOException io?io:new IOException("Unsupported stream: use MP3 or Ogg Vorbis",ex);}
  }
+ /** Test fixtures only: lets the radio audio check stream from its own server on 127.0.0.1. Nothing in the game sets it. */
+ static volatile boolean allowLoopbackForTests;
  /** Server-supplied URLs (and every redirect) must not reach this computer or its local network. */
  static void requirePublicHost(String host)throws IOException{
   if(host==null||host.equalsIgnoreCase("localhost")||host.toLowerCase(java.util.Locale.ROOT).endsWith(".localhost"))throw new IOException("Radio stream refused: local address");
-  for(var address:InetAddress.getAllByName(host))if(com.sanctuarygames.createtransit.radio.RadioStations.privateAddress(address))throw new IOException("Radio stream refused: private or local network address");
+  for(var address:InetAddress.getAllByName(host)){
+   if(allowLoopbackForTests&&address.isLoopbackAddress())continue;
+   if(com.sanctuarygames.createtransit.radio.RadioStations.privateAddress(address))throw new IOException("Radio stream refused: private or local network address");
+  }
  }
  private RadioAudio(AudioStream decoder,java.util.function.Consumer<String> status){
   this.decoder=decoder;this.status=status;var f=decoder.getFormat();buffer=new RadioPcmBuffer((int)f.getSampleRate()*f.getFrameSize(),f.getFrameSize());status.accept("Buffering…");

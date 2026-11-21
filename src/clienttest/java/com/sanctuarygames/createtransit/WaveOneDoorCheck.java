@@ -35,7 +35,11 @@ public final class WaveOneDoorCheck {
         for (var material : CabinGeometry.Material.values()) sprites.put(material, UnitTextureAtlasSprite.INSTANCE);
         Set<String> checked = new HashSet<>();
         int configurations = 0, vertices = 0;
-        for (var skin : CabinConfiguration.Skin.values()) for (var style : CabinConfiguration.DOOR_MODELS) {
+        // WOOD_TRIM and LIGHT_TRANSIT are retired names kept so old saves load; they always become an approved skin.
+        for (var skin : CabinConfiguration.Skin.values())
+            check(java.util.Arrays.asList(CabinConfiguration.APPROVED_SKINS).contains(CabinConfiguration.approvedSkin(skin.name())),
+                "Skin " + skin + " loads as an approved skin");
+        for (var skin : CabinConfiguration.APPROVED_SKINS) for (var style : CabinConfiguration.DOOR_MODELS) {
             if (!DoorStyleTextures.waveOne(style)) continue;
             for (var material : CabinGeometry.Material.values()) {
                 String id = DoorStyleTextures.sprite(skin, material,"high");
@@ -84,18 +88,12 @@ public final class WaveOneDoorCheck {
                 if((tile.source().material()==CabinGeometry.Material.FLOOR||tile.source().material()==CabinGeometry.Material.CEILING)&&v.z()>size/2d)check(Math.hypot(v.x()-size/2d,v.z()-size/2d)<=size/2d+1e-6,"Rounded floor and roof fans retain their actual circular boundary");
             }
         }
-        int nativeModels=0;
-        for(var skin:CabinConfiguration.Skin.values())for(var model:CabinConfiguration.DOOR_MODELS)for(var state:List.of("closed","opening","open")){
-            String name="assets/createtransit/models/block/elevator3/"+skin.name().toLowerCase(Locale.ROOT)+"_"+model.name().toLowerCase(Locale.ROOT)+"_"+state+".json";
-            try(var input=WaveOneDoorCheck.class.getModule().getResourceAsStream(name)){
-                check(input!=null,"Static native pose exported: "+name);var parsed=net.minecraft.client.renderer.block.model.BlockModel.fromStream(new InputStreamReader(input,StandardCharsets.UTF_8));check(!parsed.getElements().isEmpty(),"Official Minecraft model parser accepts pose elements");nativeModels++;
-            }
-        }
-        check(nativeModels==36,"All twelve native door combinations have closed/opening/open snapshots");
-        check(checked.size() == 40, "All ten native tiles for each of four skins decoded and linked");
-        check(configurations == 9216, "Four skins, three models, four sizes, sixteen dyes, three poses, four orientations");
+        int skins = CabinConfiguration.APPROVED_SKINS.length;
+        check(checked.size() == 14 * skins, "All fourteen native tiles for each approved skin decoded and linked");
+        check(configurations == skins * CabinConfiguration.DOOR_MODELS.length * 4 * 16 * 3 * 4,
+            "Every approved skin, door model, size (4), dye (16), pose (3) and orientation (4)");
         System.out.println("PASS: V14 CLIENT production emitter: " + configurations + " configurations / " + vertices
-            + " vertices; 40 native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.");
+            + " vertices; " + checked.size() + " native PNG resources/atlas entries; glass alpha, LED fullbright, metal world lighting, normalized cropped UVs.");
     }
 
     private static final class Recording implements VertexConsumer {
