@@ -10,6 +10,11 @@
   - Left and right glass only apply to the Rear Panoramic model, and curved glass only to Rounded. Those toggles are now greyed out on other models, with a tooltip naming the model they need.
   - Models show readable names (Rounded instead of CYLINDRICAL).
 - A cabin behind glass no longer disappears. Glass landing doors and glass cabin walls were sometimes drawn before the cabin, which hid it and showed the shaft and guide rails through the glass instead. Glass now draws after every solid part, and each pane shows one layer instead of two.
+- Cabin glass now looks like glass. Before, it was nearly invisible apart from bright glare streaks, so glass walls looked like open sides and glass doors looked like bare panes.
+  - Glass has an even, light tint with no glare streaks.
+  - Glass walls (Scenic, Rear Panoramic) get slim corner posts and top and bottom rails, and each wall stays one clear pane.
+  - Glass doors get a proper frame, a kick plate at the bottom and a head rail.
+  - Collision and the cabin outline are unchanged.
 
 ## 0.5.0 — Quality-of-life update
 

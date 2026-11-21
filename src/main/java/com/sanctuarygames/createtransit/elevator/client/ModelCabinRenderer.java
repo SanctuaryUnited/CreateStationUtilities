@@ -147,7 +147,7 @@ var sprites=new EnumMap<CabinGeometry.Material,TextureAtlasSprite>(CabinGeometry
     for(int i=0;i<4;i++){
      var v=switch(i){case 0->face.a();case 1->face.b();case 2->face.c();default->face.d();};
      vertex(out,pose,v,sprite,textureU(face,i),textureV(face,i),color,shade,
-         alpha*(m==CabinGeometry.Material.DOOR_GLASS?.75f:transparent?.42f:1),
+         alpha,
          emit?LightTexture.FULL_BRIGHT:light,nx,ny,nz);
     }
    }

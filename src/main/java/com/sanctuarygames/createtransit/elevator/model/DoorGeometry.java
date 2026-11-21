@@ -33,16 +33,18 @@ public final class DoorGeometry {
   }
  }
  public static void indicatorHousing(List<Face> q,CabinConfiguration c,double z,double y,double depth){}
+ // Full-glass leaves: side stiles, a kick plate at the bottom and a head rail, in the door's metal.
+ private static final double GLASS_STILE=.09,GLASS_KICK=.16,GLASS_HEAD=.08;
  private static void panels(List<Face> q,CabinConfiguration c,List<Box> leaves,Door door){
   boolean custom=c.doorStyle()==DoorStyle.CLASSIC_BRUSHED_STEEL||c.doorStyle()==DoorStyle.OG_STEEL||c.doorStyle()==DoorStyle.CLASSIC_WOOD;
   for(var b:leaves){
    if(custom){customLeaf(q,c,b,door);continue;}
-   double x=b.x0(),X=b.x1(),y=b.y0(),Y=b.y1(),z=b.z0(),Z=b.z1(),t=Math.min(.03125,(X-x)/4);
+   double x=b.x0(),X=b.x1(),y=b.y0(),Y=b.y1(),z=b.z0(),Z=b.z1(),t=Math.min(GLASS_STILE,(X-x)/5);
    if(door==Door.SOLID)box(q,Material.COPY_PRIMARY,x,y,z,X,Y,Z);
    else{
     box(q,Material.DOOR_TRIM,x,y,z,x+t,Y,Z);box(q,Material.DOOR_TRIM,X-t,y,z,X,Y,Z);
-    box(q,Material.DOOR_TRIM,x+t,y,z,X-t,y+.04,Z);box(q,Material.DOOR_TRIM,x+t,Y-.04,z,X-t,Y,Z);
-    box(q,Material.DOOR_GLASS,x+t,y+.04,z+.008,X-t,Y-.04,Z-.008);
+    box(q,Material.DOOR_TRIM,x+t,y,z,X-t,y+GLASS_KICK,Z);box(q,Material.DOOR_TRIM,x+t,Y-GLASS_HEAD,z,X-t,Y,Z);
+    box(q,Material.DOOR_GLASS,x+t,y+GLASS_KICK,z+.008,X-t,Y-GLASS_HEAD,Z-.008);
    }
   }
  }
@@ -60,8 +62,8 @@ public final class DoorGeometry {
   }
   if(door==Door.SOLID){box(q,Material.COPY_PRIMARY,x,y,z,X,Y,Z);return;}
   boolean slim=c.glazing()==Glazing.SLIM_GLASS;
-  double inset=slim?(X-x)*.34:Math.min(.03125,(X-x)/4);
-  double low=y+(slim?.37:.04),high=Y-(slim?.32:.04);
+  double inset=slim?(X-x)*.34:Math.min(GLASS_STILE,(X-x)/5);
+  double low=y+(slim?.37:GLASS_KICK),high=Y-(slim?.32:GLASS_HEAD);
   int start=q.size();
   Material metal=c.doorStyle()==DoorStyle.OG_STEEL&&!slim?Material.DOOR_TRIM:Material.COPY_PRIMARY;
   box(q,metal,x,y,z,x+inset,Y,Z);

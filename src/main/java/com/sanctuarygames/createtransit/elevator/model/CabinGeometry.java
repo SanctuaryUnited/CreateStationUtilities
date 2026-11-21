@@ -41,8 +41,23 @@ public final class CabinGeometry {
  }
  private static void part(List<Part> p,Material m,boolean solid,double x,double y,double z,double X,double Y,double Z){if(X>x&&Y>y&&Z>z)p.add(new Part(m,new Box(x,y,z,X,Y,Z),solid));}
  private static Material rail(CabinConfiguration c){return c.handrail()==Handrail.DARK?Material.RAIL_DARK:c.handrail()==Handrail.MATCH?Material.RAIL_MATCH:Material.HANDRAIL;}
+ /**
+  * Light metal framing around a glass wall: a post at each end plus top and bottom rails, so the pane reads as
+  * glazing rather than an opening while staying one clear sheet. Visual only; the glass part keeps the collision.
+  */
+ private static void glassFrame(List<Part> p,CabinConfiguration c,double x,double z,double X,double Z){
+  // The frame stands slightly proud of the glass on the inside face only, so it never leaves the cabin's outline.
+  double mid=c.size()/2.0,post=.0625,rail=.09,low=FLOOR_TOP,high=ceilingBottom(c);boolean alongX=X-x>Z-z;
+  if(alongX){if(z+Z<2*mid)Z+=.004;else z-=.004;}else{if(x+X<2*mid)X+=.004;else x-=.004;}
+  double a0=alongX?x:z,a1=alongX?X:Z;
+  var stops=List.of(a0,a1); // corner posts only: one clear pane per wall
+  for(int i=0;i<stops.size();i++){double s=stops.get(i),lo=i==0?s:i==stops.size()-1?s-post:s-post/2,hi=lo+post;
+   if(alongX)part(p,Material.METAL,false,lo,low,z,hi,high,Z);else part(p,Material.METAL,false,x,low,lo,X,high,hi);}
+  for(double y:new double[]{low,high-rail})
+   if(alongX)part(p,Material.METAL,false,x,y,z,X,y+rail,Z);else part(p,Material.METAL,false,x,y,z,X,y+rail,Z);
+ }
  private static void wall(List<Part> p,CabinConfiguration c,boolean glass,double x,double z,double X,double Z){
-  part(p,glass?Material.GLASS:Material.WALL,true,x,FLOOR_TOP,z,X,ceilingBottom(c),Z);
+  part(p,glass?Material.GLASS:Material.WALL,true,x,FLOOR_TOP,z,X,ceilingBottom(c),Z);if(glass)glassFrame(p,c,x,z,X,Z);
   // Narrow rails are inset from glazing, with discrete metal mounting brackets.
   double dx=X-x,dz=Z-z;
   if(dx>dz){double zz=z-.10;part(p,rail(c),false,x,1.08,zz,X,1.16,zz+.0625);for(double xx:new double[]{x+.08,X-.12})part(p,Material.METAL,false,xx,1.04,zz+.03,xx+.035,1.10,z+.01);part(p,Material.BASE_TRIM,false,x,.125,z-.008,X,.1875,z);}
@@ -68,6 +83,7 @@ public final class CabinGeometry {
   }
   part(p,c.leftGlazed()?Material.GLASS:Material.WALL,true,a,FLOOR_TOP,front,a+t,ceilingBottom(c),back);
   part(p,c.rightGlazed()?Material.GLASS:Material.WALL,true,b-t,FLOOR_TOP,front,b,ceilingBottom(c),back);
+  if(c.variant()!=Variant.CYLINDRICAL){if(c.leftGlazed())glassFrame(p,c,a,front,a+t,back);if(c.rightGlazed())glassFrame(p,c,b-t,front,b,back);}
   // Side handrails meet the rear rail and stop behind the doorway pocket.
   for(boolean right:new boolean[]{false,true}){double x=right?b-t-.10:a+t+.0375;
    part(p,rail(c),false,x,1.08,front+(c.legacyGeometry()?0:PANEL_DEPTH),x+.0625,1.16,c.variant()==Variant.CYLINDRICAL?back:back-.10);
