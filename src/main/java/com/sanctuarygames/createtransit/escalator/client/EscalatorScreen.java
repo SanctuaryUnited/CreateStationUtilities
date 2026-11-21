@@ -34,15 +34,15 @@ public final class EscalatorScreen extends AbstractContainerScreen<EscalatorMenu
         int half = (imageWidth - 34) / 2;
         addRenderableWidget(StationUi.button(leftPos + 14, topPos + 33, half, 20, speedLabel(), b -> {
             speed = (speed + 1) % SPEEDS.length;
-            b.setMessage(Component.literal(speedLabel()));
+            b.setMessage(com.sanctuarygames.createtransit.TransitText.uiText(speedLabel()));
         }));
         addRenderableWidget(StationUi.button(leftPos + 20 + half, topPos + 33, half, 20, directionLabel(), b -> {
             reversed = !reversed;
-            b.setMessage(Component.literal(directionLabel()));
+            b.setMessage(com.sanctuarygames.createtransit.TransitText.uiText(directionLabel()));
         }));
         addRenderableWidget(StationUi.button(leftPos + 14, topPos + 57, imageWidth - 28, 20, soundLabel(), b -> {
             sound = !sound;
-            b.setMessage(Component.literal(soundLabel()));
+            b.setMessage(com.sanctuarygames.createtransit.TransitText.uiText(soundLabel()));
         }));
         addSwatches(0, 94);
         addSwatches(1, 129);
@@ -71,8 +71,8 @@ public final class EscalatorScreen extends AbstractContainerScreen<EscalatorMenu
 
     private void updateSwatches() {
         for (int id = 0; id < 16; id++) {
-            swatches[0][id].setMessage(Component.literal(id == primary ? "•" : ""));
-            swatches[1][id].setMessage(Component.literal(id == secondary ? "•" : ""));
+            swatches[0][id].setMessage(com.sanctuarygames.createtransit.TransitText.uiText(id == primary ? "•" : ""));
+            swatches[1][id].setMessage(com.sanctuarygames.createtransit.TransitText.uiText(id == secondary ? "•" : ""));
         }
     }
 

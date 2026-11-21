@@ -23,20 +23,20 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
     private com.sanctuarygames.createtransit.elevator.model.ModelCabinController model;
     public com.sanctuarygames.createtransit.elevator.model.ModelCabinController model(){return model;}
     public boolean pasteModelSettings(CompoundTag settings){
-        if(model==null)return reject("Configure the target cabin first");
+        if(model==null)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.configure_the_target_cabin_first"));
         boolean applied=model.pasteSettings(settings);
-        message=model.warning();sync();
+        message=model.warningText();sync();
         return applied;
     }
-    public boolean configureModel(String key,String value){if(cabin!=null||cabinId!=null)return reject("Return and disassemble the legacy cabin before model placement");if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.configure(key,value);message=model.warning();sync();return ok;}
-    public boolean activateModel(){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);if(cabin!=null||cabinId!=null)return reject("Disassemble the legacy cabin first");boolean ok=model.activate();message=model.warning();sync();return ok;}
-    public boolean installModelLanding(Player p,int y){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.install(p,y);message=model.warning();sync();return ok;}
-    public boolean modelPolicy(int y,boolean front,boolean rear,int fs,int rs){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.policy(y,new com.sanctuarygames.createtransit.elevator.model.ModelCabinController.Policy(front,rear,fs,rs));message=model.warning();sync();return ok;}
-    public boolean deactivateModel(){if(model==null)return false;boolean ok=model.deactivate();message=model.warning();sync();return ok;}
+    public boolean configureModel(String key,String value){if(cabin!=null||cabinId!=null)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.return_and_disassemble_the_legacy_cabin"));if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.configure(key,value);message=model.warningText();sync();return ok;}
+    public boolean activateModel(){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);if(cabin!=null||cabinId!=null)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.disassemble_the_legacy_cabin_first"));boolean ok=model.activate();message=model.warningText();sync();return ok;}
+    public boolean installModelLanding(Player p,int y){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.install(p,y);message=model.warningText();sync();return ok;}
+    public boolean modelPolicy(int y,boolean front,boolean rear,int fs,int rs){if(model==null)model=new com.sanctuarygames.createtransit.elevator.model.ModelCabinController(this);boolean ok=model.policy(y,new com.sanctuarygames.createtransit.elevator.model.ModelCabinController.Policy(front,rear,fs,rs));message=model.warningText();sync();return ok;}
+    public boolean deactivateModel(){if(model==null)return false;boolean ok=model.deactivate();message=model.warningText();sync();return ok;}
     private String lastModelFault="";
     private com.sanctuarygames.createtransit.elevator.model.CabinMotionController.Snapshot lastSyncedModelState;
     private String lastSyncedModelMessage="";
-    private void tickModel(){model.tick();var s=model.state();message=model.warning();String fault=s!=null&&s.state()==com.sanctuarygames.createtransit.elevator.model.CabinMotionController.State.FAULT?s.fault():"";if(!fault.equals(lastModelFault)){lastModelFault=fault;if(!fault.isEmpty())for(var player:level.players())if(player.distanceToSqr(Vec3.atCenterOf(worldPosition))<=1024||model.entity()!=null&&model.entity().getBoundingBox().inflate(2).contains(player.position()))ElevatorFeedback.error(player,fault);}if(s!=null){offset=s.y()-anchor().getY();target=s.target()==null?offset:s.target()-anchor().getY();queue.clear();queue.addAll(s.queue());phase=switch(s.state()){case IDLE->IDLE;case DOORS_CLOSING->CLOSING;case MOVING->MOVING;case LEVELING->LEVELING;case DOORS_OPENING->OPENING;case DOORS_OPEN->DOORS_OPEN;case FAULT->FAULT;};}if(!java.util.Objects.equals(lastSyncedModelState,s)||!lastSyncedModelMessage.equals(message)){setChanged();if(level.getGameTime()%5==0){sync();lastSyncedModelState=s;lastSyncedModelMessage=message;}}}
+    private void tickModel(){model.tick();var s=model.state();message=model.warningText();String fault=s!=null&&s.state()==com.sanctuarygames.createtransit.elevator.model.CabinMotionController.State.FAULT?s.fault():"";if(!fault.equals(lastModelFault)){lastModelFault=fault;if(!fault.isEmpty())for(var player:level.players())if(player.distanceToSqr(Vec3.atCenterOf(worldPosition))<=1024||model.entity()!=null&&model.entity().getBoundingBox().inflate(2).contains(player.position()))ElevatorFeedback.error(player,fault);}if(s!=null){offset=s.y()-anchor().getY();target=s.target()==null?offset:s.target()-anchor().getY();queue.clear();queue.addAll(s.queue());phase=switch(s.state()){case IDLE->IDLE;case DOORS_CLOSING->CLOSING;case MOVING->MOVING;case LEVELING->LEVELING;case DOORS_OPENING->OPENING;case DOORS_OPEN->DOORS_OPEN;case FAULT->FAULT;};}if(!java.util.Objects.equals(lastSyncedModelState,s)||!lastSyncedModelMessage.equals(message)){setChanged();if(level.getGameTime()%5==0){sync();lastSyncedModelState=s;lastSyncedModelMessage=message;}}}
     private UUID cabinId, identifier=UUID.randomUUID();
     private double offset, previous, start, target;
     private int elapsed, duration, phase;
@@ -52,7 +52,7 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
     public BlockPos anchor(){return worldPosition.relative(getBlockState().getValue(ElevatorPartBlock.FACING));}
     public double offset(){return offset;} public double previousOffset(){return previous;}
     public long motionTick(){return motionTick;} public int phase(){return phase;}
-    public String message(){return message;} public String railWarning(){return railWarning;}
+    public String message(){return com.sanctuarygames.createtransit.TransitText.plain(message);} public String railWarning(){return com.sanctuarygames.createtransit.TransitText.plain(railWarning);} public String railWarningText(){return railWarning;}
     public String elevatorName(){return elevatorName;} public UUID identifier(){return identifier;}
     public ControlledContraptionEntity cabin(){return cabin;}
     public boolean assembled(){return model!=null&&model.active()||cabin!=null||cabinId!=null;}
@@ -109,19 +109,19 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
     private boolean serviceable(int y){return floors.stream().anyMatch(f->f.y()==y&&f.enabled()&&f.reachable());}
     public boolean configureFloor(int y,String id,String name,boolean enabled){
         ensureFloors();id=id.strip();name=name.strip();
-        if(id.isEmpty()||id.length()>12||name.isEmpty()||name.length()>32||id.chars().anyMatch(Character::isISOControl)||name.chars().anyMatch(Character::isISOControl))return reject("Use a floor ID of 1–12 characters and a name of 1–32 characters");
+        if(id.isEmpty()||id.length()>12||name.isEmpty()||name.length()>32||id.chars().anyMatch(Character::isISOControl)||name.chars().anyMatch(Character::isISOControl))return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.use_a_floor_id_of_1"));
         final String label=id;
-        if(floors.stream().anyMatch(f->f.y()!=y&&f.id().equalsIgnoreCase(label)))return reject("Floor IDs must be unique");
-        var floor=floors.stream().filter(f->f.y()==y).findFirst().orElse(null);if(floor==null)return reject("Floor marker is no longer connected");
+        if(floors.stream().anyMatch(f->f.y()!=y&&f.id().equalsIgnoreCase(label)))return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.floor_ids_must_be_unique"));
+        var floor=floors.stream().filter(f->f.y()==y).findFirst().orElse(null);if(floor==null)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.floor_marker_is_no_longer_connected"));
         if(floor.rail()){
-            if(!level.hasChunkAt(floor.marker())||!(level.getBlockState(floor.marker()).getBlock() instanceof ElevatorFloorMarkerRailBlock)||!(level.getBlockEntity(floor.marker()) instanceof ElevatorPartEntity marker))return reject("Floor marker is unloaded or missing");
+            if(!level.hasChunkAt(floor.marker())||!(level.getBlockState(floor.marker()).getBlock() instanceof ElevatorFloorMarkerRailBlock)||!(level.getBlockEntity(floor.marker()) instanceof ElevatorPartEntity marker))return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.floor_marker_is_unloaded_or_missing"));
             marker.configureFloor(id,name,enabled);
         }else legacySettings.put(y,new ElevatorFloor(floor.marker(),y,id,name,enabled,true,"",false));
-        rescan();message="Floor configuration saved";sync();return true;
+        rescan();message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.floor_configuration_saved");sync();return true;
     }
     public boolean configureController(String name,int opening,int closing,int dwell){
-        name=name.strip();if(name.isEmpty()||name.length()>32||name.chars().anyMatch(Character::isISOControl)||opening<0||opening>200||closing<0||closing>200||dwell<0||dwell>600)return reject("Invalid name or delay. Open/close: 0–200 ticks; dwell: 0–600 ticks.");
-        elevatorName=name;openingDelay=opening;closingDelay=closing;dwellTicks=dwell;message="AUTO door settings saved";sync();return true;
+        name=name.strip();if(name.isEmpty()||name.length()>32||name.chars().anyMatch(Character::isISOControl)||opening<0||opening>200||closing<0||closing>200||dwell<0||dwell>600)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.invalid_name_or_delay_open_close"));
+        elevatorName=name;openingDelay=opening;closingDelay=closing;dwellTicks=dwell;message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.auto_door_settings_saved");sync();return true;
     }
     private boolean reject(String reason){message=reason;sync();return false;}
     private void fault(String reason){phase=FAULT;message=reason;doors(false);if(cabin!=null)cabin.setContraptionMotion(Vec3.ZERO);sync();}
@@ -136,19 +136,19 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
         cabin=ElevatorCabinEntity.create(level,this,contraption);
         cabin.setPos(anchor().getX(),anchor().getY(),anchor().getZ());level.addFreshEntity(cabin);
         cabinId=cabin.getUUID();offset=previous=start=target=0;phase=OPENING;elapsed=-openingDelay;
-        rescan();doors(true);message="Opening";sync();return true;
+        rescan();doors(true);message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.opening");sync();return true;
     }
     public boolean requestFloor(int y){
-        if(model!=null){boolean ok=model.request(y);message=model.warning();sync();return ok;}
+        if(model!=null){boolean ok=model.request(y);message=model.warningText();sync();return ok;}
         if(level==null||level.isClientSide)return false;
         ensureFloors();
-        if(!assembled())return reject("Assemble the cabin first");
+        if(!assembled())return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.assemble_the_cabin_first"));
         if(railMode&&!railWarning.isEmpty())return reject(railWarning);
         if(!serviceable(y))return reject(floors.stream().filter(f->f.y()==y).map(f->f.enabled()?(f.warning().isEmpty()?"Floor is inaccessible":f.warning()):"Floor is disabled").findFirst().orElse("No connected marker for that floor"));
         if(pending(y))return true;
-        if(phase!=MOVING&&phase!=CLOSING&&phase!=LEVELING&&Math.abs(offset-(y-anchor().getY()))<.001){phase=OPENING;elapsed=0;doors(true);message="Opening";}
+        if(phase!=MOVING&&phase!=CLOSING&&phase!=LEVELING&&Math.abs(offset-(y-anchor().getY()))<.001){phase=OPENING;elapsed=0;doors(true);message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.opening");}
         else{
-            queue.add(y);if(phase==FAULT){phase=IDLE;elapsed=0;}message="Requested "+floorLabel(y);
+            queue.add(y);if(phase==FAULT){phase=IDLE;elapsed=0;}message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.requested_s",floorLabel(y));
         }
         sync();return true;
     }
@@ -158,7 +158,7 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
         // Maintenance return is permitted even when the home floor is disabled.
         queue.add(anchor().getY());if(phase==FAULT)phase=IDLE;sync();
     }
-    public boolean retry(){if(model!=null)return model.retry();if(phase!=FAULT)return reject("Retry is available only after a fault");rescan();if(!railWarning.isEmpty()&&railMode)return reject(railWarning);if(cabin==null)return reject("Cabin is unloaded; load its chunk before retrying");phase=IDLE;elapsed=0;message="Retry: select a floor";sync();return true;}
+    public boolean retry(){if(model!=null)return model.retry();if(phase!=FAULT)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.retry_is_available_only_after_a"));rescan();if(!railWarning.isEmpty()&&railMode)return reject(railWarning);if(cabin==null)return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.cabin_is_unloaded_load_its_chunk"));phase=IDLE;elapsed=0;message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.retry_select_a_floor");sync();return true;}
 
     private boolean validPair(BlockPos p,Direction face){
         if(!level.hasChunkAt(p))return false;
@@ -234,16 +234,16 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
         BlockState first=null;
         for(int y=1;y<=high+1;y++){
             var p=worldPosition.above(y);
-            if(!level.hasChunkAt(p)){message="Guide rail chunk unloaded";return false;}
+            if(!level.hasChunkAt(p)){message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.guide_rail_chunk_unloaded");return false;}
             var state=level.getBlockState(p);
-            if(!ElevatorGuideRailBlock.rail(state)){message="Guide rail missing at Y="+p.getY();return false;}
+            if(!ElevatorGuideRailBlock.rail(state)){message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.guide_rail_missing_at_y_s",p.getY());return false;}
             if(first==null)first=state;
-            if(railMode&&!ElevatorGuideRailBlock.compatible(first,state)){message="Guide rail orientation mismatch at Y="+p.getY();return false;}
+            if(railMode&&!ElevatorGuideRailBlock.compatible(first,state)){message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.the_guide_rail_at_y_s",p.getY());return false;}
         }
         for(int x=(int)bounds.minX;x<bounds.maxX;x++)for(int z=(int)bounds.minZ;z<bounds.maxZ;z++)for(int y=low+(int)bounds.minY;y<high+bounds.maxY;y++){
             var p=a.offset(x,y,z);
-            if(!level.hasChunkAt(p)){message="Cabin shaft chunk unloaded";return false;}
-            if(!level.getBlockState(p).getCollisionShape(level,p).isEmpty()){message="Shaft obstructed at "+p.toShortString();return false;}
+            if(!level.hasChunkAt(p)){message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.cabin_shaft_chunk_unloaded");return false;}
+            if(!level.getBlockState(p).getCollisionShape(level,p).isEmpty()){message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.shaft_obstructed_at_s_clear_the",p.toShortString());return false;}
         }
         return true;
     }
@@ -260,23 +260,23 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
         if(d.phase==MOVING){
             if(!level.isClientSide&&d.railMode&&(!d.railWarning.isEmpty()||!d.serviceable(d.targetFloor())&&!(d.returnAndDisassemble&&d.targetFloor()==d.anchor().getY()))){d.fault(d.railWarning.isEmpty()?"Destination marker removed, disabled or inaccessible":d.railWarning);return;}
             double t=Math.min(1,(++d.elapsed)/(double)Math.max(1,d.duration));double next=d.start+(d.target-d.start)*t*t*(3-2*t);
-            if(!level.isClientSide&&!d.doorsClosed()){d.fault("Door interlock interrupted travel");return;}
+            if(!level.isClientSide&&!d.doorsClosed()){d.fault(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.door_interlock_interrupted_travel"));return;}
             if(!level.isClientSide&&!d.clearPath(next)){d.fault(d.message);return;}
             d.offset=next;
-            if(t>=1){d.offset=d.target;d.phase=LEVELING;d.elapsed=0;if(!level.isClientSide){d.message="Leveling at "+d.floorLabel(d.targetFloor());d.sync();}}
+            if(t>=1){d.offset=d.target;d.phase=LEVELING;d.elapsed=0;if(!level.isClientSide){d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.leveling_at_s",d.floorLabel(d.targetFloor()));d.sync();}}
         }else if(!level.isClientSide){
             switch(d.phase){
                 case LEVELING -> {
-                    if(!d.clearPath(d.offset)||d.railMode&&!d.hasLandingAt(d.currentFloor())){d.fault(d.message.startsWith("Shaft")?d.message:"Landing doorway invalid at destination");break;}
-                    if(++d.elapsed>=Math.max(5,d.openingDelay)){d.phase=OPENING;d.elapsed=0;d.message="Opening";d.doors(true);d.sync();}
+                    if(!d.clearPath(d.offset)||d.railMode&&!d.hasLandingAt(d.currentFloor())){d.fault(com.sanctuarygames.createtransit.TransitText.plain(d.message).startsWith("Shaft")?d.message:com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.landing_doorway_invalid_at_destination"));break;}
+                    if(++d.elapsed>=Math.max(5,d.openingDelay)){d.phase=OPENING;d.elapsed=0;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.opening");d.doors(true);d.sync();}
                 }
-                case OPENING -> {if(++d.elapsed>=40){d.phase=DOORS_OPEN;d.elapsed=0;d.message="Doors open";d.sync();}}
-                case DOORS_OPEN -> {if(++d.elapsed>=d.dwellTicks){d.phase=IDLE;d.elapsed=0;d.message="Ready";d.sync();}}
+                case OPENING -> {if(++d.elapsed>=40){d.phase=DOORS_OPEN;d.elapsed=0;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.doors_open");d.sync();}}
+                case DOORS_OPEN -> {if(++d.elapsed>=d.dwellTicks){d.phase=IDLE;d.elapsed=0;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.ready");d.sync();}}
                 case CLOSING -> {
-                    if(d.doorwayObstructed()){d.requeueFirst(d.targetFloor());d.phase=OPENING;d.elapsed=0;d.message="Doorway obstructed; reopening";d.doors(true);d.sync();break;}
+                    if(d.doorwayObstructed()){d.requeueFirst(d.targetFloor());d.phase=OPENING;d.elapsed=0;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.doorway_obstructed_reopening");d.doors(true);d.sync();break;}
                     if(++d.elapsed>=40+d.closingDelay){
-                        if(!d.doorsClosed()){d.fault("Doors did not confirm closed");break;}
-                        if(d.clearPath(d.target)){d.start=d.offset;d.duration=travelDuration(d.target-d.start);d.elapsed=0;d.phase=MOVING;d.message="Travelling";d.sync();}
+                        if(!d.doorsClosed()){d.fault(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.doors_did_not_confirm_closed"));break;}
+                        if(d.clearPath(d.target)){d.start=d.offset;d.duration=travelDuration(d.target-d.start);d.elapsed=0;d.phase=MOVING;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.travelling");d.sync();}
                         else d.fault(d.message);
                     }
                 }
@@ -285,9 +285,9 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
                     if(!d.queue.isEmpty()){
                         int y=d.queue.iterator().next();
                         if(!d.serviceable(y)&&!(d.returnAndDisassemble&&y==d.anchor().getY())){d.queue.remove(y);break;}
-                        if(d.doorwayObstructed()){d.message="Doorway obstructed; clear the entrance";break;}
+                        if(d.doorwayObstructed()){d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.doorway_obstructed_clear_the_entrance");break;}
                         d.queue.remove(y);d.target=y-d.anchor().getY();
-                        if(Math.abs(d.offset-d.target)>.001){d.phase=CLOSING;d.elapsed=0;d.message="Closing";d.doors(false);d.sync();}
+                        if(Math.abs(d.offset-d.target)>.001){d.phase=CLOSING;d.elapsed=0;d.message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.closing");d.doors(false);d.sync();}
                     }
                     if(level.getGameTime()%20==0)d.doors(true);
                 }
@@ -304,24 +304,24 @@ public final class ElevatorDriveEntity extends ElevatorPartEntity implements ICo
         if(level==null||level.isClientSide||cabin==null)return;
         offset=Math.rint(offset);previous=offset;phase=CLOSING;doors(false);var a=anchor();
         cabin.setPos(a.getX(),a.getY()+offset,a.getZ());cabin.disassemble();cabin=null;cabinId=null;
-        queue.clear();returnAndDisassemble=false;phase=IDLE;message="Disassembled";sync();
+        queue.clear();returnAndDisassemble=false;phase=IDLE;message=com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.disassembled");sync();
     }
     public void openPanel(Player player){openPanel(player,true,worldPosition);}
     public void openPassengerPanel(Player player){openPanel(player,false,worldPosition);}
     public void openPanel(Player p,boolean configuration,BlockPos access){
-        if(p instanceof ServerPlayer player){rescan();var snapshot=ElevatorMenu.snapshot(this,player,configuration,access);player.openMenu(new SimpleMenuProvider((id,inv,who)->new ElevatorMenu(id,inv,this,configuration,access),Component.literal("Elevator Controller")),buf->{buf.writeBlockPos(worldPosition);buf.writeBlockPos(access);buf.writeBoolean(configuration);buf.writeNbt(snapshot);});}
+        if(p instanceof ServerPlayer player){rescan();var snapshot=ElevatorMenu.snapshot(this,player,configuration,access);player.openMenu(new SimpleMenuProvider((id,inv,who)->new ElevatorMenu(id,inv,this,configuration,access),com.sanctuarygames.createtransit.TransitText.tr("container.createtransit.elevator_controller")),buf->{buf.writeBlockPos(worldPosition);buf.writeBlockPos(access);buf.writeBoolean(configuration);buf.writeNbt(snapshot);});}
     }
     public CompoundTag snapshot(){
         var t=new CompoundTag();t.putString("ElevatorName",elevatorName);t.putUUID("Identifier",identifier);
         t.putInt("Current",currentFloor());t.putInt("Target",targetFloor());t.putInt("Phase",phase);t.putBoolean("Assembled",assembled());
         t.putString("DoorStatus",model!=null&&model.entity()!=null?model.entity().doorStatus():phase==DOORS_OPEN?"Open":phase==OPENING?"Opening":phase==CLOSING?"Closing":"Closed");t.putDouble("CabinY",anchor().getY()+offset);t.putBoolean("Aligned",Math.abs(offset-Math.rint(offset))<.001);
-        t.putString("Message",message);t.putString("RailWarning",railWarning);t.putBoolean("RailMode",railMode);t.putInt("RailTop",railTop);
+        /* Message/RailWarning stay plain English for clients on older versions; the *Key fields translate. */t.putString("Message",com.sanctuarygames.createtransit.TransitText.plain(message));t.putString("MessageKey",message);t.putString("RailWarning",com.sanctuarygames.createtransit.TransitText.plain(railWarning));t.putString("RailWarningKey",railWarning);t.putBoolean("RailMode",railMode);t.putInt("RailTop",railTop);
         t.putInt("OpenDelay",openingDelay);t.putInt("CloseDelay",closingDelay);t.putInt("Dwell",dwellTicks);
         if(level instanceof net.minecraft.server.level.ServerLevel sl)t.put("RadioStations",com.sanctuarygames.createtransit.radio.RadioStations.get(sl).snapshot());if(model!=null)t.put("ModelCabin",model.save());t.putIntArray("Queue",queue.stream().mapToInt(Integer::intValue).toArray());var list=new ListTag();floors.forEach(f->list.add(f.save()));t.put("Stops",list);return t;
     }
     public boolean isAttachedTo(AbstractContraptionEntity entity){return entity==cabin;}
     public void attach(ControlledContraptionEntity entity){if(entity.getContraption() instanceof ElevatorContraption){cabin=entity;cabinId=entity.getUUID();entity.setRotationAxis(Direction.Axis.Y);railsDirty=true;}}
-    public void onStall(){fault("Travel interrupted");} public boolean isValid(){return !isRemoved();} public BlockPos getBlockPosition(){return worldPosition;}
+    public void onStall(){fault(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.travel_interrupted"));} public boolean isValid(){return !isRemoved();} public BlockPos getBlockPosition(){return worldPosition;}
     @Override protected void saveAdditional(CompoundTag t,HolderLookup.Provider r){
         super.saveAdditional(t,r);if(model!=null)t.put("ModelCabin",model.save());if(cabinId!=null)t.putUUID("Cabin",cabinId);
         t.putDouble("Offset",offset);t.putDouble("Start",start);t.putDouble("Target",target);t.putInt("Elapsed",elapsed);t.putInt("Duration",duration);t.putInt("Phase",phase);

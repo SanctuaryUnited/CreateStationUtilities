@@ -1,3 +1,24 @@
+## 0.5.0 — Quality-of-life update
+
+### Changed
+- **Cabin Kits are aimed from the doorway.** Click the floor where you want to walk in. The block above it becomes the spot in front of the door, and the cabin is built straight ahead in the direction you're facing, with its door facing you. Crouch-right-click turns the cabin around that doorway. Elevators that are already built don't move.
+- Clearer Cabin Kit messages that name the preview colours and the next step.
+- The Cabin Kit is now called **Elevator Cabin Kit** in game. It was shown as "Elevator Refresher". Its item ID is unchanged.
+- Elevator tooltips are rewritten for the current elevators. Each setup item (Cabin Kit, Landing Door Kit, Guide Rail, Floor Marker Guide Rail, controller, Floor Call, Destination Selector) says what it's for, and shows step-by-step placement while Shift is held. The old tooltips described the retired Elevator 2 linking.
+- Elevator chat messages share one style: an `[Elevator]` prefix and a colour for success, warning or error. A repeat of the same message within five seconds is suppressed. The kit, landing door and controller messages moved into the language file, so resource packs can reword or translate them. Lines missing from a player's language show in English. Server messages also carry their English text, so players on an older version of the mod see a sentence, not a raw text key.
+- All elevator status, warning and refusal messages (135 of them) now come from the language file, ready for translation. Clients on older versions still see the English text in the controller screen.
+- Every screen's text (elevator controller, bank setup, destination selector, escalator, speaker, material picker and client settings) now comes from the language file, so the whole mod can be translated. Untranslated lines show in English.
+- Plain-language setup messages. The landing door now says whether it linked. A missing rail on the controller names the Floor Marker Guide Rail. Removing an active controller explains how to deactivate it. Activation refusals say what to place or clear.
+
+### Fixed
+- Radio stations pointing at reserved example addresses (`example.com`, `example.net`, `example.org`, `.example`, `.test`, `.invalid`) are refused, whether added in game or through `radio.defaultStations`, with a message to replace the example URL. Before, copying the placeholder from the config comment added a station that could never connect.
+- Changing a station's URL in `radio.defaultStations` now updates that station in place instead of adding a second station with the same name. Speakers and elevators tuned to it keep working. Stations added by players are never changed this way, and a default an operator removed stays removed.
+- When two stations share a name, the station picker shows each one's host, for example "Sanctuary Radio (radio.sanctuaryunited.net)", so they can be told apart.
+
+### Added
+- The Cabin Kit preview also outlines the landing door in white, alongside the gold doorway and the blue controller.
+- `/csu guide`, `/csu guide elevator` and `/csu guide bank` print numbered setup steps in chat for one elevator or a bank of elevators. The command runs on the client, so it works on any server.
+
 ## 0.4.1 — Elevator Cabin Kit placement
 
 ### Fixed

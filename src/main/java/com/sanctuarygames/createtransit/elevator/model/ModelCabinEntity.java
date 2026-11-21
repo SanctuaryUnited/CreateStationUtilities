@@ -111,7 +111,7 @@ public final class ModelCabinEntity extends Entity {
    if(state!=null&&(drive.pending(floor)&&!state.ambient()||state.state()==CabinMotionController.State.DOORS_OPEN&&Math.abs(state.y()-floor)<.001))return true;
    if(!stops.getCompound(offset+tile).getBoolean("Available")||!drive.requestFloor(floor)){
     var denied=new CompoundTag();denied.putInt("Y",floor);denied.putLong("Until",level().getGameTime()+12);entityData.set(DENIED,denied);
-    ElevatorFeedback.error(player,"That floor is out of service");
+    ElevatorFeedback.error(player,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.that_floor_is_out_of_service"));
    }
    else drive.model().touchFeedback(blockPosition());
   }

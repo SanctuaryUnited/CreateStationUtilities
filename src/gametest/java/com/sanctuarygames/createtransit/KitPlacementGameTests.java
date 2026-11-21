@@ -15,7 +15,8 @@ import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.gametest.*;
 
 /** A confirmed Cabin Kit builds exactly what its preview showed, in every facing (V10 workflow:
- *  "the cabin stays exactly where the ghost preview was"; "gold marks the entrance"). */
+ *  "the cabin stays exactly where the ghost preview was"; "gold marks the entrance"). Kits are aimed
+ *  from the doorway: the clicked block is in front of the door and the cabin is straight ahead. */
 @GameTestHolder("createtransit") @PrefixGameTestTemplate(false)
 public final class KitPlacementGameTests {
     private static void check(boolean b, String m) { if (!b) throw new GameTestAssertException(m); }
@@ -33,7 +34,13 @@ public final class KitPlacementGameTests {
         player.setShiftKeyDown(false);
         int index = 0;
         for (var facing : Direction.Plane.HORIZONTAL) {
-            var clicked = h.absolutePos(new BlockPos(6 + index % 2 * 14, 2, 6 + index / 2 * 14));
+            // One quadrant per facing, with room for the cabin straight ahead of the doorway.
+            var clicked = h.absolutePos(switch (facing) {
+                case NORTH -> new BlockPos(7, 2, 20);
+                case EAST -> new BlockPos(4, 2, 6);
+                case SOUTH -> new BlockPos(20, 2, 4);
+                default -> new BlockPos(24, 2, 18);
+            });
             index++;
             var stack = new ItemStack(ElevatorRegistry.CABIN_ITEM.get(), 1);
             player.setItemInHand(InteractionHand.MAIN_HAND, stack);
@@ -42,19 +49,27 @@ public final class KitPlacementGameTests {
             var context = new UseOnContext(player, InteractionHand.MAIN_HAND, hit);
             ElevatorRegistry.CABIN_ITEM.get().useOn(context);
             var planned = Direction.from2DDataValue(ModelCabinItem.plan(stack).getInt("Facing"));
-            var preview = ModelCabinItem.previewCabin(ModelCabinItem.plannedDrive(l, clicked, planned));
+            var kit = ModelCabinItem.layout(l, clicked, planned);
+            var preview = ModelCabinItem.previewCabin(ModelCabinItem.plannedDrive(l, kit.target(), kit.driveFacing()));
             var previewBox = preview.getBoundingBox();
             var previewEntrance = ModelCabinItem.entranceBox(preview);
             ElevatorRegistry.CABIN_ITEM.get().useOn(context);
 
-            var mount = ModelCabinItem.compactMount(clicked, planned);
+            var mount = kit.drive();
             check(l.getBlockEntity(mount) instanceof ElevatorDriveEntity, "Controller placed in the blue outline, facing " + planned);
             var d = (ElevatorDriveEntity) l.getBlockEntity(mount);
+            // Aimed from the doorway: the clicked block is right in front of the landing's middle column,
+            // the landing is where the preview outlined it, and the cabin is straight ahead.
+            var home = d.model().landingPosition(d.anchor().getY(), false);
+            check(home.equals(kit.landingBase()) && d.model().cabinFacing() == kit.landingFacing(), "Landing goes where the preview outlined it, facing " + planned);
+            check(ModelLandingBlock.part(home, kit.landingFacing(), 1, 0).relative(planned.getOpposite()).equals(clicked.atY(home.getY())), "Clicked block is the doorway approach, facing " + planned);
             check(d.installModelLanding(player, d.anchor().getY()), "Home landing installs, facing " + planned + ": " + d.model().warning());
             check(d.activateModel(), "Kit cabin activates, facing " + planned + ": " + d.model().warning());
             var cabin = d.model().entity();
             check(same(cabin.getBoundingBox(), previewBox), "Cabin stays where the preview was, facing " + planned + ": " + cabin.getBoundingBox() + " vs " + previewBox);
             check(same(ModelCabinItem.entranceBox(cabin), previewEntrance), "Doors open on the gold preview side, facing " + planned + ": " + ModelCabinItem.entranceBox(cabin) + " vs " + previewEntrance);
+            var ahead = cabin.getBoundingBox().getCenter().subtract(Vec3.atCenterOf(clicked));
+            check(ahead.x * planned.getStepX() + ahead.z * planned.getStepZ() > 2 && Math.abs(ahead.x * planned.getStepZ() - ahead.z * planned.getStepX()) < 0.6, "Cabin is straight ahead of the player, facing " + planned + ": " + ahead);
 
             // The controller and its rail column must not stand in front of the doorway's centre column.
             var landing = d.model().landingPosition(d.anchor().getY(), false);

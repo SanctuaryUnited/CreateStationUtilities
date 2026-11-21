@@ -28,19 +28,19 @@ public final class StationUi {
    return com.sanctuarygames.createtransit.radio.RadioSettings.radiusFromSlider(value)+" blocks";
   return Math.round(value*(label.toLowerCase(java.util.Locale.ROOT).contains("volume")&&!label.equals("Motor volume")?300:100))+"%";
  }
- public static net.minecraft.client.gui.components.AbstractSliderButton slider(int x,int y,int w,String label,double value,java.util.function.DoubleConsumer save){return new net.minecraft.client.gui.components.AbstractSliderButton(x,y,w,20,Component.literal(label),Math.clamp(value,0,1)){
-  protected void updateMessage(){setMessage(Component.literal(label+": "+sliderValue(label,this.value)));}protected void applyValue(){}public void onRelease(double x,double y){super.onRelease(x,y);save.accept(this.value);}
+ public static net.minecraft.client.gui.components.AbstractSliderButton slider(int x,int y,int w,String label,double value,java.util.function.DoubleConsumer save){return new net.minecraft.client.gui.components.AbstractSliderButton(x,y,w,20,com.sanctuarygames.createtransit.TransitText.uiText(label),Math.clamp(value,0,1)){
+  protected void updateMessage(){setMessage(com.sanctuarygames.createtransit.TransitText.uiText(label+": "+sliderValue(label,this.value)));}protected void applyValue(){}public void onRelease(double x,double y){super.onRelease(x,y);save.accept(this.value);}
   public boolean keyPressed(int key,int scan,int mods){boolean result=super.keyPressed(key,scan,mods);if(result&&(key==262||key==263))save.accept(this.value);return result;}
   public void renderWidget(GuiGraphics g,int mx,int my,float p){panel(g,getX(),getY(),width,height,0xff152e42,isHoveredOrFocused()?accent():0xff52728a);int span=width-8;g.fill(getX()+4,getY()+height-5,getX()+4+(int)(span*this.value),getY()+height-3,accent());g.drawCenteredString(Minecraft.getInstance().font,label+": "+sliderValue(label,this.value),getX()+width/2,getY()+4,INK);}
  };}
  public static void swatch(Button button,int color){if(button instanceof Styled styled)styled.swatch=color;}
  public static Button tab(int x,int y,int w,String label,String icon,boolean selected,Button.OnPress action){return new Styled(x,y,w,20,(selected?"• ":"")+label,action,icon);}
  private static final class Styled extends Button {
-  private final net.minecraft.resources.ResourceLocation icon;private int swatch=-1;
+  private final net.minecraft.resources.ResourceLocation icon;private int swatch=-1;private final boolean primary;
 
   Styled(int x,int y,int w,int h,String label,OnPress action){this(x,y,w,h,label,action,null);}
-  Styled(int x,int y,int w,int h,String label,OnPress action,String icon){super(x,y,w,h,Component.literal(label),action,DEFAULT_NARRATION);this.icon=icon==null?null:net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("createtransit","textures/gui/station/"+icon+".png");}
-  @Override protected void renderWidget(GuiGraphics g,int mx,int my,float partial){boolean selected=getMessage().getString().startsWith("•");boolean primary=getMessage().getString().equals("Go")||getMessage().getString().equals("Activate");int edge=!active?0xff283a49:isHoveredOrFocused()||selected||primary?accent():0xff52728a;int bg=!active?0xff17232e:selected||primary?0xff074a67:isHoveredOrFocused()?0xff25465c:0xff213447;
+  Styled(int x,int y,int w,int h,String label,OnPress action,String icon){super(x,y,w,h,com.sanctuarygames.createtransit.TransitText.uiText(label),action,DEFAULT_NARRATION);primary=label.equals("Go")||label.equals("Activate");this.icon=icon==null?null:net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("createtransit","textures/gui/station/"+icon+".png");}
+  @Override protected void renderWidget(GuiGraphics g,int mx,int my,float partial){boolean selected=getMessage().getString().startsWith("•");int edge=!active?0xff283a49:isHoveredOrFocused()||selected||primary?accent():0xff52728a;int bg=!active?0xff17232e:selected||primary?0xff074a67:isHoveredOrFocused()?0xff25465c:0xff213447;
    if(selected||isHoveredOrFocused())g.fill(getX()+5,getY()+height-1,getX()+width-5,getY()+height,accent());panel(g,getX(),getY(),width,height,bg,edge);
    var font=Minecraft.getInstance().font;String label=getMessage().getString();if(swatch>=0){g.fill(getX()+3,getY()+3,getRight()-3,getBottom()-3,0xff000000|swatch);int ink=((swatch>>16&255)*299+(swatch>>8&255)*587+(swatch&255)*114)>150000?0xff101820:0xfff4f8ff;g.drawCenteredString(font,font.plainSubstrByWidth(label,width-8),getX()+width/2,getY()+6,ink);return;}
    if(icon!=null){g.blit(icon,getX()+(label.replace("• ","").isBlank()?width/2-6:4),getY()+4,0,0,12,12,12,12);g.drawString(font,font.plainSubstrByWidth(label.replace("• ",""),width-24),getX()+20,getY()+6,active?INK:MUTED,false);}

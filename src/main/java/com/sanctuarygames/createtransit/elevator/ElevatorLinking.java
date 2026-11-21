@@ -21,8 +21,8 @@ public final class ElevatorLinking {
  public static BlockPos selectedMarker(Player p,Level l){return selected(p,l,"Marker");}
  public static boolean selectMarker(Level l,BlockPos pos,Player p){
   if(!(l.getBlockEntity(pos) instanceof ElevatorPartEntity marker))return false;
-  if(l.getBlockState(pos).getBlock() instanceof ElevatorFloorMarkerRailBlock){var drive=ElevatorGuideRailBlock.drive(l,pos);if(drive==null){ElevatorFeedback.error(p,"Marker rail is not connected to a controller. Check the guide rail column.");return false;}drive.rescan();}
-  if(!validDrive(l,pos,marker.markerDrive())){ElevatorFeedback.error(p,"This floor marker is not linked to a loaded controller");return false;}
+  if(l.getBlockState(pos).getBlock() instanceof ElevatorFloorMarkerRailBlock){var drive=ElevatorGuideRailBlock.drive(l,pos);if(drive==null){ElevatorFeedback.error(p,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.marker_rail_is_not_connected_to"));return false;}drive.rescan();}
+  if(!validDrive(l,pos,marker.markerDrive())){ElevatorFeedback.error(p,com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.this_floor_marker_is_not_linked"));return false;}
   select(p,l,"Marker",pos);message(p,"marker_selected",pos.getY()-1);return true;
  }
  private static BlockPos selected(Player p,Level l,String kind){
@@ -70,7 +70,7 @@ public final class ElevatorLinking {
   if(!(l.getBlockEntity(pos) instanceof ElevatorPartEntity call))return;
   if(!p.isShiftKeyDown()){message(p,"link_count",call.callMarkers().size());return;}
   var marker=selected(p,l,"Marker");
-  if(marker==null){var drive=selected(p,l,"Drive");if(drive!=null&&l.hasChunkAt(drive)&&l.getBlockEntity(drive) instanceof ElevatorDriveEntity d){call.clearMarkers();call.bindMarker(drive);p.displayClientMessage(Component.literal("Call button linked to "+d.elevatorName()),false);}else message(p,"select_marker");return;}
+  if(marker==null){var drive=selected(p,l,"Drive");if(drive!=null&&l.hasChunkAt(drive)&&l.getBlockEntity(drive) instanceof ElevatorDriveEntity d){call.clearMarkers();call.bindMarker(drive);p.displayClientMessage(com.sanctuarygames.createtransit.TransitText.tr("message.createtransit.elevator.call_button_linked_to_s",d.elevatorName()),false);}else message(p,"select_marker");return;}
   if(!toggle(l,pos,marker)){message(p,"link_failed");return;}
   message(p,"link_count",call.callMarkers().size());
  }

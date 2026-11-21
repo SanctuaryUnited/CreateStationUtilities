@@ -82,9 +82,24 @@ public final class RadioStations extends SavedData {
  }
  /** Player-initiated add: permission, allow-list and private-address checks before saving. */
  public String add(net.minecraft.server.level.ServerPlayer editor,String name,String url){requireEditor(editor);return addChecked(name,url);}
+ /** Reserved example names (RFC 2606/6761) that can never host a stream: example.com/.net/.org, .example, .test, .invalid. */
+ static boolean placeholderHost(String host){
+  if(host==null)return false;host=host.toLowerCase(Locale.ROOT);
+  for(var d:new String[]{"example.com","example.net","example.org"})if(host.equals(d)||host.endsWith("."+d))return true;
+  return host.equals("example")||host.endsWith(".example")||host.endsWith(".test")||host.endsWith(".invalid");
+ }
+ /** Points an existing station at a new URL, with the same checks as adding one. */
+ private void replaceUrl(Station old,String url){
+  validate(old.name(),url);String host=host(url);
+  if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
+  if(placeholderHost(host))throw new IllegalArgumentException("\""+host+"\" is an example address, not a real stream. Replace it with your station's stream URL");
+  if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
+  stations.put(old.id(),new Station(old.id(),old.name(),url));setDirty();
+ }
  private String addChecked(String name,String url){
   validate(name,url);String host=host(url);
   if(privateLiteral(host))throw new IllegalArgumentException("Radio streams must use a public internet address");
+  if(placeholderHost(host))throw new IllegalArgumentException("\""+host+"\" is an example address, not a real stream. Replace it with your station's stream URL");
   if(!com.sanctuarygames.createtransit.TransitServerConfig.hostAllowed(host))throw new IllegalArgumentException("This server only allows radio streams from approved hosts");
   return add(name,url);
  }
@@ -95,11 +110,21 @@ public final class RadioStations extends SavedData {
   * A URL already in the list counts as added. Returns a message for each entry that was refused. */
  public List<String> seedDefaults(List<? extends String> entries){
   var problems=new ArrayList<String>();
+  var configured=new HashSet<String>();
+  for(var entry:entries){int bar=entry.indexOf('|');if(bar>0)configured.add(entry.substring(bar+1).strip());}
   for(var entry:entries){
    int bar=entry.indexOf('|');if(bar<=0){problems.add("\""+entry+"\": expected Name|URL");continue;}
    String name=entry.substring(0,bar).strip(),url=entry.substring(bar+1).strip();
    if(seededDefaults.contains(url))continue;
-   try{if(stations.values().stream().noneMatch(s->s.url().equals(url)))addChecked(name,url);seededDefaults.add(url);setDirty();}
+   try{
+    if(stations.values().stream().noneMatch(s->s.url().equals(url))){
+     // The same name added earlier from this config, under a URL the config no longer lists: the URL
+     // was edited, so update that station in place. Speakers and cabins tuned to it keep working.
+     var edited=stations.values().stream().filter(s->s.name().equals(name)&&seededDefaults.contains(s.url())&&!configured.contains(s.url())).findFirst().orElse(null);
+     if(edited!=null)replaceUrl(edited,url);else addChecked(name,url);
+    }
+    seededDefaults.add(url);setDirty();
+   }
    catch(IllegalArgumentException e){problems.add("\""+name+"\": "+e.getMessage());}
   }
   return problems;

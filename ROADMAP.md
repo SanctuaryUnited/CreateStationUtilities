@@ -68,6 +68,48 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
 - [ ] **16. Delete the unused `src/main/templates/META-INF/neoforge.mods.toml`** (it wrongly marks CRN as required).
 - [ ] **17. Replace the deprecated `EventBusSubscriber.Bus`** before NeoForge removes it (confirm 21.1.248 still routes mod-bus events first).
 
+## Usability
+
+- [x] **21. Aim Cabin Kits from the doorway** (0.5.0, confirmed in an in-world test).
+  - The clicked block is the hallway spot in front of the doorway, and the cabin is built straight ahead.
+  - `ModelCabinItem.layout()` picks the drive orientation whose doorway faces the player and shifts the known-good layout onto the click.
+  - The preview adds a white landing outline, and the in-game messages are rewritten.
+  - *MINOR*
+- [x] **22. Step-by-step elevator help in game** (0.5.0). The Cabin Kit is renamed from "Elevator Refresher". Setup items get Shift-for-steps tooltips (`ElevatorHelp`). `/csu guide elevator` and `/csu guide bank` print numbered steps. The old Elevator 2 tooltips are gone. *MINOR*
+
+- [x] **23. One text helper for chat messages** (0.5.0). `TransitText` gives every message:
+  - a topic prefix such as `[Elevator]`
+  - a tone colour: info, success, warning or error
+  - duplicate suppression within five seconds
+  - text from `en_us.json`, so it can be translated
+
+  Cabin Kit, Landing Door Kit and controller messages now use it, and `ElevatorFeedback` and `/csu guide` go through it. `langKeyCheck` (part of `check`) fails the build if code references a key that is missing from `en_us.json`. Chosen over bundling Adventure: no extra dependency, no conversion bridge to keep in step with NeoForge, and vanilla components already cover what the mod needs. *MINOR*
+- [x] **24. Move the remaining hard-coded messages into `en_us.json`** (0.5.0).
+  - 135 elevator warnings, refusals, faults and link messages now have keys:
+    - the controller and cabin warnings
+    - rail discovery
+    - controller-block messages and faults
+    - feedback chat
+    - landing, marker and call-button messages
+  - Controller warnings travel through the existing string plumbing as encoded keys (`TransitText.key`) and are translated where they are shown: in chat, and in the controller screen's status tooltip.
+  - The sync data keeps plain English in `Message`/`RailWarning` for older clients, and adds `MessageKey`/`RailWarningKey` for translation.
+  - `langKeyCheck` now covers 183 references. *PATCH*
+- [x] **26. Translate the screen labels** (0.5.0). Every elevator, escalator, speaker, material-picker and settings screen now draws its text through `TransitText.ui()`, via `StationUi` buttons, tabs and sliders, `setMessage`, and the screens' text helpers.
+  - Labels are looked up whole first. Labels built from pieces ("Chime: " + value) are translated piece by piece, and names, numbers and symbols pass through.
+  - 252 labels are in `en_us.json` as `gui.createtransit.ui.*`.
+  - `tools/extract_ui_labels.py` adds new ones.
+  - The `Styled` buttons pick their "Go"/"Activate" highlight from the English label, so translating the text doesn't change it.
+  - A gametest swaps in a fake language to check the phrase rules. *PATCH*
+- [ ] **25. Ponder scenes for elevators.** These are Create's animated in-game tutorials (press W on an item). Create is already a dependency, so they add nothing to the jar. Scenes:
+  - placing a Cabin Kit, with the preview colours and turning
+  - building the guide-rail shaft with floor markers
+  - Landing Door Kits at each floor
+  - activating
+  - hall call buttons
+  - forming a bank with the wrench and the Destination Selector
+
+  This would replace most of the chat guide for new players. *MINOR*
+
 ## Future — Possible features (radio)
 
 Sanctuary Radio runs on AzuraCast and currently uses the MP3 mount
