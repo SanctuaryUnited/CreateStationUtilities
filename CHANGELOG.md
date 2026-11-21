@@ -7,6 +7,9 @@
   - Collision still uses the stepped shape, so walking and riding are unchanged. Existing cabins need no rebuild.
 - The README is shorter and only lists what the mod needs and does now. Old release notes stay in the changelog.
 
+### Fixed
+- The cabin's destination board is no longer cut off on its left edge. On 2- and 3-wide cabins it was slightly wider than the wall beside the doorway, so its edge sat inside the side wall. It's now centred between the side wall and the door's LED strip, and narrowed a little where it doesn't fit. 4- and 5-wide cabins keep the full size. The floor buttons line up with the new size.
+
 ## 0.5.1 — Elevator and speaker fixes
 
 ### Fixed

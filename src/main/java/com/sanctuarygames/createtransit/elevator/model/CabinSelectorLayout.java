@@ -10,8 +10,17 @@ public final class CabinSelectorLayout {
   return CabinGeometry.passageEnd(c,rear)+(rear?-.016:.016);
  }
 
+ /** Clear gap from the side wall's inner face to the doorway's LED strip, on the left of the front door. */
+ public static double wallFace(CabinConfiguration c){return c.v13Geometry()?.0625:2*CabinGeometry.INSET;}
+ public static double ledEdge(CabinConfiguration c){return CabinGeometry.left(c)-(c.v13Geometry()?.052:.04);}
+ public static final double MARGIN=1/64.0;
+
+ /** Full width where it fits, otherwise narrowed so the board never runs into the side wall or the door LED. */
+ public static double width(CabinConfiguration c){return Math.min(WIDTH,ledEdge(c)-wallFace(c)-2*MARGIN);}
+
+ /** Centred in the clear gap beside the doorway. */
  public static double center(CabinConfiguration c,boolean rear){
-  double left=(CabinGeometry.INSET+CabinGeometry.left(c))/2;
+  double left=(wallFace(c)+ledEdge(c))/2;
   return rear?c.size()-left:left;
  }
 

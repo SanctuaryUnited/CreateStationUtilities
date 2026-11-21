@@ -42,6 +42,15 @@ public class Elevators30Test {
   check(!defaults(3,Variant.SOLID).legacyGeometry(),"New 3×3 cabin uses V17");
   check(defaults(3,Variant.SOLID).skin()==Skin.BRUSHED_STEEL&&defaults(3,Variant.SOLID).brightness()==6,"New finish and brightness");
   eq(DoorGeometry.LANDING_PANEL_START+PANEL_DEPTH,1-SEAM_CLEARANCE,"Landing closes on its own side of the seam");
+  for(int size=2;size<=5;size++)for(boolean legacy:new boolean[]{false,true}){
+   var sc=set(set(defaults(size,Variant.SOLID),"legacyGeometry",""+legacy),"v13Geometry",""+legacy);
+   double half=CabinSelectorLayout.width(sc)/2,mid=CabinSelectorLayout.center(sc,false);
+   check(mid-half>=CabinSelectorLayout.wallFace(sc)+1e-9,"Destination board clears the side wall at size "+size);
+   check(mid+half<=CabinSelectorLayout.ledEdge(sc)-1e-9,"Destination board clears the door LED at size "+size);
+   check(half*2>=4/16.0,"Destination board stays readable at size "+size);
+   if(size>=4)eq(half*2,CabinSelectorLayout.WIDTH,"Wide cabins keep the full board");
+   eq(CabinSelectorLayout.center(sc,true),size-mid,"Rear board mirrors the front");
+  }
   check(CabinSelectorLayout.pages(6)==1&&CabinSelectorLayout.pages(7)==2,"Six stops per selector page");
   check(CabinSelectorLayout.arrowAt(5,62)==1&&CabinSelectorLayout.arrowAt(27,62)==-1,"Footer arrows advance and rewind");
   var old=defaults(3,Variant.SOLID).save();

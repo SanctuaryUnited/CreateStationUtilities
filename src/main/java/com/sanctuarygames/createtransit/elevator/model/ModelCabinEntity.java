@@ -77,7 +77,7 @@ public final class ModelCabinEntity extends Entity {
   if(start.z<=CabinGeometry.passageEnd(c,false)||start.z>=(c.rearEnabled()?CabinGeometry.passageEnd(c,true):c.size()-CabinGeometry.INSET))return null;
   double distance=(plane-start.z)/ray.z;
   if(distance<0||distance>player.entityInteractionRange())return null;
-  double u=.5+(start.x+ray.x*distance-CabinSelectorLayout.center(c,rear))*(rear?-1:1)/CabinSelectorLayout.WIDTH;
+  double u=.5+(start.x+ray.x*distance-CabinSelectorLayout.center(c,rear))*(rear?-1:1)/CabinSelectorLayout.width(c);
   double v=1-(start.y+ray.y*distance-CabinSelectorLayout.BOTTOM)/CabinSelectorLayout.HEIGHT;
   if(u<0||u>=1||v<0||v>=1)return null;
   return new Vec3(u*32,v*64,rear?1:0);

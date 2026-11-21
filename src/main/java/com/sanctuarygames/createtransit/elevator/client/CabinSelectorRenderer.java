@@ -18,7 +18,7 @@ final class CabinSelectorRenderer {
   pose.pushPose();
   pose.translate(CabinSelectorLayout.center(c,rear),CabinSelectorLayout.BOTTOM,z);
   if(!rear)pose.mulPose(Axis.YP.rotationDegrees(180));
-  double w=CabinSelectorLayout.WIDTH/32,h=CabinSelectorLayout.HEIGHT/64;
+  double w=CabinSelectorLayout.width(c)/32,h=CabinSelectorLayout.HEIGHT/64;
   // Adjacent opaque regions leave no second surface under the tiles or header.
   IndicatorArtwork.rect(pose,buffers,-16*w,0,32*w,7*h,0,0x243847);
   IndicatorArtwork.rect(pose,buffers,-16*w,41*h,32*w,h,0,DoorIndicatorRenderer.accent(c));
