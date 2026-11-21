@@ -27,11 +27,9 @@ public final class ElevatorHelp {
     public static List<Component> page(String page) {
         var lines = new java.util.ArrayList<Component>();
         var base = "guide.createtransit." + page;
-        lines.add(Component.translatable(base).withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
-        for (int i = 1; Language.getInstance().has(base + "." + i); i++)
-            lines.add(Component.literal(i + ". ").withStyle(ChatFormatting.YELLOW).append(Component.translatable(base + "." + i).withStyle(ChatFormatting.WHITE)));
-        if (Language.getInstance().has(base + ".footer"))
-            lines.add(Component.translatable(base + ".footer").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC));
+        lines.add(com.sanctuarygames.createtransit.TransitText.heading(base));
+        lines.addAll(com.sanctuarygames.createtransit.TransitText.steps(base));
+        if (Language.getInstance().has(base + ".footer")) lines.add(com.sanctuarygames.createtransit.TransitText.note(base + ".footer"));
         return lines;
     }
 }

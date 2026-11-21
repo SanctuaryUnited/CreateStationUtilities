@@ -48,6 +48,12 @@ tasks.register('transitCheck', JavaExec) {
     mainClass = 'com.sanctuarygames.createtransit.TransitCheck'
 }
 tasks.named('check') { dependsOn 'transitCheck' }
+tasks.register('langKeyCheck', JavaExec) {
+    dependsOn testClasses
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'com.sanctuarygames.createtransit.LangKeyCheck'
+}
+tasks.named('check') { dependsOn 'langKeyCheck' }
 tasks.named('test') { failOnNoDiscoveredTests = false }
 
 sourceSets {

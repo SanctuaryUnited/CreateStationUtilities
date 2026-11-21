@@ -77,6 +77,24 @@ Each item lists the SemVer bump it needs. Tick items off as they land.
   - *MINOR*
 - [x] **22. Step-by-step elevator help in game** (0.5.0). The Cabin Kit is renamed from "Elevator Refresher". Setup items get Shift-for-steps tooltips (`ElevatorHelp`). `/csu guide elevator` and `/csu guide bank` print numbered steps. The old Elevator 2 tooltips are gone. *MINOR*
 
+- [x] **23. One text helper for chat messages** (0.5.0). `TransitText` gives every message:
+  - a topic prefix such as `[Elevator]`
+  - a tone colour: info, success, warning or error
+  - duplicate suppression within five seconds
+  - text from `en_us.json`, so it can be translated
+
+  Cabin Kit, Landing Door Kit and controller messages now use it, and `ElevatorFeedback` and `/csu guide` go through it. `langKeyCheck` (part of `check`) fails the build if code references a key that is missing from `en_us.json`. Chosen over bundling Adventure: no extra dependency, no conversion bridge to keep in step with NeoForge, and vanilla components already cover what the mod needs. *MINOR*
+- [ ] **24. Move the remaining hard-coded messages into `en_us.json`.** The controller's own warnings and refusals are still English strings, shown in chat and in the controller screen. Give them keys so the mod can be fully translated before a Modrinth or CurseForge release. *PATCH*
+- [ ] **25. Ponder scenes for elevators.** These are Create's animated in-game tutorials (press W on an item). Create is already a dependency, so they add nothing to the jar. Scenes:
+  - placing a Cabin Kit, with the preview colours and turning
+  - building the guide-rail shaft with floor markers
+  - Landing Door Kits at each floor
+  - activating
+  - hall call buttons
+  - forming a bank with the wrench and the Destination Selector
+
+  This would replace most of the chat guide for new players. *MINOR*
+
 ## Future — Possible features (radio)
 
 Sanctuary Radio runs on AzuraCast and currently uses the MP3 mount

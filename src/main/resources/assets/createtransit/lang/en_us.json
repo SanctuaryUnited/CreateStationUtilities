@@ -270,5 +270,16 @@
   "guide.createtransit.bank.3": "Use a Create Wrench on that button and choose Create bank. Wrench the button between the next pair and choose Add adjacent shafts. Repeat until every elevator is in. Buttons on higher floors join automatically.",
   "guide.createtransit.bank.4": "Optional: place an Elevator Destination Selector beside a bank landing. Riders pick a floor and are told which car (A, B, ...) to take.",
   "guide.createtransit.bank.5": "Joining two banks: wrench a button of the bank whose letters you keep and choose Primary bank. At the other bank choose Preview secondary, then Confirm merge. Undo last merge reverses it.",
-  "guide.createtransit.bank.footer": "The wrench menu also sets the bank's button style, colours and floor names."
+  "guide.createtransit.bank.footer": "The wrench menu also sets the bank's button style, colours and floor names.",
+  "message.createtransit.prefix.elevator": "Elevator",
+  "message.createtransit.kit.rail_mount_blocked": "Clear one block directly below the guide rail column for the controller.",
+  "message.createtransit.kit.rail_cabin_created": "Cabin created on this rail. Place a Landing Door Kit at each floor, then click the cabin to choose a floor. Use the kit on the rail again to customise it.",
+  "message.createtransit.kit.turned": "Preview turned. Right-click the same block again to build it.",
+  "message.createtransit.kit.doorway_blocked": "Click an empty floor spot: the block above it becomes the doorway, so it must be clear.",
+  "message.createtransit.kit.preview": "Preview: the cabin goes straight ahead, with its door where you clicked. Gold = doorway, white = landing door, blue = controller. Crouch-right-click to turn it; right-click the same block again to build.",
+  "message.createtransit.kit.controller_blocked": "Can't build here: the controller (blue box) and the block above it must be empty.",
+  "message.createtransit.kit.built": "Cabin Kit built. Next: build the guide-rail shaft up from the marker, put a Landing Door Kit in the white outline at each floor, then press Activate here. Type /csu guide elevator for every step.",
+  "message.createtransit.landing.linked": "Landing door linked to the elevator.",
+  "message.createtransit.landing.unlinked": "Landing door placed, but no elevator lines up with it yet. It links by itself once it sits in front of a cabin doorway at a floor marker (the Cabin Kit preview shows the spot in white). You can also link it with a Create Wrench.",
+  "message.createtransit.controller.deactivate_first": "Deactivate the cabin first: right-click the controller, press Deactivate, then break it."
 }
