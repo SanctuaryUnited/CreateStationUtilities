@@ -1,4 +1,4 @@
-## 0.5.0 — Easier elevator setup
+## 0.5.0 — Quality-of-life update
 
 ### Changed
 - **Cabin Kits are aimed from the doorway.** Click the floor where you want to walk in. The block above it becomes the spot in front of the door, and the cabin is built straight ahead in the direction you're facing, with its door facing you. Crouch-right-click turns the cabin around that doorway. Elevators that are already built don't move.
