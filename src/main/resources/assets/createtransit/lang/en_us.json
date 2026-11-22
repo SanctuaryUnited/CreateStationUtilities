@@ -689,7 +689,7 @@
   "createtransit.ponder.elevator_bank.text_2": "On the lowest floor they share, put an Elevator Floor Call between two neighbouring landing doors",
   "createtransit.ponder.elevator_bank.text_3": "Use a Create Wrench on it and choose Create bank. For more cars, wrench the button between the next pair and choose Add adjacent shafts",
   "createtransit.ponder.elevator_bank.text_4": "Buttons on the higher floors join the bank by themselves",
-  "createtransit.ponder.elevator_bank.text_5": "A call now goes to whichever car can get there first",
+  "createtransit.ponder.elevator_bank.text_5": "A call now goes to the nearest free car",
   "createtransit.ponder.elevator_bank.text_6": "Optional: an Elevator Destination Selector beside a bank landing lets riders pick their floor first",
   "createtransit.ponder.elevator_bank.text_7": "It tells them which car (A, B, ...) to take",
   "createtransit.ponder.elevator_cabin_kit.header": "Starting an elevator with a Cabin Kit",

@@ -276,7 +276,7 @@ final class ElevatorScenes {
             .pointAt(util.vector().blockSurface(new BlockPos(5, 6, 6), Direction.SOUTH)).placeNearTarget();
         scene.idle(70);
         scene.overlay().showControls(util.vector().blockSurface(home, Direction.SOUTH), Pointing.LEFT, 30).rightClick();
-        scene.overlay().showText(60).text("A call now goes to whichever car can get there first")
+        scene.overlay().showText(60).text("A call now goes to the nearest free car")
             .pointAt(util.vector().blockSurface(home, Direction.SOUTH)).placeNearTarget().attachKeyFrame();
         scene.idle(20);
         scene.addInstruction(new MoveCabin(b, -SPACING, 50));
