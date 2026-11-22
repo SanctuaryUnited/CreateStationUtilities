@@ -94,7 +94,8 @@ public final class ModelCabinController implements CabinMotionController.World {
    var candidate=probe(floor);
    if(!loaded(candidate.getBoundingBox())||!noCabinOverlap(cabin==null?candidate:cabin,candidate.getBoundingBox()))
     return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.cabin_overlaps_another_cabin_or_is"));
-   for(var box:candidate.collision()){
+   for(var part:candidate.collision()){
+    var box=aboveFloor(candidate,part);if(box==null)continue;
     for(var shape:level().getBlockCollisions(candidate,box))if(!shape.isEmpty())
      return reject(com.sanctuarygames.createtransit.TransitText.key("message.createtransit.elevator.the_selected_cabin_geometry_overlaps_a"));
    }
@@ -380,7 +381,12 @@ public final class ModelCabinController implements CabinMotionController.World {
  private boolean loaded(AABB b){for(int x=(int)Math.floor(b.minX);x<=Math.floor(b.maxX);x+=1)for(int z=(int)Math.floor(b.minZ);z<=Math.floor(b.maxZ);z+=1)if(!level().hasChunkAt(new BlockPos(x,0,z)))return false;return b.minY>=level().getMinBuildHeight()&&b.maxY<=level().getMaxBuildHeight();}
  // Generated cabin shells may share shaft cells with wall-mounted guide rails.
  // Placement validates block clearance. Existing vertical travel behavior is preserved.
- public boolean placementClear(ModelCabinEntity e){if(!noCabinOverlap(e,e.getBoundingBox()))return false;for(var shape:level().getBlockCollisions(e,e.getBoundingBox()))if(!shape.isEmpty())return false;return true;}
+ /**
+  * Blocks below the cabin's walking surface don't count: the floor slab rests in them, as on a kit built on flat
+  * ground. Anything at or above the walking surface does.
+  */
+ static net.minecraft.world.phys.AABB aboveFloor(ModelCabinEntity e,net.minecraft.world.phys.AABB box){double floor=e.getY()+CabinGeometry.FLOOR_TOP+1e-5;return box.maxY<=floor?null:new net.minecraft.world.phys.AABB(box.minX,Math.max(box.minY,floor),box.minZ,box.maxX,box.maxY,box.maxZ);}
+ public boolean placementClear(ModelCabinEntity e){if(!noCabinOverlap(e,e.getBoundingBox()))return false;var body=aboveFloor(e,e.getBoundingBox());if(body!=null)for(var shape:level().getBlockCollisions(e,body))if(!shape.isEmpty())return false;return true;}
  /** True when the cabin's bounds cut into this controller's own drive or guide-rail column. */
  private boolean overlapsOwnRail(ModelCabinEntity e){var b=e.getBoundingBox();var base=drive.getBlockPos();for(int y=(int)Math.floor(b.minY);y<=(int)Math.floor(b.maxY-1e-6);y++){var p=new BlockPos(base.getX(),y,base.getZ());var shape=level().getBlockState(p).getCollisionShape(level(),p);if(!shape.isEmpty()&&level().getBlockState(p).getBlock() instanceof com.sanctuarygames.createtransit.elevator.ElevatorPartBlock&&shape.toAabbs().stream().anyMatch(a->a.move(p).intersects(b)))return true;}return false;}
  private boolean noCabinOverlap(ModelCabinEntity e,AABB b){return CabinCollisions.overlapping(level(),b).stream().noneMatch(other->other!=e);}

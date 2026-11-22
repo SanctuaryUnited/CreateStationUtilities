@@ -120,4 +120,33 @@ public final class KitPlacementGameTests {
         }
         h.succeed();
     }
+
+    /** On solid flat ground, like a grass field, the kit's cabin activates with no digging under it. */
+    @GameTest(template = "elevator2_shaft", batch = "kit_placement", timeoutTicks = 60)
+    public static void kit_on_solid_ground_activates(GameTestHelper h) {
+        var l = h.getLevel();
+        var player = FakePlayerFactory.getMinecraft(l);
+        player.getAbilities().mayBuild = true;
+        player.getAbilities().instabuild = false;
+        player.setShiftKeyDown(false);
+        var facing = Direction.NORTH;
+        player.setYRot(facing.toYRot());
+        var clicked = h.absolutePos(new BlockPos(12, 2, 20));
+        for (var p : BlockPos.betweenClosed(clicked.offset(-8, -1, -10), clicked.offset(8, -1, 4))) l.setBlock(p, net.minecraft.world.level.block.Blocks.STONE.defaultBlockState(), 3);
+        for (var p : BlockPos.betweenClosed(clicked.offset(-8, 0, -10), clicked.offset(8, 6, 4))) l.setBlock(p, net.minecraft.world.level.block.Blocks.AIR.defaultBlockState(), 3);
+        var stack = new ItemStack(ElevatorRegistry.CABIN_ITEM.get(), 1);
+        player.setItemInHand(InteractionHand.MAIN_HAND, stack);
+        var hit = new BlockHitResult(Vec3.atCenterOf(clicked.below()), Direction.UP, clicked.below(), false);
+        var context = new UseOnContext(player, InteractionHand.MAIN_HAND, hit);
+        ElevatorRegistry.CABIN_ITEM.get().useOn(context);
+        ElevatorRegistry.CABIN_ITEM.get().useOn(context);
+        var kit = ModelCabinItem.layout(l, clicked, facing);
+        check(l.getBlockEntity(kit.drive()) instanceof ElevatorDriveEntity, "Kit built on solid ground");
+        var d = (ElevatorDriveEntity) l.getBlockEntity(kit.drive());
+        check(d.installModelLanding(player, d.anchor().getY()), "Home landing installs on solid ground: " + d.model().warning());
+        check(d.activateModel(), "Kit cabin activates on solid ground: " + d.model().warning());
+        check(Math.abs(d.model().entity().getY() + CabinGeometry.FLOOR_TOP - clicked.getY()) < 1e-6, "Cabin floor level with the ground");
+        d.deactivateModel();
+        h.succeed();
+    }
 }
