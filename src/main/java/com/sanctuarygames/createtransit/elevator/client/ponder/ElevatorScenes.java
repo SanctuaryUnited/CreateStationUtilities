@@ -115,7 +115,8 @@ final class ElevatorScenes {
 
         scene.overlay().showText(70).text("Stack Elevator Guide Rails straight up from the Cabin Kit's floor marker, with no gaps")
             .pointAt(util.vector().centerOf(RAIL_X, 1, RAIL_Z)).placeNearTarget().attachKeyFrame();
-        scene.idle(30);
+        // Let this caption finish before the rails go up and the marker caption appears, so the two never overlap.
+        scene.idle(80);
         for (int floor = 1; floor < FLOORS; floor++) {
             int base = floor * SPACING;
             // Plain rails from just above the previous marker up to just below this floor's marker.
