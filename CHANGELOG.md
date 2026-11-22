@@ -1,4 +1,10 @@
-## Unreleased
+## 0.5.3 — Level Cabin Kit floors
+
+### Fixed
+- A Cabin Kit's home floor is now level with the floor you click. The landing door, the cabin floor and the white landing outline were one block higher, so players had to build or climb a step to get in.
+  - The controller now goes in the floor block under the blue outline. The kit mines that block as if you had broken it (it drops, except in Creative). It won't mine unbreakable blocks, blocks holding items, or protected blocks; it tells you instead and keeps the kit.
+  - The cabin's floor rests in the ground at its lowest stop, so blocks below the cabin's walking surface no longer count as "Something is in the cabin's space" when activating or changing the cabin. Anything at or above the walking surface still does.
+  - Elevators already built from a kit are unchanged.
 
 ### Changed
 - Build cleanup with no change in game: removed an unused copy of the mod metadata file, and dropped NeoForge's deprecated `EventBusSubscriber.Bus` setting. NeoForge 21.1.248 and newer pick the right event bus on their own.
