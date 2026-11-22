@@ -33,7 +33,7 @@ public final class InventoryClientValidation {
             @Override public CompletableFuture<?> run(CachedOutput output) {
                 try {
                     var loader = InventoryClientValidation.class.getClassLoader();
-                    V15RenderCheck.run();WaveOneDoorCheck.run(loader);
+                    V15RenderCheck.run();WaveOneDoorCheck.run(loader);PonderSceneCheck.run(loader);
                     MultipartBakeCheck.run();
                     ElevatorScaleFourCheck.run();com.sanctuarygames.createtransit.radio.client.RadioAudioCheck.run();com.sanctuarygames.createtransit.radio.client.RadioRangeCheck.run();com.sanctuarygames.createtransit.radio.client.RadioAcousticsCheck.run();
                     var screen = Class.forName("net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen", false, loader);

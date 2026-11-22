@@ -1,3 +1,14 @@
+## 0.6.0 — Elevator Ponder scenes
+
+### Added
+- Ponder scenes for elevators: hold W over an elevator item to watch how it's used. They are Create's animated in-game tutorials, built from real elevator blocks and cabins.
+  - Cabin Kit: placing the kit, what the preview colours mean, turning it, and building it.
+  - Guide rails and floor markers: building the shaft, with a marker at each floor.
+  - Landing Door Kits: adding a landing door on every floor.
+  - Activating: the controller panel and the cabin's first trip.
+  - Floor calls: calling the cabin and riding to another floor.
+  - Banks: joining elevators into a bank with the Create Wrench, and the Destination Selector.
+
 ## 0.5.3 — Level Cabin Kit floors
 
 ### Fixed

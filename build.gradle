@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'net.neoforged.moddev' version '2.0.148'
 }
-version = '0.5.3'
+version = '0.6.0'
 group = 'com.sanctuarygames.createtransit'
 base { archivesName = 'create-station-utilities' }
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
@@ -120,6 +120,9 @@ neoForge {
             sourceSet = sourceSets.gametest
             // Own folder, so it never touches the runServer world in run/.
             gameDirectory = project.file('run-gametest')
+            // -PponderExport rebuilds the elevator Ponder structures from the real blocks.
+            if (providers.gradleProperty('ponderExport').isPresent())
+                systemProperty 'transit.ponderExport', file('src/main/resources/assets/createtransit/ponder').absolutePath
         }
     }
     mods { createtransit { sourceSet sourceSets.gametest } }
@@ -202,6 +205,11 @@ tasks.named('check') { dependsOn 'doorStyleCheck' }
 
 // JLayer is distributed as a standard NeoForge nested dependency, not flattened into this mod.
 tasks.named('processResources') { from(configurations.embeddedRadio) { into 'META-INF/jarjar' } }
+// -PponderCapture=item,item screenshots each item's Ponder scenes into run/screenshots/ponder-*.png.
+if (providers.gradleProperty('ponderCapture').isPresent()) neoForge {
+ runs { client { sourceSet=sourceSets.clienttest; systemProperty 'transit.ponderCapture',providers.gradleProperty('ponderCapture').get(); programArguments.addAll '--width','1280','--height','800','--quickPlaySingleplayer','New World' } }
+ mods { createtransit { sourceSet sourceSets.clienttest } }
+}
 if (providers.gradleProperty('uiValidation').isPresent()) neoForge {
  runs { client { sourceSet=sourceSets.clienttest; jvmArgument '-Xmx3G';jvmArgument '-XX:ActiveProcessorCount=2';systemProperty 'transit.uiValidation','true';programArguments.addAll '--width','1280','--height','960' } }
  mods { createtransit { sourceSet sourceSets.clienttest } }
